@@ -30,8 +30,11 @@ func refresh_controls(
 
 func prepare_launch(launch: Dictionary) -> Dictionary:
 	var replay_turn_numbers := _to_int_array(launch.get("turn_numbers", []))
+	replay_turn_numbers.sort()
 
 	var entry_turn_number := int(launch.get("entry_turn_number", 0))
+	if entry_turn_number <= 0 and not replay_turn_numbers.is_empty():
+		entry_turn_number = replay_turn_numbers[replay_turn_numbers.size() - 1]
 	if entry_turn_number > 0 and not replay_turn_numbers.has(entry_turn_number):
 		replay_turn_numbers.append(entry_turn_number)
 		replay_turn_numbers.sort()

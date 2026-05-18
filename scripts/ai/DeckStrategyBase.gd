@@ -3,10 +3,22 @@ extends RefCounted
 
 var _turn_plan_context: Dictionary = {}
 var _turn_contract_context: Dictionary = {}
+var _learned_rules_text: String = ""
 
 
 func get_strategy_id() -> String:
 	return ""
+
+
+func load_learned_rules(opponent_id: String = "") -> void:
+	var deck_id := get_strategy_id()
+	if deck_id == "":
+		return
+	_learned_rules_text = StrategyRuleStore.load_rules_text(deck_id, opponent_id)
+
+
+func get_learned_rules_text() -> String:
+	return _learned_rules_text
 
 
 func get_signature_names() -> Array[String]:

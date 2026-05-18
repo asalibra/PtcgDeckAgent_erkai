@@ -14,9 +14,11 @@ func _clear_test_root() -> void:
 	if DirAccess.dir_exists_absolute(absolute_root):
 		DirAccess.remove_absolute(absolute_root.path_join("match_old/match.json"))
 		DirAccess.remove_absolute(absolute_root.path_join("match_new/match.json"))
+		DirAccess.remove_absolute(absolute_root.path_join("match_online/match.json"))
 		DirAccess.remove_absolute(absolute_root.path_join("match_ai/match.json"))
 		DirAccess.remove_absolute(absolute_root.path_join("match_old"))
 		DirAccess.remove_absolute(absolute_root.path_join("match_new"))
+		DirAccess.remove_absolute(absolute_root.path_join("match_online"))
 		DirAccess.remove_absolute(absolute_root.path_join("match_ai"))
 		DirAccess.remove_absolute(absolute_root)
 
@@ -58,4 +60,26 @@ func test_match_record_index_lists_only_two_player_rows_newest_first() -> String
 		assert_eq(rows.size(), 2, "Only two-player rows should be listed"),
 		assert_eq(str((rows[0] as Dictionary).get("match_id", "")), "match_new", "Rows should sort newest first"),
 		assert_eq((rows[0] as Dictionary).get("final_prize_counts", []), [0, 2], "Rows should expose final prize counts"),
+	])
+
+
+func test_match_record_index_lists_online_replay_rows() -> String:
+	_clear_test_root()
+	_write_match_fixture("match_old", "two_player", 0, [3, 0], 6)
+	_write_match_fixture("match_online", "online", 1, [0, 1], 8)
+	_write_match_fixture("match_ai", "vs_ai", 0, [1, 0], 7)
+
+	var index = MatchRecordIndexScript.new()
+	index.set_root(TEST_ROOT)
+	var rows: Array = index.list_rows()
+	var match_ids: Array[String] = []
+	for row_variant: Variant in rows:
+		if row_variant is Dictionary:
+			match_ids.append(str((row_variant as Dictionary).get("match_id", "")))
+
+	_clear_test_root()
+	return run_checks([
+		assert_true(match_ids.has("match_old"), "Two-player replay rows should remain visible"),
+		assert_true(match_ids.has("match_online"), "Online replay rows should appear in the replay browser index"),
+		assert_false(match_ids.has("match_ai"), "Non-replay AI records should stay hidden from the replay browser index"),
 	])

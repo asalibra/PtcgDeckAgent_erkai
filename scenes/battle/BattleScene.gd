@@ -19,6 +19,9 @@ const BattleLearningPoolStoreScript := preload("res://scripts/engine/BattleLearn
 const MatchEndQuickReviewServiceScript := preload("res://scripts/engine/MatchEndQuickReviewService.gd")
 const BattleReviewArtifactStoreScript := preload("res://scripts/engine/BattleReviewArtifactStore.gd")
 const BattleReviewServiceScript := preload("res://scripts/engine/BattleReviewService.gd")
+const SelfPlayReviewPipelineScript := preload("res://scripts/ai/SelfPlayReviewPipeline.gd")
+const ReviewLLMConfigScript := preload("res://scripts/ai/ReviewLLMConfig.gd")
+const StrategyRuleStoreScript := preload("res://scripts/ai/StrategyRuleStore.gd")
 const BattleSceneRefsScript := preload("res://scenes/battle/BattleSceneRefs.gd")
 const BattleI18nScript := preload("res://scripts/ui/battle/BattleI18n.gd")
 const BattleAdviceFormatterScript := preload("res://scripts/ui/battle/BattleAdviceFormatter.gd")
@@ -198,7 +201,11 @@ var _match_end_ai_content: RichTextLabel = null
 var _match_end_ai_button: Button = null
 var _match_end_review_button: Button = null
 var _match_end_learning_button: Button = null
+var _match_end_evolution_button: Button = null
 var _match_end_return_button: Button = null
+var _match_end_evolution_busy: bool = false
+var _match_end_evolution_progress: String = ""
+var _match_end_evolution_result: Dictionary = {}
 var _battle_advice_controller: RefCounted = BattleAdviceControllerScript.new()
 var _battle_advice_service: RefCounted = null
 var _battle_action_controller: RefCounted = BattleActionControllerScript.new()
@@ -498,13 +505,34 @@ func _ready() -> void:
 			if cd != null:
 				_show_card_detail(cd)
 		)
+	_opp_deck.gui_input.connect(func(e: InputEvent) -> void:
+		if not _is_review_mode():
+			return
+		if e is InputEventMouseButton:
+			var mbe := e as InputEventMouseButton
+			if mbe.pressed and (mbe.button_index == MOUSE_BUTTON_LEFT or mbe.button_index == MOUSE_BUTTON_RIGHT):
+				_show_deck_cards(1 - _view_player, "对方牌库")
+	)
 	_my_deck.gui_input.connect(func(e: InputEvent) -> void:
 		if e is InputEventMouseButton:
 			var mbe := e as InputEventMouseButton
-			if mbe.pressed and mbe.button_index == MOUSE_BUTTON_RIGHT:
+			if mbe.pressed and (mbe.button_index == MOUSE_BUTTON_RIGHT or (_is_review_mode() and mbe.button_index == MOUSE_BUTTON_LEFT)):
 				_show_deck_cards(_view_player, "己方牌库")
 	)
+	if _opp_deck_preview != null:
+		_opp_deck_preview.left_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
+			if _is_review_mode():
+				_show_deck_cards(1 - _view_player, "对方牌库")
+		)
+		_opp_deck_preview.right_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
+			if _is_review_mode():
+				_show_deck_cards(1 - _view_player, "对方牌库")
+		)
 	if _my_deck_preview != null:
+		_my_deck_preview.left_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
+			if _is_review_mode():
+				_show_deck_cards(_view_player, "己方牌库")
+		)
 		_my_deck_preview.right_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
 			_show_deck_cards(_view_player, "己方牌库")
 		)
@@ -1741,6 +1769,9 @@ func _on_game_over(winner_index: int, reason: String) -> void:
 	_match_end_quick_review_busy = false
 	_match_end_quick_review_progress_text = ""
 	_match_end_quick_review_requested = false
+	_match_end_evolution_busy = false
+	_match_end_evolution_progress = ""
+	_match_end_evolution_result = {}
 	_record_battle_state_snapshot("match_end", {
 		"winner_index": winner_index,
 		"reason": reason,
@@ -1918,7 +1949,7 @@ func _on_zeus_help_pressed() -> void:
 func _on_opponent_hand_pressed() -> void:
 	if _gsm == null or _gsm.game_state == null:
 		return
-	if GameManager.current_mode != GameManager.GameMode.VS_AI:
+	if GameManager.current_mode != GameManager.GameMode.VS_AI and GameManager.current_mode != GameManager.GameMode.ONLINE:
 		return
 	_show_opponent_hand_cards()
 
@@ -2187,6 +2218,8 @@ func _try_play_to_bench(player_index: int, card: CardInstance, _slot_id: String)
 	if gs.phase != GameState.GamePhase.MAIN:
 		_log("基础宝可梦只能在主要阶段放置（当前阶段：%d）" % gs.phase)
 		return
+	if card != null and card.card_data != null:
+		_gsm.effect_processor.register_pokemon_card(card.card_data)
 	var bench_effect: BaseEffect = _gsm.effect_processor.get_effect(card.card_data.effect_id)
 	var bench_steps: Array[Dictionary] = []
 	if bench_effect is AbilityOnBenchEnter or bench_effect is AbilityBenchDamageOnPlay:
@@ -2321,7 +2354,7 @@ func _setup_dialog_gallery() -> void:
 	_dialog_assignment_source_scroll.add_child(_dialog_assignment_source_row)
 
 	var target_title := Label.new()
-	target_title.text = "闂勫嫮娼冮惄顔界垼"
+	target_title.text = "目标宝可梦"
 	target_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_dialog_assignment_panel.add_child(target_title)
 
@@ -4112,6 +4145,261 @@ func _on_match_end_return_pressed() -> void:
 		GameManager.goto_tournament_standings()
 	else:
 		GameManager.goto_battle_setup()
+
+
+func _on_match_end_evolution_pressed() -> void:
+	if _match_end_evolution_busy:
+		return
+	var review_config := ReviewLLMConfigScript.new()
+	if not review_config.load_from_disk() or not review_config.is_configured():
+		_show_review_llm_config_dialog()
+		return
+	_begin_evolution_review(review_config)
+
+
+func _begin_evolution_review(review_config: RefCounted) -> void:
+	var match_dir := _battle_review_match_dir.strip_edges()
+	if match_dir == "":
+		_log("[进化] 无对局录制数据，无法复盘")
+		return
+	_match_end_evolution_busy = true
+	_match_end_evolution_progress = "复盘中..."
+	_match_end_evolution_result = {}
+	_refresh_match_end_dialog_if_visible()
+
+	# 推断 deck_id
+	var deck_id := _infer_deck_archetype(0)
+	var opponent_id := _infer_deck_archetype(1)
+
+	# 记录合并前的规则快照
+	var rules_before := StrategyRuleStoreScript.load_rules(deck_id)
+
+	var pipeline := SelfPlayReviewPipelineScript.new()
+	pipeline.configure(review_config)
+	pipeline.review_single_match(match_dir, deck_id, opponent_id, self, func(total_rules: int) -> void:
+		_match_end_evolution_busy = false
+		_match_end_evolution_progress = ""
+		var rules_after := StrategyRuleStoreScript.load_rules(deck_id)
+		_match_end_evolution_result = {
+			"total_rules": total_rules,
+			"deck_id": deck_id,
+			"before": rules_before,
+			"after": rules_after,
+		}
+		_refresh_match_end_dialog_if_visible()
+		_show_evolution_result_dialog(deck_id, rules_before, rules_after)
+	)
+
+
+func _infer_deck_archetype(player_index: int) -> String:
+	## 从 GameManager 推断卡组原型 ID
+	if GameManager.selected_deck_ids.size() <= player_index:
+		return ""
+	var deck_id: int = int(GameManager.selected_deck_ids[player_index])
+	if deck_id <= 0:
+		return ""
+	var deck: DeckData = CardDatabase.get_deck(deck_id) if CardDatabase != null else null
+	if deck == null:
+		return str(deck_id)
+	var sid: String = _deck_strategy_registry.resolve_strategy_id_for_deck(deck)
+	if sid != "":
+		return sid
+	return str(deck.name).to_lower().replace(" ", "_")
+
+
+func _show_review_llm_config_dialog() -> void:
+	## 显示复盘 LLM 配置输入弹窗
+	var dialog := AcceptDialog.new()
+	dialog.title = "配置复盘 LLM"
+	dialog.min_size = Vector2(480, 320)
+	dialog.exclusive = false
+
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 12)
+
+	var hint := Label.new()
+	hint.text = "首次使用需配置复盘专用 LLM（与对战 LLM 分开）。"
+	hint.add_theme_font_size_override("font_size", 14)
+	hint.add_theme_color_override("font_color", Color(0.88, 0.95, 1.0, 0.9))
+	vbox.add_child(hint)
+
+	# Endpoint
+	var ep_label := Label.new()
+	ep_label.text = "API Endpoint:"
+	ep_label.add_theme_font_size_override("font_size", 13)
+	ep_label.add_theme_color_override("font_color", Color(0.7, 0.85, 1.0))
+	vbox.add_child(ep_label)
+	var ep_input := LineEdit.new()
+	ep_input.placeholder_text = "https://api.example.com/v1/chat/completions"
+	ep_input.name = "EndpointInput"
+	_style_config_line_edit(ep_input)
+	vbox.add_child(ep_input)
+
+	# API Key
+	var key_label := Label.new()
+	key_label.text = "API Key:"
+	key_label.add_theme_font_size_override("font_size", 13)
+	key_label.add_theme_color_override("font_color", Color(0.7, 0.85, 1.0))
+	vbox.add_child(key_label)
+	var key_input := LineEdit.new()
+	key_input.placeholder_text = "sk-..."
+	key_input.secret = true
+	key_input.name = "ApiKeyInput"
+	_style_config_line_edit(key_input)
+	vbox.add_child(key_input)
+
+	# Model
+	var model_label := Label.new()
+	model_label.text = "Model:"
+	model_label.add_theme_font_size_override("font_size", 13)
+	model_label.add_theme_color_override("font_color", Color(0.7, 0.85, 1.0))
+	vbox.add_child(model_label)
+	var model_input := LineEdit.new()
+	model_input.placeholder_text = "gpt-4o / deepseek-chat / ..."
+	model_input.name = "ModelInput"
+	_style_config_line_edit(model_input)
+	vbox.add_child(model_input)
+
+	# Status
+	var status_label := Label.new()
+	status_label.text = ""
+	status_label.name = "StatusLabel"
+	status_label.add_theme_font_size_override("font_size", 13)
+	status_label.add_theme_color_override("font_color", Color(1.0, 0.8, 0.3))
+	vbox.add_child(status_label)
+
+	dialog.add_child(vbox)
+
+	# 预填已有配置
+	var existing := ReviewLLMConfigScript.new()
+	if existing.load_from_disk():
+		ep_input.text = existing.endpoint
+		key_input.text = existing.api_key
+		model_input.text = existing.model
+
+	# 保存按钮
+	dialog.add_button("保存", true, "save")
+	dialog.custom_action.connect(func(action: String) -> void:
+		if action == "save":
+			var ep: String = ep_input.text.strip_edges()
+			var key: String = key_input.text.strip_edges()
+			var model: String = model_input.text.strip_edges()
+			if ep == "" or key == "":
+				status_label.text = "Endpoint 和 API Key 不能为空"
+				return
+			var cfg := ReviewLLMConfigScript.new()
+			cfg.endpoint = ep
+			cfg.api_key = key
+			cfg.model = model if model != "" else "gpt-4o"
+			cfg.save_to_disk()
+			status_label.text = "已保存！点击关闭后重新点击「总结进化」"
+			status_label.add_theme_color_override("font_color", Color(0.4, 1.0, 0.5))
+	)
+	dialog.get_ok_button().text = "关闭"
+	add_child(dialog)
+	dialog.popup_centered()
+
+
+func _style_config_line_edit(input: LineEdit) -> void:
+	input.add_theme_font_size_override("font_size", 14)
+	input.add_theme_color_override("font_color", Color(0.92, 0.98, 1.0))
+	input.add_theme_color_override("placeholder_color", Color(0.45, 0.55, 0.65, 0.7))
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.02, 0.04, 0.06, 0.9)
+	style.border_color = Color(0.23, 0.78, 1.0, 0.5)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(8)
+	style.content_margin_left = 10
+	style.content_margin_right = 10
+	style.content_margin_top = 6
+	style.content_margin_bottom = 6
+	input.add_theme_stylebox_override("normal", style)
+	var focus_style := style.duplicate()
+	focus_style.border_color = Color(0.28, 0.92, 1.0, 0.9)
+	input.add_theme_stylebox_override("focus", focus_style)
+
+
+func _show_evolution_result_dialog(deck_id: String, before: Dictionary, after: Dictionary) -> void:
+	## 显示规则变化摘要弹窗
+	var dialog := AcceptDialog.new()
+	dialog.title = "进化结果 - %s" % deck_id
+	dialog.min_size = Vector2(520, 400)
+	dialog.exclusive = false
+
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
+	var vbox := VBoxContainer.new()
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	vbox.add_theme_constant_override("separation", 8)
+
+	var before_rules: Array = before.get("rules", [])
+	var after_rules: Array = after.get("rules", [])
+	var before_ids := {}
+	for r: Dictionary in before_rules:
+		before_ids[str(r.get("id", ""))] = r
+
+	var new_count := 0
+	var updated_count := 0
+
+	# 新增规则
+	for rule: Dictionary in after_rules:
+		var rid: String = str(rule.get("id", ""))
+		var text: String = str(rule.get("text", ""))
+		var conf: float = float(rule.get("confidence", 0.5))
+		if not before_ids.has(rid):
+			new_count += 1
+			_add_rule_line(vbox, "[color=66ff88]+ 新增[/color] %s (%d%%)" % [text, int(conf * 100)])
+		else:
+			var old_rule: Dictionary = before_ids[rid]
+			var old_conf: float = float(old_rule.get("confidence", 0.5))
+			if abs(conf - old_conf) > 0.01 or str(old_rule.get("text", "")) != text:
+				updated_count += 1
+				_add_rule_line(vbox, "[color=ffdd44]~ 更新[/color] %s (%d%%→%d%%)" % [text, int(old_conf * 100), int(conf * 100)])
+
+	# 总结
+	var summary := Label.new()
+	summary.add_theme_font_size_override("font_size", 14)
+	summary.add_theme_color_override("font_color", Color(0.88, 0.95, 1.0))
+	if new_count == 0 and updated_count == 0:
+		summary.text = "本轮无新增或更新规则（可能已有相同策略）"
+	else:
+		summary.text = "新增 %d 条，更新 %d 条规则" % [new_count, updated_count]
+	vbox.add_child(summary)
+
+	# 当前全部规则
+	if after_rules.size() > 0:
+		var sep := HSeparator.new()
+		vbox.add_child(sep)
+		var all_title := Label.new()
+		all_title.text = "当前全部规则 (%d 条):" % after_rules.size()
+		all_title.add_theme_font_size_override("font_size", 14)
+		all_title.add_theme_color_override("font_color", Color(1.0, 0.78, 0.50))
+		vbox.add_child(all_title)
+		for rule: Dictionary in after_rules:
+			var text: String = str(rule.get("text", ""))
+			var conf: float = float(rule.get("confidence", 0.5))
+			var cat: String = str(rule.get("category", ""))
+			_add_rule_line(vbox, "[color=aabbcc][%s][/color] %s (%d%%)" % [cat, text, int(conf * 100)])
+
+	scroll.add_child(vbox)
+	dialog.add_child(scroll)
+	dialog.get_ok_button().text = "关闭"
+	add_child(dialog)
+	dialog.popup_centered()
+
+
+func _add_rule_line(parent: VBoxContainer, bbcode_text: String) -> void:
+	var rtl := RichTextLabel.new()
+	rtl.bbcode_enabled = true
+	rtl.text = bbcode_text
+	rtl.fit_content = true
+	rtl.scroll_active = false
+	rtl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rtl.add_theme_font_size_override("normal_font_size", 13)
+	rtl.add_theme_color_override("default_color", Color(0.88, 0.95, 1.0))
+	parent.add_child(rtl)
 
 
 func _refresh_match_end_dialog_if_visible() -> void:

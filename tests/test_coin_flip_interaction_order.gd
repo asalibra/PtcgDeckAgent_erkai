@@ -151,3 +151,21 @@ func test_crushing_hammer_heads_discards_selected_target_after_coin_flip() -> St
 		assert_true(target_energy in opponent.discard_pile, "Crushing Hammer should move the discarded Energy into the opponent discard pile"),
 		assert_true(other_energy not in opponent.discard_pile, "Crushing Hammer should not discard Energy from the wrong target"),
 	])
+
+
+func test_crushing_hammer_can_execute_from_card_owner_context() -> String:
+	var state := _make_state()
+	state.current_player_index = 0
+	var player_zero: PlayerState = state.players[0]
+	var player_one: PlayerState = state.players[1]
+	player_zero.active_pokemon.attached_energy = [CardInstance.create(_make_energy_data("P1 Active Energy", "P"), 0)]
+	player_one.active_pokemon.attached_energy.clear()
+	for slot: PokemonSlot in player_one.bench:
+		slot.attached_energy.clear()
+
+	var effect := EffectCrushingHammer.new(RiggedCoinFlipper.new([true]))
+	var card := CardInstance.create(_make_trainer_data("Crushing Hammer", "Item"), 1)
+
+	return run_checks([
+		assert_true(effect.can_execute(card, state), "Crushing Hammer legality should follow the card owner's opponent even when current_player_index is stale"),
+	])

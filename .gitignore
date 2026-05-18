@@ -7,10 +7,13 @@ android/
 .claude/
 .codex/
 .worktrees/
+.vscode/
 
 *.log
 *.tmp
 *.bak
+/erro.txt
+/log_tail.txt
 
 nul
 battle_scene_check.log
@@ -29,6 +32,10 @@ logs/
 tmp/
 tmp_benchmark_logs/
 detail.jsonl
+/exports/
+/modules/
+/platform/
+/doc/
 __pycache__/
 .tmp_*.gd
 .tmp_*.gd.uid

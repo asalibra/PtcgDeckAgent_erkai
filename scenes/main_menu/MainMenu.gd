@@ -34,6 +34,11 @@ const ABOUT_ICON_PATH := "res://assets/ui/main_action_about.png"
 const UPDATE_ICON_PATH := "res://assets/ui/main_action_update.png"
 const FEEDBACK_OVERLAY_NAME := "FeedbackOverlay"
 const HUD_MODAL_OVERLAY_NAME := "HudModalOverlay"
+const BLOCKED_MENU_BUTTONS := {
+	"BtnStartBattle": "该入口暂时关闭，请先使用卡组中心与网络对战。",
+	"BtnTournament": "该入口暂时关闭，请先使用卡组中心与网络对战。",
+	"BtnSettings": "该入口暂时关闭。",
+}
 
 var _update_checker: Node = null
 var _feedback_client: Node = null
@@ -67,8 +72,10 @@ func _ready() -> void:
 	%BtnTournament.pressed.connect(_on_tournament)
 	%BtnDeckManager.pressed.connect(_on_deck_manager)
 	%BtnBattleReplay.pressed.connect(_on_battle_replay)
+	%BtnNetBattle.pressed.connect(_on_net_battle)
 	%BtnSettings.pressed.connect(_on_settings)
 	%BtnQuit.pressed.connect(_on_quit)
+	_apply_menu_feature_gates()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -94,14 +101,14 @@ func _apply_main_menu_hud() -> void:
 	var menu := get_node_or_null("VBoxContainer") as VBoxContainer
 	if menu != null:
 		menu.offset_left = -170.0
-		menu.offset_top = -175.0 + MENU_VERTICAL_SHIFT
+		menu.offset_top = -210.0 + MENU_VERTICAL_SHIFT
 		menu.offset_right = 170.0
-		menu.offset_bottom = 175.0 + MENU_VERTICAL_SHIFT
+		menu.offset_bottom = 210.0 + MENU_VERTICAL_SHIFT
 		menu.add_theme_constant_override("separation", 12)
 		var deck_button := get_node_or_null("%BtnDeckManager") as Button
 		if deck_button != null and deck_button.get_parent() == menu:
 			menu.move_child(deck_button, 1)
-	for button_name: String in ["BtnStartBattle", "BtnTournament", "BtnDeckManager", "BtnBattleReplay", "BtnSettings", "BtnQuit"]:
+	for button_name: String in ["BtnStartBattle", "BtnTournament", "BtnDeckManager", "BtnBattleReplay", "BtnNetBattle", "BtnSettings", "BtnQuit"]:
 		var button := get_node_or_null("%" + button_name) as Button
 		if button == null:
 			continue
@@ -136,6 +143,16 @@ func _main_menu_button_role(button_name: String) -> String:
 			return "danger"
 		_:
 			return "secondary"
+
+
+func _apply_menu_feature_gates() -> void:
+	for button_name_variant in BLOCKED_MENU_BUTTONS.keys():
+		var button_name := str(button_name_variant)
+		var button := get_node_or_null("%" + button_name) as Button
+		if button == null:
+			continue
+		button.disabled = true
+		button.tooltip_text = str(BLOCKED_MENU_BUTTONS[button_name])
 
 
 func _main_menu_button_accent(role: String) -> Color:
@@ -1220,6 +1237,10 @@ func _on_deck_manager() -> void:
 
 func _on_battle_replay() -> void:
 	GameManager.goto_replay_browser()
+
+
+func _on_net_battle() -> void:
+	GameManager.goto_net_lobby()
 
 
 func _on_settings() -> void:

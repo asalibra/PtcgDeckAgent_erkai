@@ -154,6 +154,7 @@ func hide_field_interaction(scene: Object) -> void:
 	scene.set("_field_interaction_assignment_selected_source_index", -1)
 	_replace_dictionary_array(scene, "_field_interaction_assignment_entries", [])
 	apply_field_interaction_position(scene, "center")
+	_clear_counter_distribution_amount_buttons(scene)
 
 	var title_label: Label = scene.get("_field_interaction_title_lbl")
 	if title_label != null:
@@ -278,6 +279,7 @@ func show_field_slot_choice(scene: Object, title: String, items: Array, data: Di
 	scene.set("_field_interaction_data", interaction_data)
 	apply_field_interaction_position(scene, resolve_field_interaction_position(scene, items))
 	rebuild_field_slot_index_map(scene, items)
+	build_field_slot_choice_cards(scene)
 	var overlay: Control = scene.get("_field_interaction_overlay")
 	if overlay != null:
 		overlay.visible = true
@@ -331,6 +333,34 @@ func rebuild_field_slot_index_map(scene: Object, items: Array) -> void:
 		if slot_id != "":
 			index_by_id[slot_id] = i
 	scene.set("_field_interaction_slot_index_by_id", index_by_id)
+
+
+func build_field_slot_choice_cards(scene: Object) -> void:
+	var row: HBoxContainer = scene.get("_field_interaction_row")
+	if row == null:
+		return
+	scene.call("_clear_container_children", row)
+	var interaction_data: Dictionary = scene.get("_field_interaction_data")
+	var items: Array = interaction_data.get("items", [])
+	var selected_indices: Array = scene.get("_field_interaction_selected_indices")
+	for i: int in items.size():
+		var item: Variant = items[i]
+		var card_view := BattleCardViewScript.new()
+		prepare_field_card_view(scene, card_view)
+		card_view.set_clickable(true)
+		var item_label := str(scene.call("_selection_label_from_item", item, ""))
+		scene.call("_setup_dialog_card_view", card_view, item, item_label)
+		card_view.set_selectable_hint(true)
+		card_view.set_selected(i in selected_indices)
+		var slot_index := i
+		card_view.left_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
+			scene.call("_handle_field_slot_select_index", slot_index)
+		)
+		card_view.right_clicked.connect(func(_ci: CardInstance, cd: CardData) -> void:
+			if cd != null:
+				scene.call("_show_card_detail", cd)
+		)
+		row.add_child(card_view)
 
 
 func build_field_assignment_source_cards(scene: Object) -> void:
@@ -788,13 +818,14 @@ func refresh_field_interaction_status(scene: Object) -> void:
 	if title_label != null:
 		title_label.text = str(interaction_data.get("title", "请选择"))
 	var mode := str(scene.get("_field_interaction_mode"))
-	var show_cards := mode in ["assignment", "counter_distribution"]
+	var show_cards := mode in ["slot_select", "assignment", "counter_distribution"]
 	var scroll: ScrollContainer = scene.get("_field_interaction_scroll")
 	if scroll != null:
 		scroll.visible = show_cards
 	var buttons: HBoxContainer = scene.get("_field_interaction_buttons")
 	if buttons != null:
 		buttons.visible = true
+	_clear_counter_distribution_amount_buttons(scene)
 
 	var status_label: Label = scene.get("_field_interaction_status_lbl")
 	var clear_button: Button = scene.get("_field_interaction_clear_btn")
@@ -802,6 +833,7 @@ func refresh_field_interaction_status(scene: Object) -> void:
 	var confirm_button: Button = scene.get("_field_interaction_confirm_btn")
 
 	if mode == "slot_select":
+		build_field_slot_choice_cards(scene)
 		var min_select: int = int(interaction_data.get("min_select", 1))
 		var max_select: int = int(interaction_data.get("max_select", 1))
 		var selected_indices: Array = scene.get("_field_interaction_selected_indices")
@@ -823,6 +855,8 @@ func refresh_field_interaction_status(scene: Object) -> void:
 		return
 
 	if mode == "counter_distribution":
+		_build_counter_distribution_target_cards(scene)
+		_build_counter_distribution_buttons(scene)
 		var total_counters: int = int(interaction_data.get("total_counters", 0))
 		var min_counters: int = int(interaction_data.get("min_select", total_counters))
 		var allow_partial := bool(interaction_data.get("allow_partial", false))
@@ -833,7 +867,7 @@ func refresh_field_interaction_status(scene: Object) -> void:
 		if selected_amount > 0:
 			summary = "已选 %d 个指示物，请点击场上目标宝可梦。" % selected_amount
 		elif remaining > 0:
-			summary = "请选择要放置的数量，再点击目标。剩余 %d / %d" % [remaining, total_counters]
+			summary = "直接点击目标可放置 1 个，或先选择数量后再点击目标。剩余 %d / %d" % [remaining, total_counters]
 		else:
 			summary = "已分配全部 %d 个伤害指示物。" % total_counters
 		var assignment_entries: Array = scene.get("_field_interaction_assignment_entries")
@@ -1018,7 +1052,8 @@ func finalize_field_assignment_selection(scene: Object) -> void:
 	if assignment_entries.size() < min_select:
 		scene.call("_log", "至少完成 %d 次分配。" % min_select)
 		return
-	if str(scene.get("_pending_choice")) != "effect_interaction":
+	var pending_choice := str(scene.get("_pending_choice"))
+	if pending_choice != "effect_interaction" and pending_choice != "network_trainer_interaction":
 		hide_field_interaction(scene)
 		return
 	var stored_assignments: Array[Dictionary] = []
@@ -1026,6 +1061,9 @@ func finalize_field_assignment_selection(scene: Object) -> void:
 		if assignment_variant is Dictionary:
 			stored_assignments.append((assignment_variant as Dictionary).duplicate())
 	hide_field_interaction(scene)
+	if pending_choice == "network_trainer_interaction":
+		scene.call("_commit_network_assignment_selection", stored_assignments)
+		return
 	scene.call("_commit_effect_assignment_selection", stored_assignments)
 
 
@@ -1040,7 +1078,6 @@ func show_field_counter_distribution(scene: Object, step: Dictionary) -> void:
 	scene.set("_field_interaction_data", step.duplicate(true))
 	apply_field_interaction_position(scene, resolve_field_interaction_position(scene, step.get("target_items", [])))
 	rebuild_field_slot_index_map(scene, step.get("target_items", []))
-	_build_counter_distribution_buttons(scene)
 	var overlay: Control = scene.get("_field_interaction_overlay")
 	if overlay != null:
 		overlay.visible = true
@@ -1058,21 +1095,59 @@ func show_field_counter_distribution(scene: Object, step: Dictionary) -> void:
 	})
 
 
-func _build_counter_distribution_buttons(scene: Object) -> void:
+func _build_counter_distribution_target_cards(scene: Object) -> void:
 	var row: HBoxContainer = scene.get("_field_interaction_row")
 	if row == null:
 		return
 	scene.call("_clear_container_children", row)
 	var interaction_data: Dictionary = scene.get("_field_interaction_data")
+	var target_items: Array = interaction_data.get("target_items", [])
+	var assignment_entries: Array = scene.get("_field_interaction_assignment_entries")
+	for i: int in target_items.size():
+		var target_variant: Variant = target_items[i]
+		var card_view := BattleCardViewScript.new()
+		prepare_field_card_view(scene, card_view)
+		card_view.set_clickable(true)
+		card_view.set_selectable_hint(true)
+		card_view.set_selectable_hint_text("点击分配")
+		var item_label := str(scene.call("_selection_label_from_item", target_variant, ""))
+		scene.call("_setup_dialog_card_view", card_view, target_variant, item_label)
+		var assigned_counters: int = _assigned_counter_amount_for_target_index(assignment_entries, i)
+		card_view.set_selected(assigned_counters > 0)
+		if assigned_counters > 0:
+			card_view.set_badges("", "+%d" % assigned_counters)
+			card_view.set_selected_badge_text("+%d" % assigned_counters)
+		else:
+			card_view.set_badges("", "")
+		var target_index := i
+		card_view.left_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
+			scene.call("_handle_counter_distribution_target", target_index)
+		)
+		card_view.right_clicked.connect(func(_ci: CardInstance, cd: CardData) -> void:
+			if cd != null:
+				scene.call("_show_card_detail", cd)
+		)
+		row.add_child(card_view)
+
+
+func _build_counter_distribution_buttons(scene: Object) -> void:
+	var buttons: HBoxContainer = scene.get("_field_interaction_buttons")
+	if buttons == null:
+		return
+	_clear_counter_distribution_amount_buttons(scene)
+	var interaction_data: Dictionary = scene.get("_field_interaction_data")
 	var total_counters: int = int(interaction_data.get("total_counters", 0))
 	var assigned_count: int = _get_counter_distribution_assigned_total(scene)
 	var remaining: int = total_counters - assigned_count
 	var selected_amount: int = int(scene.get("_field_interaction_assignment_selected_source_index"))
+	var clear_button: Button = scene.get("_field_interaction_clear_btn")
+	var insert_index := clear_button.get_index() if clear_button != null and clear_button.get_parent() == buttons else buttons.get_child_count()
 	for amount: int in range(1, remaining + 1):
 		var btn := Button.new()
 		btn.text = str(amount)
 		btn.custom_minimum_size = Vector2(52, 52)
 		btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		btn.set_meta("counter_distribution_amount_button", true)
 		var style := StyleBoxFlat.new()
 		style.bg_color = Color(1.0, 0.9, 0.2) if amount == selected_amount else Color.WHITE
 		style.set_corner_radius_all(6)
@@ -1092,7 +1167,19 @@ func _build_counter_distribution_buttons(scene: Object) -> void:
 		btn.pressed.connect(func() -> void:
 			scene.call("_on_counter_distribution_amount_chosen", captured_amount)
 		)
-		row.add_child(btn)
+		buttons.add_child(btn)
+		buttons.move_child(btn, insert_index)
+		insert_index += 1
+
+
+func _clear_counter_distribution_amount_buttons(scene: Object) -> void:
+	var buttons: HBoxContainer = scene.get("_field_interaction_buttons")
+	if buttons == null:
+		return
+	for child: Node in buttons.get_children():
+		if child is Button and child.has_meta("counter_distribution_amount_button"):
+			buttons.remove_child(child)
+			child.free()
 
 
 func on_counter_distribution_amount_chosen(scene: Object, amount: int) -> void:
@@ -1113,8 +1200,7 @@ func on_counter_distribution_amount_chosen(scene: Object, amount: int) -> void:
 func handle_counter_distribution_target(scene: Object, target_index: int) -> void:
 	var selected_amount: int = int(scene.get("_field_interaction_assignment_selected_source_index"))
 	if selected_amount <= 0:
-		scene.call("_log", "请先选择要放置的伤害指示物数量")
-		return
+		selected_amount = 1
 	var interaction_data: Dictionary = scene.get("_field_interaction_data")
 	var target_items: Array = interaction_data.get("target_items", [])
 	if target_index < 0 or target_index >= target_items.size():
@@ -1155,7 +1241,8 @@ func finalize_counter_distribution(scene: Object) -> void:
 	if (not allow_partial and assigned_count < total_counters) or (allow_partial and assigned_count < min_counters):
 		scene.call("_log", "还需分配 %d 个伤害指示物。" % (total_counters - assigned_count))
 		return
-	if str(scene.get("_pending_choice")) != "effect_interaction":
+	var pending_choice := str(scene.get("_pending_choice"))
+	if pending_choice != "effect_interaction" and pending_choice != "network_trainer_interaction":
 		hide_field_interaction(scene)
 		return
 	var stored_assignments: Array[Dictionary] = []
@@ -1163,6 +1250,9 @@ func finalize_counter_distribution(scene: Object) -> void:
 		if entry_variant is Dictionary:
 			stored_assignments.append((entry_variant as Dictionary).duplicate())
 	hide_field_interaction(scene)
+	if pending_choice == "network_trainer_interaction":
+		scene.call("_commit_network_counter_distribution_selection", stored_assignments)
+		return
 	scene.call("_commit_effect_assignment_selection", stored_assignments)
 
 
@@ -1192,6 +1282,18 @@ func _build_counter_target_summary(assignment_entries: Array) -> String:
 	for name: String in target_counts.keys():
 		parts.append("%s×%d" % [name, int(target_counts[name])])
 	return "已分配: " + ", ".join(parts)
+
+
+func _assigned_counter_amount_for_target_index(assignment_entries: Array, target_index: int) -> int:
+	var total := 0
+	for entry_variant: Variant in assignment_entries:
+		if not (entry_variant is Dictionary):
+			continue
+		var entry: Dictionary = entry_variant as Dictionary
+		if int(entry.get("target_index", -1)) != target_index:
+			continue
+		total += int(entry.get("amount", 0)) / 10
+	return total
 
 
 func _current_player_index(scene: Object) -> int:

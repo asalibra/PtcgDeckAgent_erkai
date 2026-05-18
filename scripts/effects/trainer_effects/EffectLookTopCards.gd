@@ -24,6 +24,7 @@ func can_headless_execute(card: CardInstance, state: GameState) -> bool:
 
 func get_interaction_steps(card: CardInstance, state: GameState) -> Array[Dictionary]:
 	var player: PlayerState = state.players[card.owner_index]
+	var looked_cards: Array[CardInstance] = _get_looked_cards(player)
 	var items: Array = _get_matching_cards(player)
 	if items.is_empty():
 		return [
@@ -33,19 +34,17 @@ func get_interaction_steps(card: CardInstance, state: GameState) -> Array[Dictio
 			)
 		]
 
-	var labels: Array[String] = []
-	for deck_card: CardInstance in items:
-		labels.append(deck_card.card_data.name)
 	var max_select: int = mini(pick_count, items.size())
-	return [{
-		"id": "look_top_cards",
-		"title": "选择最多%d张符合条件的卡" % pick_count,
-		"items": items,
-		"labels": labels,
-		"min_select": 1 if max_select > 0 else 0,
-		"max_select": max_select,
-		"allow_cancel": true,
-	}]
+	return [build_full_library_search_step(
+		"look_top_cards",
+		"选择最多%d张符合条件的卡" % pick_count,
+		looked_cards,
+		items,
+		"own_top_cards",
+		1 if max_select > 0 else 0,
+		max_select,
+		{"allow_cancel": true}
+	)]
 
 
 func get_followup_interaction_steps(card: CardInstance, state: GameState, resolved_context: Dictionary) -> Array[Dictionary]:

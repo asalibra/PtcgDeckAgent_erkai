@@ -4,8 +4,7 @@ extends RefCounted
 
 func load_turn(match_dir: String, turn_number: int) -> Dictionary:
 	var raw_event := _find_turn_snapshot(match_dir, turn_number)
-	var raw_state_variant: Variant = raw_event.get("state", {})
-	var raw_state: Dictionary = raw_state_variant if raw_state_variant is Dictionary else {}
+	var raw_state: Dictionary = _extract_state(raw_event)
 	var view_player_index := int(raw_state.get("current_player_index", raw_event.get("player_index", -1)))
 	return {
 		"turn_number": turn_number,
@@ -32,10 +31,9 @@ func _find_turn_snapshot(match_dir: String, turn_number: int) -> Dictionary:
 
 func _filter_for_view_player(raw_event: Dictionary, view_player_index: int) -> Dictionary:
 	var filtered := raw_event.duplicate(true)
-	var state_variant: Variant = filtered.get("state", {})
-	if not (state_variant is Dictionary):
+	var state: Dictionary = _extract_state(filtered)
+	if state.is_empty():
 		return filtered
-	var state: Dictionary = state_variant
 	var players_variant: Variant = state.get("players", [])
 	if not (players_variant is Array):
 		return filtered
@@ -49,8 +47,24 @@ func _filter_for_view_player(raw_event: Dictionary, view_player_index: int) -> D
 			player["deck"] = []
 		filtered_players.append(player)
 	state["players"] = filtered_players
-	filtered["state"] = state
+	_assign_state(filtered, state)
 	return filtered
+
+
+func _extract_state(raw_event: Dictionary) -> Dictionary:
+	var state_variant: Variant = raw_event.get("state", null)
+	if state_variant is Dictionary:
+		return (state_variant as Dictionary).duplicate(true)
+	return raw_event.duplicate(true)
+
+
+func _assign_state(raw_event: Dictionary, state: Dictionary) -> void:
+	var state_variant: Variant = raw_event.get("state", null)
+	if state_variant is Dictionary:
+		raw_event["state"] = state
+		return
+	for key: Variant in state.keys():
+		raw_event[str(key)] = state.get(key)
 
 
 func _read_json_lines(path: String) -> Array[Dictionary]:

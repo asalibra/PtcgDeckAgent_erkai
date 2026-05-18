@@ -898,6 +898,7 @@ func test_play_basic_to_bench() -> String:
 	return run_checks([
 		assert_eq(result, true, "Bench placement should succeed"),
 		assert_eq(player.bench.size(), 1, "Bench should contain 1 Pokemon"),
+		assert_true(player.bench[0].get_top_card().face_up, "主阶段打到备战区的宝可梦应立刻正面朝上"),
 		assert_eq(player.hand.size(), 0, "鎵嬬墝鍑忓皯"),
 	])
 
@@ -1094,6 +1095,7 @@ func test_retreat() -> String:
 	return run_checks([
 		assert_eq(result, true, "Retreat should succeed"),
 		assert_eq(player.active_pokemon == bench_slot, true, "Bench Pokemon should become the active Pokemon"),
+		assert_true(player.active_pokemon.get_top_card().face_up, "Pokemon promoted by retreat should be face up"),
 		assert_eq(player.bench.size(), 1, "Former active should move to the bench"),
 		assert_eq(player.discard_pile.size(), 1, "Discarded Energy should enter discard pile"),
 		assert_eq(gsm.game_state.retreat_used_this_turn, true, "Retreat flag should be set"),
@@ -1579,6 +1581,7 @@ func test_knockout_replace_advances_after_send_out() -> String:
 		assert_eq(take_prize_result, true, "Knockout flow should pause for manual prize selection before replacement"),
 		assert_eq(gsm.game_state.current_player_index, 1, "After replacement, the defending player should take the next turn"),
 		assert_eq(send_out_result, true, "Defending player should be able to send out a replacement"),
+		assert_true(gsm.game_state.players[1].active_pokemon.get_top_card().face_up, "Replacement Pokemon sent to the Active Spot should be face up"),
 		assert_eq(gsm.game_state.phase, GameState.GamePhase.MAIN, "After replacement the phase should return to MAIN"),
 	])
 
@@ -2207,6 +2210,69 @@ func test_dragapult_phantom_dive_active_knockout_hands_turn_to_opponent_after_re
 	])
 
 
+func test_dragapult_phantom_dive_does_not_block_other_attack_next_turn() -> String:
+	var gsm := _make_gsm_with_decks()
+	gsm.game_state.phase = GameState.GamePhase.MAIN
+	gsm.game_state.turn_number = 2
+	gsm.game_state.current_player_index = 0
+	gsm.game_state.first_player_index = 0
+
+	var dragapult_cd: CardData = CardDatabase.get_card("CSV8C", "159")
+	var attacker_slot := PokemonSlot.new()
+	attacker_slot.pokemon_stack.append(CardInstance.create(dragapult_cd, 0))
+	for energy_type: String in ["R", "P"]:
+		attacker_slot.attached_energy.append(CardInstance.create(_make_test_energy(energy_type), 0))
+	gsm.effect_processor.register_pokemon_card(dragapult_cd)
+	gsm.game_state.players[0].active_pokemon = attacker_slot
+
+	var active_target_cd := CardData.new()
+	active_target_cd.name = "Active Prize Target"
+	active_target_cd.card_type = "Pokemon"
+	active_target_cd.stage = "Basic"
+	active_target_cd.hp = 200
+	active_target_cd.energy_type = "W"
+	var active_target := PokemonSlot.new()
+	active_target.pokemon_stack.append(CardInstance.create(active_target_cd, 1))
+	gsm.game_state.players[1].active_pokemon = active_target
+
+	var replacement_cd := CardData.new()
+	replacement_cd.name = "Replacement"
+	replacement_cd.card_type = "Pokemon"
+	replacement_cd.stage = "Basic"
+	replacement_cd.hp = 120
+	replacement_cd.energy_type = "W"
+	var replacement := PokemonSlot.new()
+	replacement.pokemon_stack.append(CardInstance.create(replacement_cd, 1))
+	gsm.game_state.players[1].bench = [replacement]
+	for i: int in 6:
+		gsm.game_state.players[0].prizes.append(CardInstance.create(active_target_cd, 0))
+		gsm.game_state.players[1].prizes.append(CardInstance.create(active_target_cd, 1))
+
+	var phantom_dive_ok: bool = gsm.use_attack(0, 1, [{
+		"bench_damage_counters": [
+			{"target": replacement, "amount": 60},
+		],
+	}])
+	var took_prize: bool = gsm.resolve_take_prize(0, 0)
+	var sent_out: bool = gsm.send_out_pokemon(1, replacement)
+	gsm.end_turn(1)
+	var next_turn_attack_usable: bool = gsm.can_use_attack(0, 0)
+	var unusable_reason: String = gsm.get_attack_unusable_reason(0, 0)
+	var next_turn_attack_ok: bool = gsm.use_attack(0, 0)
+	var pending_prize_after_follow_up: int = int(gsm.get("_pending_prize_remaining"))
+
+	return run_checks([
+		assert_not_null(dragapult_cd, "CSV8C_159 should exist in the card database"),
+		assert_true(phantom_dive_ok, "CSV8C_159 Phantom Dive should resolve successfully"),
+		assert_true(took_prize, "CSV8C_159 should still allow the knockout prize to be taken"),
+		assert_true(sent_out, "CSV8C_159 should still let the defending player send out a replacement"),
+		assert_true(next_turn_attack_usable, "CSV8C_159 should still be able to use another attack on its next turn"),
+		assert_eq(unusable_reason, "", "CSV8C_159 should not carry a stale unusable reason into the next turn"),
+		assert_true(next_turn_attack_ok, "CSV8C_159 should successfully use 喷射头击 on the next turn after Phantom Dive"),
+		assert_eq(pending_prize_after_follow_up, 1, "后续使用喷射头击时应正常进入新的击倒奖赏流程，而不是残留幻影潜袭状态报错"),
+	])
+
+
 func test_evolve_charizard_triggers_infernal_reign_and_attaches_fire_energy() -> String:
 	var gsm := _make_gsm_with_decks()
 	gsm.game_state.phase = GameState.GamePhase.MAIN
@@ -2287,6 +2353,7 @@ func test_evolve_charizard_triggers_infernal_reign_and_attaches_fire_energy() ->
 	return run_checks([
 		assert_eq(evolved, true, "Charizard ex should evolve successfully"),
 		assert_eq(active_slot.get_pokemon_name(), "鍠风伀榫檈x", "The evolved Pokemon should be Charizard ex"),
+		assert_true(active_slot.get_top_card().face_up, "进化后的顶牌应保持正面朝上，联机对手才能看到该宝可梦"),
 		assert_eq(steps.size(), 1, "Infernal Reign should use one reusable assignment step"),
 		assert_eq(str(steps[0].get("ui_mode", "")), "card_assignment", "Infernal Reign should use card_assignment UI mode"),
 		assert_eq(active_slot.attached_energy.size(), 1, "One Fire Energy should be assigned to the active Pokemon"),

@@ -77,6 +77,32 @@ func _write_match_fixture(match_dir: String, include_review: bool) -> void:
 		})
 
 
+func _write_replayable_fixture_without_loser_snapshot(match_dir: String) -> void:
+	_clear_dir(match_dir)
+	_write_json(match_dir.path_join("match.json"), {
+		"meta": {
+			"mode": "online",
+			"player_labels": ["Player A", "Player B"],
+			"first_player_index": 0,
+		},
+		"result": {
+			"winner_index": 0,
+			"reason": "prize_out",
+			"turn_count": 6,
+		},
+	})
+	_write_json(match_dir.path_join("turns.json"), {
+		"turns": [
+			{"turn_number": 4, "snapshot_reasons": ["turn_start"], "has_turn_start_snapshot": true},
+			{"turn_number": 6, "snapshot_reasons": ["turn_start"], "has_turn_start_snapshot": true},
+		]
+	})
+	_write_jsonl(match_dir.path_join("detail.jsonl"), [
+		{"event_index": 0, "event_type": "state_snapshot", "turn_number": 4, "player_index": 0, "snapshot_reason": "turn_start", "state": {"current_player_index": 0}},
+		{"event_index": 1, "event_type": "action_resolved", "turn_number": 6, "player_index": 1},
+	])
+
+
 func test_locator_prefers_loser_key_turn_from_review() -> String:
 	var match_dir := TEST_ROOT.path_join("with_review")
 	_write_match_fixture(match_dir, true)
@@ -99,4 +125,17 @@ func test_locator_falls_back_to_loser_last_full_turn_without_review() -> String:
 	return run_checks([
 		assert_eq(int(result.get("entry_turn_number", 0)), 6, "Locator should fall back to the loser's last full turn"),
 		assert_eq(str(result.get("entry_source", "")), "loser_last_full_turn", "Locator should fall back when review is missing"),
+	])
+
+
+func test_locator_falls_back_to_latest_replayable_turn_when_no_loser_snapshot_exists() -> String:
+	var match_dir := TEST_ROOT.path_join("no_loser_snapshot")
+	_write_replayable_fixture_without_loser_snapshot(match_dir)
+	var locator = BattleReplayLocatorScript.new()
+	var result: Dictionary = locator.locate(match_dir)
+	_clear_dir(match_dir)
+	return run_checks([
+		assert_eq(int(result.get("entry_turn_number", 0)), 6, "Locator should still return a replayable entry turn when loser snapshots are missing"),
+		assert_eq(str(result.get("entry_source", "")), "latest_replayable_turn", "Locator should report the replayable-turn fallback source when no loser snapshot exists"),
+		assert_eq(result.get("turn_numbers", []), [4, 6], "Locator should preserve replayable turn navigation while using the fallback entry turn"),
 	])

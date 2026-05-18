@@ -21,6 +21,7 @@ const DeckStrategyDragapultDusknoirScript = preload("res://scripts/ai/DeckStrate
 const DeckStrategyDragapultCharizardScript = preload("res://scripts/ai/DeckStrategyDragapultCharizard.gd")
 const TrainingExportPathScript = preload("res://scripts/ai/TrainingExportPath.gd")
 const AutoloadResolverScript = preload("res://scripts/engine/AutoloadResolver.gd")
+const BattleRecorderScript = preload("res://scripts/engine/BattleRecorder.gd")
 
 
 func run_batch(
@@ -37,6 +38,8 @@ func run_batch(
 	training_data_dir: String = "",
 	action_data_dir: String = "",
 	pipeline_name: String = "",
+	record_matches: bool = false,
+	match_record_dir: String = "",
 ) -> Dictionary:
 	var runner := AIBenchmarkRunnerScript.new()
 	var total_matches: int = 0
@@ -44,6 +47,7 @@ func run_batch(
 	var agent_b_wins: int = 0
 	var draws: int = 0
 	var match_results: Array[Dictionary] = []
+	var match_dirs: Array[String] = []
 
 	for pairing: Variant in deck_pairings:
 		if not pairing is Array or (pairing as Array).size() < 2:
@@ -75,10 +79,13 @@ func run_batch(
 			var result_a0 := _run_one_match(
 				runner, agent_a_config, agent_b_config,
 				deck_a, deck_b, sv, max_steps_per_match, exporter_a0, export_training_data,
-				decision_exporter_a0, _build_decision_meta(match_id_a0, deck_a_id, deck_b_id, pipeline_name if pipeline_name != "" else "agent_a")
+				decision_exporter_a0, _build_decision_meta(match_id_a0, deck_a_id, deck_b_id, pipeline_name if pipeline_name != "" else "agent_a"),
+				record_matches, match_record_dir
 			)
 			var match_entry_a0 := _build_match_entry(result_a0, sv, deck_a_id, deck_b_id, 0)
 			match_results.append(match_entry_a0)
+			if result_a0.has("match_dir"):
+				match_dirs.append(str(result_a0["match_dir"]))
 			total_matches += 1
 			var winner_a0: int = int(result_a0.get("winner_index", -1))
 			if winner_a0 == 0:
@@ -101,10 +108,13 @@ func run_batch(
 			var result_a1 := _run_one_match(
 				runner, agent_b_config, agent_a_config,
 				deck_a, deck_b, sv + 10000, max_steps_per_match, exporter_a1, export_training_data,
-				decision_exporter_a1, _build_decision_meta(match_id_a1, deck_a_id, deck_b_id, pipeline_name if pipeline_name != "" else "agent_a")
+				decision_exporter_a1, _build_decision_meta(match_id_a1, deck_a_id, deck_b_id, pipeline_name if pipeline_name != "" else "agent_a"),
+				record_matches, match_record_dir
 			)
 			var match_entry_a1 := _build_match_entry(result_a1, sv + 10000, deck_a_id, deck_b_id, 1)
 			match_results.append(match_entry_a1)
+			if result_a1.has("match_dir"):
+				match_dirs.append(str(result_a1["match_dir"]))
 			total_matches += 1
 			var winner_a1: int = int(result_a1.get("winner_index", -1))
 			if winner_a1 == 1:
@@ -122,6 +132,7 @@ func run_batch(
 		"draws": draws,
 		"agent_a_win_rate": win_rate,
 		"match_results": match_results,
+		"match_dirs": match_dirs,
 	}
 
 
@@ -137,6 +148,8 @@ func _run_one_match(
 	_export_training_data: bool = false,
 	decision_exporter = null,
 	decision_meta: Dictionary = {},
+	_record_matches: bool = false,
+	_match_record_dir: String = "",
 ) -> Dictionary:
 	## 进化搜索始终使用轻量 MCTS 加速对局评估
 	var p0_ai := _make_agent(0, p0_config, true)
@@ -150,7 +163,38 @@ func _run_one_match(
 	var gsm := GameStateMachine.new()
 	_apply_seed(gsm, seed_value)
 	_set_forced_shuffle_seed(seed_value)
+
+	## 对局录制（可选）
+	var recorder = null
+	if _record_matches:
+		recorder = BattleRecorderScript.new()
+		if _match_record_dir != "":
+			recorder.base_dir = _match_record_dir
+		var rec_meta := {
+			"mode": "self_play",
+			"seed": seed_value,
+			"deck_a_id": int(decision_meta.get("deck_identity", 0)),
+			"deck_b_id": int(decision_meta.get("opponent_deck_identity", 0)),
+			"pipeline_name": str(decision_meta.get("pipeline_name", "")),
+		}
+		recorder.start_match(rec_meta, {})
+		gsm.action_logged.connect(func(action: GameAction) -> void:
+			if recorder != null:
+				var event_data := {
+					"type": "action_selected",
+					"action": action.to_dict() if action.has_method("to_dict") else {},
+					"turn": gsm.game_state.turn_number if gsm.game_state else 0,
+					"player": action.player_index,
+					"phase": GameState.GamePhase.keys()[gsm.game_state.phase] if gsm.game_state else "",
+				}
+				recorder.record_event(event_data)
+		)
+
 	gsm.start_game(deck_a, deck_b, 0)
+
+	if recorder != null:
+		recorder.update_match_context(recorder._meta, _serialize_state_for_recorder(gsm.game_state))
+		recorder.record_event({"type": "match_started", "seed": seed_value})
 
 	var step_cb := Callable()
 	if exporter != null:
@@ -182,8 +226,36 @@ func _run_one_match(
 		decision_exporter.end_game(result)
 		decision_exporter.export_game()
 
+	## 完成录制
+	if recorder != null:
+		recorder.record_event({
+			"type": "match_ended",
+			"winner_index": int(result.get("winner_index", -1)),
+			"turn_count": int(result.get("turn_count", 0)),
+		})
+		recorder.finalize_match(result)
+		result["match_dir"] = str(recorder.get_match_dir()) if recorder.has_method("get_match_dir") else ""
+
 	_clear_forced_shuffle_seed()
 	return result
+
+
+func _serialize_state_for_recorder(game_state: GameState) -> Dictionary:
+	## 为录制器提供初始状态快照（简化版）
+	if game_state == null:
+		return {}
+	var p0: PlayerState = game_state.players[0] if game_state.players.size() > 0 else null
+	var p1: PlayerState = game_state.players[1] if game_state.players.size() > 1 else null
+	return {
+		"turn_number": game_state.turn_number,
+		"current_player_index": game_state.current_player_index,
+		"first_player_index": game_state.first_player_index,
+		"phase": GameState.GamePhase.keys()[game_state.phase],
+		"player_0_hand_count": p0.hand.size() if p0 else 0,
+		"player_1_hand_count": p1.hand.size() if p1 else 0,
+		"player_0_deck_count": p0.deck.size() if p0 else 0,
+		"player_1_deck_count": p1.deck.size() if p1 else 0,
+	}
 
 
 func _build_decision_meta(match_id: String, deck_a_id: int, deck_b_id: int, pipeline_name: String) -> Dictionary:

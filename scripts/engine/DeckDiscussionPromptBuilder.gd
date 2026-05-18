@@ -179,6 +179,7 @@ func _system_prompt() -> String:
 		"如果用户问某张牌的必要性、作用、卡位、要不要带、几张合适或能否替换，只回答这张牌在当前卡组里的结论、原因和建议。",
 		"如果用户问同名卡版本差异、技能/特性/招式区别或为什么带多版本，优先逐张对比这些卡的 set_code/card_index、HP、招式、特性和效果文本。",
 		"当前上下文已经包含当前卡组的完整去重信息；当前卡组内的问题不要请求工具，tool_request 必须为 null。",
+		"如果上下文中有 strategy_profile（玩家填写的专家知识），回答时必须优先参考其中的 core_plan、opening_priority、key_combos、win_condition、matchup_notes 等字段，将其作为该卡组的权威打法依据。",
 		"如果上下文里已经有 external_tool_results，说明服务层已经自动加载了相关外部卡组或单卡；必须使用它回答，不要再次请求相同工具。",
 		"如果 external_tool_results 里有 get_live_battle_context/battle_context，说明用户在对战页面提问；必须站在 battle_context.perspective_player_index 的可见视角回答当前场面，不得编造或引用 hidden_information_policy 禁止的信息。",
 		"只有两种情况允许请求工具：1. 用户问另一套卡组的策略、对局或卡表时，返回 tool_request.name=get_other_deck_detail 并把 query 写成卡组名或 deck_id；2. 用户问当前卡组没有的单卡时，返回 tool_request.name=get_card_detail 并把 query 写成卡名。",

@@ -2297,6 +2297,25 @@ func test_battle_scene_replay_next_turn_loads_adjacent_turn_start() -> String:
 	])
 
 
+func test_battle_scene_apply_replay_launch_falls_back_to_latest_turn_when_entry_missing() -> String:
+	var battle_scene := _make_battle_scene_stub()
+	battle_scene.call("_apply_replay_launch", {
+		"match_dir": "res://tests/fixtures/match_review_fixture",
+		"entry_turn_number": 0,
+		"entry_source": "latest_replayable_turn",
+		"turn_numbers": [4, 6],
+	})
+	var gsm := battle_scene.get("_gsm") as GameStateMachine
+	var loaded_view_snapshot := battle_scene.get("_replay_loaded_view_snapshot") as Dictionary
+
+	return run_checks([
+		assert_eq(str(battle_scene.get("_battle_mode")), "review_readonly", "Applying a replay launch should keep the scene in replay mode"),
+		assert_eq(int(battle_scene.get("_replay_current_turn_index")), 1, "Replay launch should select the fallback replay turn when entry_turn_number is missing"),
+		assert_true(not loaded_view_snapshot.is_empty(), "Replay launch should still load a replay snapshot when the requested entry turn is missing"),
+		assert_true(gsm != null and gsm.game_state != null and gsm.game_state.turn_number == 6, "Replay launch should restore the fallback replay turn into BattleScene instead of leaving the screen blank"),
+	])
+
+
 func test_battle_scene_continue_from_here_switches_to_live_mode() -> String:
 	var battle_scene := _make_battle_scene_stub()
 	battle_scene.set("_gsm", GameStateMachine.new())
@@ -2493,6 +2512,106 @@ func test_battle_scene_discard_viewer_uses_hud_scrollbar_full_list() -> String:
 	])
 
 
+func test_replay_show_deck_cards_uses_raw_snapshot_order_with_card_views() -> String:
+	CardInstance.reset_id_counter()
+	var scene := _make_battle_scene_stub()
+	scene.set("_battle_mode", "review_readonly")
+	var gsm := GameStateMachine.new()
+	gsm.game_state = GameState.new()
+	for pi: int in 2:
+		var player := PlayerState.new()
+		player.player_index = pi
+		gsm.game_state.players.append(player)
+	scene.set("_gsm", gsm)
+
+	var discard_title := Label.new()
+	var discard_list := ItemList.new()
+	var discard_scroll := ScrollContainer.new()
+	var discard_card_row := HBoxContainer.new()
+	var discard_utility_row := HBoxContainer.new()
+	var discard_overlay := Panel.new()
+	scene.set("_discard_title", discard_title)
+	scene.set("_discard_list", discard_list)
+	scene.set("_discard_card_scroll", discard_scroll)
+	scene.set("_discard_card_row", discard_card_row)
+	scene.set("_discard_utility_row", discard_utility_row)
+	scene.set("_discard_overlay", discard_overlay)
+
+	var opponent_deck := _make_named_deck_cards(1, ["回放顶牌", "回放次牌"])
+	scene.set("_replay_loaded_raw_snapshot", {
+		"state": {
+			"players": [
+				{"player_index": 0, "deck": []},
+				{"player_index": 1, "deck": scene.call("_serialize_card_list", opponent_deck)},
+			],
+		},
+	})
+
+	scene.call("_show_deck_cards", 1, "对方牌库")
+	var first_card := discard_card_row.get_child(0) as BattleCardView if discard_card_row.get_child_count() > 0 else null
+	var second_card := discard_card_row.get_child(1) as BattleCardView if discard_card_row.get_child_count() > 1 else null
+
+	return run_checks([
+		assert_true(discard_overlay.visible, "回放查看牌库应显示预览层"),
+		assert_eq(discard_card_row.get_child_count(), 2, "回放查看牌库应按原始快照渲染完整卡图列表"),
+		assert_eq(first_card.card_data.name if first_card != null and first_card.card_data != null else "", "回放顶牌", "回放牌库应保留原始顺序的顶部卡牌"),
+		assert_eq(second_card.card_data.name if second_card != null and second_card.card_data != null else "", "回放次牌", "回放牌库应保留后续卡牌顺序"),
+		assert_str_contains(discard_title.text, "对方牌库", "回放牌库标题应反映当前查看区域"),
+	])
+
+
+func test_replay_refresh_ui_shows_raw_snapshot_deck_info() -> String:
+	CardInstance.reset_id_counter()
+	var scene := _make_battle_scene_stub()
+	scene.set("_battle_mode", "review_readonly")
+	scene.set("_view_player", 0)
+	scene.set("_slot_card_views", {})
+	scene.set("_opp_prize_slots", [])
+	scene.set("_my_prize_slots", [])
+	_seed_battle_scene_deck_previews(scene)
+	_seed_battle_scene_discard_previews(scene)
+
+	var gsm := GameStateMachine.new()
+	gsm.game_state = GameState.new()
+	gsm.game_state.current_player_index = 0
+	gsm.game_state.turn_number = 6
+	gsm.game_state.phase = GameState.GamePhase.MAIN
+	for pi: int in 2:
+		var player := PlayerState.new()
+		player.player_index = pi
+		player.active_pokemon = PokemonSlot.new()
+		player.active_pokemon.pokemon_stack.append(CardInstance.create(_make_pokemon_cd("场上%d" % pi, 120, "C"), pi))
+		gsm.game_state.players.append(player)
+	scene.set("_gsm", gsm)
+
+	var my_deck := _make_named_deck_cards(0, ["己方顶牌", "己方次牌", "己方三牌"])
+	var opp_deck := _make_named_deck_cards(1, ["对方顶牌", "对方次牌"])
+	gsm.game_state.players[0].deck = my_deck.duplicate()
+	gsm.game_state.players[1].deck = []
+	scene.set("_replay_loaded_raw_snapshot", {
+		"state": {
+			"current_player_index": 0,
+			"players": [
+				{"player_index": 0, "deck_count": 3, "deck": scene.call("_serialize_card_list", my_deck)},
+				{"player_index": 1, "deck_count": 2, "deck": scene.call("_serialize_card_list", opp_deck)},
+			],
+		},
+	})
+
+	scene.call("_refresh_ui")
+	var opp_preview: BattleCardView = scene.get("_opp_deck_preview")
+	var my_preview: BattleCardView = scene.get("_my_deck_preview")
+
+	return run_checks([
+		assert_eq((scene.get("_opp_deck") as Label).text, "2", "回放主界面应显示原始快照中的对方牌库数量"),
+		assert_eq((scene.get("_my_deck") as Label).text, "3", "回放主界面应显示原始快照中的己方牌库数量"),
+		assert_str_contains((scene.get("_opp_deck_hud_value") as Label).text, "2", "回放 HUD 应显示对方牌库数量"),
+		assert_str_contains((scene.get("_my_deck_hud_value") as Label).text, "3", "回放 HUD 应显示己方牌库数量"),
+		assert_true(bool(opp_preview.get("_face_down")), "回放主界面对方牌堆预览应保持可见的背面牌堆状态"),
+		assert_true(bool(my_preview.get("_face_down")), "回放主界面己方牌堆预览应保持可见的背面牌堆状态"),
+	])
+
+
 func test_battle_scene_llm_wait_hud_uses_model_specific_copy() -> String:
 	var scene := _make_battle_scene_stub()
 	var deepseek_text := str(scene.call("_llm_wait_hud_text_for_model", "deepseek/deepseek-v4-pro", 6, 12, 3))
@@ -2609,10 +2728,14 @@ func test_battle_scene_retreat_uses_field_slot_choice() -> String:
 	gsm.game_state.players[0].bench = [bench_a, bench_b]
 
 	scene.call("_show_retreat_dialog", 0)
+	var field_row := scene.get("_field_interaction_row") as HBoxContainer
+	var first_card := field_row.get_child(0) as BattleCardView if field_row != null and field_row.get_child_count() > 0 else null
 
 	return run_checks([
 		assert_eq(str(scene.get("_pending_choice")), "retreat_bench", "Retreat should keep retreat_bench pending choice"),
 		assert_eq(str(scene.get("_field_interaction_mode")), "slot_select", "Retreat should use field slot selection"),
+		assert_true(field_row != null and field_row.get_child_count() == 2, "Retreat slot-select overlay should render both bench Pokemon as clickable card previews"),
+		assert_true(first_card != null and first_card.card_data != null and first_card.card_data.name == "Bench A", "Retreat slot-select preview should preserve the bench Pokemon card data for display"),
 	])
 
 
@@ -4555,6 +4678,56 @@ func test_battle_scene_bench_damage_on_play_routes_real_effect_to_field_slots() 
 	])
 
 
+func test_battle_scene_play_basic_to_bench_auto_starts_lumineon_prompt_without_pre_registration() -> String:
+	var battle_scene = _make_battle_scene_stub()
+	var gsm := GameStateMachine.new()
+	gsm.game_state = GameState.new()
+	gsm.game_state.current_player_index = 0
+	gsm.game_state.first_player_index = 0
+	gsm.game_state.turn_number = 3
+	gsm.game_state.phase = GameState.GamePhase.MAIN
+	battle_scene.set("_gsm", gsm)
+	battle_scene.set("_view_player", 0)
+
+	for pi: int in 2:
+		var player := PlayerState.new()
+		player.player_index = pi
+		gsm.game_state.players.append(player)
+
+	var player: PlayerState = gsm.game_state.players[0]
+	var active := PokemonSlot.new()
+	active.pokemon_stack.append(CardInstance.create(_make_pokemon_cd("Active", 120, "W"), 0))
+	player.active_pokemon = active
+
+	var supporter := CardInstance.create(_make_trainer_cd("Boss's Orders", "Supporter", ""), 0)
+	var filler := CardInstance.create(_make_pokemon_cd("Deck Filler", 70, "W"), 0)
+	player.deck = [supporter, filler]
+
+	var lumineon_cd := _make_pokemon_cd("Lumineon V", 170, "W")
+	lumineon_cd.effect_id = "lumineon_scene_test"
+	lumineon_cd.abilities = [{"name": "夜光信号", "text": ""}]
+	var lumineon := CardInstance.create(lumineon_cd, 0)
+	player.hand = [lumineon]
+	battle_scene.set("_selected_hand_card", lumineon)
+
+	var had_effect_before: bool = gsm.effect_processor.has_effect(lumineon_cd.effect_id)
+	battle_scene.call("_try_play_to_bench", 0, lumineon, "my_bench_0")
+	var bench_slot: PokemonSlot = player.bench[0] if not player.bench.is_empty() else null
+	var pending_steps: Array[Dictionary] = battle_scene.get("_pending_effect_steps")
+
+	return run_checks([
+		assert_eq(had_effect_before, false, "Test setup should start without the Lumineon effect being pre-registered"),
+		assert_true(gsm.effect_processor.has_effect(lumineon_cd.effect_id), "Playing Lumineon to the bench should register its triggered ability effect"),
+		assert_eq(player.bench.size(), 1, "Lumineon V should enter the bench"),
+		assert_eq(str(battle_scene.get("_pending_choice")), "effect_interaction", "Bench-enter search abilities should immediately enter the interaction flow"),
+		assert_eq(str(battle_scene.get("_pending_effect_kind")), "ability", "Bench-enter prompt should be tracked as an ability interaction"),
+		assert_eq(bench_slot, battle_scene.get("_pending_effect_slot"), "Pending ability interaction should target the newly benched Pokemon"),
+		assert_eq(bench_slot.get_top_card() if bench_slot != null else null, battle_scene.get("_pending_effect_card"), "Pending ability card should be the benched Lumineon"),
+		assert_eq(pending_steps.size(), 1, "Lumineon should expose a single supporter-search step"),
+		assert_eq(int((pending_steps[0].get("items", []) as Array).size()) if not pending_steps.is_empty() else 0, 1, "The search prompt should expose the Supporter in deck"),
+	])
+
+
 func test_battle_scene_star_portal_routes_real_effect_to_assignment_ui() -> String:
 	var battle_scene = _make_battle_scene_stub()
 	var gsm := GameStateMachine.new()
@@ -4884,11 +5057,15 @@ func test_battle_scene_move_damage_counters_to_opponent_repositions_between_step
 
 	battle_scene.call("_handle_effect_interaction_choice", PackedInt32Array([0]))
 	var second_position: String = str(battle_scene.get("_field_interaction_position"))
+	var field_row := battle_scene.get("_field_interaction_row") as HBoxContainer
+	var counter_target := field_row.get_child(0) as BattleCardView if field_row != null and field_row.get_child_count() > 0 else null
 
 	return run_checks([
 		assert_eq(first_position, "top", "Selecting the damaged own Pokemon should move the panel upward"),
 		assert_eq(second_position, "bottom", "Selecting the opponent target should move the panel downward"),
 		assert_eq(str(battle_scene.get("_field_interaction_mode")), "counter_distribution", "The second step should use Dragapult-style counter distribution UI"),
+		assert_true(field_row != null and field_row.get_child_count() == 2, "Counter-distribution overlay should render all available opponent targets as clickable card previews"),
+		assert_true(counter_target != null and counter_target.card_data != null and counter_target.card_data.name == "Opp Active", "Counter-distribution overlay should preserve the opponent target card data for display"),
 	])
 
 
@@ -6044,6 +6221,52 @@ func test_battle_scene_dragapult_active_only_knockout_keeps_prize_selection_clic
 		assert_eq(pending_prize_remaining_after_take, 0, "The prize selection state should be fully cleared after the prize is taken"),
 		assert_true(handover_visible_after_take, "Two-player mode should hand over to the defending player after the prize is taken"),
 		assert_eq(send_out_mode, "slot_select", "After handover confirmation, the defending player should be prompted to send out a replacement"),
+	])
+
+
+func test_battle_scene_counter_distribution_target_click_defaults_to_one_counter() -> String:
+	var battle_scene = _make_battle_scene_stub()
+	var gsm := GameStateMachine.new()
+	gsm.game_state = GameState.new()
+	gsm.game_state.current_player_index = 0
+	gsm.game_state.first_player_index = 0
+	gsm.game_state.turn_number = 2
+	gsm.game_state.phase = GameState.GamePhase.MAIN
+	battle_scene.set("_gsm", gsm)
+	battle_scene.set("_view_player", 0)
+
+	for pi: int in 2:
+		var player := PlayerState.new()
+		player.player_index = pi
+		gsm.game_state.players.append(player)
+
+	var dragapult_cd: CardData = CardDatabase.get_card("CSV8C", "159")
+	var attacker_slot := PokemonSlot.new()
+	attacker_slot.pokemon_stack.append(CardInstance.create(dragapult_cd, 0))
+	for energy_type: String in ["R", "P"]:
+		attacker_slot.attached_energy.append(CardInstance.create(_make_energy_cd("Energy %s" % energy_type, energy_type), 0))
+	gsm.effect_processor.register_pokemon_card(dragapult_cd)
+	gsm.game_state.players[0].active_pokemon = attacker_slot
+
+	var active_target := PokemonSlot.new()
+	active_target.pokemon_stack.append(CardInstance.create(_make_pokemon_cd("Active Target", 200, "W"), 1))
+	gsm.game_state.players[1].active_pokemon = active_target
+	var bench_target := PokemonSlot.new()
+	bench_target.pokemon_stack.append(CardInstance.create(_make_pokemon_cd("Clickable Bench Target", 120, "W"), 1))
+	gsm.game_state.players[1].bench = [bench_target]
+
+	battle_scene.call("_try_use_attack_with_interaction", 0, attacker_slot, 1)
+	battle_scene.call("_handle_counter_distribution_target", 0)
+
+	var assignment_entries: Array = battle_scene.get("_field_interaction_assignment_entries")
+	var first_assignment: Dictionary = assignment_entries[0] as Dictionary if not assignment_entries.is_empty() else {}
+	var status_text := str((battle_scene.get("_field_interaction_status_lbl") as Label).text)
+
+	return run_checks([
+		assert_eq(str(battle_scene.get("_field_interaction_mode")), "counter_distribution", "Phantom Dive should remain in counter distribution mode after assigning only one counter"),
+		assert_eq(assignment_entries.size(), 1, "Clicking a counter-distribution target without selecting an amount should still create one assignment"),
+		assert_eq(int(first_assignment.get("amount", 0)), 10, "Clicking a counter-distribution target without selecting an amount should default to one counter"),
+		assert_true(status_text.contains("剩余 5 / 6"), "After the default one-counter placement, the UI should show the remaining counter count"),
 	])
 
 

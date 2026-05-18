@@ -1015,6 +1015,9 @@ func send_out_pokemon(player_index: int, bench_slot: PokemonSlot) -> bool:
 
 	player.bench.erase(bench_slot)
 	player.active_pokemon = bench_slot
+	var sent_out_card: CardInstance = bench_slot.get_top_card()
+	if sent_out_card != null:
+		sent_out_card.face_up = true
 	bench_slot.mark_entered_active_from_bench(game_state.turn_number)
 
 	_log_action(GameAction.ActionType.SEND_OUT, player_index,
@@ -1273,6 +1276,7 @@ func play_basic_to_bench(
 
 	var player: PlayerState = game_state.players[player_index]
 	player.hand.erase(card)
+	card.face_up = true
 	var slot := PokemonSlot.new()
 	slot.pokemon_stack.append(card)
 	slot.turn_played = game_state.turn_number
@@ -1298,6 +1302,7 @@ func evolve_pokemon(player_index: int, evolution: CardInstance, target_slot: Pok
 
 	var player: PlayerState = game_state.players[player_index]
 	player.hand.erase(evolution)
+	evolution.face_up = true
 	target_slot.pokemon_stack.append(evolution)
 	target_slot.turn_evolved = game_state.turn_number
 	# 进化清除特殊状态
@@ -1601,6 +1606,9 @@ func retreat(player_index: int, energy_to_discard: Array[CardInstance], bench_sl
 	active.clear_on_leave_active()
 	player.bench.append(active)
 	player.active_pokemon = bench_slot
+	var retreated_into_active: CardInstance = bench_slot.get_top_card()
+	if retreated_into_active != null:
+		retreated_into_active.face_up = true
 	bench_slot.mark_entered_active_from_bench(game_state.turn_number)
 
 	game_state.retreat_used_this_turn = true

@@ -24,12 +24,16 @@ func build_event(event_data: Dictionary, match_id: String, event_index: int) -> 
 
 func _event_type(event_data: Dictionary) -> String:
 	var value: Variant = event_data.get("event_type", event_data.get("kind", event_data.get("action_type", "")))
+	if value == null:
+		return ""
 	if value is int:
 		var action_type_name := _action_type_name(int(value))
 		if action_type_name != "":
 			return action_type_name
 		return "action_type_%d" % int(value)
-	return String(value).strip_edges().to_lower()
+	if value is Callable or value is Signal:
+		return ""
+	return str(value).strip_edges().to_lower()
 
 
 func _action_type_name(action_type: int) -> String:
@@ -102,7 +106,12 @@ func _string_field(event_data: Dictionary, keys: Array[String], fallback: String
 	for key: String in keys:
 		if not event_data.has(key):
 			continue
-		var text := String(event_data.get(key, "")).strip_edges()
+		var value: Variant = event_data.get(key)
+		if value == null:
+			continue
+		if value is Callable or value is Signal:
+			continue
+		var text := str(value).strip_edges()
 		if text != "":
 			return text
 	return fallback
@@ -113,9 +122,13 @@ func _int_field(event_data: Dictionary, keys: Array[String], fallback: int) -> i
 		if not event_data.has(key):
 			continue
 		var value: Variant = event_data.get(key)
-		if value is int:
+		if value == null:
+			continue
+		if value is bool or value is int or value is float:
 			return int(value)
-		var text := String(value).strip_edges()
+		if value is Callable or value is Signal:
+			continue
+		var text := str(value).strip_edges()
 		if text.is_valid_int():
 			return text.to_int()
 	return fallback

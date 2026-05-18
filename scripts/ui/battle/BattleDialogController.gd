@@ -39,6 +39,10 @@ func _replace_dictionary_array(scene: Object, property_name: String, values: Arr
 	scene.set(property_name, target)
 
 
+func _is_server_authoritative_net_scene(scene: Object) -> bool:
+	return scene != null and scene.has_method("_is_net") and bool(scene.call("_is_net"))
+
+
 func dialog_item_has_card_visual(item: Variant) -> bool:
 	return item is CardInstance or item is CardData or item is PokemonSlot
 
@@ -186,6 +190,7 @@ func show_dialog(scene: Object, title: String, items: Array, extra_data: Diction
 	update_dialog_confirm_state(scene)
 	compact_dialog_box_to_content(scene)
 	reveal_dialog_after_layout(scene, dialog_overlay)
+	_log_network_trainer_dialog(scene, "show_dialog", items, extra_data)
 	scene.call(
 		"_runtime_log",
 		"show_dialog",
@@ -214,6 +219,34 @@ func show_dialog(scene: Object, title: String, items: Array, extra_data: Diction
 	})
 	if not assignment_mode and int(extra_data.get("max_select", 1)) > 1:
 		scene.call("_log", "已启用多选：先选择卡牌，再点击确认。")
+
+
+func _log_network_trainer_dialog(scene: Object, event_name: String, items: Array = [], dialog_data: Dictionary = {}, selected_indices: PackedInt32Array = PackedInt32Array()) -> void:
+	if str(scene.get("_pending_choice")) != "network_trainer_interaction":
+		return
+	if not scene.has_method("_runtime_log"):
+		return
+	var payload: Dictionary = dialog_data if not dialog_data.is_empty() else scene.get("_dialog_data")
+	var card_items: Array = payload.get("card_items", [])
+	var target_items: Array = payload.get("target_items", [])
+	var card_indices: Array = payload.get("card_indices", [])
+	var overlay: Variant = scene.get("_dialog_overlay")
+	var overlay_visible: bool = overlay is CanvasItem and overlay.visible
+	scene.call(
+		"_runtime_log",
+		"network_trainer_dialog",
+		"event=%s pending=%s items=%d card_items=%d target_items=%d card_indices=%d selected=%s overlay_visible=%s %s" % [
+			event_name,
+			str(scene.get("_pending_choice")),
+			items.size(),
+			card_items.size(),
+			target_items.size(),
+			card_indices.size(),
+			JSON.stringify(selected_indices),
+			str(overlay_visible),
+			scene.call("_dialog_state_snapshot"),
+		]
+	)
 
 
 func apply_dialog_surface_style(scene: Object, transparent: bool) -> void:
@@ -1899,6 +1932,7 @@ func update_dialog_status_text(scene: Object) -> void:
 
 
 func confirm_dialog_selection(scene: Object, sel_items: PackedInt32Array) -> void:
+	_log_network_trainer_dialog(scene, "confirm_dialog_selection", scene.get("_dialog_items_data"), scene.get("_dialog_data"), sel_items)
 	scene.call(
 		"_runtime_log",
 		"confirm_dialog_selection",
@@ -2008,6 +2042,12 @@ func confirm_assignment_dialog(scene: Object) -> void:
 			dialog_overlay_exp.visible = false
 			reset_dialog_assignment_state(scene)
 			scene.call("_commit_exp_share_assignment", stored_assignments)
+			return
+		if pending_choice == "network_trainer_interaction":
+			var dialog_overlay_net: Panel = scene.get("_dialog_overlay")
+			dialog_overlay_net.visible = false
+			reset_dialog_assignment_state(scene)
+			scene.call("_commit_network_assignment_selection", stored_assignments)
 			return
 		return
 	var dialog_overlay: Panel = scene.get("_dialog_overlay")
@@ -2265,6 +2305,7 @@ func show_exp_share_dialog(
 func show_pokemon_action_dialog(scene: Object, cp: int, slot: PokemonSlot, include_attacks: bool) -> void:
 	var gsm: Variant = scene.get("_gsm")
 	var card_data: CardData = slot.get_card_data()
+	var use_server_authority: bool = _is_server_authoritative_net_scene(scene)
 	var items: Array[String] = []
 	var actions: Array[Dictionary] = []
 	var action_items: Array[Dictionary] = []
@@ -2275,8 +2316,12 @@ func show_pokemon_action_dialog(scene: Object, cp: int, slot: PokemonSlot, inclu
 		var can_use := false
 		var ability_reason := "%s 当前无法使用特性" % card_data.name
 		if effect != null and effect.has_method("can_use_ability"):
-			can_use = gsm.effect_processor.can_use_ability(slot, gsm.game_state, i)
-			ability_reason = "" if can_use else "%s 当前无法使用特性" % card_data.name
+			if use_server_authority:
+				can_use = true
+				ability_reason = ""
+			else:
+				can_use = gsm.effect_processor.can_use_ability(slot, gsm.game_state, i)
+				ability_reason = "" if can_use else "%s 当前无法使用特性" % card_data.name
 		items.append("%s[特性] %s" % ["" if can_use else "[不可用] ", ability_name])
 		actions.append({
 			"type": "ability",
@@ -2295,7 +2340,7 @@ func show_pokemon_action_dialog(scene: Object, cp: int, slot: PokemonSlot, inclu
 			ability_reason
 		))
 	for granted: Dictionary in gsm.effect_processor.get_granted_abilities(slot, gsm.game_state):
-		var can_use_granted: bool = bool(granted.get("enabled", false))
+		var can_use_granted: bool = use_server_authority or bool(granted.get("enabled", false))
 		var granted_name := str(granted.get("name", ""))
 		var granted_reason := "" if can_use_granted else "%s 当前无法使用特性" % card_data.name
 		items.append("%s[特性] %s" % ["" if can_use_granted else "[不可用] ", granted_name])

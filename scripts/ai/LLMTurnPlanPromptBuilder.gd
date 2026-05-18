@@ -39,11 +39,16 @@ var _capability_extractor: RefCounted = LLMDeckCapabilityExtractorScript.new()
 var _route_candidate_builder: RefCounted = LLMRouteCandidateBuilderScript.new()
 var _deck_strategy_id: String = ""
 var _deck_strategy_prompt: PackedStringArray = PackedStringArray()
+var _learned_rules_text: String = ""
 
 
 func set_deck_strategy_prompt(strategy_id: String, prompt_lines: PackedStringArray) -> void:
 	_deck_strategy_id = strategy_id
 	_deck_strategy_prompt = prompt_lines
+
+
+func set_learned_rules(rules_text: String) -> void:
+	_learned_rules_text = rules_text
 
 
 func build_request_payload(game_state: GameState, player_index: int) -> Dictionary:
@@ -61,7 +66,7 @@ func build_request_payload(game_state: GameState, player_index: int) -> Dictiona
 	}
 	if _deck_strategy_id != "" or not _deck_strategy_prompt.is_empty():
 		payload["deck_strategy_id"] = _deck_strategy_id
-		payload["deck_strategy_prompt"] = _deck_strategy_prompt
+		payload["deck_strategy_prompt"] = _full_strategy_prompt_with_rules()
 	return payload
 
 
@@ -98,6 +103,7 @@ func build_action_id_request_payload(
 	if _deck_strategy_id != "":
 		payload["deck_strategy_id"] = _deck_strategy_id
 	var compact_hints: PackedStringArray = _compact_deck_strategy_prompt()
+	_append_learned_rules_to_hints(compact_hints)
 	if not compact_hints.is_empty():
 		payload["deck_strategy_hints"] = compact_hints
 	return payload
@@ -131,7 +137,7 @@ func build_fast_choice_payload(
 	}
 	if _deck_strategy_id != "" or not _deck_strategy_prompt.is_empty():
 		payload["deck_strategy_id"] = _deck_strategy_id
-		payload["deck_strategy_prompt"] = _deck_strategy_prompt
+		payload["deck_strategy_prompt"] = _full_strategy_prompt_with_rules()
 	return payload
 
 
@@ -2831,6 +2837,26 @@ func _compact_deck_strategy_prompt() -> PackedStringArray:
 		if not (line in lines):
 			lines.append(line)
 	return lines
+
+
+func _full_strategy_prompt_with_rules() -> PackedStringArray:
+	## 返回完整策略 prompt（含学习到的规则）
+	var result := _deck_strategy_prompt.duplicate()
+	if _learned_rules_text.strip_edges() != "":
+		result.append("")
+		result.append(_learned_rules_text)
+	return result
+
+
+func _append_learned_rules_to_hints(hints: PackedStringArray) -> void:
+	## 将学习到的规则追加到 compact hints 中
+	if _learned_rules_text.strip_edges() == "":
+		return
+	var rules_lines := _learned_rules_text.split("\n")
+	for line in rules_lines:
+		var trimmed: String = line.strip_edges()
+		if trimmed != "" and not (trimmed in hints):
+			hints.append(trimmed)
 
 
 func _compact_card_counts(cards: Array[CardInstance], max_groups: int = -1) -> Array[Dictionary]:

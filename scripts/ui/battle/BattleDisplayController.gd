@@ -23,6 +23,8 @@ func refresh_ui(scene: Object) -> void:
 
 	var my_player: PlayerState = gs.players[view_player]
 	var opponent: PlayerState = gs.players[opponent_player]
+	var opponent_deck_count: int = _deck_count_for_display(scene, opponent, opponent_player)
+	var my_deck_count: int = _deck_count_for_display(scene, my_player, view_player)
 	var opponent_visible_discard: Array[CardInstance] = _visible_discard_pile(scene, opponent_player, opponent.discard_pile)
 	var my_visible_discard: Array[CardInstance] = _visible_discard_pile(scene, view_player, my_player.discard_pile)
 	var phase_label: Label = scene.get("_lbl_phase")
@@ -38,7 +40,7 @@ func refresh_ui(scene: Object) -> void:
 
 	var opponent_hand_button: Button = scene.get("_btn_opponent_hand")
 	if opponent_hand_button != null:
-		opponent_hand_button.visible = (not bool(scene.call("_is_review_mode"))) and GameManager.current_mode == GameManager.GameMode.VS_AI
+		opponent_hand_button.visible = (not bool(scene.call("_is_review_mode"))) and (GameManager.current_mode == GameManager.GameMode.VS_AI or GameManager.current_mode == GameManager.GameMode.ONLINE)
 	var attack_vfx_preview_button: Button = scene.get("_btn_attack_vfx_preview")
 	if attack_vfx_preview_button != null:
 		attack_vfx_preview_button.visible = false
@@ -62,12 +64,12 @@ func refresh_ui(scene: Object) -> void:
 	var opp_deck_hud_value: Label = scene.get("_opp_deck_hud_value")
 	var opp_discard_hud_value: Label = scene.get("_opp_discard_hud_value")
 	opp_prizes.text = "x%d" % opponent.prizes.size()
-	opp_deck.text = "%d" % opponent.deck.size()
+	opp_deck.text = "%d" % opponent_deck_count
 	opp_discard.text = "%d" % opponent_visible_discard.size()
 	opp_hand_label.text = _bt(scene, "battle.top.opponent_hand_count", {"count": opponent.hand.size()})
 	opp_hand_bar.visible = false
 	opp_prize_hud_count.text = "x%d" % opponent.prizes.size()
-	opp_deck_hud_value.text = _bt(scene, "battle.top.card_count", {"count": opponent.deck.size()})
+	opp_deck_hud_value.text = _bt(scene, "battle.top.card_count", {"count": opponent_deck_count})
 	opp_discard_hud_value.text = _bt(scene, "battle.top.card_count", {"count": opponent_visible_discard.size()})
 
 	var my_prizes: Label = scene.get("_my_prizes")
@@ -77,10 +79,10 @@ func refresh_ui(scene: Object) -> void:
 	var my_deck_hud_value: Label = scene.get("_my_deck_hud_value")
 	var my_discard_hud_value: Label = scene.get("_my_discard_hud_value")
 	my_prizes.text = "x%d" % my_player.prizes.size()
-	my_deck.text = "%d" % my_player.deck.size()
+	my_deck.text = "%d" % my_deck_count
 	my_discard.text = "%d" % my_visible_discard.size()
 	my_prize_hud_count.text = "x%d" % my_player.prizes.size()
-	my_deck_hud_value.text = _bt(scene, "battle.top.card_count", {"count": my_player.deck.size()})
+	my_deck_hud_value.text = _bt(scene, "battle.top.card_count", {"count": my_deck_count})
 	my_discard_hud_value.text = _bt(scene, "battle.top.card_count", {"count": my_visible_discard.size()})
 
 	scene.call("_refresh_prize_titles")
@@ -91,8 +93,13 @@ func refresh_ui(scene: Object) -> void:
 	var is_my_turn: bool = (not bool(scene.call("_is_review_mode"))) and current_player == view_player and gs.phase == GameState.GamePhase.MAIN
 	var end_turn_button: Button = scene.get("_btn_end_turn")
 	var hud_end_turn_button: Button = scene.get("_hud_end_turn_btn")
-	end_turn_button.disabled = not is_my_turn
-	hud_end_turn_button.disabled = end_turn_button.disabled
+	if end_turn_button == null:
+		push_warning("[DisplayCtrl] _btn_end_turn is null!")
+	else:
+		end_turn_button.disabled = not is_my_turn
+		print("[DisplayCtrl] end_turn: is_my_turn=%s, cp=%d, vp=%d, phase=%d, btn_disabled=%s" % [is_my_turn, current_player, view_player, gs.phase, end_turn_button.disabled])
+	if hud_end_turn_button != null:
+		hud_end_turn_button.disabled = end_turn_button.disabled if end_turn_button != null else true
 	refresh_stadium_area(scene, gs, current_player, is_my_turn)
 	refresh_info_hud(scene, gs, view_player, opponent_player)
 
@@ -118,12 +125,15 @@ func get_display_player_name(player_index: int) -> String:
 
 func update_side_previews(scene: Object, opp: PlayerState, my_player: PlayerState) -> void:
 	var view_player: int = int(scene.get("_view_player"))
+	var opponent_player: int = 1 - view_player
+	var opponent_deck_count: int = _deck_count_for_display(scene, opp, opponent_player)
+	var my_deck_count: int = _deck_count_for_display(scene, my_player, view_player)
 	update_prize_slots(
 		scene,
 		scene.get("_opp_prize_slots"),
 		opp.get_prize_layout(),
 		str(scene.get("_pending_choice")) == "take_prize"
-			and int(scene.get("_pending_prize_player_index")) == (1 - int(scene.get("_view_player")))
+			and int(scene.get("_pending_prize_player_index")) == opponent_player
 			and not bool(scene.get("_pending_prize_animating"))
 	)
 	update_prize_slots(
@@ -134,8 +144,8 @@ func update_side_previews(scene: Object, opp: PlayerState, my_player: PlayerStat
 			and int(scene.get("_pending_prize_player_index")) == int(scene.get("_view_player"))
 			and not bool(scene.get("_pending_prize_animating"))
 	)
-	update_pile_preview(scene.get("_opp_deck_preview"), null, not opp.deck.is_empty())
-	update_pile_preview(scene.get("_my_deck_preview"), null, not my_player.deck.is_empty())
+	update_pile_preview(scene.get("_opp_deck_preview"), null, opponent_deck_count > 0)
+	update_pile_preview(scene.get("_my_deck_preview"), null, my_deck_count > 0)
 	var visible_opp_discard: Array[CardInstance] = _visible_discard_pile(scene, 1 - view_player, opp.discard_pile)
 	var visible_my_discard: Array[CardInstance] = _visible_discard_pile(scene, view_player, my_player.discard_pile)
 	update_pile_preview(scene.get("_opp_discard_preview"), visible_opp_discard.back() if not visible_opp_discard.is_empty() else null, false)
@@ -645,6 +655,14 @@ func build_hand_card(scene: Object, inst: CardInstance) -> PanelContainer:
 	card_view.setup_from_instance(inst, BattleCardView.MODE_HAND)
 	card_view.set_selected(scene.get("_selected_hand_card") == inst)
 	card_view.set_info(inst.card_data.name, hand_card_subtext(inst.card_data))
+	# 支援者/竞技场使用状态置灰
+	var gsm: Variant = scene.get("_gsm")
+	if gsm != null and gsm.game_state != null and inst.card_data != null:
+		var gs: GameState = gsm.game_state
+		if inst.card_data.card_type == "Supporter" and gs.supporter_used_this_turn:
+			card_view.set_disabled(true)
+		elif inst.card_data.card_type == "Stadium" and gs.stadium_played_this_turn:
+			card_view.set_disabled(true)
 	card_view.left_clicked.connect(func(_ci: CardInstance, _cd: CardData) -> void:
 		scene.call("_on_hand_card_clicked", inst, card_view)
 	)
@@ -721,11 +739,66 @@ func show_prize_cards(scene: Object, player_index: int, title: String) -> void:
 
 
 func show_deck_cards(scene: Object, player_index: int, title: String) -> void:
+	var replay_player_snapshot := _replay_snapshot_player(scene, player_index)
+	if not replay_player_snapshot.is_empty():
+		var replay_cards := _restore_replay_cards(scene, replay_player_snapshot.get("deck", []), player_index)
+		_show_card_collection(scene, title, replay_cards, false, "show_deck", player_index)
+		return
 	var gsm: Variant = scene.get("_gsm")
 	if gsm == null:
 		return
 	var player: PlayerState = gsm.game_state.players[player_index]
 	_show_card_collection(scene, title, player.deck, false, "show_deck", player_index)
+
+
+func _replay_snapshot_player(scene: Object, player_index: int) -> Dictionary:
+	if scene == null or str(scene.get("_battle_mode")) != "review_readonly":
+		return {}
+	var raw_snapshot_variant: Variant = scene.get("_replay_loaded_raw_snapshot")
+	if not (raw_snapshot_variant is Dictionary):
+		return {}
+	var raw_snapshot: Dictionary = raw_snapshot_variant
+	var state_variant: Variant = raw_snapshot.get("state", {})
+	if not (state_variant is Dictionary):
+		return {}
+	var state: Dictionary = state_variant
+	var players_variant: Variant = state.get("players", [])
+	if not (players_variant is Array):
+		return {}
+	for player_variant: Variant in players_variant:
+		if not (player_variant is Dictionary):
+			continue
+		var player_snapshot: Dictionary = player_variant
+		if int(player_snapshot.get("player_index", -1)) == player_index:
+			return player_snapshot.duplicate(true)
+	return {}
+
+
+func _deck_count_for_display(scene: Object, player: PlayerState, player_index: int) -> int:
+	var replay_player_snapshot := _replay_snapshot_player(scene, player_index)
+	if replay_player_snapshot.is_empty():
+		return player.deck.size() if player != null else 0
+	var snapshot_count: int = int(replay_player_snapshot.get("deck_count", -1))
+	if snapshot_count >= 0:
+		return snapshot_count
+	var deck_variant: Variant = replay_player_snapshot.get("deck", [])
+	return (deck_variant as Array).size() if deck_variant is Array else 0
+
+
+func _restore_replay_cards(scene: Object, cards_variant: Variant, fallback_owner_index: int) -> Array[CardInstance]:
+	var restored_cards: Array[CardInstance] = []
+	if scene == null:
+		return restored_cards
+	var restorer: Variant = scene.get("_battle_replay_state_restorer")
+	if restorer == null or not restorer.has_method("_restore_card_list"):
+		return restored_cards
+	var restored_variant: Variant = restorer.call("_restore_card_list", cards_variant, fallback_owner_index)
+	if not (restored_variant is Array):
+		return restored_cards
+	for card_variant: Variant in restored_variant:
+		if card_variant is CardInstance:
+			restored_cards.append(card_variant as CardInstance)
+	return restored_cards
 
 
 func _show_card_collection(

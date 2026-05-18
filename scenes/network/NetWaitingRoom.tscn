@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/network/NetWaitingRoom.gd" id="1"]
+
+[node name="NetWaitingRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.1, 0.12, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MainPanel" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(500, 400)
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+text = "等待房间"
+horizontal_alignment = 1
+
+[node name="RoomIdLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "房间ID: ---"
+horizontal_alignment = 1
+
+[node name="ShareLinkLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "分享链接: ---"
+horizontal_alignment = 1
+
+[node name="Sep1" type="HSeparator" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+
+[node name="OpponentLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "等待对手..."
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/MainPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "状态"
+horizontal_alignment = 1
+
+[node name="Sep2" type="HSeparator" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+
+[node name="DeckRow" type="HBoxContainer" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MainPanel/VBox/DeckRow"]
+layout_mode = 2
+text = "选择牌组:"
+
+[node name="DeckOption" type="OptionButton" parent="CenterContainer/MainPanel/VBox/DeckRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UploadBtn" type="Button" parent="CenterContainer/MainPanel/VBox/DeckRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上传到服务器"
+
+[node name="Sep3" type="HSeparator" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+
+[node name="BtnRow" type="HBoxContainer" parent="CenterContainer/MainPanel/VBox"]
+layout_mode = 2
+
+[node name="LeaveBtn" type="Button" parent="CenterContainer/MainPanel/VBox/BtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "离开房间"
+
+[node name="Spacer" type="Control" parent="CenterContainer/MainPanel/VBox/BtnRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReadyBtn" type="Button" parent="CenterContainer/MainPanel/VBox/BtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "准备"
+
+[node name="StartBtn" type="Button" parent="CenterContainer/MainPanel/VBox/BtnRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "开始游戏"

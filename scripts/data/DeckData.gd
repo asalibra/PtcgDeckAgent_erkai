@@ -25,6 +25,40 @@ extends Resource
 ## 打法思路（人工编辑，供 AI 分析时参考）
 @export var strategy: String = ""
 
+## 结构化策略档案（玩家填写的专家知识）
+@export var strategy_profile: Dictionary = {}
+
+const STRATEGY_PROFILE_FIELDS: Array[Dictionary] = [
+	{"key": "core_plan", "label": "核心打法", "placeholder": "这套卡组的主要战术思路，例如：快速进化XXex作为主攻手..."},
+	{"key": "opening_priority", "label": "起手优先级", "placeholder": "开局应该优先做什么，例如：先铺基础宝可梦，找Rare Candy..."},
+	{"key": "key_combos", "label": "关键配合", "placeholder": "核心卡牌之间的配合，例如：大比鸟ex检索 + 喷火龙ex打点..."},
+	{"key": "energy_plan", "label": "能量规划", "placeholder": "能量附着策略，例如：利用喷火龙ex特性自动附火..."},
+	{"key": "win_condition", "label": "胜利条件", "placeholder": "怎样赢下对局，例如：控制奖赏差，2回合内清场..."},
+	{"key": "matchup_notes", "label": "对局要点", "placeholder": "对不同卡组的策略，例如：\nvs 密勒顿：优势，先手压制...\nvs 沙奈朵：劣势，注意..."},
+	{"key": "custom_notes", "label": "补充笔记", "placeholder": "其他你想记录的内容..."},
+]
+
+static func default_strategy_profile() -> Dictionary:
+	var profile := {}
+	for field: Dictionary in STRATEGY_PROFILE_FIELDS:
+		profile[field["key"]] = ""
+	return profile
+
+
+func get_strategy_profile_field(key: String) -> String:
+	return str(strategy_profile.get(key, ""))
+
+
+func set_strategy_profile_field(key: String, value: String) -> void:
+	strategy_profile[key] = value
+
+
+func has_strategy_profile_content() -> bool:
+	for field: Dictionary in STRATEGY_PROFILE_FIELDS:
+		if str(strategy_profile.get(field["key"], "")).strip_edges() != "":
+			return true
+	return false
+
 
 ## 从 API deck/detail 响应创建
 static func from_api_response(deck_id: int, data: Dictionary) -> DeckData:
@@ -55,6 +89,7 @@ static func from_api_response(deck_id: int, data: Dictionary) -> DeckData:
 		})
 		total += count
 	deck.total_cards = total
+	deck.strategy_profile = default_strategy_profile()
 	return deck
 
 
@@ -109,6 +144,7 @@ func to_dict() -> Dictionary:
 		"cards": cards,
 		"total_cards": total_cards,
 		"strategy": strategy,
+		"strategy_profile": strategy_profile,
 	}
 
 
@@ -129,4 +165,11 @@ static func from_dict(d: Dictionary) -> DeckData:
 			deck.cards.append(entry)
 	deck.total_cards = int(d.get("total_cards", 0))
 	deck.strategy = d.get("strategy", "")
+	var profile_raw: Variant = d.get("strategy_profile")
+	if profile_raw is Dictionary:
+		deck.strategy_profile = (profile_raw as Dictionary).duplicate(true)
+	elif deck.strategy.strip_edges() != "":
+		# 迁移旧格式：把平铺 strategy 文本放到 core_plan 字段
+		deck.strategy_profile = default_strategy_profile()
+		deck.strategy_profile["core_plan"] = deck.strategy
 	return deck

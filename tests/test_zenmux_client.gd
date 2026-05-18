@@ -16,7 +16,8 @@ class AsyncFallbackProbeClient extends ZenMuxClient:
 		request_url: String,
 		api_key: String,
 		request_payload: Dictionary,
-		_callback: Callable
+		_callback: Callable,
+		_provider: String = "openai"
 	) -> int:
 		async_fallback_called = true
 		captured_parent_valid = parent != null and is_instance_valid(parent)
@@ -43,7 +44,8 @@ class TlsRetryProbeClient extends ZenMuxClient:
 		api_key: String,
 		request_payload: Dictionary,
 		_callback: Callable,
-		tls_mode: String
+		tls_mode: String,
+		_provider: String = "openai"
 	) -> int:
 		retry_called = true
 		captured_parent_valid = parent != null and is_instance_valid(parent)

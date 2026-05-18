@@ -12,7 +12,10 @@ func _init(flipper: CoinFlipper = null) -> void:
 
 
 func can_execute(_card: CardInstance, state: GameState) -> bool:
-	var opp: PlayerState = state.players[1 - state.current_player_index]
+	var owner_index: int = _card.owner_index if _card != null else state.current_player_index
+	if owner_index < 0 or owner_index >= state.players.size():
+		owner_index = state.current_player_index
+	var opp: PlayerState = state.players[1 - owner_index]
 	for slot: PokemonSlot in opp.get_all_pokemon():
 		if not slot.attached_energy.is_empty():
 			return true

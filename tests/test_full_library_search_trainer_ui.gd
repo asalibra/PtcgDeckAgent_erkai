@@ -212,10 +212,15 @@ func test_top_n_search_is_not_upgraded_to_full_deck_visibility() -> String:
 	var steps: Array[Dictionary] = effect.get_interaction_steps(card, state)
 	var step: Dictionary = steps[0] if not steps.is_empty() else {}
 	var visible_cards: Array = step.get("card_items", step.get("items", []))
+	var choice_labels: Array = step.get("choice_labels", [])
 
 	return run_checks([
 		assert_eq(step.get("items", []), [top_item], "top-N legal pool should only include matching cards in the looked range"),
-		assert_eq(visible_cards, [top_item], "top-N effects must not expose the full deck through card_items"),
+		assert_eq(visible_cards, [top_item, top_pokemon], "top-N effects should show every looked card but only within the revealed range"),
+		assert_eq(step.get("card_indices", []), [0, -1], "top-N effects should map non-matching looked cards to disabled entries"),
+		assert_eq(str(step.get("visible_scope", "")), "own_top_cards", "top-N effects should mark the prompt as a limited top-card reveal"),
+		assert_eq(choice_labels.size(), 2, "top-N effects should label every revealed top card"),
+		assert_str_contains(str(choice_labels[1]), "不可选", "non-matching revealed cards should stay visible but disabled"),
 		assert_false(hidden_item in visible_cards, "top-N effects must not reveal matching cards below the looked range"),
 		assert_false(hidden_pokemon in visible_cards, "top-N effects must not reveal non-matching hidden cards below the looked range"),
 		assert_false(str(step.get("visible_scope", "")) == "own_full_deck", "top-N effects must not be marked as own_full_deck"),

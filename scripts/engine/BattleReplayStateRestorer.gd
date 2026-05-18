@@ -40,7 +40,7 @@ func restore(raw_snapshot: Dictionary) -> GameState:
 
 
 func _restore_phase(value: Variant) -> GameState.GamePhase:
-	if value is int:
+	if value is int or value is float:
 		return int(value)
 	var text := str(value).strip_edges().to_lower()
 	if text.is_valid_int():
@@ -75,7 +75,9 @@ func _restore_player_state(snapshot: Dictionary) -> PlayerState:
 	player.hand = _restore_card_list(snapshot.get("hand", []), player.player_index)
 	player.deck = _restore_card_list(snapshot.get("deck", []), player.player_index)
 	player.prizes = _restore_card_list(snapshot.get("prizes", []), player.player_index)
-	player.reset_prize_layout()
+	player.prize_layout = _restore_prize_layout(snapshot.get("prize_layout", []), player.prizes, player.player_index)
+	if player.prize_layout.is_empty() and not player.prizes.is_empty():
+		player.reset_prize_layout()
 	player.discard_pile = _restore_card_list(snapshot.get("discard_pile", []), player.player_index)
 	player.lost_zone = _restore_card_list(snapshot.get("lost_zone", []), player.player_index)
 	player.active_pokemon = _restore_slot(snapshot.get("active", {}), player.player_index)
@@ -86,6 +88,36 @@ func _restore_player_state(snapshot: Dictionary) -> PlayerState:
 			if slot != null:
 				player.bench.append(slot)
 	return player
+
+
+func _restore_prize_layout(layout_variant: Variant, prizes: Array[CardInstance], fallback_owner_index: int) -> Array:
+	var restored: Array = []
+	if not (layout_variant is Array):
+		return restored
+	for entry_variant: Variant in layout_variant:
+		if entry_variant == null:
+			restored.append(null)
+			continue
+		if not (entry_variant is Dictionary):
+			restored.append(null)
+			continue
+		var prize_snapshot: Dictionary = entry_variant
+		var instance_id: int = int(prize_snapshot.get("instance_id", -1))
+		var existing_card := _find_card_by_instance_id(prizes, instance_id)
+		if existing_card != null:
+			restored.append(existing_card)
+		else:
+			restored.append(_restore_card_instance(prize_snapshot, fallback_owner_index))
+	return restored
+
+
+func _find_card_by_instance_id(cards: Array[CardInstance], instance_id: int) -> CardInstance:
+	if instance_id < 0:
+		return null
+	for card: CardInstance in cards:
+		if card != null and card.instance_id == instance_id:
+			return card
+	return null
 
 
 func _restore_card_list(cards_variant: Variant, fallback_owner_index: int) -> Array[CardInstance]:
@@ -140,28 +172,12 @@ func _restore_card_instance(card_variant: Variant, fallback_owner_index: int) ->
 
 
 func _restore_card_data(card_snapshot: Dictionary) -> CardData:
-	var card_data := CardData.new()
-	card_data.name = str(card_snapshot.get("card_name", ""))
-	card_data.card_type = str(card_snapshot.get("card_type", ""))
-	card_data.mechanic = str(card_snapshot.get("mechanic", ""))
-	card_data.description = str(card_snapshot.get("description", ""))
-	card_data.stage = str(card_snapshot.get("stage", ""))
-	card_data.hp = int(card_snapshot.get("hp", 0))
-	card_data.energy_type = str(card_snapshot.get("energy_type", ""))
-	card_data.effect_id = str(card_snapshot.get("effect_id", ""))
-	card_data.energy_provides = str(card_snapshot.get("energy_provides", ""))
-	card_data.set_code = str(card_snapshot.get("set_code", ""))
-	card_data.card_index = str(card_snapshot.get("card_index", ""))
-	card_data.evolves_from = str(card_snapshot.get("evolves_from", ""))
-	card_data.weakness_energy = str(card_snapshot.get("weakness_energy", ""))
-	card_data.weakness_value = str(card_snapshot.get("weakness_value", ""))
-	card_data.resistance_energy = str(card_snapshot.get("resistance_energy", ""))
-	card_data.resistance_value = str(card_snapshot.get("resistance_value", ""))
-	card_data.retreat_cost = int(card_snapshot.get("retreat_cost", 0))
-	card_data.attacks = _restore_dictionary_array(card_snapshot.get("attacks", []))
-	card_data.abilities = _restore_dictionary_array(card_snapshot.get("abilities", []))
-	card_data.ensure_image_metadata()
-	return card_data
+	var normalized_snapshot: Dictionary = card_snapshot.duplicate(true)
+	if not normalized_snapshot.has("name") and normalized_snapshot.has("card_name"):
+		normalized_snapshot["name"] = normalized_snapshot.get("card_name", "")
+	normalized_snapshot["attacks"] = _restore_dictionary_array(card_snapshot.get("attacks", []))
+	normalized_snapshot["abilities"] = _restore_dictionary_array(card_snapshot.get("abilities", []))
+	return CardData.from_dict(normalized_snapshot)
 
 
 func _restore_dictionary_array(value: Variant) -> Array[Dictionary]:

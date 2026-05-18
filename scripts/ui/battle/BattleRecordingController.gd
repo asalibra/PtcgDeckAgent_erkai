@@ -233,14 +233,18 @@ func serialize_card_instance(card: CardInstance) -> Dictionary:
 	if card == null:
 		return {}
 	var card_data := card.card_data
+	var tags: Array = Array(card_data.is_tags) if card_data != null else []
 	return {
+		"name": card_data.name if card_data != null else "",
 		"card_name": card_data.name if card_data != null else "",
 		"instance_id": card.instance_id,
 		"owner_index": card.owner_index,
 		"face_up": card.face_up,
 		"card_type": card_data.card_type if card_data != null else "",
 		"mechanic": card_data.mechanic if card_data != null else "",
+		"label": card_data.label if card_data != null else "",
 		"description": card_data.description if card_data != null else "",
+		"yoren_code": card_data.yoren_code if card_data != null else "",
 		"stage": card_data.stage if card_data != null else "",
 		"hp": card_data.hp if card_data != null else 0,
 		"energy_type": card_data.energy_type if card_data != null else "",
@@ -248,6 +252,19 @@ func serialize_card_instance(card: CardInstance) -> Dictionary:
 		"energy_provides": card_data.energy_provides if card_data != null else "",
 		"set_code": card_data.set_code if card_data != null else "",
 		"card_index": card_data.card_index if card_data != null else "",
+		"set_code_en": card_data.set_code_en if card_data != null else "",
+		"card_index_en": card_data.card_index_en if card_data != null else "",
+		"name_en": card_data.name_en if card_data != null else "",
+		"artist": card_data.artist if card_data != null else "",
+		"rarity": card_data.rarity if card_data != null else "",
+		"release_date": card_data.release_date if card_data != null else "",
+		"regulation_mark": card_data.regulation_mark if card_data != null else "",
+		"image_url": card_data.image_url if card_data != null else "",
+		"image_local_path": card_data.image_local_path if card_data != null else "",
+		"ancient_trait": card_data.ancient_trait if card_data != null else "",
+		"is_tags": tags.duplicate(),
+		"regulation_standard": card_data.regulation_standard if card_data != null else true,
+		"regulation_expanded": card_data.regulation_expanded if card_data != null else true,
 		"evolves_from": card_data.evolves_from if card_data != null else "",
 		"weakness_energy": card_data.weakness_energy if card_data != null else "",
 		"weakness_value": card_data.weakness_value if card_data != null else "",

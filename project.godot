@@ -35,6 +35,10 @@ window/stretch/aspect="expand"
 window/size/window_width=1600
 window/size/window_height=900
 
+[gui]
+
+theme/custom_font="res://assets/fonts/default_font.tres"
+
 [internationalization]
 
 locale/default="zh_CN"

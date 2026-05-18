@@ -31,6 +31,10 @@ func _configure_prompt_builder(game_state: GameState, player_index: int) -> void
 		return
 	if prompt_builder.has_method("set_deck_strategy_prompt"):
 		prompt_builder.call("set_deck_strategy_prompt", get_strategy_id(), get_llm_deck_strategy_prompt(game_state, player_index))
+	# 注入从自博弈复盘中学习到的策略规则
+	if prompt_builder.has_method("set_learned_rules"):
+		load_learned_rules()
+		prompt_builder.call("set_learned_rules", get_learned_rules_text())
 
 
 func _fast_choice_key(prompt_kind: String, game_state: GameState, player_index: int) -> String:

@@ -208,6 +208,10 @@ func is_radiant() -> bool:
 	return mechanic == "Radiant" or "Radiant" in is_tags
 
 
+func is_tera_pokemon() -> bool:
+	return ancient_trait == "Tera" or label == "Tera" or label == "太晶" or has_tag("Tera") or has_tag("太晶")
+
+
 func has_tag(tag: String) -> bool:
 	return tag in is_tags
 
@@ -452,7 +456,7 @@ func _apply_supplemental_tags() -> void:
 
 	var normalized := PackedStringArray()
 	for tag: Variant in unique_tags.keys():
-		normalized.append(String(tag))
+		normalized.append(str(tag))
 	is_tags = normalized
 
 

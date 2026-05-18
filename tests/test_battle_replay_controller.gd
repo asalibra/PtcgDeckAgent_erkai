@@ -36,6 +36,22 @@ func test_prepare_launch_adds_entry_turn_and_sorts() -> String:
 	])
 
 
+func test_prepare_launch_falls_back_to_latest_turn_when_entry_is_missing() -> String:
+	var controller := BattleReplayControllerScript.new()
+	var prepared: Dictionary = controller.call("prepare_launch", {
+		"match_dir": "user://match_records/match_online",
+		"entry_source": "latest_replayable_turn",
+		"turn_numbers": [6, 2],
+		"entry_turn_number": 0,
+	})
+
+	return run_checks([
+		assert_eq(prepared.get("turn_numbers", []), [2, 6], "Prepared launch should sort replay turns even when the entry turn is missing"),
+		assert_eq(int(prepared.get("entry_turn_number", 0)), 6, "Prepared launch should fall back to the latest replayable turn when entry_turn_number is missing"),
+		assert_eq(int(prepared.get("current_turn_index", -1)), 1, "Prepared launch should point to the fallback replay turn"),
+	])
+
+
 func test_refresh_controls_updates_replay_buttons() -> String:
 	var controller := BattleReplayControllerScript.new()
 	var refs := BattleSceneRefsScript.new()

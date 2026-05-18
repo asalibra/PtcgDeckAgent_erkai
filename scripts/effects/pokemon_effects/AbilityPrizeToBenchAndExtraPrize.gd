@@ -19,6 +19,7 @@ func resolve_prize_take(card: CardInstance, player: PlayerState, state: GameStat
 		return {"used": false, "extra_prizes": 0}
 
 	player.hand.erase(card)
+	card.face_up = true
 	var slot: PokemonSlot = PokemonSlot.new()
 	slot.pokemon_stack.append(card)
 	slot.turn_played = state.turn_number

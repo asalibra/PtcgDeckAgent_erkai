@@ -62,6 +62,42 @@ func _write_full_snapshot_match(match_dir: String) -> void:
 	])
 
 
+func _write_top_level_snapshot_match(match_dir: String) -> void:
+	_clear_dir(match_dir)
+	_write_jsonl(match_dir.path_join("detail.jsonl"), [
+		{
+			"event_index": 0,
+			"event_type": "state_snapshot",
+			"turn_number": 7,
+			"player_index": 1,
+			"current_player_index": 1,
+			"snapshot_reason": "turn_start",
+			"players": [
+				{
+					"player_index": 0,
+					"hand": [{"card_name": "Hidden A"}],
+					"deck": [{"card_name": "Hidden Deck"}],
+					"active": {"pokemon_name": "Pidgeot ex"},
+					"bench": [],
+					"discard_pile": [],
+					"prizes": [],
+					"lost_zone": [],
+				},
+				{
+					"player_index": 1,
+					"hand": [{"card_name": "Visible A"}, {"card_name": "Visible B"}],
+					"deck": [{"card_name": "Deck A"}],
+					"active": {"pokemon_name": "Drakloak"},
+					"bench": [],
+					"discard_pile": [],
+					"prizes": [],
+					"lost_zone": [],
+				},
+			],
+		},
+	])
+
+
 func test_snapshot_loader_reads_turn_start_snapshot() -> String:
 	var loader = BattleReplaySnapshotLoaderScript.new()
 	var replay: Dictionary = loader.load_turn("res://tests/fixtures/match_review_fixture", 6)
@@ -85,4 +121,20 @@ func test_snapshot_loader_hides_opponent_hand_for_view_player() -> String:
 		assert_eq(((players[0] as Dictionary).get("hand", []) as Array).size(), 2, "Acting player's hand should remain visible"),
 		assert_true(((players[1] as Dictionary).get("hand", []) as Array).is_empty(), "Opponent hand should be hidden in replay view"),
 		assert_true(((players[1] as Dictionary).get("deck", []) as Array).is_empty(), "Opponent deck should be hidden in replay view"),
+	])
+
+
+func test_snapshot_loader_hides_opponent_hand_for_top_level_online_snapshot() -> String:
+	var match_dir := TEST_ROOT.path_join("top_level_snapshot_match")
+	_write_top_level_snapshot_match(match_dir)
+	var loader = BattleReplaySnapshotLoaderScript.new()
+	var replay: Dictionary = loader.load_turn(match_dir, 7)
+	var view_snapshot: Dictionary = replay.get("view_snapshot", {})
+	var players: Array = view_snapshot.get("players", [])
+	_clear_dir(match_dir)
+	return run_checks([
+		assert_eq(int(replay.get("view_player_index", -1)), 1, "Top-level online snapshots should still follow the acting player"),
+		assert_true(((players[0] as Dictionary).get("hand", []) as Array).is_empty(), "Top-level replay snapshots should hide the opponent hand for the active viewer"),
+		assert_true(((players[0] as Dictionary).get("deck", []) as Array).is_empty(), "Top-level replay snapshots should hide the opponent deck for the active viewer"),
+		assert_eq(((players[1] as Dictionary).get("hand", []) as Array).size(), 2, "Top-level replay snapshots should preserve the acting player's visible hand"),
 	])

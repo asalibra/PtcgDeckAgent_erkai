@@ -52,13 +52,16 @@ def main() -> int:
         allow_unsafe_tls = bool(config.get("allow_unsafe_tls", True))
 
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        headers = config.get("headers", None)
+        if not isinstance(headers, dict) or not headers:
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
+            }
         request = urllib.request.Request(
             url,
             data=body,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {api_key}",
-            },
+            headers=headers,
             method="POST",
         )
         opener = _build_opener(allow_unsafe_tls)

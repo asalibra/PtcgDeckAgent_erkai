@@ -77,6 +77,7 @@ func execute(card: CardInstance, _targets: Array, state: GameState) -> void:
 		if BenchLimit.is_bench_full(state, player):
 			player.deck.append(pokemon)
 			continue
+		pokemon.face_up = true
 		var slot := PokemonSlot.new()
 		slot.pokemon_stack.append(pokemon)
 		slot.turn_played = state.turn_number

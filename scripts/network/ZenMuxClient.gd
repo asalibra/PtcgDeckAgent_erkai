@@ -6,6 +6,57 @@ const PYTHON_FALLBACK_USER_DIR := "user://tmp/zenmux"
 const PYTHON_FALLBACK_USER_SCRIPT := PYTHON_FALLBACK_USER_DIR + "/zenmux_request.py"
 const TLS_MODE_DEFAULT := "default"
 const TLS_MODE_UNSAFE := "unsafe"
+const ANTHROPIC_VERSION := "2023-06-01"
+const DEFAULT_MAX_TOKENS := 4096
+const DEBUG_LOG_PATH := "user://logs/llm_requests.jsonl"
+
+var _debug_log_enabled: bool = true
+var _debug_log_request_index: int = 0
+
+
+func set_debug_log_enabled(enabled: bool) -> void:
+	_debug_log_enabled = enabled
+
+
+func is_debug_log_enabled() -> bool:
+	return _debug_log_enabled
+
+
+func _check_debug_log_env() -> void:
+	if _debug_log_enabled:
+		return
+	if OS.get_environment("ZENMUX_DEBUG_LOG").strip_edges() in ["1", "true", "TRUE", "yes", "YES"]:
+		_debug_log_enabled = true
+
+
+func _write_debug_log_entry(entry: Dictionary) -> void:
+	_check_debug_log_env()
+	if not _debug_log_enabled:
+		return
+	var path := ProjectSettings.globalize_path(DEBUG_LOG_PATH)
+	var dir := path.get_base_dir()
+	if not DirAccess.dir_exists_absolute(dir):
+		DirAccess.make_dir_recursive_absolute(dir)
+	var file := FileAccess.open(path, FileAccess.READ_WRITE)
+	if file == null:
+		file = FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return
+	file.seek_end()
+	file.store_string(JSON.stringify(entry) + "\n")
+	file.close()
+
+
+func _detect_provider(endpoint: String) -> String:
+	var lower := endpoint.strip_edges().to_lower()
+	if "anthropic" in lower:
+		return "anthropic"
+	return "openai"
+
+
+func _is_anthropic(endpoint: String) -> bool:
+	return _detect_provider(endpoint) == "anthropic"
+
 
 class PythonFallbackRequest:
 	extends Node
@@ -18,6 +69,7 @@ class PythonFallbackRequest:
 	var callback: Callable = Callable()
 	var started_msec: int = 0
 	var timeout_seconds: float = 30.0
+	var provider: String = "openai"
 
 	func configure(
 		p_client: RefCounted,
@@ -26,7 +78,8 @@ class PythonFallbackRequest:
 		p_input_path: String,
 		p_output_path: String,
 		p_callback: Callable,
-		p_timeout_seconds: float
+		p_timeout_seconds: float,
+		p_provider: String = "openai"
 	) -> void:
 		client = p_client
 		process_id = p_process_id
@@ -35,6 +88,7 @@ class PythonFallbackRequest:
 		output_path = p_output_path
 		callback = p_callback
 		timeout_seconds = maxf(p_timeout_seconds, 0.1)
+		provider = p_provider
 		started_msec = Time.get_ticks_msec()
 		process_mode = Node.PROCESS_MODE_ALWAYS
 		set_process(true)
@@ -65,7 +119,7 @@ class PythonFallbackRequest:
 		_cleanup_files()
 		var normalized: Dictionary = {}
 		if client != null and client.has_method("_normalize_python_fallback_output"):
-			normalized = client.call("_normalize_python_fallback_output", output_text)
+			normalized = client.call("_normalize_python_fallback_output", output_text, provider)
 		else:
 			normalized = {
 				"status": "error",
@@ -130,13 +184,37 @@ func clear_proxy() -> void:
 
 func request_json(parent: Node, endpoint: String, api_key: String, payload: Dictionary, callback: Callable) -> int:
 	var request_url := _normalize_endpoint(endpoint)
+	var provider := _detect_provider(endpoint)
 	var request_payload := _build_request_payload(payload)
+	if provider == "anthropic":
+		request_payload = _convert_to_anthropic_payload(request_payload)
+	_debug_log_request_index += 1
+	var log_index := _debug_log_request_index
+	_write_debug_log_entry({
+		"direction": "request",
+		"index": log_index,
+		"time": Time.get_datetime_string_from_system(),
+		"endpoint": request_url,
+		"provider": provider,
+		"payload": request_payload,
+	})
+	var wrapped_callback := func(response: Dictionary) -> void:
+		_write_debug_log_entry({
+			"direction": "response",
+			"index": log_index,
+			"time": Time.get_datetime_string_from_system(),
+			"endpoint": request_url,
+			"provider": provider,
+			"response": response,
+		})
+		if callback.is_valid():
+			callback.call(response)
 	if _should_prefer_python_transport():
-		var async_error := _request_json_payload_via_python_fallback_async(parent, request_url, api_key, request_payload, callback)
+		var async_error := _request_json_payload_via_python_fallback_async(parent, request_url, api_key, request_payload, wrapped_callback, provider)
 		if async_error == OK:
 			return OK
 
-	return _request_json_payload_via_http_request(parent, request_url, api_key, request_payload, callback, _initial_tls_mode())
+	return _request_json_payload_via_http_request(parent, request_url, api_key, request_payload, wrapped_callback, _initial_tls_mode(), provider)
 
 
 func _request_json_payload_via_http_request(
@@ -145,7 +223,8 @@ func _request_json_payload_via_http_request(
 	api_key: String,
 	request_payload: Dictionary,
 	callback: Callable,
-	tls_mode: String
+	tls_mode: String,
+	provider: String = "openai"
 ) -> int:
 	if parent == null or not is_instance_valid(parent):
 		return ERR_INVALID_PARAMETER
@@ -156,21 +235,46 @@ func _request_json_payload_via_http_request(
 	request.set_meta("zenmux_request_url", request_url)
 	request.set_meta("zenmux_api_key", api_key)
 	request.set_meta("zenmux_tls_mode", tls_mode)
+	request.set_meta("zenmux_provider", provider)
 	parent.add_child(request)
 	request.request_completed.connect(_on_request_completed.bind(request, callback), CONNECT_ONE_SHOT)
 	request.set_meta("zenmux_request_payload", request_payload)
+	var headers := _build_request_headers(api_key, provider)
 	var request_error := request.request(
 		request_url,
-		PackedStringArray([
-			"Content-Type: application/json",
-			"Authorization: Bearer %s" % api_key,
-		]),
+		headers,
 		HTTPClient.METHOD_POST,
 		JSON.stringify(request_payload)
 	)
 	if request_error != OK and is_instance_valid(request):
 		request.queue_free()
 	return request_error
+
+
+func _build_request_headers(api_key: String, provider: String) -> PackedStringArray:
+	if provider == "anthropic":
+		return PackedStringArray([
+			"Content-Type: application/json",
+			"x-api-key: %s" % api_key,
+			"anthropic-version: %s" % ANTHROPIC_VERSION,
+		])
+	return PackedStringArray([
+		"Content-Type: application/json",
+		"Authorization: Bearer %s" % api_key,
+	])
+
+
+func _build_request_headers_dict(api_key: String, provider: String) -> Dictionary:
+	if provider == "anthropic":
+		return {
+			"Content-Type": "application/json",
+			"x-api-key": api_key,
+			"anthropic-version": ANTHROPIC_VERSION,
+		}
+	return {
+		"Content-Type": "application/json",
+		"Authorization": "Bearer %s" % api_key,
+	}
 
 
 func _configure_tls(request: HTTPRequest, tls_mode: String = "") -> void:
@@ -283,6 +387,11 @@ func _normalize_endpoint(endpoint: String) -> String:
 	var trimmed := endpoint.strip_edges()
 	if trimmed == "":
 		return trimmed
+	if _is_anthropic(trimmed):
+		var suffix := "/v1/messages"
+		if trimmed.ends_with(suffix):
+			return trimmed
+		return trimmed.trim_suffix("/").trim_suffix("\\") + suffix
 	var suffix := "/chat/completions"
 	if trimmed.ends_with(suffix):
 		return trimmed
@@ -316,6 +425,41 @@ func _build_request_payload(payload: Dictionary) -> Dictionary:
 			str(payload.get("system_prompt_version", "battle_review_response")).strip_edges()
 		)
 	return _make_chat_payload_compatible(request_payload)
+
+
+func _convert_to_anthropic_payload(openai_payload: Dictionary) -> Dictionary:
+	var anthropic_payload := {}
+	anthropic_payload["model"] = str(openai_payload.get("model", ""))
+
+	var messages_variant: Variant = openai_payload.get("messages", [])
+	var messages: Array = messages_variant if messages_variant is Array else []
+	var system_parts: PackedStringArray = []
+	var chat_messages: Array = []
+	for msg_variant: Variant in messages:
+		if not msg_variant is Dictionary:
+			continue
+		var msg: Dictionary = msg_variant as Dictionary
+		var role := str(msg.get("role", ""))
+		if role == "system":
+			system_parts.append(_message_content_to_text(msg.get("content", "")))
+		else:
+			chat_messages.append(msg)
+	if system_parts.size() > 0:
+		anthropic_payload["system"] = "\n".join(system_parts)
+	anthropic_payload["messages"] = chat_messages
+
+	var max_tokens := int(openai_payload.get("max_tokens", 0))
+	if max_tokens <= 0:
+		max_tokens = int(openai_payload.get("max_completion_tokens", 0))
+	if max_tokens <= 0:
+		max_tokens = DEFAULT_MAX_TOKENS
+	anthropic_payload["max_tokens"] = max_tokens
+
+	var temperature: Variant = openai_payload.get("temperature")
+	if temperature != null:
+		anthropic_payload["temperature"] = temperature
+
+	return anthropic_payload
 
 
 func _make_chat_payload_compatible(request_payload: Dictionary) -> Dictionary:
@@ -501,7 +645,8 @@ func _on_request_completed(
 	callback: Callable
 ) -> void:
 	var response_text := body.get_string_from_utf8()
-	var normalized := _parse_chat_response(response_code, response_text)
+	var provider := str(request.get_meta("zenmux_provider", "openai")) if request != null else "openai"
+	var normalized := _parse_chat_response(response_code, response_text, provider)
 	if result != HTTPRequest.RESULT_SUCCESS:
 		normalized = _parse_error_response(response_code, result, response_text)
 		normalized["tls_mode"] = str(request.get_meta("zenmux_tls_mode", TLS_MODE_DEFAULT)) if request != null else TLS_MODE_DEFAULT
@@ -542,13 +687,15 @@ func _try_start_tls_retry_from_failed_request(request: HTTPRequest, callback: Ca
 		return false
 	var payload_variant: Variant = request.get_meta("zenmux_request_payload", {})
 	var request_payload: Dictionary = payload_variant if payload_variant is Dictionary else {}
+	var provider := str(request.get_meta("zenmux_provider", "openai"))
 	var retry_error := _request_json_payload_via_http_request(
 		parent,
 		str(request.get_meta("zenmux_request_url", "")),
 		str(request.get_meta("zenmux_api_key", "")),
 		request_payload,
 		callback,
-		TLS_MODE_UNSAFE
+		TLS_MODE_UNSAFE,
+		provider
 	)
 	return retry_error == OK
 
@@ -571,12 +718,14 @@ func _try_start_python_fallback_from_failed_request(request: HTTPRequest, callba
 		return false
 	var payload_variant: Variant = request.get_meta("zenmux_request_payload", {})
 	var request_payload: Dictionary = payload_variant if payload_variant is Dictionary else {}
+	var provider := str(request.get_meta("zenmux_provider", "openai"))
 	var async_error := _request_json_payload_via_python_fallback_async(
 		parent,
 		str(request.get_meta("zenmux_request_url", "")),
 		str(request.get_meta("zenmux_api_key", "")),
 		request_payload,
-		_on_async_python_fallback_completed.bind(callback, original_error.duplicate(true))
+		_on_async_python_fallback_completed.bind(callback, original_error.duplicate(true)),
+		provider
 	)
 	return async_error == OK
 
@@ -605,7 +754,7 @@ func _is_python_fallback_runtime_error(response: Dictionary) -> bool:
 	]
 
 
-func _parse_chat_response(response_code: int, response_text: String) -> Dictionary:
+func _parse_chat_response(response_code: int, response_text: String, provider: String = "openai") -> Dictionary:
 	if response_code < 200 or response_code >= 300:
 		return _parse_error_response(response_code, HTTPRequest.RESULT_SUCCESS, response_text)
 
@@ -620,6 +769,10 @@ func _parse_chat_response(response_code: int, response_text: String) -> Dictiona
 		}
 
 	var parsed_dict := parsed as Dictionary
+
+	if provider == "anthropic":
+		return _parse_anthropic_response(response_code, parsed_dict, response_text)
+
 	var responses_content := _extract_responses_api_content(parsed_dict)
 	if responses_content.strip_edges() != "":
 		return _parse_json_content(response_code, responses_content, response_text)
@@ -657,6 +810,51 @@ func _parse_chat_response(response_code: int, response_text: String) -> Dictiona
 		}
 
 	return _parse_json_content(response_code, content, response_text)
+
+
+func _parse_anthropic_response(response_code: int, parsed_dict: Dictionary, raw_body: String) -> Dictionary:
+	var stop_reason := str(parsed_dict.get("stop_reason", ""))
+	if stop_reason == "":
+		var error_type := str(parsed_dict.get("error", {}).get("type", "")) if parsed_dict.has("error") else ""
+		var error_message := str(parsed_dict.get("error", {}).get("message", "")) if parsed_dict.has("error") else ""
+		if error_type != "" or error_message != "":
+			return {
+				"status": "error",
+				"http_code": response_code,
+				"error_type": "anthropic_error",
+				"message": error_message if error_message != "" else "Anthropic API error",
+				"raw_body": raw_body,
+			}
+
+	var content_variant: Variant = parsed_dict.get("content", [])
+	if not content_variant is Array or (content_variant as Array).is_empty():
+		return {
+			"status": "error",
+			"http_code": response_code,
+			"error_type": "missing_content",
+			"message": "Anthropic response did not include content",
+			"raw_body": raw_body,
+		}
+
+	var text_parts: PackedStringArray = []
+	for block_variant: Variant in content_variant as Array:
+		if not block_variant is Dictionary:
+			continue
+		var block: Dictionary = block_variant as Dictionary
+		if str(block.get("type", "")) == "text":
+			text_parts.append(str(block.get("text", "")))
+
+	var content := "\n".join(text_parts).strip_edges()
+	if content == "":
+		return {
+			"status": "error",
+			"http_code": response_code,
+			"error_type": "missing_content",
+			"message": "Anthropic response content blocks had no text",
+			"raw_body": raw_body,
+		}
+
+	return _parse_json_content(response_code, content, raw_body)
 
 
 func _parse_json_content(response_code: int, content: String, raw_body: String = "") -> Dictionary:
@@ -785,11 +983,12 @@ func _request_json_payload_via_python_fallback_async(
 	request_url: String,
 	api_key: String,
 	request_payload: Dictionary,
-	callback: Callable
+	callback: Callable,
+	provider: String = "openai"
 ) -> int:
 	if not _allow_python_fallback or parent == null or not is_instance_valid(parent):
 		return ERR_UNAVAILABLE
-	var request_paths := _write_python_fallback_request(request_url, api_key, request_payload)
+	var request_paths := _write_python_fallback_request(request_url, api_key, request_payload, provider)
 	if request_paths.is_empty():
 		return ERR_CANT_CREATE
 	var input_path := str(request_paths.get("input_path", ""))
@@ -806,12 +1005,12 @@ func _request_json_payload_via_python_fallback_async(
 		DirAccess.remove_absolute(output_path)
 		return ERR_CANT_CREATE
 	var poller := PythonFallbackRequest.new()
-	poller.configure(self, process_id, python_executable, input_path, output_path, callback, _timeout_seconds)
+	poller.configure(self, process_id, python_executable, input_path, output_path, callback, _timeout_seconds, provider)
 	parent.add_child(poller)
 	return OK
 
 
-func _write_python_fallback_request(request_url: String, api_key: String, request_payload: Dictionary) -> Dictionary:
+func _write_python_fallback_request(request_url: String, api_key: String, request_payload: Dictionary, provider: String = "openai") -> Dictionary:
 	var script_path := _ensure_python_fallback_script()
 	if script_path == "":
 		return {}
@@ -821,12 +1020,14 @@ func _write_python_fallback_request(request_url: String, api_key: String, reques
 	var token := "%d_%d" % [Time.get_ticks_msec(), randi()]
 	var input_path := "%s/request_%s.json" % [temp_dir, token]
 	var output_path := "%s/response_%s.json" % [temp_dir, token]
+	var headers := _build_request_headers_dict(api_key, provider)
 	var input := {
 		"url": request_url,
 		"api_key": api_key,
 		"payload": request_payload,
 		"timeout_seconds": _timeout_seconds,
 		"allow_unsafe_tls": _allow_unsafe_tls,
+		"headers": headers,
 	}
 	var input_file := FileAccess.open(input_path, FileAccess.WRITE)
 	if input_file == null:
@@ -861,7 +1062,7 @@ func _ensure_python_fallback_script() -> String:
 	return ProjectSettings.globalize_path(PYTHON_FALLBACK_USER_SCRIPT)
 
 
-func _normalize_python_fallback_output(output_text: String) -> Dictionary:
+func _normalize_python_fallback_output(output_text: String, provider: String = "openai") -> Dictionary:
 	var parsed: Variant = JSON.parse_string(output_text)
 	if not (parsed is Dictionary):
 		return {
@@ -876,7 +1077,7 @@ func _normalize_python_fallback_output(output_text: String) -> Dictionary:
 		response["status"] = "error"
 		response["transport"] = "python_fallback"
 		return response
-	var normalized := _parse_chat_response(int(response.get("http_code", 0)), str(response.get("body", "")))
+	var normalized := _parse_chat_response(int(response.get("http_code", 0)), str(response.get("body", "")), provider)
 	normalized["transport"] = "python_fallback"
 	normalized["http_code"] = int(response.get("http_code", 0))
 	return normalized

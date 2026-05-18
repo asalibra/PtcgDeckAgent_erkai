@@ -7,6 +7,7 @@ const SwissTournamentScript := preload("res://scripts/tournament/SwissTournament
 enum GameMode {
 	TWO_PLAYER,  ## 双人操控
 	VS_AI,       ## 对战AI
+	ONLINE,      ## 网络对战
 }
 
 ## 当前选择的游戏模式
@@ -50,6 +51,11 @@ const SCENE_TOURNAMENT_DECK_SELECT := "res://scenes/tournament/TournamentDeckSel
 const SCENE_TOURNAMENT_SETUP := "res://scenes/tournament/TournamentSetup.tscn"
 const SCENE_TOURNAMENT_OVERVIEW := "res://scenes/tournament/TournamentOverview.tscn"
 const SCENE_TOURNAMENT_STANDINGS := "res://scenes/tournament/TournamentStandings.tscn"
+const SCENE_NET_LOBBY := "res://scenes/network/NetLobby.tscn"
+const SCENE_NET_WAITING := "res://scenes/network/NetWaitingRoom.tscn"
+const SCENE_NET_BATTLE := "res://scenes/network/NetBattleScene.tscn"
+const SCENE_NET_RESULT := "res://scenes/network/NetResult.tscn"
+const NET_PREFS_PATH := "user://net_prefs.json"
 const BATTLE_REVIEW_API_CONFIG_PATH := "user://battle_review_api.json"
 const CANONICAL_BATTLE_REVIEW_USER_DIR_NAME := "PTCG Train"
 const BATTLE_REVIEW_API_CONFIG_FILE_NAME := "battle_review_api.json"
@@ -96,6 +102,14 @@ const SUPPORTED_BATTLE_REVIEW_MODELS: Array[Dictionary] = [
 		"label": "claude-sonnet-4-6",
 	},
 ]
+
+## 网络对战状态
+var net_room_id: String = ""
+var net_player_index: int = -1
+var net_session_token: String = ""
+var net_server_url: String = "ws://localhost:9000"
+var net_game_winner: int = -1
+var net_game_reason: String = ""
 
 var _battle_replay_launch: Dictionary = {}
 var _deck_editor_deck_id: int = -1
@@ -253,6 +267,48 @@ func goto_settings() -> void:
 	goto_scene(SCENE_SETTINGS)
 
 
+func clear_net_connection_session() -> void:
+	net_room_id = ""
+	net_player_index = -1
+	net_session_token = ""
+
+
+func clear_net_result_state() -> void:
+	net_game_winner = -1
+	net_game_reason = ""
+
+
+func load_net_prefs() -> Dictionary:
+	if not FileAccess.file_exists(NET_PREFS_PATH):
+		return {}
+	var file := FileAccess.open(NET_PREFS_PATH, FileAccess.READ)
+	if file == null:
+		return {}
+	var json := JSON.new()
+	if json.parse(file.get_as_text()) != OK:
+		return {}
+	return json.data if json.data is Dictionary else {}
+
+
+func save_net_prefs(player_name: String = "", server_url: String = "") -> void:
+	var existing := load_net_prefs()
+	var data := {
+		"player_name": player_name if not player_name.is_empty() else str(existing.get("player_name", "玩家")),
+		"server_url": server_url if not server_url.is_empty() else str(existing.get("server_url", net_server_url)),
+		"session_token": net_session_token,
+		"room_id": net_room_id,
+		"player_index": net_player_index,
+	}
+	var file := FileAccess.open(NET_PREFS_PATH, FileAccess.WRITE)
+	if file != null:
+		file.store_string(JSON.stringify(data, "\t"))
+
+
+func clear_saved_net_session() -> void:
+	clear_net_connection_session()
+	save_net_prefs()
+
+
 func goto_tournament_deck_select() -> void:
 	goto_scene(SCENE_TOURNAMENT_DECK_SELECT)
 
@@ -267,6 +323,22 @@ func goto_tournament_overview() -> void:
 
 func goto_tournament_standings() -> void:
 	goto_scene(SCENE_TOURNAMENT_STANDINGS)
+
+
+## 切换到网络对战大厅
+func goto_net_lobby() -> void:
+	goto_scene(SCENE_NET_LOBBY)
+
+
+## 切换到网络对战场景
+func goto_net_battle() -> void:
+	current_mode = GameMode.ONLINE
+	goto_scene(SCENE_NET_BATTLE)
+
+
+## 切换到网络对战结果
+func goto_net_result() -> void:
+	goto_scene(SCENE_NET_RESULT)
 
 
 func load_battle_setup_preferences() -> void:

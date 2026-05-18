@@ -937,22 +937,48 @@ func _on_strategy_pressed() -> void:
 	editor_panel.add_theme_stylebox_override("panel", _make_strategy_dialog_style(Color(0.028, 0.044, 0.072, 0.97), Color(0.18, 0.68, 0.82, 0.48), 16, 12, 10))
 	root.add_child(editor_panel)
 
-	var text_edit := TextEdit.new()
-	text_edit.text = _deck.strategy
-	text_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	text_edit.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	text_edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
-	text_edit.placeholder_text = "例：核心攻击手是XXex，通过YY加速能量，前两回合目标是展开ZZ线..."
-	text_edit.add_theme_color_override("font_color", Color(0.94, 0.98, 1.0, 1.0))
-	text_edit.add_theme_color_override("placeholder_color", Color(0.50, 0.58, 0.66, 1.0))
-	text_edit.add_theme_font_size_override("font_size", 15)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	HudThemeScript.style_scrollable_control(scroll)
+	editor_panel.add_child(scroll)
+
+	var fields_vbox := VBoxContainer.new()
+	fields_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	fields_vbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	fields_vbox.add_theme_constant_override("separation", 10)
+	scroll.add_child(fields_vbox)
+
 	var input_normal := _make_strategy_dialog_style(Color(0.015, 0.024, 0.042, 0.92), Color(0.18, 0.31, 0.40, 0.95), 12, 10, 0)
 	var input_focus := _make_strategy_dialog_style(Color(0.020, 0.036, 0.062, 0.97), Color(0.22, 0.86, 0.95, 0.95), 12, 10, 0)
-	text_edit.add_theme_stylebox_override("normal", input_normal)
-	text_edit.add_theme_stylebox_override("focus", input_focus)
-	text_edit.add_theme_stylebox_override("read_only", input_normal)
-	HudThemeScript.style_scrollable_control(text_edit)
-	editor_panel.add_child(text_edit)
+	var field_editors: Dictionary = {}
+
+	for field: Dictionary in DeckData.STRATEGY_PROFILE_FIELDS:
+		var field_key: String = field["key"]
+		var field_label: String = field["label"]
+		var field_placeholder: String = field["placeholder"]
+
+		var section_label := Label.new()
+		section_label.text = field_label
+		section_label.add_theme_font_size_override("font_size", 15)
+		section_label.add_theme_color_override("font_color", Color(0.22, 0.82, 0.92, 1.0))
+		fields_vbox.add_child(section_label)
+
+		var text_edit := TextEdit.new()
+		text_edit.text = _deck.get_strategy_profile_field(field_key)
+		text_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		text_edit.custom_minimum_size = Vector2(0, 72)
+		text_edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
+		text_edit.placeholder_text = field_placeholder
+		text_edit.add_theme_color_override("font_color", Color(0.94, 0.98, 1.0, 1.0))
+		text_edit.add_theme_color_override("placeholder_color", Color(0.50, 0.58, 0.66, 1.0))
+		text_edit.add_theme_font_size_override("font_size", 14)
+		text_edit.add_theme_stylebox_override("normal", input_normal)
+		text_edit.add_theme_stylebox_override("focus", input_focus)
+		text_edit.add_theme_stylebox_override("read_only", input_normal)
+		HudThemeScript.style_scrollable_control(text_edit)
+		fields_vbox.add_child(text_edit)
+		field_editors[field_key] = text_edit
 
 	var actions := HBoxContainer.new()
 	actions.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
@@ -976,7 +1002,11 @@ func _on_strategy_pressed() -> void:
 
 	add_child(dialog)
 	var save_strategy := func() -> void:
-		_deck.strategy = text_edit.text
+		for key: Variant in field_editors.keys():
+			var editor: TextEdit = field_editors[key]
+			_deck.set_strategy_profile_field(str(key), editor.text)
+		# 同步旧字段：把 core_plan 也写入 strategy（向后兼容）
+		_deck.strategy = _deck.get_strategy_profile_field("core_plan")
 		_dirty = true
 		dialog.queue_free()
 	save_btn.pressed.connect(save_strategy)
@@ -984,7 +1014,9 @@ func _on_strategy_pressed() -> void:
 	close_btn.pressed.connect(dialog.queue_free)
 	dialog.canceled.connect(dialog.queue_free)
 	dialog.popup_centered(dialog_size)
-	text_edit.call_deferred("grab_focus")
+	if field_editors.size() > 0:
+		var first_editor: TextEdit = field_editors.values()[0]
+		first_editor.call_deferred("grab_focus")
 
 
 func _make_strategy_dialog_style(bg: Color, border: Color, radius: int, margin: int, shadow_size: int = 0) -> StyleBoxFlat:

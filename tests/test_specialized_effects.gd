@@ -198,9 +198,13 @@ func test_nest_ball_uses_selected_basic_pokemon() -> String:
 	effect.execute(CardInstance.create(_make_trainer_data("巢穴球"), 0), [{
 		"basic_pokemon": [basic_b],
 	}], state)
+	var benched_top: CardInstance = null
+	if not player.bench.is_empty():
+		benched_top = player.bench.back().get_top_card()
 
 	return run_checks([
 		assert_eq(player.bench.back().get_pokemon_name(), "基础乙", "应按选择将指定基础宝可梦放入备战区"),
+		assert_true(benched_top != null and benched_top.face_up, "巢穴球放入备战区的宝可梦应立刻正面朝上，联机对手才能看到"),
 	])
 
 func test_nest_ball_respects_collapsed_stadium_live_bench_limit() -> String:
@@ -2171,12 +2175,38 @@ func test_buddy_poffin_respects_collapsed_stadium_live_bench_limit() -> String:
 	effect.execute(card, [{
 		"buddy_poffin_pokemon": [poffin_a, poffin_b],
 	}], state)
+	var benched_poffin: CardInstance = null
+	if not player.bench.is_empty():
+		benched_poffin = player.bench.back().get_top_card()
 
 	return run_checks([
 		assert_eq(int(steps[0].get("max_select", -1)), 1, "崩塌的竞技场在场且已有3只备战时，友好宝芬最多只能选择1只"),
 		assert_eq(player.bench.size(), 4, "友好宝芬不应把备战区推进到第5只"),
 		assert_true(player.bench.any(func(slot: PokemonSlot) -> bool: return slot.get_pokemon_name() == "Poffin A"), "友好宝芬应只放入允许数量内的目标"),
+		assert_true(benched_poffin != null and benched_poffin.face_up, "友好宝芬放入备战区的宝可梦应立刻正面朝上，联机对手才能看到"),
 		assert_true(poffin_b in player.deck, "超出崩塌的竞技场上限的额外目标应留在牌库"),
+	])
+
+
+func test_ability_prize_to_bench_flips_benched_prize_face_up() -> String:
+	var state := _make_state()
+	state.turn_number = 3
+	var player: PlayerState = state.players[0]
+	player.hand.clear()
+	player.bench.clear()
+	var prize_basic := CardInstance.create(_make_basic_pokemon_data("奖赏基础", "L", 60), 0)
+	prize_basic.face_up = false
+	player.hand.append(prize_basic)
+	var effect := AbilityPrizeToBenchAndExtraPrize.new()
+	var result: Dictionary = effect.resolve_prize_take(prize_basic, player, state)
+	var benched_top: CardInstance = null
+	if not player.bench.is_empty():
+		benched_top = player.bench[0].get_top_card()
+
+	return run_checks([
+		assert_true(bool(result.get("used", false)), "奖赏区基础宝可梦上板效果应成功把目标放到备战区"),
+		assert_not_null(benched_top, "奖赏区基础宝可梦应成功进入备战区"),
+		assert_true(bool(benched_top.face_up) if benched_top != null else false, "奖赏区上板的宝可梦应立刻正面朝上，联机对手才能看到"),
 	])
 
 

@@ -974,7 +974,7 @@ func _apply_tilt() -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if not _clickable:
+	if not _clickable or _disabled:
 		return
 	if _handle_touch_inspect_input(event):
 		return

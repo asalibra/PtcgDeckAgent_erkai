@@ -76,6 +76,7 @@ func execute(card: CardInstance, _targets: Array, state: GameState) -> void:
 		player.shuffle_deck()
 		return
 
+	pokemon.face_up = true
 	var slot := PokemonSlot.new()
 	slot.pokemon_stack.append(pokemon)
 	slot.turn_played = state.turn_number

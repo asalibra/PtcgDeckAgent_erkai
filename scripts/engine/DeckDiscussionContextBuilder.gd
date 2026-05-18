@@ -289,6 +289,14 @@ func _build_base_context(deck: DeckData, detailed: bool) -> Dictionary:
 		var strategy := _readable_or_empty(deck.strategy)
 		if strategy != "":
 			result["strategy_summary"] = strategy.left(900)
+		if deck.has_strategy_profile_content():
+			var profile_section := {}
+			for field: Dictionary in DeckData.STRATEGY_PROFILE_FIELDS:
+				var value := deck.get_strategy_profile_field(field["key"]).strip_edges()
+				if value != "":
+					profile_section[field["key"]] = value
+			if not profile_section.is_empty():
+				result["strategy_profile"] = profile_section
 	return result
 
 

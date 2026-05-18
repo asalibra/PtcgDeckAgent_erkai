@@ -38,8 +38,6 @@ function Resolve-PythonCommand {
         $candidates += @(@{ FilePath = $PreferredPython; Arguments = @() })
     }
     $candidates += @(
-        @{ FilePath = 'C:\Users\24726\AppData\Local\Programs\Python\Python310\python.exe'; Arguments = @() },
-        @{ FilePath = 'C:\Users\24726\miniconda3\python.exe'; Arguments = @() },
         @{ FilePath = 'py'; Arguments = @('-3.10') },
         @{ FilePath = 'py'; Arguments = @('-3.13') },
         @{ FilePath = 'python'; Arguments = @() }

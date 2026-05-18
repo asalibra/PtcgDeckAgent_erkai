@@ -463,6 +463,7 @@ func _ensure_match_end_screen(scene: Object) -> void:
 	_add_match_end_button(scene, buttons, "_match_end_ai_button", "AI快评", "_on_match_end_quick_review_pressed", Color(0.18, 0.72, 0.92, 1.0))
 	_add_match_end_button(scene, buttons, "_match_end_review_button", "生成AI复盘", "_on_match_end_review_pressed", Color(0.60, 0.82, 0.42, 1.0))
 	_add_match_end_button(scene, buttons, "_match_end_learning_button", "加入学习池", "_on_match_end_learning_pressed", Color(0.92, 0.68, 0.30, 1.0))
+	_add_match_end_button(scene, buttons, "_match_end_evolution_button", "总结进化", "_on_match_end_evolution_pressed", Color(0.85, 0.45, 0.95, 1.0))
 	_add_match_end_button(scene, buttons, "_match_end_return_button", "返回对战准备", "_on_match_end_return_pressed", Color(0.64, 0.72, 0.84, 1.0))
 
 
@@ -605,6 +606,7 @@ func _refresh_match_end_buttons(scene: Object) -> void:
 	var ai_button: Button = scene.get("_match_end_ai_button")
 	var review_button: Button = scene.get("_match_end_review_button")
 	var learning_button: Button = scene.get("_match_end_learning_button")
+	var evolution_button: Button = scene.get("_match_end_evolution_button")
 	var return_button: Button = scene.get("_match_end_return_button")
 	if ai_button != null:
 		ai_button.visible = false
@@ -615,6 +617,17 @@ func _refresh_match_end_buttons(scene: Object) -> void:
 	if learning_button != null:
 		learning_button.visible = false
 		learning_button.disabled = true
+	if evolution_button != null:
+		var evo_busy: bool = bool(scene.get("_match_end_evolution_busy"))
+		var evo_progress: String = str(scene.get("_match_end_evolution_progress"))
+		if evo_busy:
+			evolution_button.visible = true
+			evolution_button.text = evo_progress if evo_progress != "" else "总结中..."
+			evolution_button.disabled = true
+		else:
+			evolution_button.visible = true
+			evolution_button.text = "总结进化"
+			evolution_button.disabled = false
 	if return_button != null:
 		return_button.visible = true
 		return_button.text = "返回比赛积分" if GameManager.is_tournament_battle_active() else "返回对战准备"

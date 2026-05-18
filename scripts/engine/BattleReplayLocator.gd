@@ -3,6 +3,7 @@ extends RefCounted
 
 
 func locate(match_dir: String) -> Dictionary:
+	var turn_numbers := _replayable_turn_numbers(match_dir)
 	var review := _read_json(match_dir.path_join("review/review.json"))
 	var loser_review_turn := _loser_turn_from_review(review)
 	var entry_turn := loser_review_turn
@@ -10,10 +11,13 @@ func locate(match_dir: String) -> Dictionary:
 	if entry_turn <= 0:
 		entry_turn = _loser_last_full_turn(match_dir)
 		entry_source = "loser_last_full_turn"
+	if entry_turn <= 0 and not turn_numbers.is_empty():
+		entry_turn = turn_numbers[turn_numbers.size() - 1]
+		entry_source = "latest_replayable_turn"
 	return {
 		"entry_turn_number": entry_turn,
 		"entry_source": entry_source,
-		"turn_numbers": _replayable_turn_numbers(match_dir),
+		"turn_numbers": turn_numbers,
 	}
 
 

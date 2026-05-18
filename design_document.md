@@ -1524,3 +1524,167 @@ ptcgtrain/
   - run a generic smoke execution path for supported card types
   - emit a persistent report to `user://logs/card_audit_latest.txt`
 - The normal `tests/TestRunner.tscn` suite now includes this audit, so one headless run covers both unit tests and broad card-effect smoke coverage.
+
+---
+
+## 13. 网络对战系统 (Phase 1 — 最小可玩版本)
+
+### 13.1 概述
+
+将本地 PTCG 对战改造为服务器权威的网络对战。VPS 上运行 Godot headless 服务器，玩家通过浏览器（Godot Web 导出）访问。两人创建房间、选牌组、对战。服务器运行完整的 `GameStateMachine`，客户端仅做渲染和用户输入转发。
+
+### 13.2 架构
+
+```
+┌─────────────────────────────────────────────────────┐
+│  浏览器客户端 (Godot Web Export)                      │
+│  NetBattleScene → NetBattleScenePatch (extends BattleScene) │
+│  NetworkClient (WebSocket)                           │
+├─────────────────────────────────────────────────────┤
+│  WebSocket 通信 (JSON)                               │
+├─────────────────────────────────────────────────────┤
+│  VPS Godot Headless 服务器                           │
+│  ServerMain → ServerNetwork → RoomManager → GameRoom │
+│  GameStateMachine (权威状态) + ServerSerializer       │
+└─────────────────────────────────────────────────────┘
+```
+
+### 13.3 文件清单
+
+#### 服务端 (`scripts/server/`)
+| 文件 | 职责 |
+|------|------|
+| `ServerMain.gd` | headless 入口（extends SceneTree），解析 `--port=` CLI 参数，初始化并运行主循环 |
+| `ServerNetwork.gd` | TCPServer + WebSocketPeer 接受连接、收发 JSON 消息 |
+| `RoomManager.gd` | 房间 CRUD、消息路由、session 管理、断线重连 |
+| `GameRoom.gd` | 包装 GameStateMachine，处理 action 路由（instance_id → CardInstance, SlotRef → PokemonSlot），广播状态 |
+| `PlayerSession.gd` | 连接状态跟踪、session_token 生成、断线计时（300秒超时判负） |
+| `ServerSerializer.gd` | GameState 序列化 + 信息隔离（对手手牌仅发 hand_count，牌库内容不发） |
+
+#### 客户端 (`scripts/network/` + `scenes/network/`)
+| 文件 | 职责 |
+|------|------|
+| `NetProtocol.gd` | 协议常量 + 消息构建工具（客户端/服务端共用） |
+| `NetworkClient.gd` | WebSocket 客户端（extends Node），消息收发、心跳、自动重连 |
+| `NetLobby.gd/.tscn` | 房间列表/创建/加入 UI |
+| `NetWaitingRoom.gd/.tscn` | 等待房间：选牌组、准备、开始 |
+| `NetBattleScene.gd` | 包装器：加载 BattleScene.tscn，替换脚本为 NetBattleScenePatch，创建 NetworkClient |
+| `NetBattleScenePatch.gd` | extends BattleScene.gd，覆盖 12+ 个 GSM 调用点走网络发送 |
+| `NetResult.gd/.tscn` | 对战结果页（胜利/失败、返回大厅/主菜单） |
+
+#### 修改的现有文件
+| 文件 | 改动 |
+|------|------|
+| `GameManager.gd` | 新增 `GameMode.ONLINE` 枚举、网络场景常量（`SCENE_NET_*`）、网络状态变量（`net_room_id`, `net_player_index`, `net_session_token`, `net_server_url`）、`goto_net_lobby/battle/result()` 方法 |
+| `MainMenu.gd/.tscn` | 新增"网络对战"按钮，调用 `GameManager.goto_net_lobby()` |
+
+### 13.4 通信协议
+
+所有消息格式：`{"type": "<msg_type>", "payload": {...}}`
+
+#### 客户端→服务器
+| type | payload | 说明 |
+|------|---------|------|
+| `create_room` | `{room_name, player_name}` | 创建房间 |
+| `join_room` | `{room_id, player_name}` | 加入房间 |
+| `list_rooms` | `{}` | 获取房间列表 |
+| `select_deck` | `{deck_id}` | 选择牌组 |
+| `set_ready` | `{ready}` | 准备状态 |
+| `start_game` | `{}` | 房主开始游戏 |
+| `action` | `{action_type, params}` | 游戏操作 |
+| `choice_response` | `{choice_type, data}` | 回应服务器选择提示 |
+| `reconnect` | `{session_token}` | 断线重连 |
+| `leave_room` | `{}` | 离开房间 |
+| `pong` | `{}` | 心跳响应 |
+
+#### 服务器→客户端
+| type | payload | 说明 |
+|------|---------|------|
+| `room_list` | `{rooms}` | 房间列表 |
+| `room_created` | `{room_id, player_index, session_token}` | 创建成功 |
+| `room_joined` | `{room_id, player_index, session_token}` | 加入成功 |
+| `room_update` | `{opponent_name, opponent_ready}` | 房间状态变化 |
+| `game_starting` | `{first_player_index, your_player_index}` | 游戏即将开始 |
+| `state_update` | `{state, last_action, pending_choice}` | 游戏状态全量快照 |
+| `choice_prompt` | `{choice_type, data}` | 需要玩家做选择 |
+| `draw_reveal` | `{cards}` | 抽牌详情（仅发给抽牌者） |
+| `game_over` | `{winner_index, reason}` | 游戏结束 |
+| `error` | `{code, message}` | 错误 |
+| `ping` | `{}` | 心跳 |
+| `opponent_disconnected` | `{grace_seconds}` | 对手断线 |
+| `opponent_reconnected` | `{}` | 对手重连 |
+
+#### Action 类型映射
+| action_type | params | GSM 方法 |
+|-------------|--------|----------|
+| `setup_place_active` | `{instance_id}` | `setup_place_active_pokemon(pi, card)` |
+| `setup_place_bench` | `{instance_id}` | `setup_place_bench_pokemon(pi, card)` |
+| `setup_complete` | `{}` | `setup_complete(pi)` |
+| `play_basic_to_bench` | `{instance_id}` | `play_basic_to_bench(pi, card)` |
+| `evolve` | `{instance_id, target_slot}` | `evolve_pokemon(pi, card, slot)` |
+| `attach_energy` | `{instance_id, target_slot}` | `attach_energy(pi, card, slot)` |
+| `attach_tool` | `{instance_id, target_slot}` | `attach_tool(pi, card, slot)` |
+| `play_trainer` | `{instance_id, targets}` | `play_trainer(pi, card, targets)` |
+| `play_stadium` | `{instance_id}` | `play_stadium(pi, card)` |
+| `retreat` | `{energy_instance_ids, bench_slot}` | `retreat(pi, energy, slot)` |
+| `use_attack` | `{attack_index, targets}` | `use_attack(pi, idx, targets)` |
+| `use_ability` | `{slot, ability_index, targets}` | `use_ability(pi, slot, idx, targets)` |
+| `end_turn` | `{}` | `end_turn(pi)` |
+
+**SlotRef 格式**: `{player_index, slot_kind: "active"|"bench", slot_index}`
+
+### 13.5 状态同步策略
+
+- **全量快照**：每次操作后发送完整 GameState（~2-5KB JSON），复用 `BattleRecordingController.build_battle_state_snapshot()` 序列化 + `BattleReplayStateRestorer.restore()` 反序列化
+- **信息隔离**：对手手牌只发 `hand_count`，牌库不发内容，自己的奖赏卡数据包含但 `face_up=false`
+- **批量更新**：GSM 同一帧内多个信号合并为一次 `state_update`，在 tick 末尾发送
+- **抽牌揭示**：单独 `draw_reveal` 消息只发给抽牌玩家
+
+### 13.6 客户端补丁机制
+
+`NetBattleScene` 采用**包装器+补丁脚本**模式：
+
+1. `NetBattleScene.gd`（包装器）在 `_ready()` 中加载 `BattleScene.tscn`
+2. 将实例的脚本替换为 `NetBattleScenePatch.gd`（extends BattleScene.gd）
+3. 设置 `_net_mode = true` 和 `_net_handler = self`
+4. 补丁脚本覆盖 12+ 个关键方法，在网络模式下将 GSM 调用替换为 `send_action()` / `send_choice_response()`
+
+覆盖的方法：
+- `_start_battle()` — 跳过本地 GSM 创建
+- `_on_end_turn()` — 发送 ACTION_END_TURN
+- `_after_setup_bench()` — 发送 ACTION_SETUP_COMPLETE
+- `_handle_dialog_choice()` — 路由到 `_net_handle_dialog_choice()` 处理 8 种对话框类型
+- `_handle_slot_left_click()` — 发送 EVOLVE/ATTACH_ENERGY/ATTACH_TOOL
+- `_try_play_to_bench()` — 发送 ACTION_PLAY_BASIC_TO_BENCH
+- `_try_take_prize_from_slot()` — 发送 CHOICE_TAKE_PRIZE
+- `_commit_heavy_baton_assignment()` — 发送 CHOICE_HEAVY_BATON_TARGET
+- `_commit_exp_share_assignment()` — 发送 CHOICE_EXP_SHARE_TARGET
+- `_try_use_attack_with_interaction()` — 发送 ACTION_USE_ATTACK
+- `_try_use_granted_attack_with_interaction()` — 发送 ACTION_USE_GRANTED_ATTACK
+
+### 13.7 断线重连
+
+- 服务器生成 `session_token`，客户端存储
+- 断线后 300 秒内可通过 token 重连
+- 重连后服务器发送当前完整状态快照
+- 超时判负
+
+### 13.8 启动方式
+
+**服务端：**
+```bash
+godot --headless --path <project_path> -s res://scripts/server/ServerMain.gd -- --port=9000
+```
+
+**客户端：**
+浏览器打开 Godot Web 导出的页面，进入"网络对战"→ 创建/加入房间 → 选牌组 → 开始对战。
+
+### 13.9 后续计划 (Phase 2+)
+
+- [ ] BattleActionController 委托的网络覆盖（play_trainer/play_stadium/use_ability 通过 _battle_action_controller）
+- [ ] 手机浏览器适配（强制横屏、触控优化）
+- [ ] 对战历史持久化（复用 BattleRecorder 写入磁盘）
+- [ ] 在线复盘功能（从持久化记录恢复观战）
+- [ ] 观战模式
+- [ ] 房间密码/私密房间
+- [ ] 排行榜/匹配系统

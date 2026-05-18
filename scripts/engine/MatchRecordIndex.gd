@@ -35,7 +35,7 @@ func _build_row(match_dir: String) -> Dictionary:
 	var match_payload := _read_json(match_dir.path_join("match.json"))
 	var meta_variant: Variant = match_payload.get("meta", {})
 	var meta: Dictionary = meta_variant if meta_variant is Dictionary else {}
-	if str(meta.get("mode", "")) != "two_player":
+	if not _supports_replay_mode(str(meta.get("mode", ""))):
 		return {}
 	var result_variant: Variant = match_payload.get("result", {})
 	var result: Dictionary = result_variant if result_variant is Dictionary else {}
@@ -53,6 +53,13 @@ func _build_row(match_dir: String) -> Dictionary:
 		"final_prize_counts": _int_array(result.get("final_prize_counts", [])),
 		"replay_entry_source": "unknown",
 	}
+
+
+func _supports_replay_mode(mode: String) -> bool:
+	match mode:
+		"two_player", "online", "local_human_vs_human":
+			return true
+	return false
 
 
 func _recorded_at(modified_unix: int, fallback_match_id: String) -> String:
