@@ -10,6 +10,7 @@ WEB_PORT=${WEB_PORT:-8080}
 GODOT_VERSION="4.6.2"
 DEPLOY_DIR="${DEPLOY_DIR:-$HOME/ptcg-server}"
 PROJECT_REPO=""  # Set if using git clone
+EXPORT_LOG=""
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -33,6 +34,27 @@ echo ""
 # ---------- 1. Install dependencies ----------
 echo "[1/5] Checking dependencies..."
 
+install_package_if_missing() {
+    local command_name="$1"
+    local package_name="$2"
+
+    if command -v "$command_name" &>/dev/null; then
+        return
+    fi
+
+    echo "  Installing missing dependency: $package_name"
+    if command -v apt-get &>/dev/null; then
+        sudo apt-get update -qq && sudo apt-get install -y -qq "$package_name"
+    elif command -v yum &>/dev/null; then
+        sudo yum install -y "$package_name"
+    elif command -v pacman &>/dev/null; then
+        sudo pacman -S --noconfirm "$package_name"
+    else
+        echo "[!] Cannot install required package automatically: $package_name"
+        exit 1
+    fi
+}
+
 install_godot() {
     echo "  Downloading Godot ${GODOT_VERSION} for Linux..."
     local url="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
@@ -45,12 +67,70 @@ install_godot() {
     echo "  Godot installed to /usr/local/bin/godot"
 }
 
+godot_templates_installed() {
+    local base_dir="${XDG_DATA_HOME:-$HOME/.local/share}/godot/export_templates"
+    local candidates=(
+        "$base_dir/${GODOT_VERSION}.stable"
+        "$base_dir/${GODOT_VERSION}.stable.official"
+    )
+
+    for candidate in "${candidates[@]}"; do
+        if [ -d "$candidate" ] && find "$candidate" -maxdepth 1 -type f | grep -q .; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+install_godot_export_templates() {
+    echo "  Installing Godot export templates ${GODOT_VERSION}..."
+    local url="${GODOT_TEMPLATES_URL:-https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz}"
+    local tmp_dir
+    tmp_dir=$(mktemp -d)
+    local archive_path="$tmp_dir/export_templates.tpz"
+    local extract_dir="$tmp_dir/extracted"
+    local base_dir="${XDG_DATA_HOME:-$HOME/.local/share}/godot/export_templates"
+    local candidates=(
+        "$base_dir/${GODOT_VERSION}.stable"
+        "$base_dir/${GODOT_VERSION}.stable.official"
+    )
+
+    wget -q --show-progress -O "$archive_path" "$url"
+    mkdir -p "$extract_dir"
+    unzip -q -o "$archive_path" -d "$extract_dir"
+
+    if [ ! -d "$extract_dir/templates" ]; then
+        echo "[!] Export templates archive missing templates/ directory"
+        rm -rf "$tmp_dir"
+        exit 1
+    fi
+
+    mkdir -p "$base_dir"
+    for candidate in "${candidates[@]}"; do
+        mkdir -p "$candidate"
+        cp -f "$extract_dir/templates/"* "$candidate/"
+    done
+
+    rm -rf "$tmp_dir"
+    echo "  Export templates installed under $base_dir"
+}
+
+install_package_if_missing wget wget
+install_package_if_missing unzip unzip
+
 if ! command -v godot &>/dev/null && ! command -v godot4 &>/dev/null; then
     echo "  Godot not found, installing..."
     install_godot
 fi
 GODOT_BIN=$(command -v godot 2>/dev/null || command -v godot4 2>/dev/null)
 echo "  Godot: $GODOT_BIN"
+
+if ! godot_templates_installed; then
+    install_godot_export_templates
+else
+    echo "  Export templates: already installed"
+fi
 
 if ! command -v python3 &>/dev/null; then
     echo "  Installing Python3..."
@@ -96,6 +176,7 @@ echo ""
 echo "[3/5] Exporting web client..."
 
 EXPORT_DIR="$DEPLOY_DIR/exports/web"
+EXPORT_LOG="$DEPLOY_DIR/export_web.log"
 mkdir -p "$EXPORT_DIR"
 
 # Check if export preset exists
@@ -104,10 +185,12 @@ if [ ! -f "export_presets.cfg" ]; then
     echo "    Please export manually or copy web export files to $EXPORT_DIR"
 else
     # Export using Godot CLI
-    $GODOT_BIN --headless --path "$DEPLOY_DIR" --export-release "Web" "$EXPORT_DIR/index.html" 2>&1 | tail -5
-    if [ $? -ne 0 ]; then
+    if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-release "Web" "$EXPORT_DIR/index.html" > "$EXPORT_LOG" 2>&1; then
         echo "[!] Export failed, trying debug export..."
-        $GODOT_BIN --headless --path "$DEPLOY_DIR" --export-debug "Web" "$EXPORT_DIR/index.html" 2>&1 | tail -5
+        if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-debug "Web" "$EXPORT_DIR/index.html" >> "$EXPORT_LOG" 2>&1; then
+            echo "[!] Web export failed. Last lines:"
+            tail -20 "$EXPORT_LOG"
+        fi
     fi
 fi
 
@@ -119,7 +202,12 @@ if [ ! -f "$EXPORT_DIR/index.html" ]; then
         echo "  Created index.html from $(basename "$HTML_FILE")"
     else
         echo "[!] No HTML files found in $EXPORT_DIR"
-        echo "    Web clients will not be available"
+        if [ -f "$EXPORT_LOG" ]; then
+            echo "  Export log (last 20 lines):"
+            tail -20 "$EXPORT_LOG"
+        fi
+        echo "    Aborting deploy because web export is missing"
+        exit 1
     fi
 fi
 echo "  Web export: $EXPORT_DIR"
