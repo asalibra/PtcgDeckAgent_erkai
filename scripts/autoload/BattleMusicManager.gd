@@ -37,7 +37,8 @@ var _current_track_id: String = TRACK_ID_NONE
 func _ready() -> void:
 	_ensure_audio_player()
 	ensure_custom_music_dir()
-	ensure_builtin_music_mirror()
+	if not OS.has_feature("web"):
+		ensure_builtin_music_mirror()
 
 
 func ensure_custom_music_dir() -> void:
@@ -199,6 +200,8 @@ func _ensure_audio_player() -> void:
 func _load_builtin_tracks() -> Array[Dictionary]:
 	if not _builtin_tracks_override.is_empty():
 		return _builtin_tracks_override.duplicate(true)
+	if OS.has_feature("web"):
+		return []
 
 	if not FileAccess.file_exists(BUILTIN_CATALOG_PATH):
 		return _fallback_builtin_tracks()

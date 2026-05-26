@@ -77,6 +77,22 @@ func handle_disconnect(peer_id: int) -> void:
 
 
 func handle_tick(delta: float) -> void:
+	# 检查断线超时的会话
+	var expired_sessions: Array = []
+	for peer_id_variant: Variant in _player_sessions.keys():
+		var peer_id := int(peer_id_variant)
+		var session: PlayerSession = _player_sessions[peer_id]
+		if session.is_expired() and not session.room_id.is_empty() and _rooms.has(session.room_id):
+			var room: GameRoom = _rooms[session.room_id]
+			if room._state == NetProtocol.ROOM_STATE_PLAYING:
+				var winner: int = 1 - session.player_index
+				room._on_gsm_game_over(winner, "对手断线超时")
+			expired_sessions.append(peer_id)
+	for peer_id: int in expired_sessions:
+		var session: PlayerSession = _player_sessions[peer_id]
+		session.room_id = ""
+		_peer_to_room.erase(peer_id)
+
 	# 清理过期房间
 	var expired_rooms: Array = []
 	for room_id in _rooms.keys():

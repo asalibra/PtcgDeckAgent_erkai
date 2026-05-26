@@ -12,6 +12,8 @@ android/
 *.log
 *.tmp
 *.bak
+*.bak_wsfix
+*.bak_*
 /erro.txt
 /log_tail.txt
 
@@ -26,6 +28,9 @@ CLAUDE.md
 # Local Godot user:// mirrors and machine-specific API config
 .tmp_appdata/
 battle_review_api.json
+
+# Server config (use server_config.example.json as template)
+scripts/server/server_config.json
 
 # Local runtime artifacts
 logs/

@@ -135,7 +135,7 @@ func _ensure_http_request() -> void:
 		return
 	_http_request = HTTPRequest.new()
 	_http_request.timeout = 8.0
-	_http_request.use_threads = true
+	_http_request.use_threads = not OS.has_feature("web")
 	_http_request.request_completed.connect(_on_manifest_response)
 	add_child(_http_request)
 

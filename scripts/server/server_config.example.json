@@ -1,0 +1,7 @@
+{
+    "server_port": 9000,
+    "web_port": 8080,
+    "max_rooms": 50,
+    "reconnect_timeout": 300,
+    "log_level": "info"
+}

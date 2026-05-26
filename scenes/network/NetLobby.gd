@@ -6,12 +6,15 @@ const REPLAY_DETAIL_STALL_BASE_TIMEOUT_MSEC := 1500
 const REPLAY_DETAIL_STALL_PER_CHUNK_MSEC := 250
 const REPLAY_DETAIL_STALL_MAX_TIMEOUT_MSEC := 12000
 const REPLAY_DETAIL_MAX_RETRIES := 2
+const REQUEST_TIMEOUT_SEC := 8.0
 
 var _network_client: NetworkClient
 var _player_name: String = "玩家"
 var _server_url: String = "ws://localhost:9000"
 var _replay_locator: RefCounted = BattleReplayLocatorScript.new()
 var _pending_replay_details: Dictionary = {}
+var _pending_request: String = ""  # "create_room" / "join_room" / ""
+var _request_start_msec: int = 0
 
 
 func _ready() -> void:
@@ -24,6 +27,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	_tick_pending_replay_details(Time.get_ticks_msec())
+	_tick_pending_request(Time.get_ticks_msec())
 
 
 func _ensure_network_client() -> void:
@@ -102,6 +106,8 @@ func _on_confirm_create_pressed() -> void:
 	if room_name.is_empty():
 		room_name = "房间"
 	_network_client.create_room(room_name, _player_name)
+	_pending_request = "create_room"
+	_request_start_msec = Time.get_ticks_msec()
 	_update_status("正在创建房间...")
 
 
@@ -130,6 +136,8 @@ func _on_close_replay_pressed() -> void:
 
 func _on_join_room(room_id: String) -> void:
 	_network_client.join_room(room_id, _player_name)
+	_pending_request = "join_room"
+	_request_start_msec = Time.get_ticks_msec()
 	_update_status("正在加入房间...")
 
 
@@ -149,6 +157,7 @@ func _on_connected() -> void:
 
 func _on_disconnected(reason: String) -> void:
 	%ConnectBtn.disabled = false
+	_pending_request = ""
 	_pending_replay_details.clear()
 	%RoomListContainer.visible = false
 	%ReplayPanel.visible = false
@@ -158,6 +167,7 @@ func _on_disconnected(reason: String) -> void:
 
 func _on_connection_error(error: String) -> void:
 	%ConnectBtn.disabled = false
+	_pending_request = ""
 	_update_status("连接失败: %s" % error)
 
 
@@ -170,6 +180,7 @@ func _on_message_received(message: Dictionary) -> void:
 			_display_room_list(payload.get("rooms", []))
 
 		NetProtocol.MSG_ROOM_CREATED:
+			_pending_request = ""
 			GameManager.net_room_id = str(payload.get("room_id", ""))
 			GameManager.net_player_index = int(payload.get("player_index", 0))
 			GameManager.net_session_token = str(payload.get("session_token", ""))
@@ -179,6 +190,7 @@ func _on_message_received(message: Dictionary) -> void:
 			GameManager.goto_scene(GameManager.SCENE_NET_WAITING)
 
 		NetProtocol.MSG_ROOM_JOINED:
+			_pending_request = ""
 			GameManager.net_room_id = str(payload.get("room_id", ""))
 			GameManager.net_player_index = int(payload.get("player_index", 1))
 			GameManager.net_session_token = str(payload.get("session_token", ""))
@@ -214,12 +226,17 @@ func _on_message_received(message: Dictionary) -> void:
 			_handle_replay_detail_chunk(payload)
 
 		NetProtocol.MSG_ERROR:
-			# 重连失败，清除保存的会话
-			GameManager.clear_saved_net_session()
-			_save_prefs()
-			_update_status("错误: %s" % str(payload.get("message", "未知错误")))
+			_pending_request = ""
+			var err_msg: String = str(payload.get("message", "未知错误"))
+			# 仅在重连失败时清除会话
+			if not GameManager.net_session_token.is_empty():
+				GameManager.clear_saved_net_session()
+				_save_prefs()
+			_update_status("错误: %s" % err_msg)
+			%CreateRoomPanel.visible = false
 			_show_room_list_panel()
-			_network_client.list_rooms()
+			if _network_client.is_connected_to_server():
+				_network_client.list_rooms()
 
 
 func _display_replay_list(replays: Array) -> void:
@@ -416,6 +433,24 @@ func _handle_replay_detail_chunk(payload: Dictionary) -> void:
 	replay["detail_events"] = detail_events
 	_pending_replay_details.erase(match_id)
 	_display_replay_detail(replay)
+
+
+func _tick_pending_request(now_msec: int) -> void:
+	if _pending_request.is_empty():
+		return
+	var elapsed_sec := (now_msec - _request_start_msec) / 1000.0
+	if elapsed_sec < REQUEST_TIMEOUT_SEC:
+		return
+	var req_name := "请求"
+	match _pending_request:
+		"create_room":
+			req_name = "创建房间"
+		"join_room":
+			req_name = "加入房间"
+	_pending_request = ""
+	_update_status("%s超时，请检查服务器地址后重试" % req_name)
+	%ConnectBtn.disabled = false
+	%CreateRoomPanel.visible = false
 
 
 func _tick_pending_replay_details(now_msec: int) -> void:

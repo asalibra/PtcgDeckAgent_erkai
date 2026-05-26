@@ -33,6 +33,9 @@ static func build_payload(metadata: Dictionary = {}) -> Dictionary:
 func report_startup_visit(metadata: Dictionary = {}) -> int:
 	if _is_reporting:
 		return ERR_BUSY
+	if OS.has_feature("web"):
+		visit_recorded.emit({"ok": true, "skipped": true, "reason": "web_disabled"})
+		return OK
 
 	_ensure_http_request()
 	if _http_request == null:
@@ -62,7 +65,7 @@ func _ensure_http_request() -> void:
 		return
 	_http_request = HTTPRequest.new()
 	_http_request.timeout = REQUEST_TIMEOUT_SECONDS
-	_http_request.use_threads = true
+	_http_request.use_threads = not OS.has_feature("web")
 	_http_request.request_completed.connect(_on_visit_response)
 	add_child(_http_request)
 

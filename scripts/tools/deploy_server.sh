@@ -11,6 +11,7 @@ GODOT_VERSION="4.6.2"
 DEPLOY_DIR="${DEPLOY_DIR:-$HOME/ptcg-server}"
 PROJECT_REPO=""  # Set if using git clone
 EXPORT_LOG=""
+WEB_EXPORT_NAME="index.html"
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -171,12 +172,20 @@ fi
 
 cd "$DEPLOY_DIR"
 
+# Setup server config from template if not exists
+if [ ! -f "$DEPLOY_DIR/scripts/server/server_config.json" ] && [ -f "$DEPLOY_DIR/scripts/server/server_config.example.json" ]; then
+    cp "$DEPLOY_DIR/scripts/server/server_config.example.json" "$DEPLOY_DIR/scripts/server/server_config.json"
+    echo "  Created server_config.json from example template"
+fi
+
 # ---------- 3. Export web client ----------
 echo ""
 echo "[3/5] Exporting web client..."
 
 EXPORT_DIR="$DEPLOY_DIR/exports/web"
 EXPORT_LOG="$DEPLOY_DIR/export_web.log"
+WEB_EXPORT_PATH="$EXPORT_DIR/$WEB_EXPORT_NAME"
+INDEX_EXPORT_PATH="$EXPORT_DIR/index.html"
 mkdir -p "$EXPORT_DIR"
 
 # Check if export preset exists
@@ -185,21 +194,32 @@ if [ ! -f "export_presets.cfg" ]; then
     echo "    Please export manually or copy web export files to $EXPORT_DIR"
 else
     # Export using Godot CLI
-    if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-release "Web" "$EXPORT_DIR/index.html" > "$EXPORT_LOG" 2>&1; then
+    if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-release "Web" "$WEB_EXPORT_PATH" > "$EXPORT_LOG" 2>&1; then
         echo "[!] Export failed, trying debug export..."
-        if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-debug "Web" "$EXPORT_DIR/index.html" >> "$EXPORT_LOG" 2>&1; then
+        if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-debug "Web" "$WEB_EXPORT_PATH" >> "$EXPORT_LOG" 2>&1; then
             echo "[!] Web export failed. Last lines:"
             tail -20 "$EXPORT_LOG"
         fi
     fi
 fi
 
-# Ensure index.html exists
-if [ ! -f "$EXPORT_DIR/index.html" ]; then
+# Ensure a discoverable HTML entry exists
+if [ ! -f "$WEB_EXPORT_PATH" ] && [ -f "$INDEX_EXPORT_PATH" ]; then
+    cp "$INDEX_EXPORT_PATH" "$WEB_EXPORT_PATH"
+    echo "  Created $WEB_EXPORT_NAME from index.html"
+fi
+
+if [ ! -f "$INDEX_EXPORT_PATH" ] && [ -f "$WEB_EXPORT_PATH" ]; then
+    cp "$WEB_EXPORT_PATH" "$INDEX_EXPORT_PATH"
+    echo "  Created index.html from $WEB_EXPORT_NAME"
+fi
+
+if [ ! -f "$INDEX_EXPORT_PATH" ] && [ ! -f "$WEB_EXPORT_PATH" ]; then
     HTML_FILE=$(find "$EXPORT_DIR" -name "*.html" -print -quit 2>/dev/null)
     if [ -n "$HTML_FILE" ]; then
-        cp "$HTML_FILE" "$EXPORT_DIR/index.html"
-        echo "  Created index.html from $(basename "$HTML_FILE")"
+        cp "$HTML_FILE" "$INDEX_EXPORT_PATH"
+        cp "$HTML_FILE" "$WEB_EXPORT_PATH"
+        echo "  Created index.html and $WEB_EXPORT_NAME from $(basename "$HTML_FILE")"
     else
         echo "[!] No HTML files found in $EXPORT_DIR"
         if [ -f "$EXPORT_LOG" ]; then

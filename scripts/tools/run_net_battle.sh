@@ -1,95 +1,67 @@
 #!/bin/bash
-# PTCG Deck Agent - Network Battle Launcher
-# Usage: ./run_net_battle.sh [--server-port 9000] [--web-port 8080] [--godot-path /path/to/godot]
+# PTCG Deck Agent - Network Battle Server Quick Start
+# Usage: ./run_net_battle.sh [--port 9000] [--web-port 8080]
 
-SERVER_PORT=9000
-WEB_PORT=8080
-GODOT_PATH=""
-EXPORT_DIR=""
-PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+SERVER_PORT=${SERVER_PORT:-9000}
+WEB_PORT=${WEB_PORT:-8080}
+EXPORT_DIR="$PROJECT_DIR/exports/web"
 
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --server-port) SERVER_PORT="$2"; shift 2 ;;
+        --port) SERVER_PORT="$2"; shift 2 ;;
         --web-port) WEB_PORT="$2"; shift 2 ;;
-        --godot-path) GODOT_PATH="$2"; shift 2 ;;
-        --export-dir) EXPORT_DIR="$2"; shift 2 ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
 
-if [ -z "$EXPORT_DIR" ]; then
-    EXPORT_DIR="$PROJECT_ROOT/exports/web"
-fi
-
-# Find Godot
-if [ -z "$GODOT_PATH" ]; then
-    GODOT_PATH=$(command -v godot 2>/dev/null || command -v godot4 2>/dev/null || echo "")
-fi
-if [ -z "$GODOT_PATH" ]; then
-    echo "[!] Godot not found. Please install and add to PATH, or use --godot-path"
+# Find Godot binary
+GODOT_BIN=$(command -v godot 2>/dev/null || command -v godot4 2>/dev/null || echo "")
+if [ -z "$GODOT_BIN" ]; then
+    echo "[!] Godot not found. Please install Godot or run deploy_server.sh first."
     exit 1
 fi
 
-echo "============================================"
-echo "  PTCG Deck Agent - Network Battle Launcher"
-echo "============================================"
-echo ""
-echo "  Project dir:     $PROJECT_ROOT"
-echo "  WebSocket port:  $SERVER_PORT"
-echo "  Web HTTP port:   $WEB_PORT"
-echo "  Web export dir:  $EXPORT_DIR"
-echo "  Godot path:      $GODOT_PATH"
-echo ""
-
-# Check web export
-if [ ! -f "$EXPORT_DIR/index.html" ]; then
-    HTML_FILE=$(find "$EXPORT_DIR" -name "*.html" -print -quit 2>/dev/null)
-    if [ -n "$HTML_FILE" ]; then
-        cp "$HTML_FILE" "$EXPORT_DIR/index.html"
-        echo "  Auto-created index.html from $(basename "$HTML_FILE")"
-    else
-        echo "[!] No HTML files in $EXPORT_DIR"
-        echo "    Export Web version from Godot editor first"
-        read -p "Continue anyway? (y/N) " -n 1 -r
-        echo
-        [[ ! $REPLY =~ ^[Yy]$ ]] && exit 0
-    fi
+# Ensure server config exists
+if [ ! -f "$PROJECT_DIR/scripts/server/server_config.json" ] && [ -f "$PROJECT_DIR/scripts/server/server_config.example.json" ]; then
+    cp "$PROJECT_DIR/scripts/server/server_config.example.json" "$PROJECT_DIR/scripts/server/server_config.json"
+    echo "  Created server_config.json from example template"
 fi
 
-cleanup() {
-    echo ""
-    echo "Stopping services..."
-    [ -n "$SERVER_PID" ] && kill $SERVER_PID 2>/dev/null && echo "  Server stopped"
-    [ -n "$WEB_PID" ] && kill $WEB_PID 2>/dev/null && echo "  Web service stopped"
-    echo "Done"
-}
-trap cleanup EXIT
-
-echo "[1/2] Starting game server (port $SERVER_PORT)..."
-"$GODOT_PATH" --headless --path "$PROJECT_ROOT" -s res://scripts/server/ServerMain.gd -- --port=$SERVER_PORT &
-SERVER_PID=$!
-sleep 2
-
-if ! kill -0 $SERVER_PID 2>/dev/null; then
-    echo "[!] Server failed to start"
-    exit 1
-fi
-
-echo "[2/2] Starting web hosting service (port $WEB_PORT)..."
-python3 "$PROJECT_ROOT/scripts/tools/serve_web_export.py" $WEB_PORT "$EXPORT_DIR" &
-WEB_PID=$!
-sleep 1
-
-echo ""
 echo "============================================"
-echo "  All services started!"
+echo "  PTCG Deck Agent - Network Battle Server"
+echo "============================================"
 echo ""
-echo "  Open browser:  http://localhost:$WEB_PORT"
-echo "  Server addr:   ws://localhost:$SERVER_PORT"
+echo "  Game server:   ws://0.0.0.0:$SERVER_PORT"
+echo "  Web client:    http://0.0.0.0:$WEB_PORT"
 echo ""
 echo "  Press Ctrl+C to stop"
 echo "============================================"
 echo ""
+
+# Start game server in background
+"$GODOT_BIN" --headless --path "$PROJECT_DIR" -s res://scripts/server/ServerMain.gd -- --port=$SERVER_PORT &
+SERVER_PID=$!
+
+# Start web server if export exists
+if [ -d "$EXPORT_DIR" ] && command -v python3 &>/dev/null; then
+    python3 "$PROJECT_DIR/scripts/tools/serve_web_export.py" $WEB_PORT "$EXPORT_DIR" &
+    WEB_PID=$!
+fi
+
+# Cleanup on exit
+cleanup() {
+    echo ""
+    echo "Stopping servers..."
+    kill $SERVER_PID 2>/dev/null
+    [ -n "$WEB_PID" ] && kill $WEB_PID 2>/dev/null
+    wait
+    echo "Done."
+}
+trap cleanup EXIT INT TERM
 
 wait

@@ -461,13 +461,6 @@ func tick(_delta: float) -> void:
 		_broadcast_state_update()
 		_update_pending = false
 
-	# 检查断线超时
-	for pi in _players.keys():
-		var session = _players[pi].get("_session_obj")
-		if session != null and session.is_expired():
-			var winner: int = 1 - pi
-			_on_gsm_game_over(winner, "对手断线超时")
-
 
 func get_visible_state(player_index: int) -> Dictionary:
 	if _gsm == null or _gsm.game_state == null:

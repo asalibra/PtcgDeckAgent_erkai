@@ -7,12 +7,16 @@ signal disconnected(reason: String)
 signal message_received(message: Dictionary)
 signal connection_error(error: String)
 
+const CONNECT_TIMEOUT_SEC := 10.0
+
 var server_url: String = "ws://localhost:9000"
 var _ws: WebSocketPeer
 var _connected: bool = false
 var _session_token: String = ""
 var _player_index: int = -1
 var _room_id: String = ""
+var _connecting: bool = false
+var _connect_start_msec: int = 0
 
 
 func connect_to_server(url: String = "") -> void:
@@ -24,6 +28,8 @@ func connect_to_server(url: String = "") -> void:
 	if err != OK:
 		connection_error.emit("连接失败: %s" % error_string(err))
 		return
+	_connecting = true
+	_connect_start_msec = Time.get_ticks_msec()
 	print("[NetworkClient] 正在连接 %s..." % server_url)
 
 
@@ -152,9 +158,19 @@ func _process(_delta: float) -> void:
 	_ws.poll()
 	var state := _ws.get_ready_state()
 
+	# 连接超时检测
+	if _connecting and state != WebSocketPeer.STATE_OPEN:
+		var elapsed_sec := (Time.get_ticks_msec() - _connect_start_msec) / 1000.0
+		if elapsed_sec >= CONNECT_TIMEOUT_SEC:
+			_connecting = false
+			_disconnect_internal()
+			connection_error.emit("连接超时（%.0f秒）" % CONNECT_TIMEOUT_SEC)
+			return
+
 	if state == WebSocketPeer.STATE_OPEN:
 		if not _connected:
 			_connected = true
+			_connecting = false
 			print("[NetworkClient] 已连接")
 			connected.emit()
 		while _ws.get_available_packet_count() > 0:
@@ -226,3 +242,4 @@ func _disconnect_internal() -> void:
 		_ws.close()
 		_ws = null
 	_connected = false
+	_connecting = false

@@ -26,6 +26,7 @@ func _ensure_network_client() -> void:
 	_network_client.connected.connect(_on_connected)
 	_network_client.message_received.connect(_on_message_received)
 	_network_client.disconnected.connect(_on_disconnected)
+	_network_client.connection_error.connect(_on_connection_error)
 	_network_client.connect_to_server(GameManager.net_server_url)
 
 
@@ -128,6 +129,20 @@ func _on_disconnected(reason: String) -> void:
 	_update_status("连接断开: %s" % reason)
 
 
+func _on_connection_error(error: String) -> void:
+	_update_status("连接失败: %s" % error)
+	# 连接失败，延迟返回大厅
+	await get_tree().create_timer(2.0).timeout
+	_return_to_lobby()
+
+
+func _return_to_lobby() -> void:
+	if _network_client != null:
+		_network_client.disconnect_from_server()
+	GameManager.clear_saved_net_session()
+	GameManager.goto_net_lobby()
+
+
 func _on_message_received(message: Dictionary) -> void:
 	var type: String = str(message.get("type", ""))
 	var payload: Dictionary = message.get("payload", {}) if message.get("payload") is Dictionary else {}
@@ -176,7 +191,11 @@ func _on_message_received(message: Dictionary) -> void:
 			_network_client.list_server_decks()
 
 		NetProtocol.MSG_ERROR:
-			_update_status("错误: %s" % str(payload.get("message", "未知错误")))
+			var err_msg: String = str(payload.get("message", "未知错误"))
+			_update_status("错误: %s" % err_msg)
+			# 重连失败，返回大厅
+			await get_tree().create_timer(2.0).timeout
+			_return_to_lobby()
 
 		NetProtocol.MSG_OPPONENT_DISCONNECTED:
 			%OpponentLabel.text = "对手已断线，等待重连..."
