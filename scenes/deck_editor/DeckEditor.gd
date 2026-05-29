@@ -1765,7 +1765,7 @@ func _ensure_card_detail_overlay() -> void:
 
 
 func _apply_card_detail_overlay_metrics() -> void:
-	var viewport_size := Vector2(1280, 720)
+	var viewport_size := Vector2(360, 640) if OS.has_feature("mobile") else Vector2(1280, 720)
 	if is_inside_tree() and get_viewport() != null:
 		viewport_size = get_viewport().get_visible_rect().size
 

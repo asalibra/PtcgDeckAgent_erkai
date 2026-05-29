@@ -357,7 +357,7 @@ func _position_corner_action_label(button: Button) -> void:
 		button_rect.position.x + (button_rect.size.x - desired.x) * 0.5,
 		button_rect.position.y - desired.y - CORNER_ACTION_LABEL_GAP
 	)
-	var viewport_size := get_viewport_rect().size if is_inside_tree() else Vector2(1280, 720)
+	var viewport_size := get_viewport_rect().size if is_inside_tree() else (Vector2(360, 640) if OS.has_feature("mobile") else Vector2(1280, 720))
 	target.x = clampf(target.x, 8.0, maxf(8.0, viewport_size.x - desired.x - 8.0))
 	target.y = maxf(8.0, target.y)
 	_corner_action_label.global_position = target

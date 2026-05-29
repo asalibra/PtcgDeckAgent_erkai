@@ -27,6 +27,8 @@ var _pending_stadium: Dictionary = {}  # player_index -> {card, steps, step_inde
 var _pending_attack: Dictionary = {}  # player_index -> {slot, attack_index, attack_name, steps, step_index, context}
 var _pending_granted_attack: Dictionary = {}  # player_index -> {slot, granted_attack, steps, step_index, context}
 var _choice_prompt_needs_broadcast: bool = false
+var _state_seq: int = NetProtocol.INVALID_STATE_SEQ
+var _active_request_id: String = ""
 
 const BattleReplayStateRestorerScript := preload("res://scripts/engine/BattleReplayStateRestorer.gd")
 const ServerBattleRecorderScript := preload("res://scripts/server/ServerBattleRecorder.gd")
@@ -101,6 +103,26 @@ func remove_player(player_index: int) -> void:
 	_pending_trainer.erase(player_index)
 	_pending_attack.erase(player_index)
 	_setup_complete_flags.erase(player_index)
+
+
+func begin_request(request_id: String) -> void:
+	_active_request_id = request_id
+
+
+func end_request() -> void:
+	_active_request_id = ""
+
+
+func get_current_state_seq() -> int:
+	return _state_seq
+
+
+func is_client_state_current(client_state_seq: int) -> bool:
+	if _state != NetProtocol.ROOM_STATE_PLAYING:
+		return true
+	if _state_seq == NetProtocol.INVALID_STATE_SEQ:
+		return client_state_seq == NetProtocol.INVALID_STATE_SEQ
+	return client_state_seq == _state_seq
 
 
 func set_player_deck(player_index: int, deck_id: int) -> void:
@@ -190,7 +212,7 @@ func start_game() -> bool:
 
 	# 通知双方游戏开始
 	for pi in _players.keys():
-		send_to_player.emit(pi, NetProtocol.make_game_starting(_gsm.game_state.first_player_index, pi))
+		_emit_to_player(pi, NetProtocol.make_game_starting(_gsm.game_state.first_player_index, pi))
 
 	# 立即广播初始状态（GSM 信号可能已设置 _update_pending 和 _pending_choice）
 	# 必须在 tick() 之前发送，确保客户端在收到 choice_prompt 前已有 game_state
@@ -252,7 +274,7 @@ func handle_action(player_index: int, action_type: String, params: Dictionary) -
 					_broadcast_state_update()
 					_update_pending = false
 				# 通知客户端显示备战区选择对话框
-				send_to_player.emit(pi, NetProtocol.make_choice_prompt("setup_bench", {"player_index": pi}))
+				_emit_to_player(pi, NetProtocol.make_choice_prompt("setup_bench", {"player_index": pi}))
 				print("[GameRoom] 已发送 setup_bench 提示给 player %d" % pi)
 			else:
 				_send_error_to(pi, "card_not_found", "找不到指定卡牌")
@@ -265,7 +287,7 @@ func handle_action(player_index: int, action_type: String, params: Dictionary) -
 				if _update_pending:
 					_broadcast_state_update()
 					_update_pending = false
-				send_to_player.emit(pi, NetProtocol.make_choice_prompt("setup_bench", {"player_index": pi}))
+				_emit_to_player(pi, NetProtocol.make_choice_prompt("setup_bench", {"player_index": pi}))
 			else:
 				_send_error_to(pi, "card_not_found", "找不到指定卡牌")
 
@@ -492,7 +514,7 @@ func _on_gsm_action_logged(action) -> void:
 			cards = action.data.get("cards", [])
 		if cards.size() > 0:
 			var reveal_data := _serializer.serialize_draw_cards(cards)
-			send_to_player.emit(drawing_player, NetProtocol.make_draw_reveal(drawing_player, reveal_data))
+			_emit_to_player(drawing_player, NetProtocol.make_draw_reveal(drawing_player, reveal_data))
 	_update_pending = true
 
 
@@ -718,7 +740,7 @@ func _handle_play_trainer(pi: int, card: CardInstance) -> void:
 				prompt_bytes,
 				_net_turn_state_summary(),
 			])
-			send_to_player.emit(pi, prompt_message)
+			_emit_to_player(pi, prompt_message)
 			print("[GameRoom] player %d 训练家 %s 需要交互（%d步，硬币=%s），已发送步骤提示" % [
 				pi, card.card_data.name if card.card_data else "?", steps.size(), str(coin_result)])
 			return
@@ -727,7 +749,7 @@ func _handle_play_trainer(pi: int, card: CardInstance) -> void:
 			# 硬币投掷类卡牌，无后续交互
 			if coin_result:
 				# 正面但无交互步骤（理论上不该发生，防御性处理）
-				send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+				_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 					"steps": [], "step_index": 0,
 					"card_name": card.card_data.name if card.card_data else "?",
 					"target_player": pi,
@@ -737,7 +759,7 @@ func _handle_play_trainer(pi: int, card: CardInstance) -> void:
 				print("[GameRoom] player %d 训练家 %s 硬币正面，直接执行: %s" % [pi, card.card_data.name if card.card_data else "?", result])
 			else:
 				# 反面：通知客户端，手动弃牌，不执行效果
-				send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+				_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 					"steps": [], "step_index": 0,
 					"card_name": card.card_data.name if card.card_data else "?",
 					"target_player": pi,
@@ -799,7 +821,7 @@ func _handle_use_ability(pi: int, slot: PokemonSlot, ability_index: int) -> void
 		}
 		var serialized_steps := _serialize_interaction_steps(steps)
 		var ability_name: String = _gsm.effect_processor.get_ability_name(slot, ability_index, _gsm.game_state)
-		send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+		_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 			"steps": serialized_steps,
 			"step_index": 0,
 			"card_name": ability_name,
@@ -843,7 +865,7 @@ func _resolve_ability_interaction(pi: int, params: Dictionary) -> void:
 		var serialized_steps := _serialize_interaction_steps(steps)
 		var ability_name: String = _gsm.effect_processor.get_ability_name(
 			pending["slot"], pending["ability_index"], _gsm.game_state)
-		send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+		_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 			"steps": serialized_steps,
 			"step_index": next_step_index,
 			"card_name": ability_name,
@@ -881,7 +903,7 @@ func _handle_use_stadium_effect(pi: int) -> void:
 			"context": {},
 		}
 		var serialized_steps := _serialize_interaction_steps(steps)
-		send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+		_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 			"steps": serialized_steps,
 			"step_index": 0,
 			"card_name": stadium_card.card_data.name if stadium_card.card_data else "?",
@@ -921,7 +943,7 @@ func _resolve_stadium_interaction(pi: int, params: Dictionary) -> void:
 		pending["context"] = context
 		var serialized_steps := _serialize_interaction_steps(steps)
 		var card_name: String = pending["card"].card_data.name if pending["card"].card_data else "?"
-		send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+		_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 			"steps": serialized_steps,
 			"step_index": next_step_index,
 			"card_name": card_name,
@@ -981,7 +1003,7 @@ func _handle_use_attack(pi: int, attack_index: int) -> void:
 		"context": {},
 	}
 	var serialized_steps := _serialize_interaction_steps(steps)
-	send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+	_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 		"steps": serialized_steps,
 		"step_index": 0,
 		"card_name": str(attack.get("name", "招式")),
@@ -1016,7 +1038,7 @@ func _resolve_attack_interaction(pi: int, params: Dictionary) -> void:
 		pending["step_index"] = next_step_index
 		pending["context"] = context
 		var serialized_steps := _serialize_interaction_steps(steps)
-		send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+		_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 			"steps": serialized_steps,
 			"step_index": next_step_index,
 			"card_name": str(pending.get("attack_name", "招式")),
@@ -1055,7 +1077,7 @@ func _handle_use_granted_attack(pi: int, attacker_slot: PokemonSlot, granted_att
 		"context": {},
 	}
 	var serialized_steps := _serialize_interaction_steps(steps)
-	send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+	_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 		"steps": serialized_steps,
 		"step_index": 0,
 		"card_name": attack_name,
@@ -1091,7 +1113,7 @@ func _resolve_granted_attack_interaction(pi: int, params: Dictionary) -> void:
 		pending["context"] = context
 		var serialized_steps := _serialize_interaction_steps(steps)
 		var attack_name: String = str(pending["granted_attack"].get("name", "?"))
-		send_to_player.emit(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
+		_emit_to_player(pi, NetProtocol.make_choice_prompt(NetProtocol.CHOICE_TRAINER_INTERACTION, {
 			"steps": serialized_steps,
 			"step_index": next_step_index,
 			"card_name": attack_name,
@@ -1226,7 +1248,7 @@ func _resolve_trainer_interaction(pi: int, params: Dictionary) -> void:
 			prompt_bytes,
 			_net_turn_state_summary(),
 		])
-		send_to_player.emit(pi, prompt_message)
+		_emit_to_player(pi, prompt_message)
 		print("[GameRoom] player %d 训练家交互第 %d 步完成，发送第 %d 步" % [pi, step_index, next_step_index])
 	else:
 		# 全部步骤完成：执行训练家
@@ -1497,12 +1519,16 @@ func _find_slot_ref(slot) -> Dictionary:
 
 func _broadcast(message: Dictionary) -> void:
 	for pi in _players.keys():
-		send_to_player.emit(pi, message)
+		_emit_to_player(pi, message)
 
 
 func _broadcast_state_update() -> void:
 	if _gsm == null or _gsm.game_state == null:
 		return
+	if _state_seq == NetProtocol.INVALID_STATE_SEQ:
+		_state_seq = 0
+	else:
+		_state_seq += 1
 	var turn: int = _gsm.game_state.turn_number
 	var cp: int = _gsm.game_state.current_player_index
 	var phase: int = _gsm.game_state.phase
@@ -1510,7 +1536,7 @@ func _broadcast_state_update() -> void:
 	for pi in _players.keys():
 		var pending_choice_view := _build_pending_choice_view(_pending_choice)
 		var state_view := _serializer.build_view_for_player(_gsm.game_state, pi, _last_action, pending_choice_view)
-		send_to_player.emit(pi, NetProtocol.make_state_update(state_view, _last_action, pending_choice_view))
+		_emit_to_player(pi, NetProtocol.make_state_update(state_view, _last_action, pending_choice_view))
 	# choice_prompt 必须在 state_update 之后发送，确保客户端先初始化 GSM 再显示对话框
 	if _choice_prompt_needs_broadcast:
 		_choice_prompt_needs_broadcast = false
@@ -1540,4 +1566,17 @@ func _broadcast_pending_choice() -> void:
 
 
 func _send_error_to(player_index: int, code: String, message: String) -> void:
-	send_to_player.emit(player_index, NetProtocol.make_error(code, message))
+	_emit_to_player(player_index, NetProtocol.make_error(code, message))
+
+
+func _emit_to_player(player_index: int, message: Dictionary, meta: Dictionary = {}) -> void:
+	send_to_player.emit(player_index, NetProtocol.with_meta(message, _build_message_meta(meta)))
+
+
+func _build_message_meta(meta: Dictionary = {}) -> Dictionary:
+	var result := meta.duplicate(true)
+	if not _active_request_id.is_empty() and not result.has(NetProtocol.META_REQUEST_ID):
+		result[NetProtocol.META_REQUEST_ID] = _active_request_id
+	if _state_seq != NetProtocol.INVALID_STATE_SEQ and not result.has(NetProtocol.META_STATE_SEQ):
+		result[NetProtocol.META_STATE_SEQ] = _state_seq
+	return result

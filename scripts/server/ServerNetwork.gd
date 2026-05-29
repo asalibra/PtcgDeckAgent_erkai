@@ -18,18 +18,20 @@ var _pending_connections: Array = []  # 等待 WebSocket 握手的 TCP 连接
 const HANDSHAKE_TIMEOUT := 10.0
 const PING_INTERVAL := 15.0
 const MAX_SENDS_PER_POLL := 1
-const WEBSOCKET_OUTBOUND_BUFFER_SIZE := 1024 * 1024
+const WEBSOCKET_OUTBOUND_BUFFER_SIZE := 8 * 1024 * 1024
 const WEBSOCKET_MAX_QUEUED_PACKETS := 8192
 
 
-func start(listen_port: int) -> void:
+func start(listen_port: int) -> bool:
 	port = listen_port
 	_tcp_server = TCPServer.new()
 	var err := _tcp_server.listen(port)
 	if err != OK:
 		push_error("[ServerNetwork] 监听端口 %d 失败: %s" % [port, error_string(err)])
-		return
+		_tcp_server = null  # 确保 _accept_new_connections 里的 null 检查生效
+		return false
 	print("[ServerNetwork] 服务器启动，监听端口 %d" % port)
+	return true
 
 
 func stop() -> void:
@@ -133,7 +135,7 @@ func _flush_outbound_queue(peer_id: int, ws) -> void:
 	while not queue.is_empty() and sent_count < MAX_SENDS_PER_POLL:
 		var payload: String = str(queue[0])
 		var payload_bytes: int = payload.to_utf8_buffer().size()
-		var outbound_buffer_size: int = int(ws.get_outbound_buffer_size()) if ws.has_method("get_outbound_buffer_size") else 0
+		var outbound_buffer_size: int = int(ws.get_outbound_buffer_size()) if ws.has_method("get_outbound_buffer_size") else WEBSOCKET_OUTBOUND_BUFFER_SIZE
 		var current_buffered_amount: int = int(ws.get_current_outbound_buffered_amount()) if ws.has_method("get_current_outbound_buffered_amount") else 0
 		if outbound_buffer_size > 0:
 			if payload_bytes > outbound_buffer_size:

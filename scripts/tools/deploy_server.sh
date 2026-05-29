@@ -12,6 +12,9 @@ DEPLOY_DIR="${DEPLOY_DIR:-$HOME/ptcg-server}"
 PROJECT_REPO=""  # Set if using git clone
 EXPORT_LOG=""
 WEB_EXPORT_NAME="index.html"
+CLOUDFLARE_ZONE_ID="${CLOUDFLARE_ZONE_ID:-}"
+CLOUDFLARE_API_TOKEN="${CLOUDFLARE_API_TOKEN:-}"
+CLOUDFLARE_BASE_URL="${CLOUDFLARE_BASE_URL:-}"
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -30,6 +33,9 @@ echo ""
 echo "  Deploy dir:    $DEPLOY_DIR"
 echo "  Server port:   $SERVER_PORT"
 echo "  Web port:      $WEB_PORT"
+if [ -n "$CLOUDFLARE_BASE_URL" ]; then
+    echo "  Purge target:  $CLOUDFLARE_BASE_URL"
+fi
 echo ""
 
 # ---------- 1. Install dependencies ----------
@@ -289,7 +295,7 @@ fi
 
 # ---------- 5. Start services ----------
 echo ""
-echo "[5/5] Starting services..."
+echo "[5/6] Starting services..."
 
 if [[ "$CREATE_SERVICE" =~ ^[Yy]$ ]]; then
     sudo systemctl start ptcg-server ptcg-web
@@ -308,6 +314,45 @@ else
     echo ""
     echo "  Logs: $DEPLOY_DIR/server.log, $DEPLOY_DIR/web.log"
     echo "  Stop: kill \$(cat $DEPLOY_DIR/server.pid) \$(cat $DEPLOY_DIR/web.pid)"
+fi
+
+
+# ---------- 6. Sync to Nginx public directory ----------
+echo ""
+echo "[6/6] Syncing web export to Nginx public directory..."
+NGINX_WEB_ROOT="/var/www/ptcgdeckagent"
+if [ -d "$NGINX_WEB_ROOT" ]; then
+    echo "  Syncing $EXPORT_DIR/ -> $NGINX_WEB_ROOT ..."
+    sudo rsync -av --delete "$EXPORT_DIR/" "$NGINX_WEB_ROOT/"
+    echo "  Nginx public directory updated."
+else
+    echo "  [!] Nginx web root $NGINX_WEB_ROOT does not exist. Skipping sync."
+    echo "      If this is a new server, create it with: sudo mkdir -p $NGINX_WEB_ROOT && sudo chown $(whoami) $NGINX_WEB_ROOT"
+fi
+
+# ---------- 7. Purge Cloudflare cache (optional) ----------
+echo ""
+echo "[7/7] Purging Cloudflare cache..."
+
+if [ -n "$CLOUDFLARE_ZONE_ID" ] && [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_BASE_URL" ]; then
+    PURGE_ARGS=(
+        --zone-id "$CLOUDFLARE_ZONE_ID"
+        --api-token "$CLOUDFLARE_API_TOKEN"
+        --base-url "$CLOUDFLARE_BASE_URL"
+        --export-dir "$EXPORT_DIR"
+    )
+
+    if [ -n "${CLOUDFLARE_PURGE_EVERYTHING:-}" ]; then
+        PURGE_ARGS+=(--purge-everything)
+    fi
+
+    if python3 "$DEPLOY_DIR/scripts/tools/purge_cloudflare_cache.py" "${PURGE_ARGS[@]}"; then
+        echo "  Cloudflare purge requested successfully"
+    else
+        echo "[!] Cloudflare purge failed; deployment completed but CDN may still serve stale files"
+    fi
+else
+    echo "  Skipped. Set CLOUDFLARE_ZONE_ID, CLOUDFLARE_API_TOKEN, and CLOUDFLARE_BASE_URL to enable auto purge"
 fi
 
 echo ""

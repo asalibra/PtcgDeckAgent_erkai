@@ -51,6 +51,9 @@ func _on_net_disconnected(reason: String) -> void:
 func _on_net_message(message: Dictionary) -> void:
 	var type: String = str(message.get("type", ""))
 	var payload: Dictionary = message.get("payload", {}) if message.get("payload") is Dictionary else {}
+	if NetProtocol.is_resync_required(message):
+		_handle_resync_required(payload)
+		return
 
 	match type:
 		NetProtocol.MSG_STATE_UPDATE:
@@ -104,6 +107,15 @@ func _on_net_message(message: Dictionary) -> void:
 
 		NetProtocol.MSG_ERROR:
 			_battle_scene.call("_log", "[网络] 错误: %s" % str(payload.get("message", "未知")))
+
+
+func _handle_resync_required(payload: Dictionary) -> void:
+	var message := str(payload.get("message", "客户端状态已过期，正在重新同步..."))
+	_battle_scene.call("_log", "[网络] %s" % message)
+	if not GameManager.net_session_token.is_empty() and _net_client != null and _net_client.is_connected_to_server():
+		_net_client.reconnect(GameManager.net_session_token)
+		return
+	_battle_scene.call("_log", "[网络] 无法自动恢复，请重新进入房间")
 
 
 func _log_client_choice_prompt(choice_type: String, choice_data: Dictionary, event_name: String) -> void:

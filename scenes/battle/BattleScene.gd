@@ -86,6 +86,17 @@ var _slot_touch_long_press_index: int = -1
 var _slot_touch_long_press_start: Vector2 = Vector2.ZERO
 var _slot_touch_long_press_consumed: bool = false
 var _suppress_next_slot_left_click_id: String = ""
+var _stadium_touch_lp_timer: Timer = null
+var _stadium_touch_lp_active: bool = false
+var _stadium_touch_lp_index: int = -1
+var _stadium_touch_lp_start: Vector2 = Vector2.ZERO
+var _prize_touch_lp_timer: Timer = null
+var _prize_touch_lp_active: bool = false
+var _prize_touch_lp_index: int = -1
+var _prize_touch_lp_start: Vector2 = Vector2.ZERO
+var _prize_touch_lp_consumed: bool = false
+var _prize_touch_lp_player_index: int = -1
+var _prize_touch_lp_title: String = ""
 
 var _setup_done: Array[bool] = [false, false]
 var _play_card_size: Vector2 = Vector2(130, 182)
@@ -1887,11 +1898,64 @@ func _on_stadium_action_pressed() -> void:
 
 
 func _on_stadium_area_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		var touch := event as InputEventScreenTouch
+		if touch.pressed:
+			_start_stadium_touch_long_press(touch.position, touch.index)
+		else:
+			_cancel_stadium_touch_long_press()
+		get_viewport().set_input_as_handled()
+		return
+	if event is InputEventScreenDrag:
+		var drag := event as InputEventScreenDrag
+		if _stadium_touch_lp_active and drag.index == _stadium_touch_lp_index:
+			if drag.position.distance_to(_stadium_touch_lp_start) > SLOT_TOUCH_LONG_PRESS_MOVE_TOLERANCE:
+				_cancel_stadium_touch_long_press()
+		return
 	if not (event is InputEventMouseButton):
 		return
 	var mbe := event as InputEventMouseButton
 	if not mbe.pressed or mbe.button_index != MOUSE_BUTTON_RIGHT:
 		return
+	if not _can_accept_live_action():
+		return
+	if _gsm == null or _gsm.game_state.stadium_card == null:
+		return
+	_show_card_detail(_gsm.game_state.stadium_card.card_data)
+
+
+func _start_stadium_touch_long_press(position: Vector2, touch_index: int) -> void:
+	if _gsm == null or _gsm.game_state.stadium_card == null:
+		return
+	if not _can_accept_live_action():
+		return
+	_cancel_stadium_touch_long_press()
+	if _stadium_touch_lp_timer == null:
+		_stadium_touch_lp_timer = Timer.new()
+		_stadium_touch_lp_timer.name = "StadiumTouchLpTimer"
+		_stadium_touch_lp_timer.one_shot = true
+		_stadium_touch_lp_timer.wait_time = SLOT_TOUCH_LONG_PRESS_SECONDS
+		_stadium_touch_lp_timer.timeout.connect(_on_stadium_touch_lp_timeout)
+		add_child(_stadium_touch_lp_timer)
+	_stadium_touch_lp_active = true
+	_stadium_touch_lp_index = touch_index
+	_stadium_touch_lp_start = position
+	if _stadium_touch_lp_timer.is_inside_tree():
+		_stadium_touch_lp_timer.start()
+
+
+func _cancel_stadium_touch_long_press() -> void:
+	if _stadium_touch_lp_timer != null:
+		_stadium_touch_lp_timer.stop()
+	_stadium_touch_lp_active = false
+	_stadium_touch_lp_index = -1
+	_stadium_touch_lp_start = Vector2.ZERO
+
+
+func _on_stadium_touch_lp_timeout() -> void:
+	if not _stadium_touch_lp_active:
+		return
+	_cancel_stadium_touch_long_press()
 	if not _can_accept_live_action():
 		return
 	if _gsm == null or _gsm.game_state.stadium_card == null:
@@ -2100,7 +2164,8 @@ func _handle_slot_touch_detail_input(event: InputEvent, slot_id: String) -> bool
 	if event is InputEventScreenTouch:
 		var touch := event as InputEventScreenTouch
 		if touch.pressed:
-			_start_slot_touch_action_press(slot_id, touch.position, touch.index)
+			if not _start_slot_touch_long_press(slot_id, touch.position, touch.index):
+				_start_slot_touch_action_press(slot_id, touch.position, touch.index)
 			var press_viewport := get_viewport()
 			if press_viewport != null:
 				press_viewport.set_input_as_handled()
@@ -2169,7 +2234,19 @@ func _cancel_slot_touch_long_press(clear_suppression: bool = true) -> void:
 
 
 func _on_slot_touch_long_press_timeout() -> void:
-	_cancel_slot_touch_long_press(false)
+	if not _slot_touch_long_press_active:
+		return
+	if _slot_touch_long_press_slot_id.begins_with("opp_"):
+		var handled := _show_slot_card_detail(_slot_touch_long_press_slot_id)
+		if not handled:
+			return
+		_slot_touch_long_press_consumed = true
+		_suppress_next_slot_left_click_id = _slot_touch_long_press_slot_id
+		var long_press_viewport := get_viewport()
+		if long_press_viewport != null:
+			long_press_viewport.set_input_as_handled()
+	else:
+		_cancel_slot_touch_long_press(false)
 
 
 func _consume_suppressed_slot_left_click(slot_id: String) -> bool:
@@ -2549,6 +2626,24 @@ func _setup_prize_viewer() -> void:
 
 
 func _on_prize_slot_input(event: InputEvent, player_index: int, title: String, slot_index: int) -> void:
+	if event is InputEventScreenTouch:
+		var touch := event as InputEventScreenTouch
+		if touch.pressed:
+			_start_prize_touch_long_press(player_index, title, touch.position, touch.index)
+		else:
+			if _prize_touch_lp_active and touch.index == _prize_touch_lp_index:
+				var consumed := _prize_touch_lp_consumed
+				_cancel_prize_touch_long_press()
+				get_viewport().set_input_as_handled()
+				if not consumed:
+					_try_take_prize_from_slot(player_index, slot_index)
+		return
+	if event is InputEventScreenDrag:
+		var drag := event as InputEventScreenDrag
+		if _prize_touch_lp_active and drag.index == _prize_touch_lp_index:
+			if drag.position.distance_to(_prize_touch_lp_start) > SLOT_TOUCH_LONG_PRESS_MOVE_TOLERANCE:
+				_cancel_prize_touch_long_press()
+		return
 	if not (event is InputEventMouseButton):
 		return
 	var mbe := event as InputEventMouseButton
@@ -2559,6 +2654,43 @@ func _on_prize_slot_input(event: InputEvent, player_index: int, title: String, s
 		return
 	if mbe.button_index != MOUSE_BUTTON_RIGHT:
 		return
+	_show_prize_cards(player_index, title)
+
+
+func _start_prize_touch_long_press(player_index: int, title: String, position: Vector2, touch_index: int) -> void:
+	_cancel_prize_touch_long_press()
+	if _prize_touch_lp_timer == null:
+		_prize_touch_lp_timer = Timer.new()
+		_prize_touch_lp_timer.name = "PrizeTouchLpTimer"
+		_prize_touch_lp_timer.one_shot = true
+		_prize_touch_lp_timer.wait_time = SLOT_TOUCH_LONG_PRESS_SECONDS
+		_prize_touch_lp_timer.timeout.connect(func() -> void: _on_prize_touch_lp_timeout(player_index, title))
+		add_child(_prize_touch_lp_timer)
+	_prize_touch_lp_active = true
+	_prize_touch_lp_index = touch_index
+	_prize_touch_lp_start = position
+	_prize_touch_lp_consumed = false
+	_prize_touch_lp_player_index = player_index
+	_prize_touch_lp_title = title
+	if _prize_touch_lp_timer.is_inside_tree():
+		_prize_touch_lp_timer.start()
+
+
+func _cancel_prize_touch_long_press() -> void:
+	if _prize_touch_lp_timer != null:
+		_prize_touch_lp_timer.stop()
+	_prize_touch_lp_active = false
+	_prize_touch_lp_index = -1
+	_prize_touch_lp_start = Vector2.ZERO
+	_prize_touch_lp_consumed = false
+	_prize_touch_lp_player_index = -1
+	_prize_touch_lp_title = ""
+
+
+func _on_prize_touch_lp_timeout(player_index: int, title: String) -> void:
+	if not _prize_touch_lp_active:
+		return
+	_prize_touch_lp_consumed = true
 	_show_prize_cards(player_index, title)
 
 

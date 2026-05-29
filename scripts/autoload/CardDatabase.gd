@@ -11,6 +11,7 @@ const BUNDLED_USER_DIR := "res://data/bundled_user/"
 const BUNDLED_CARDS_DIR := BUNDLED_USER_DIR + "cards/"
 const BUNDLED_DECKS_DIR := BUNDLED_USER_DIR + "decks/"
 const BUNDLED_MANIFEST := BUNDLED_USER_DIR + "_manifest.txt"
+const BUNDLED_CARD_IMAGES_PREFIX := "cards/images/"
 const SUPPORTED_AI_DECK_IDS: Array[int] = [569061, 575657, 575716, 575718, 575720, 575723, 578647, 579502]
 
 ## 内存中的卡牌缓存 {uid -> CardData}
@@ -44,10 +45,13 @@ func _ensure_directories() -> void:
 
 func _seed_bundled_user_data() -> void:
 	var manifest := _load_bundled_manifest()
+	var skip_bundled_card_images := OS.has_feature("web")
 	for bundled_path: String in manifest:
 		if bundled_path.ends_with(".import"):
 			continue
 		var relative := bundled_path.trim_prefix(BUNDLED_USER_DIR)
+		if skip_bundled_card_images and relative.begins_with(BUNDLED_CARD_IMAGES_PREFIX):
+			continue
 		if relative.begins_with("cards/"):
 			var entry_name := relative.get_file()
 			var sub_dir := relative.trim_prefix("cards/").get_base_dir()

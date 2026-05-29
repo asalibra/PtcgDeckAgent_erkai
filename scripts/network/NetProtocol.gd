@@ -82,13 +82,67 @@ const ROOM_STATE_WAITING := "waiting"
 const ROOM_STATE_PLAYING := "playing"
 const ROOM_STATE_FINISHED := "finished"
 
+# ===================== 协议元数据 =====================
+
+const PROTOCOL_VERSION := 2
+const INVALID_STATE_SEQ := -1
+
+const META_REQUEST_ID := "request_id"
+const META_STATE_SEQ := "state_seq"
+const META_VERSION := "version"
+const META_RESYNC_REQUIRED := "resync_required"
+
 # ===================== 消息构建工具 =====================
 
-static func make_message(type: String, payload: Dictionary = {}) -> Dictionary:
-	return {"type": type, "payload": payload}
+static func make_message(type: String, payload: Dictionary = {}, meta: Dictionary = {}) -> Dictionary:
+	return {
+		"type": type,
+		"payload": payload,
+		META_VERSION: int(meta.get(META_VERSION, PROTOCOL_VERSION)),
+		META_REQUEST_ID: str(meta.get(META_REQUEST_ID, "")),
+		META_STATE_SEQ: int(meta.get(META_STATE_SEQ, INVALID_STATE_SEQ)),
+		META_RESYNC_REQUIRED: bool(meta.get(META_RESYNC_REQUIRED, false)),
+	}
+
+
+static func with_request_id(message: Dictionary, request_id: String) -> Dictionary:
+	return with_meta(message, {META_REQUEST_ID: request_id})
+
+
+static func with_state_seq(message: Dictionary, state_seq: int) -> Dictionary:
+	return with_meta(message, {META_STATE_SEQ: state_seq})
+
+
+static func with_resync_required(message: Dictionary, required: bool = true) -> Dictionary:
+	return with_meta(message, {META_RESYNC_REQUIRED: required})
+
+
+static func with_meta(message: Dictionary, meta: Dictionary) -> Dictionary:
+	var result := message.duplicate(true)
+	result[META_VERSION] = int(meta.get(META_VERSION, int(result.get(META_VERSION, PROTOCOL_VERSION))))
+	result[META_REQUEST_ID] = str(meta.get(META_REQUEST_ID, str(result.get(META_REQUEST_ID, ""))))
+	result[META_STATE_SEQ] = int(meta.get(META_STATE_SEQ, int(result.get(META_STATE_SEQ, INVALID_STATE_SEQ))))
+	result[META_RESYNC_REQUIRED] = bool(meta.get(META_RESYNC_REQUIRED, bool(result.get(META_RESYNC_REQUIRED, false))))
+	return result
+
+
+static func is_version_compatible(message: Dictionary) -> bool:
+	return int(message.get(META_VERSION, PROTOCOL_VERSION)) == PROTOCOL_VERSION
+
+
+static func get_request_id(message: Dictionary) -> String:
+	return str(message.get(META_REQUEST_ID, ""))
+
+
+static func get_state_seq(message: Dictionary) -> int:
+	return int(message.get(META_STATE_SEQ, INVALID_STATE_SEQ))
+
+
+static func is_resync_required(message: Dictionary) -> bool:
+	return bool(message.get(META_RESYNC_REQUIRED, false))
 
 static func make_error(code: String, message: String) -> Dictionary:
-	return {"type": MSG_ERROR, "payload": {"code": code, "message": message}}
+	return make_message(MSG_ERROR, {"code": code, "message": message})
 
 static func make_room_created(room_id: String, player_index: int, session_token: String) -> Dictionary:
 	return make_message(MSG_ROOM_CREATED, {

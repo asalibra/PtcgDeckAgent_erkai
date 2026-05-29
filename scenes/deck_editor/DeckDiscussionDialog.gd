@@ -43,8 +43,7 @@ func _ready() -> void:
 	title = _discussion_title()
 	ok_button_text = "关闭"
 	dialog_hide_on_ok = true
-	min_size = DIALOG_MIN_SIZE
-	size = DIALOG_SIZE
+	_apply_fixed_window_size()
 	_service.message_completed.connect(_on_service_message_completed)
 	_service.status_changed.connect(_on_service_status_changed)
 	close_requested.connect(_on_dialog_close_requested)
@@ -238,8 +237,27 @@ func _match_session_id(player_deck_id: int, opponent_deck_id: int, opponent_labe
 
 
 func _apply_fixed_window_size() -> void:
-	min_size = DIALOG_MIN_SIZE
-	size = DIALOG_SIZE
+	var viewport_size := _dialog_viewport_size()
+	var available_size := Vector2i(
+		maxi(320, int(viewport_size.x) - 24),
+		maxi(420, int(viewport_size.y) - 24)
+	)
+	var mobile_layout := OS.has_feature("mobile") or available_size.x < DIALOG_MIN_SIZE.x or available_size.y < DIALOG_MIN_SIZE.y
+	if mobile_layout:
+		min_size = Vector2i.ZERO
+		size = available_size
+	else:
+		var clamped_size := Vector2i(mini(DIALOG_SIZE.x, available_size.x), mini(DIALOG_SIZE.y, available_size.y))
+		min_size = Vector2i(mini(DIALOG_MIN_SIZE.x, clamped_size.x), mini(DIALOG_MIN_SIZE.y, clamped_size.y))
+		size = clamped_size
+	position = _clamp_dialog_position(position)
+
+
+func _dialog_viewport_size() -> Vector2:
+	var viewport := get_viewport()
+	if viewport != null:
+		return viewport.get_visible_rect().size
+	return Vector2(360, 640) if OS.has_feature("mobile") else Vector2(1280, 720)
 
 
 func _apply_compact_layout() -> void:

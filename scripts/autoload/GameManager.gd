@@ -107,7 +107,7 @@ const SUPPORTED_BATTLE_REVIEW_MODELS: Array[Dictionary] = [
 var net_room_id: String = ""
 var net_player_index: int = -1
 var net_session_token: String = ""
-var net_server_url: String = "ws://localhost:9000"
+var net_server_url: String = "ws://154.83.12.152:9000"
 var net_game_winner: int = -1
 var net_game_reason: String = ""
 
@@ -129,7 +129,7 @@ func _ready() -> void:
 
 
 func _ensure_desktop_window_size() -> void:
-	if DisplayServer.get_name() == "headless":
+	if DisplayServer.get_name() == "headless" or OS.has_feature("mobile"):
 		return
 	var current_mode := DisplayServer.window_get_mode()
 	if current_mode in [DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN]:
@@ -152,6 +152,8 @@ func _ensure_desktop_window_size() -> void:
 
 
 func _configured_desktop_window_size() -> Vector2i:
+	if OS.has_feature("mobile"):
+		return Vector2i.ZERO
 	var desired_width := int(ProjectSettings.get_setting("display/window/size/window_width", ProjectSettings.get_setting("display/window/size/viewport_width", 1600)))
 	var desired_height := int(ProjectSettings.get_setting("display/window/size/window_height", ProjectSettings.get_setting("display/window/size/viewport_height", 900)))
 	return Vector2i(desired_width, desired_height)

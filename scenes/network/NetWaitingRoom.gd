@@ -147,6 +147,9 @@ func _on_message_received(message: Dictionary) -> void:
 	var type: String = str(message.get("type", ""))
 	var payload: Dictionary = message.get("payload", {}) if message.get("payload") is Dictionary else {}
 	print("[NetWaitingRoom] 收到消息: %s" % type)
+	if NetProtocol.is_resync_required(message):
+		_handle_resync_required(payload)
+		return
 
 	match type:
 		NetProtocol.MSG_RECONNECTED:
@@ -210,3 +213,12 @@ func _on_message_received(message: Dictionary) -> void:
 			_opponent_ready = r_ready
 			%OpponentLabel.text = "对手: %s%s" % [_opponent_name, " (已准备)" if _opponent_ready else ""]
 			_update_start_button()
+
+
+func _handle_resync_required(payload: Dictionary) -> void:
+	var message := str(payload.get("message", "客户端状态已过期，正在重新同步..."))
+	_update_status(message)
+	if not GameManager.net_session_token.is_empty() and _network_client.is_connected_to_server():
+		_network_client.reconnect(GameManager.net_session_token)
+		return
+	_update_status("%s 无法自动恢复，请重新进入房间。" % message)

@@ -9,7 +9,7 @@ signal connection_error(error: String)
 
 const CONNECT_TIMEOUT_SEC := 10.0
 
-var server_url: String = "ws://localhost:9000"
+var server_url: String = "ws://154.83.12.152:9000"
 var _ws: WebSocketPeer
 var _connected: bool = false
 var _session_token: String = ""
@@ -17,6 +17,8 @@ var _player_index: int = -1
 var _room_id: String = ""
 var _connecting: bool = false
 var _connect_start_msec: int = 0
+var _next_request_nonce: int = 0
+var _last_received_state_seq: int = NetProtocol.INVALID_STATE_SEQ
 
 
 func connect_to_server(url: String = "") -> void:
@@ -41,7 +43,8 @@ func send_message(message: Dictionary) -> void:
 	if _ws == null or not _connected:
 		push_warning("[NetworkClient] 未连接，无法发送消息")
 		return
-	var json_str := NetProtocol.dict_to_json_string(message)
+	var outbound := _decorate_outbound_message(message)
+	var json_str := NetProtocol.dict_to_json_string(outbound)
 	_ws.send_text(json_str)
 
 
@@ -59,6 +62,10 @@ func get_player_index() -> int:
 
 func get_room_id() -> String:
 	return _room_id
+
+
+func get_last_received_state_seq() -> int:
+	return _last_received_state_seq
 
 
 func set_session_info(token: String, player_index: int, room_id: String) -> void:
@@ -193,6 +200,25 @@ func _process(_delta: float) -> void:
 
 
 func _handle_message(message: Dictionary) -> void:
+	if not NetProtocol.is_version_compatible(message):
+		message_received.emit(_make_resync_error(
+			"version_mismatch",
+			"协议版本不匹配，需重新同步",
+			message
+		))
+		return
+
+	var incoming_state_seq := NetProtocol.get_state_seq(message)
+	if incoming_state_seq != NetProtocol.INVALID_STATE_SEQ:
+		if _last_received_state_seq != NetProtocol.INVALID_STATE_SEQ and incoming_state_seq < _last_received_state_seq:
+			message_received.emit(_make_resync_error(
+				"stale_state",
+				"收到过期状态，需重新同步",
+				message
+			))
+			return
+		_last_received_state_seq = incoming_state_seq
+
 	var type: String = str(message.get("type", ""))
 	var payload: Dictionary = message.get("payload", {}) if message.get("payload") is Dictionary else {}
 	_log_message_trace("recv", type, payload)
@@ -243,3 +269,36 @@ func _disconnect_internal() -> void:
 		_ws = null
 	_connected = false
 	_connecting = false
+	_last_received_state_seq = NetProtocol.INVALID_STATE_SEQ
+
+
+func _decorate_outbound_message(message: Dictionary) -> Dictionary:
+	var outbound := NetProtocol.with_meta(message, {
+		NetProtocol.META_VERSION: NetProtocol.PROTOCOL_VERSION,
+	})
+	if NetProtocol.get_request_id(outbound).is_empty():
+		outbound = NetProtocol.with_request_id(outbound, _make_request_id())
+	if NetProtocol.get_state_seq(outbound) == NetProtocol.INVALID_STATE_SEQ and _last_received_state_seq != NetProtocol.INVALID_STATE_SEQ:
+		outbound = NetProtocol.with_state_seq(outbound, _last_received_state_seq)
+	return outbound
+
+
+func _make_request_id() -> String:
+	_next_request_nonce += 1
+	return "%d-%d" % [Time.get_ticks_msec(), _next_request_nonce]
+
+
+func _make_resync_error(code: String, text: String, source_message: Dictionary) -> Dictionary:
+	var payload := {
+		"code": code,
+		"message": text,
+		"expected_state_seq": _last_received_state_seq,
+		"received_state_seq": NetProtocol.get_state_seq(source_message),
+	}
+	var message := NetProtocol.make_error(code, text)
+	message["payload"] = payload
+	return NetProtocol.with_meta(message, {
+		NetProtocol.META_REQUEST_ID: NetProtocol.get_request_id(source_message),
+		NetProtocol.META_STATE_SEQ: _last_received_state_seq,
+		NetProtocol.META_RESYNC_REQUIRED: true,
+	})

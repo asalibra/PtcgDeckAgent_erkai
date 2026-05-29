@@ -5,6 +5,8 @@ const HudThemeScript := preload("res://scripts/ui/HudTheme.gd")
 const CARD_TILE_WIDTH := 100
 const CARD_TILE_HEIGHT := 140
 const VIEW_GRID_COLUMNS := 6
+const TILE_TOUCH_LONG_PRESS_SECONDS := 0.42
+const TILE_TOUCH_LONG_PRESS_MOVE_TOLERANCE := 18.0
 
 const ENERGY_TYPE_LABELS: Dictionary = {
 	"R": "火", "W": "水", "G": "草", "L": "雷",
@@ -23,6 +25,14 @@ const VIEW_CATEGORY_ORDER: Dictionary = {
 
 var _texture_cache: Dictionary = {}
 var _failed_texture_paths: Dictionary = {}
+var _tile_touch_long_press_timer: Timer = null
+var _tile_touch_long_press_active: bool = false
+var _tile_touch_long_press_index: int = -1
+var _tile_touch_long_press_start: Vector2 = Vector2.ZERO
+var _tile_touch_long_press_host: Node = null
+var _tile_touch_long_press_set_code: String = ""
+var _tile_touch_long_press_card_index: String = ""
+var _tile_touch_long_press_consumed: bool = false
 
 
 func show_deck(host: Node, deck: DeckData) -> void:
@@ -143,12 +153,86 @@ func _create_view_tile(card_name: String, set_code: String, card_index: String) 
 
 
 func _on_view_tile_input(event: InputEvent, host: Node, set_code: String, card_index: String) -> void:
+	if _handle_tile_touch_detail_input(event, host, set_code, card_index):
+		return
 	if not (event is InputEventMouseButton and (event as InputEventMouseButton).pressed):
 		return
 	if (event as InputEventMouseButton).button_index == MOUSE_BUTTON_RIGHT:
 		var card := CardDatabase.get_card(set_code, card_index)
 		if card != null:
 			_show_card_detail(host, card)
+
+
+func _handle_tile_touch_detail_input(event: InputEvent, host: Node, set_code: String, card_index: String) -> bool:
+	if event is InputEventScreenTouch:
+		var touch := event as InputEventScreenTouch
+		if touch.pressed:
+			_start_tile_touch_long_press(host, set_code, card_index, touch.position, touch.index)
+			return true
+		if _tile_touch_long_press_active and touch.index == _tile_touch_long_press_index:
+			_cancel_tile_touch_long_press()
+			return true
+		return false
+
+	if event is InputEventScreenDrag:
+		var drag := event as InputEventScreenDrag
+		if _tile_touch_long_press_active and drag.index == _tile_touch_long_press_index:
+			if drag.position.distance_to(_tile_touch_long_press_start) > TILE_TOUCH_LONG_PRESS_MOVE_TOLERANCE:
+				_cancel_tile_touch_long_press()
+			return true
+		return false
+
+	return false
+
+
+func _start_tile_touch_long_press(host: Node, set_code: String, card_index: String, position: Vector2, touch_index: int) -> void:
+	var card := CardDatabase.get_card(set_code, card_index)
+	if card == null or host == null:
+		return
+	_ensure_tile_touch_long_press_timer(host)
+	_tile_touch_long_press_active = true
+	_tile_touch_long_press_index = touch_index
+	_tile_touch_long_press_start = position
+	_tile_touch_long_press_host = host
+	_tile_touch_long_press_set_code = set_code
+	_tile_touch_long_press_card_index = card_index
+	_tile_touch_long_press_consumed = false
+	if _tile_touch_long_press_timer != null and _tile_touch_long_press_timer.is_inside_tree():
+		_tile_touch_long_press_timer.start()
+
+
+func _cancel_tile_touch_long_press() -> void:
+	if _tile_touch_long_press_timer != null:
+		_tile_touch_long_press_timer.stop()
+	_tile_touch_long_press_active = false
+	_tile_touch_long_press_index = -1
+	_tile_touch_long_press_start = Vector2.ZERO
+	_tile_touch_long_press_host = null
+	_tile_touch_long_press_set_code = ""
+	_tile_touch_long_press_card_index = ""
+	_tile_touch_long_press_consumed = false
+
+
+func _on_tile_touch_long_press_timeout() -> void:
+	if not _tile_touch_long_press_active or _tile_touch_long_press_host == null:
+		return
+	var card := CardDatabase.get_card(_tile_touch_long_press_set_code, _tile_touch_long_press_card_index)
+	if card == null:
+		_cancel_tile_touch_long_press()
+		return
+	_tile_touch_long_press_consumed = true
+	_show_card_detail(_tile_touch_long_press_host, card)
+
+
+func _ensure_tile_touch_long_press_timer(host: Node) -> void:
+	if _tile_touch_long_press_timer != null:
+		return
+	_tile_touch_long_press_timer = Timer.new()
+	_tile_touch_long_press_timer.name = "DeckViewTileLongPressTimer"
+	_tile_touch_long_press_timer.one_shot = true
+	_tile_touch_long_press_timer.wait_time = TILE_TOUCH_LONG_PRESS_SECONDS
+	_tile_touch_long_press_timer.timeout.connect(_on_tile_touch_long_press_timeout)
+	host.add_child(_tile_touch_long_press_timer)
 
 
 func _show_card_detail(host: Node, card: CardData) -> void:

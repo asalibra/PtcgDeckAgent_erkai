@@ -30,7 +30,10 @@ func _initialize() -> void:
 	_network.client_connected.connect(_on_client_connected)
 	_network.client_disconnected.connect(_on_client_disconnected)
 	_network.client_message_received.connect(_on_client_message)
-	_network.start(_port)
+	if not _network.start(_port):
+		push_error("[ServerMain] 无法绑定端口 %d，服务器退出" % _port)
+		quit(1)
+		return
 
 	print("[ServerMain] 服务器就绪，等待连接...")
 

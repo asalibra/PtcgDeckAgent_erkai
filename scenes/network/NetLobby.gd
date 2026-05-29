@@ -10,7 +10,7 @@ const REQUEST_TIMEOUT_SEC := 8.0
 
 var _network_client: NetworkClient
 var _player_name: String = "玩家"
-var _server_url: String = "ws://localhost:9000"
+var _server_url: String = "ws://154.83.12.152:9000"
 var _replay_locator: RefCounted = BattleReplayLocatorScript.new()
 var _pending_replay_details: Dictionary = {}
 var _pending_request: String = ""  # "create_room" / "join_room" / ""
@@ -174,6 +174,9 @@ func _on_connection_error(error: String) -> void:
 func _on_message_received(message: Dictionary) -> void:
 	var type: String = str(message.get("type", ""))
 	var payload: Dictionary = message.get("payload", {}) if message.get("payload") is Dictionary else {}
+	if NetProtocol.is_resync_required(message):
+		_handle_resync_required(payload)
+		return
 
 	match type:
 		NetProtocol.MSG_ROOM_LIST:
@@ -237,6 +240,16 @@ func _on_message_received(message: Dictionary) -> void:
 			_show_room_list_panel()
 			if _network_client.is_connected_to_server():
 				_network_client.list_rooms()
+
+
+func _handle_resync_required(payload: Dictionary) -> void:
+	_pending_request = ""
+	var message := str(payload.get("message", "客户端状态已过期，正在重新同步..."))
+	_update_status(message)
+	if not GameManager.net_session_token.is_empty() and _network_client.is_connected_to_server():
+		_network_client.reconnect(GameManager.net_session_token)
+		return
+	_update_status("%s 无法自动恢复，请重新进入房间。" % message)
 
 
 func _display_replay_list(replays: Array) -> void:
@@ -589,7 +602,7 @@ func _load_prefs() -> void:
 	var data := GameManager.load_net_prefs()
 	if data is Dictionary:
 		_player_name = str(data.get("player_name", "玩家"))
-		_server_url = str(data.get("server_url", "ws://localhost:9000"))
+		_server_url = str(data.get("server_url", "ws://154.83.12.152:9000"))
 		# 恢复会话信息（用于断线重连）
 		GameManager.net_session_token = str(data.get("session_token", ""))
 		GameManager.net_room_id = str(data.get("room_id", ""))

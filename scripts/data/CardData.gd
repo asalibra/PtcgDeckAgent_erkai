@@ -117,9 +117,10 @@ static func get_image_candidate_paths(card_set_code: String, card_idx: String, p
 	var local_path := preferred_local_path if preferred_local_path != "" else build_local_image_path(card_set_code, card_idx)
 	if local_path != "":
 		candidates.append(local_path)
-	var bundled_path := build_bundled_image_path(card_set_code, card_idx)
-	if bundled_path != "" and bundled_path not in candidates:
-		candidates.append(bundled_path)
+	if not OS.has_feature("web"):
+		var bundled_path := build_bundled_image_path(card_set_code, card_idx)
+		if bundled_path != "" and bundled_path not in candidates:
+			candidates.append(bundled_path)
 	return candidates
 
 

@@ -69,8 +69,50 @@ func _update_style() -> void:
 		remove_theme_color_override("panel_color")
 
 
+var _card_ui_touch_lp_timer: Timer = null
+var _card_ui_touch_lp_active: bool = false
+var _card_ui_touch_lp_index: int = -1
+var _card_ui_touch_lp_start: Vector2 = Vector2.ZERO
+const _CARD_UI_LONG_PRESS_SECONDS := 0.42
+const _CARD_UI_LONG_PRESS_MOVE_TOL := 18.0
+
+
 func _gui_input(event: InputEvent) -> void:
 	if not _selectable or card_instance == null:
+		return
+	if event is InputEventScreenTouch:
+		var touch := event as InputEventScreenTouch
+		if touch.pressed:
+			_card_ui_touch_lp_active = true
+			_card_ui_touch_lp_index = touch.index
+			_card_ui_touch_lp_start = touch.position
+			if _card_ui_touch_lp_timer == null:
+				_card_ui_touch_lp_timer = Timer.new()
+				_card_ui_touch_lp_timer.name = "CardUiLpTimer"
+				_card_ui_touch_lp_timer.one_shot = true
+				_card_ui_touch_lp_timer.wait_time = _CARD_UI_LONG_PRESS_SECONDS
+				_card_ui_touch_lp_timer.timeout.connect(func() -> void:
+					if _card_ui_touch_lp_active:
+						_card_ui_touch_lp_active = false
+						card_right_clicked.emit(card_instance)
+				)
+				add_child(_card_ui_touch_lp_timer)
+			if _card_ui_touch_lp_timer.is_inside_tree():
+				_card_ui_touch_lp_timer.start()
+		else:
+			if _card_ui_touch_lp_active and touch.index == _card_ui_touch_lp_index:
+				if _card_ui_touch_lp_timer != null:
+					_card_ui_touch_lp_timer.stop()
+				_card_ui_touch_lp_active = false
+				card_clicked.emit(card_instance)
+		return
+	if event is InputEventScreenDrag:
+		var drag := event as InputEventScreenDrag
+		if _card_ui_touch_lp_active and drag.index == _card_ui_touch_lp_index:
+			if drag.position.distance_to(_card_ui_touch_lp_start) > _CARD_UI_LONG_PRESS_MOVE_TOL:
+				if _card_ui_touch_lp_timer != null:
+					_card_ui_touch_lp_timer.stop()
+				_card_ui_touch_lp_active = false
 		return
 	if event is InputEventMouseButton:
 		var mbe := event as InputEventMouseButton
