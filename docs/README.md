@@ -14,6 +14,7 @@
 - [../README.md](../README.md)：项目简介、能力边界、运行方式
 - [development_setup.md](development_setup.md)：环境搭建、运行和测试说明
 - [project_status.md](project_status.md)：当前实现状态、已知限制、公开协作建议
+- [online_battle_quickstart.md](online_battle_quickstart.md)：在线对战玩家快速上手与注意事项
 
 ## 核心设计文档
 

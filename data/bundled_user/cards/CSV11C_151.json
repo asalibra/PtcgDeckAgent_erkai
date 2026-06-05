@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Palafin ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[W] Giga Impact 250\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "151",
+	"set_code_en": "PRE",
+	"card_index_en": "151",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/151_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/151.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 340,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Finizen",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Giga Impact",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "W",
+			"damage": "250",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Hero's Spirit",
+			"text": "Put this Pokémon into play only with the effect of Palafin's Zero to Hero Ability."
+		}
+	],
+	"energy_provides": ""
+}

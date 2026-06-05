@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Steven's Metagross ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[MCC] Metal Stomp 200",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "145",
+	"set_code_en": "DRI",
+	"card_index_en": "145",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/145_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/145.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 2",
+	"hp": 340,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "Steven's Metang",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Metal Stomp",
+			"text": "",
+			"cost": "MCC",
+			"damage": "200",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "X-Boot",
+			"text": "Once during your turn, you may search your deck for a Basic Psychic Energy card, a Basic Metal Energy card, or 1 of each and attach them to your Psychic Pokémon and Metal Pokémon in any way you like. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

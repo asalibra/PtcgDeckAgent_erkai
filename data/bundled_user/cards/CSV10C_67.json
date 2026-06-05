@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Kilowattrel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Glide 50\n[LLC] Storm Bolt 160\nMove all Energy from this Pokémon to your Benched Pokémon in any way you like.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "67",
+	"set_code_en": "SSP",
+	"card_index_en": "67",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/67_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/67.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Wattrel",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Glide",
+			"text": "",
+			"cost": "CC",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Storm Bolt",
+			"text": "Move all Energy from this Pokémon to your Benched Pokémon in any way you like.",
+			"cost": "LLC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

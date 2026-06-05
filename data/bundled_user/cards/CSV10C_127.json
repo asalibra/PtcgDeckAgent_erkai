@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Bronzong",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[MC] Spinning Attack 50\n[MCC] Double Impact 100×\nFlip 2 coins. This attack does 100 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "127",
+	"set_code_en": "SSP",
+	"card_index_en": "127",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/127_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/127.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "Bronzor",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spinning Attack",
+			"text": "",
+			"cost": "MC",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Double Impact",
+			"text": "Flip 2 coins. This attack does 100 damage for each heads.",
+			"cost": "MCC",
+			"damage": "100×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Alolan Geodude",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Knuckle Punch 10\n[LC] Tiny Charge 30",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "44",
+	"set_code_en": "JTG",
+	"card_index_en": "44",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/44_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/44.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Knuckle Punch",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tiny Charge",
+			"text": "",
+			"cost": "LC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

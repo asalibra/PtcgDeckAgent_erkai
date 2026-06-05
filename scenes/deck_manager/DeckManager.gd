@@ -21,6 +21,7 @@ const HUD_CARD_BORDER := Color(0.48, 0.72, 1.0, 0.78)
 const HUD_RECOMMENDATION_BORDER := Color(1.0, 0.76, 0.30, 0.96)
 const HUD_SECONDARY := Color(0.50, 0.80, 1.0, 1.0)
 const HUD_RENAME := Color(0.72, 0.64, 1.0, 1.0)
+const HUD_PUBLISHED := Color(0.30, 0.98, 0.72, 1.0)
 const IMPORT_RESULT_AUTO_CLOSE_SECONDS := 1.4
 const REMOTE_RECOMMENDATION_PREFETCH_STEPS := 6
 const DECK_CENTER_SCROLLBAR_RIGHT_CLEARANCE := 40
@@ -1172,11 +1173,24 @@ func _create_deck_item(deck: DeckData) -> Control:
 	info_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hbox.add_child(info_vbox)
 
+	var name_row := HBoxContainer.new()
+	name_row.add_theme_constant_override("separation", 8)
+	info_vbox.add_child(name_row)
+
 	var name_label := Label.new()
 	name_label.text = deck.deck_name
+	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	name_label.add_theme_font_size_override("font_size", 16)
 	name_label.add_theme_color_override("font_color", HUD_TEXT)
-	info_vbox.add_child(name_label)
+	name_row.add_child(name_label)
+
+	var publish_state := CardDatabase.get_deck_publish_state(deck)
+	var publish_status_label := Label.new()
+	publish_status_label.name = "PublishStatusLabel"
+	publish_status_label.text = _deck_publish_status_text(publish_state)
+	publish_status_label.add_theme_font_size_override("font_size", 12)
+	publish_status_label.add_theme_color_override("font_color", _deck_publish_status_color(publish_state))
+	name_row.add_child(publish_status_label)
 
 	var detail_label := Label.new()
 	detail_label.text = "%d 张卡牌 | 导入于 %s" % [deck.total_cards, deck.import_date.substr(0, 10)]
@@ -1213,6 +1227,22 @@ func _create_deck_item(deck: DeckData) -> Control:
 	_style_hud_button(btn_delete, HUD_DANGER, true)
 
 	return panel
+
+
+func _deck_publish_status_text(publish_state: Dictionary) -> String:
+	if bool(publish_state.get("is_published", false)):
+		if bool(publish_state.get("has_local_changes", false)):
+			return "本地有未发布修改"
+		return "云端已发布"
+	return "仅本地"
+
+
+func _deck_publish_status_color(publish_state: Dictionary) -> Color:
+	if bool(publish_state.get("is_published", false)):
+		if bool(publish_state.get("has_local_changes", false)):
+			return HUD_ACCENT_WARM
+		return HUD_PUBLISHED
+	return HUD_TEXT_MUTED
 
 
 func _on_import_pressed() -> void:

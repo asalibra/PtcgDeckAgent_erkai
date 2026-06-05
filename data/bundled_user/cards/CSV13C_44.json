@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Hearthflame Mask Ogerpon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Fire Kagura \nSearch your deck for a Basic Fire Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.\n[RRC] Searing Flame 80\nYour opponent's Active Pokémon is now Burned.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "44",
+	"set_code_en": "DRI",
+	"card_index_en": "44",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/44_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/44.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Fire Kagura",
+			"text": "Search your deck for a Basic Fire Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Searing Flame",
+			"text": "Your opponent's Active Pokémon is now Burned.",
+			"cost": "RRC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

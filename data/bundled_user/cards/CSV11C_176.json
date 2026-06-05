@@ -1,0 +1,52 @@
+{
+	"name": "铁斑叶ex",
+	"name_en": "Iron Leaves ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Future",
+	"description": "[GGC] Prism Edge 180\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "176",
+	"set_code_en": "PRE",
+	"card_index_en": "176",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/176_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/176.png",
+	"artist": "",
+	"rarity": "HR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex",
+		"Future"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 220,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Prism Edge",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "GGC",
+			"damage": "180",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Rapid Vernier",
+			"text": "When you play this Pokémon from your hand onto your Bench during your turn, you may switch it with your Active Pokémon. If you do, you may move any amount of Energy from your other Pokémon to this Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

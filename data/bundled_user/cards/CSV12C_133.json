@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Hop's Rookidee",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Intimidating Stare \nDuring your opponent's next turn, attacks used by the Defending Pokémon do 20 less damage (before applying Weakness and Resistance).\n[CC] Peck 20",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "133",
+	"set_code_en": "JTG",
+	"card_index_en": "133",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/133_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/133.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Intimidating Stare",
+			"text": "During your opponent's next turn, attacks used by the Defending Pokémon do 20 less damage (before applying Weakness and Resistance).",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Peck",
+			"text": "",
+			"cost": "CC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

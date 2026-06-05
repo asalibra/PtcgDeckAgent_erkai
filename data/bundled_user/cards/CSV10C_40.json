@@ -1,0 +1,51 @@
+{
+	"name": "巨翅飞鱼",
+	"name_en": "Mantine",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Wave Splash 30\n[WC] Aqua Dive \nThis attack does 50 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "40",
+	"set_code_en": "SSP",
+	"card_index_en": "40",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/40_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/40.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Wave Splash",
+			"text": "",
+			"cost": "W",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Aqua Dive",
+			"text": "This attack does 50 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "WC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

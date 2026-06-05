@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Hop's Dubwool",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Headbutt 80",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "136",
+	"set_code_en": "JTG",
+	"card_index_en": "136",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/136_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/136.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Hop's Wooloo",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Headbutt",
+			"text": "",
+			"cost": "CCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Defiant Horn",
+			"text": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may switch in 1 of your opponent's Benched Pokémon to the Active Spot."
+		}
+	],
+	"energy_provides": ""
+}

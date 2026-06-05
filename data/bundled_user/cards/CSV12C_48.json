@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Iono's Electrode",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[LL] Thump-Thump Boom \nThis Pokémon does 100 damage to itself. Flip a coin. If heads, your opponent's Active Pokémon is Knocked Out.\n[LLC] Electric Ball 100",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "48",
+	"set_code_en": "JTG",
+	"card_index_en": "48",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/48_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/48.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "Iono's Voltorb",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Thump-Thump Boom",
+			"text": "This Pokémon does 100 damage to itself. Flip a coin. If heads, your opponent's Active Pokémon is Knocked Out.",
+			"cost": "LL",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Electric Ball",
+			"text": "",
+			"cost": "LLC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

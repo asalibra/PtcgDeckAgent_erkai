@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Latios",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PC] Skill Dive \nThis attack does 50 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[PPC] Jet Headbutt 110",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "77",
+	"set_code_en": "SSP",
+	"card_index_en": "77",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/77_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/77.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Skill Dive",
+			"text": "This attack does 50 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "PC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Jet Headbutt",
+			"text": "",
+			"cost": "PPC",
+			"damage": "110",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

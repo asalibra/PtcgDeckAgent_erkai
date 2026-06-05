@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Noivern",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Frightening Howl 110\nYour opponent's Active Pokémon is now Confused.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "128",
+	"set_code_en": "JTG",
+	"card_index_en": "128",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/128_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/128.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 0,
+	"evolves_from": "Noibat",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Frightening Howl",
+			"text": "Your opponent's Active Pokémon is now Confused.",
+			"cost": "CCC",
+			"damage": "110",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Tuning Echo",
+			"text": "If you have the same number of cards in your hand as your opponent, ignore all Energy in the cost of Frightening Howl used by this Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

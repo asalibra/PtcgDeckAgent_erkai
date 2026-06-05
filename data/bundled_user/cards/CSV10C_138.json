@@ -1,0 +1,51 @@
+{
+	"name": "啃果虫",
+	"name_en": "Applin",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Nutrients \nHeal 30 damage from 1 of your Pokémon.\n[GR] Trip Over 20+\nFlip a coin. If heads, this attack does 30 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "138",
+	"set_code_en": "SSP",
+	"card_index_en": "138",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/138_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/138.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 40,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Nutrients",
+			"text": "Heal 30 damage from 1 of your Pokémon.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Trip Over",
+			"text": "Flip a coin. If heads, this attack does 30 more damage.",
+			"cost": "GR",
+			"damage": "20+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

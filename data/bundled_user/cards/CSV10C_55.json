@@ -1,0 +1,46 @@
+{
+	"name": "铁包袱",
+	"name_en": "Iron Bundle",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Future",
+	"description": "[WWC] Gusting Collision 200-\nThis attack does 50 less damage for each Colorless in your opponent's Active Pokémon's Retreat Cost.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "55",
+	"set_code_en": "SSP",
+	"card_index_en": "55",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/55_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/55.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Future"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 100,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Gusting Collision",
+			"text": "This attack does 50 less damage for each Colorless in your opponent's Active Pokémon's Retreat Cost.",
+			"cost": "WWC",
+			"damage": "200-",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

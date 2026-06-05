@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Articuno",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Frigid Fluttering \nSearch your deck for up to 2 Basic Water Energy cards and attach them to this Pokémon. Then, shuffle your deck.\n[WWC] Ice Blast 110",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "161",
+	"set_code_en": "JTG",
+	"card_index_en": "161",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/161_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/161.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Frigid Fluttering",
+			"text": "Search your deck for up to 2 Basic Water Energy cards and attach them to this Pokémon. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Ice Blast",
+			"text": "",
+			"cost": "WWC",
+			"damage": "110",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

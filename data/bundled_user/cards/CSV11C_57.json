@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Okidogi",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FF] Good Punch 70",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "57",
+	"set_code_en": "PRE",
+	"card_index_en": "57",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/57_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/57.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Good Punch",
+			"text": "",
+			"cost": "FF",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Adrena-Power",
+			"text": "If this Pokémon has any Darkness Energy attached, it gets +100 HP, and the attacks it uses do 100 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

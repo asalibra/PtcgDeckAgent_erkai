@@ -1,0 +1,51 @@
+{
+	"name": "月月熊 赫月ex",
+	"name_en": "Bloodmoon Ursaluna ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[CCCCC] Blood Moon 240\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "168",
+	"set_code_en": "PRE",
+	"card_index_en": "168",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/168_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/168.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 260,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Blood Moon",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "CCCCC",
+			"damage": "240",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Seasoned Skill",
+			"text": "Blood Moon used by this Pokémon costs Colorless less for each Prize card your opponent has taken."
+		}
+	],
+	"energy_provides": ""
+}

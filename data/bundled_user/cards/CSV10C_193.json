@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Vivillon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Evo-Powder \nFor each of your Benched Pokémon, search your deck for a card that evolves from that Pokémon and put it onto that Pokémon to evolve it. Then, shuffle your deck.\n[G] Cutting Wind 90",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "193",
+	"set_code_en": "SSP",
+	"card_index_en": "193",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/193_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/193.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 2",
+	"hp": 120,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Spewpa",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Evo-Powder",
+			"text": "For each of your Benched Pokémon, search your deck for a card that evolves from that Pokémon and put it onto that Pokémon to evolve it. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Cutting Wind",
+			"text": "",
+			"cost": "G",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

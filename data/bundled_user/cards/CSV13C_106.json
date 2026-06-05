@@ -1,0 +1,51 @@
+{
+	"name": "河马兽",
+	"name_en": "Hippowdon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FF] Ram 60\n[FFC] Super Sandstorm 150\nThis attack also does 40 damage to each Benched Pokémon that has any damage counters on it (both yours and your opponent's). (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "106",
+	"set_code_en": "DRI",
+	"card_index_en": "106",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/106_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/106.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 160,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Hippopotas",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Ram",
+			"text": "",
+			"cost": "FF",
+			"damage": "60",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Super Sandstorm",
+			"text": "This attack also does 40 damage to each Benched Pokémon that has any damage counters on it (both yours and your opponent's). (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "FFC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

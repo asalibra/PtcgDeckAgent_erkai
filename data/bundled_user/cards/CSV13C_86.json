@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Steven's Carbink",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PCC] Magical Shot 80",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "86",
+	"set_code_en": "DRI",
+	"card_index_en": "86",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/86_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/86.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Magical Shot",
+			"text": "",
+			"cost": "PCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Stone Palace",
+			"text": "As long as this Pokémon is on your Bench, all of your Steven's Pokémon take 30 less damage from attacks from your opponent's Pokémon (after applying Weakness and Resistance). The effect of Stone Palace doesn't stack."
+		}
+	],
+	"energy_provides": ""
+}

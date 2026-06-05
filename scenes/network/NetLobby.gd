@@ -2,22 +2,30 @@
 extends Control
 
 const BattleReplayLocatorScript = preload("res://scripts/engine/BattleReplayLocator.gd")
+const NetClientLogScript := preload("res://scripts/network/NetClientLog.gd")
 const REPLAY_DETAIL_STALL_BASE_TIMEOUT_MSEC := 1500
 const REPLAY_DETAIL_STALL_PER_CHUNK_MSEC := 250
 const REPLAY_DETAIL_STALL_MAX_TIMEOUT_MSEC := 12000
 const REPLAY_DETAIL_MAX_RETRIES := 2
 const REQUEST_TIMEOUT_SEC := 8.0
+const RECOVERY_TIMEOUT_SEC := 10.0
 
 var _network_client: NetworkClient
 var _player_name: String = "玩家"
-var _server_url: String = "ws://154.83.12.152:9000"
+var _server_url: String = "ws://localhost:9000"
 var _replay_locator: RefCounted = BattleReplayLocatorScript.new()
 var _pending_replay_details: Dictionary = {}
 var _pending_request: String = ""  # "create_room" / "join_room" / ""
 var _request_start_msec: int = 0
+var _recovery_in_progress: bool = false
+var _recovery_start_msec: int = 0
 
 
 func _ready() -> void:
+	NetClientLogScript.begin_session("net_lobby", {
+		"room_id": GameManager.net_room_id,
+		"server_url": _server_url,
+	})
 	_load_prefs()
 	_ensure_network_client()
 	_setup_ui()
@@ -28,6 +36,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	_tick_pending_replay_details(Time.get_ticks_msec())
 	_tick_pending_request(Time.get_ticks_msec())
+	_tick_recovery(Time.get_ticks_msec())
 
 
 func _ensure_network_client() -> void:
@@ -64,6 +73,10 @@ func _connect_signals() -> void:
 
 func _update_status(text: String) -> void:
 	%StatusLabel.text = text
+	NetClientLogScript.log_event("lobby_status", {
+		"text": text,
+		"room_id": GameManager.net_room_id,
+	})
 
 
 func _show_room_list_panel() -> void:
@@ -86,6 +99,7 @@ func _on_connect_pressed() -> void:
 	if _player_name.is_empty():
 		_player_name = "玩家"
 	_save_prefs()
+	_clear_recovery_state()
 	_update_status("正在连接...")
 	%ConnectBtn.disabled = true
 	_network_client.connect_to_server(_server_url)
@@ -98,17 +112,28 @@ func _on_refresh_pressed() -> void:
 func _on_create_room_pressed() -> void:
 	%ReplayPanel.visible = false
 	%CreateRoomPanel.visible = true
-	%RoomNameEdit.text = "%s的房间" % _player_name
+	%RoomNameEdit.text = _default_room_name()
 
 
 func _on_confirm_create_pressed() -> void:
 	var room_name: String = %RoomNameEdit.text.strip_edges()
 	if room_name.is_empty():
-		room_name = "房间"
+		room_name = _default_room_name()
 	_network_client.create_room(room_name, _player_name)
 	_pending_request = "create_room"
 	_request_start_msec = Time.get_ticks_msec()
 	_update_status("正在创建房间...")
+
+
+func _default_room_name() -> String:
+	var player_label: String = %PlayerNameEdit.text.strip_edges()
+	if player_label.is_empty():
+		player_label = _player_name
+	if player_label.is_empty():
+		player_label = "玩家"
+	if not player_label.begins_with("玩家"):
+		player_label = "玩家%s" % player_label
+	return "%s的房间" % player_label
 
 
 func _on_cancel_create_pressed() -> void:
@@ -147,9 +172,11 @@ func _on_connected() -> void:
 	%ConnectBtn.disabled = false
 	# 如果有保存的会话信息，尝试重连
 	if not GameManager.net_session_token.is_empty() and not GameManager.net_room_id.is_empty():
+		_start_recovery("connected_resume")
 		_update_status("已连接，正在尝试恢复房间...")
 		_network_client.reconnect(GameManager.net_session_token)
 		return
+	_clear_recovery_state()
 	_update_status("已连接，正在获取房间列表...")
 	_show_room_list_panel()
 	_network_client.list_rooms()
@@ -158,6 +185,7 @@ func _on_connected() -> void:
 func _on_disconnected(reason: String) -> void:
 	%ConnectBtn.disabled = false
 	_pending_request = ""
+	_clear_recovery_state()
 	_pending_replay_details.clear()
 	%RoomListContainer.visible = false
 	%ReplayPanel.visible = false
@@ -168,6 +196,7 @@ func _on_disconnected(reason: String) -> void:
 func _on_connection_error(error: String) -> void:
 	%ConnectBtn.disabled = false
 	_pending_request = ""
+	_clear_recovery_state()
 	_update_status("连接失败: %s" % error)
 
 
@@ -184,26 +213,43 @@ func _on_message_received(message: Dictionary) -> void:
 
 		NetProtocol.MSG_ROOM_CREATED:
 			_pending_request = ""
+			_clear_recovery_state()
 			GameManager.net_room_id = str(payload.get("room_id", ""))
 			GameManager.net_player_index = int(payload.get("player_index", 0))
 			GameManager.net_session_token = str(payload.get("session_token", ""))
 			GameManager.net_server_url = _server_url
 			_save_prefs()
+			if not ResourceLoader.exists(GameManager.SCENE_NET_WAITING):
+				NetClientLogScript.log_error("lobby_waiting_scene_missing", "scene_not_found", {
+					"scene_path": GameManager.SCENE_NET_WAITING,
+					"room_id": GameManager.net_room_id,
+				})
+				_update_status("等待房间场景缺失，请重新导出客户端")
+				return
 			_network_client.disconnect_from_server()
 			GameManager.goto_scene(GameManager.SCENE_NET_WAITING)
 
 		NetProtocol.MSG_ROOM_JOINED:
 			_pending_request = ""
+			_clear_recovery_state()
 			GameManager.net_room_id = str(payload.get("room_id", ""))
 			GameManager.net_player_index = int(payload.get("player_index", 1))
 			GameManager.net_session_token = str(payload.get("session_token", ""))
 			GameManager.net_server_url = _server_url
 			_save_prefs()
+			if not ResourceLoader.exists(GameManager.SCENE_NET_WAITING):
+				NetClientLogScript.log_error("lobby_waiting_scene_missing", "scene_not_found", {
+					"scene_path": GameManager.SCENE_NET_WAITING,
+					"room_id": GameManager.net_room_id,
+				})
+				_update_status("等待房间场景缺失，请重新导出客户端")
+				return
 			_network_client.disconnect_from_server()
 			GameManager.goto_scene(GameManager.SCENE_NET_WAITING)
 
 		NetProtocol.MSG_RECONNECTED:
 			# 重连成功，恢复房间状态并跳转
+			_clear_recovery_state()
 			GameManager.net_room_id = str(payload.get("room_id", ""))
 			GameManager.net_player_index = int(payload.get("player_index", 0))
 			_save_prefs()
@@ -216,6 +262,7 @@ func _on_message_received(message: Dictionary) -> void:
 
 		NetProtocol.MSG_STATE_UPDATE:
 			# 游戏已开始，直接进入对战
+			_clear_recovery_state()
 			_network_client.disconnect_from_server()
 			GameManager.goto_net_battle()
 
@@ -230,6 +277,7 @@ func _on_message_received(message: Dictionary) -> void:
 
 		NetProtocol.MSG_ERROR:
 			_pending_request = ""
+			_clear_recovery_state()
 			var err_msg: String = str(payload.get("message", "未知错误"))
 			# 仅在重连失败时清除会话
 			if not GameManager.net_session_token.is_empty():
@@ -247,9 +295,44 @@ func _handle_resync_required(payload: Dictionary) -> void:
 	var message := str(payload.get("message", "客户端状态已过期，正在重新同步..."))
 	_update_status(message)
 	if not GameManager.net_session_token.is_empty() and _network_client.is_connected_to_server():
+		_start_recovery("resync_required")
 		_network_client.reconnect(GameManager.net_session_token)
 		return
 	_update_status("%s 无法自动恢复，请重新进入房间。" % message)
+
+
+func _start_recovery(reason: String) -> void:
+	_recovery_in_progress = true
+	_recovery_start_msec = Time.get_ticks_msec()
+	NetClientLogScript.log_event("lobby_recovery_start", {
+		"reason": reason,
+		"room_id": GameManager.net_room_id,
+		"server_url": _server_url,
+	})
+
+
+func _clear_recovery_state() -> void:
+	_recovery_in_progress = false
+	_recovery_start_msec = 0
+
+
+func _tick_recovery(now_msec: int) -> void:
+	if not _recovery_in_progress:
+		return
+	var elapsed_sec := (now_msec - _recovery_start_msec) / 1000.0
+	if elapsed_sec < RECOVERY_TIMEOUT_SEC:
+		return
+	_clear_recovery_state()
+	NetClientLogScript.log_error("lobby_recovery_timeout", "reconnect_timeout", {
+		"room_id": GameManager.net_room_id,
+		"server_url": _server_url,
+		"elapsed_sec": elapsed_sec,
+	})
+	GameManager.clear_saved_net_session()
+	_save_prefs()
+	if _network_client != null:
+		_network_client.disconnect_from_server()
+	_update_status("恢复房间超时，已清理旧会话，请重新连接或重新加入房间")
 
 
 func _display_replay_list(replays: Array) -> void:
@@ -602,7 +685,7 @@ func _load_prefs() -> void:
 	var data := GameManager.load_net_prefs()
 	if data is Dictionary:
 		_player_name = str(data.get("player_name", "玩家"))
-		_server_url = str(data.get("server_url", "ws://154.83.12.152:9000"))
+		_server_url = GameManager.normalize_net_server_url(str(data.get("server_url", "")))
 		# 恢复会话信息（用于断线重连）
 		GameManager.net_session_token = str(data.get("session_token", ""))
 		GameManager.net_room_id = str(data.get("room_id", ""))

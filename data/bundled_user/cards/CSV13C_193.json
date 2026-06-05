@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Misty's Psyduck",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Sprinkle Water 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "193",
+	"set_code_en": "DRI",
+	"card_index_en": "193",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/193_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/193.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Sprinkle Water",
+			"text": "",
+			"cost": "W",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Flustered Leap",
+			"text": "Once during your turn, if this Pokémon is on your Bench, you may discard the bottom card of your deck. If you do, discard all cards from this Pokémon and put this Pokémon on top of your deck."
+		}
+	],
+	"energy_provides": ""
+}

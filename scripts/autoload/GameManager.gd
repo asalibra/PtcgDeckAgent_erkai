@@ -47,6 +47,7 @@ const SCENE_BATTLE := "res://scenes/battle/BattleScene.tscn"
 const SCENE_DECK_EDITOR := "res://scenes/deck_editor/DeckEditor.tscn"
 const SCENE_REPLAY_BROWSER := "res://scenes/replay_browser/ReplayBrowser.tscn"
 const SCENE_SETTINGS := "res://scenes/settings/Settings.tscn"
+const SCENE_QUICK_VALIDATION := "res://scenes/quick_validation/QuickValidationSetup.tscn"
 const SCENE_TOURNAMENT_DECK_SELECT := "res://scenes/tournament/TournamentDeckSelect.tscn"
 const SCENE_TOURNAMENT_SETUP := "res://scenes/tournament/TournamentSetup.tscn"
 const SCENE_TOURNAMENT_OVERVIEW := "res://scenes/tournament/TournamentOverview.tscn"
@@ -107,11 +108,12 @@ const SUPPORTED_BATTLE_REVIEW_MODELS: Array[Dictionary] = [
 var net_room_id: String = ""
 var net_player_index: int = -1
 var net_session_token: String = ""
-var net_server_url: String = "ws://154.83.12.152:9000"
+var net_server_url: String = "ws://localhost:9000"
 var net_game_winner: int = -1
 var net_game_reason: String = ""
 
 var _battle_replay_launch: Dictionary = {}
+var _quick_validation_launch: Dictionary = {}
 var _deck_editor_deck_id: int = -1
 var _deck_editor_return_context: Dictionary = {}
 var tournament_selected_player_deck_id: int = -1
@@ -269,6 +271,10 @@ func goto_settings() -> void:
 	goto_scene(SCENE_SETTINGS)
 
 
+func goto_quick_validation() -> void:
+	goto_scene(SCENE_QUICK_VALIDATION)
+
+
 func clear_net_connection_session() -> void:
 	net_room_id = ""
 	net_player_index = -1
@@ -289,7 +295,21 @@ func load_net_prefs() -> Dictionary:
 	var json := JSON.new()
 	if json.parse(file.get_as_text()) != OK:
 		return {}
-	return json.data if json.data is Dictionary else {}
+	var data: Dictionary = json.data if json.data is Dictionary else {}
+	var server_url: String = normalize_net_server_url(str(data.get("server_url", "")))
+	if not server_url.is_empty():
+		data["server_url"] = server_url
+	return data
+
+
+func normalize_net_server_url(server_url: String) -> String:
+	var trimmed := server_url.strip_edges()
+	if trimmed.is_empty():
+		return net_server_url
+	var lowered := trimmed.to_lower()
+	if lowered.begins_with("ws://localhost") or lowered.begins_with("ws://127.0.0.1") or lowered.begins_with("http://localhost") or lowered.begins_with("http://127.0.0.1"):
+		return net_server_url
+	return trimmed
 
 
 func save_net_prefs(player_name: String = "", server_url: String = "") -> void:
@@ -368,6 +388,16 @@ func set_battle_replay_launch(launch: Dictionary) -> void:
 func consume_battle_replay_launch() -> Dictionary:
 	var launch := _battle_replay_launch.duplicate(true)
 	_battle_replay_launch = {}
+	return launch
+
+
+func set_quick_validation_launch(launch: Dictionary) -> void:
+	_quick_validation_launch = launch.duplicate(true)
+
+
+func consume_quick_validation_launch() -> Dictionary:
+	var launch := _quick_validation_launch.duplicate(true)
+	_quick_validation_launch = {}
 	return launch
 
 

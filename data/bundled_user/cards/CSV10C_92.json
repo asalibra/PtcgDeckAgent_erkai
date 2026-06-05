@@ -1,0 +1,51 @@
+{
+	"name": "卡璞蝶蝶",
+	"name_en": "Tapu Lele",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Perplex 20\nYour opponent's Active Pokémon is now Confused.\n[PCC] Mental Crush 90+\nIf your opponent's Active Pokémon is Confused, this attack does 90 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "92",
+	"set_code_en": "SSP",
+	"card_index_en": "92",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/92_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/92.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Perplex",
+			"text": "Your opponent's Active Pokémon is now Confused.",
+			"cost": "CC",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mental Crush",
+			"text": "If your opponent's Active Pokémon is Confused, this attack does 90 more damage.",
+			"cost": "PCC",
+			"damage": "90+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

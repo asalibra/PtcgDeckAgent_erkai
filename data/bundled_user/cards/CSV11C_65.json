@@ -1,0 +1,53 @@
+{
+	"name": "轰鸣月",
+	"name_en": "Roaring Moon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[DD] Vengeance Fletching 70+\nThis attack does 10 more damage for each Ancient card in your discard pile.\n[DCCC] Speed Wing 120",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "65",
+	"set_code_en": "PRE",
+	"card_index_en": "65",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/65_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/65.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 140,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Vengeance Fletching",
+			"text": "This attack does 10 more damage for each Ancient card in your discard pile.",
+			"cost": "DD",
+			"damage": "70+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Speed Wing",
+			"text": "",
+			"cost": "DCCC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

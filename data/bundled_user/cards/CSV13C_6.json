@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Breloom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Damage Rush 30+\nFlip a coin until you get tails. This attack does 50 more damage for each heads.\n[GCC] Mega Drain 90\nHeal 30 damage from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "6",
+	"set_code_en": "DRI",
+	"card_index_en": "6",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/6_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/6.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Shroomish",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Damage Rush",
+			"text": "Flip a coin until you get tails. This attack does 50 more damage for each heads.",
+			"cost": "CC",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mega Drain",
+			"text": "Heal 30 damage from this Pokémon.",
+			"cost": "GCC",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

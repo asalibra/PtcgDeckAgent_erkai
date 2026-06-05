@@ -1,0 +1,51 @@
+{
+	"name": "雷电兽",
+	"name_en": "Manectric",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Zap Kick 30\n[LC] Flash Impact 120\nThis attack also does 40 damage to 1 of your Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "76",
+	"set_code_en": "DRI",
+	"card_index_en": "76",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/76_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/76.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Electrike",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Zap Kick",
+			"text": "",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Flash Impact",
+			"text": "This attack also does 40 damage to 1 of your Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "LC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

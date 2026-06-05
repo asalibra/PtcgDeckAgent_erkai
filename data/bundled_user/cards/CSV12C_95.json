@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Tyranitar",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[DC] Cracking Stomp 150\nDiscard the top 2 cards of your opponent's deck.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "95",
+	"set_code_en": "JTG",
+	"card_index_en": "95",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/95_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/95.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 2",
+	"hp": 190,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Pupitar",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Cracking Stomp",
+			"text": "Discard the top 2 cards of your opponent's deck.",
+			"cost": "DC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Daunting Gaze",
+			"text": "As long as this Pokémon is in the Active Spot, your opponent can't play any Item cards from their hand."
+		}
+	],
+	"energy_provides": ""
+}

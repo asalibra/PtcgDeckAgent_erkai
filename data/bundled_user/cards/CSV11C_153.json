@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Jolteon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[LC] Flashing Spear 60+\nYou may discard up to 2 Basic Energy from your Benched Pokémon. This attack does 90 more damage for each card you discarded in this way.\n[RWL] Dravite 280\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "153",
+	"set_code_en": "PRE",
+	"card_index_en": "153",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/153_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/153.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 260,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Flashing Spear",
+			"text": "You may discard up to 2 Basic Energy from your Benched Pokémon. This attack does 90 more damage for each card you discarded in this way.",
+			"cost": "LC",
+			"damage": "60+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dravite",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "RWL",
+			"damage": "280",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

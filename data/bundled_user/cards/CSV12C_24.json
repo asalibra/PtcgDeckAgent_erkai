@@ -1,0 +1,51 @@
+{
+	"name": "火焰鸡ex",
+	"name_en": "Blaziken ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[RC] Smolder-sault 200\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "24",
+	"set_code_en": "JTG",
+	"card_index_en": "24",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/24_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/24.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 2",
+	"hp": 320,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Combusken",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Smolder-sault",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "RC",
+			"damage": "200",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Seething Spirit",
+			"text": "Once during your turn, you may attach a Basic Energy card from your discard pile to 1 of your Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

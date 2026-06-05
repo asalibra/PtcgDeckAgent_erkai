@@ -1,0 +1,51 @@
+{
+	"name": "固拉多",
+	"name_en": "Groudon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Swelling Power \nAttach a Basic Fighting Energy card from your hand to 1 of your Pokémon.\n[FFC] Magma Purge 60×\nDiscard up to 4 Energy from your Pokémon. This attack does 60 damage for each card you discarded in this way.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "49",
+	"set_code_en": "PRE",
+	"card_index_en": "49",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/49_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/49.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Swelling Power",
+			"text": "Attach a Basic Fighting Energy card from your hand to 1 of your Pokémon.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Magma Purge",
+			"text": "Discard up to 4 Energy from your Pokémon. This attack does 60 damage for each card you discarded in this way.",
+			"cost": "FFC",
+			"damage": "60×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

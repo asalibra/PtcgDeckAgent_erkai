@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Eevee",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Reckless Charge 30\nThis Pokémon also does 10 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "74",
+	"set_code_en": "PRE",
+	"card_index_en": "74",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/74_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/74.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 50,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Reckless Charge",
+			"text": "This Pokémon also does 10 damage to itself.",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Boosted Evolution",
+			"text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it."
+		}
+	],
+	"energy_provides": ""
+}

@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Hearthflame Mask Ogerpon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[RCC] Wrathful Hearth 20×\nThis attack does 20 damage for each damage counter on this Pokémon.\n[RRR] Dynamic Blaze 140+\nIf your opponent's Active Pokémon is an Evolution Pokémon, this attack does 140 more damage, and discard all Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "148",
+	"set_code_en": "PRE",
+	"card_index_en": "148",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/148_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/148.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 210,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Wrathful Hearth",
+			"text": "This attack does 20 damage for each damage counter on this Pokémon.",
+			"cost": "RCC",
+			"damage": "20×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dynamic Blaze",
+			"text": "If your opponent's Active Pokémon is an Evolution Pokémon, this attack does 140 more damage, and discard all Energy from this Pokémon.",
+			"cost": "RRR",
+			"damage": "140+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

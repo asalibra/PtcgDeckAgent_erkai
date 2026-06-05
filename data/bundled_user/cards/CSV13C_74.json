@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Ampharos",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[LCC] Head Bolt 140",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "74",
+	"set_code_en": "DRI",
+	"card_index_en": "74",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/74_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/74.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 2",
+	"hp": 140,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Flaaffy",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Head Bolt",
+			"text": "",
+			"cost": "LCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Darkest Impulse",
+			"text": "Whenever your opponent plays a Pokémon from their hand to evolve 1 of their Pokémon, put 4 damage counters on that Pokémon. The effect of Darkest Impulse doesn't stack."
+		}
+	],
+	"energy_provides": ""
+}

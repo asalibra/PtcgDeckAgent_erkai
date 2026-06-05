@@ -1,0 +1,51 @@
+{
+	"name": "死神棺",
+	"name_en": "Cofagrigus",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Law of the Underworld \nPut 6 damage counters on each Pokémon that has an Ability (both yours and your opponent's).\n[PCC] Spooky Shot 100",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "83",
+	"set_code_en": "SSP",
+	"card_index_en": "83",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/83_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/83.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Yamask",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Law of the Underworld",
+			"text": "Put 6 damage counters on each Pokémon that has an Ability (both yours and your opponent's).",
+			"cost": "P",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Spooky Shot",
+			"text": "",
+			"cost": "PCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

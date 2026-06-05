@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Wash Rotom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Manual Wash 20\nHeal 10 damage from each of your Pokémon.\n[CC] Gadget Show 30×\nThis attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "61",
+	"set_code_en": "DRI",
+	"card_index_en": "61",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/61_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/61.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Manual Wash",
+			"text": "Heal 10 damage from each of your Pokémon.",
+			"cost": "W",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Gadget Show",
+			"text": "This attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+			"cost": "CC",
+			"damage": "30×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

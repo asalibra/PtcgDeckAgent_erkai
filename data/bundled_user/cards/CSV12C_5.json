@@ -1,0 +1,51 @@
+{
+	"name": "派拉斯特",
+	"name_en": "Parasect",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Spore \nYour opponent's Active Pokémon is now Asleep.\n[GC] Scissor Swing 60+\nFlip 2 coins. This attack does 30 more damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "5",
+	"set_code_en": "JTG",
+	"card_index_en": "5",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/5_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/5.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Paras",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spore",
+			"text": "Your opponent's Active Pokémon is now Asleep.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Scissor Swing",
+			"text": "Flip 2 coins. This attack does 30 more damage for each heads.",
+			"cost": "GC",
+			"damage": "60+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的天罩虫",
+	"name_en": "Team Rocket's Dottler",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Disruptive Radar \nLook at the top 5 cards of your opponent's deck and put them back in any order.\n[PC] Super Psy Bolt 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "88",
+	"set_code_en": "DRI",
+	"card_index_en": "88",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/88_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/88.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 80,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Blipbug",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Disruptive Radar",
+			"text": "Look at the top 5 cards of your opponent's deck and put them back in any order.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Super Psy Bolt",
+			"text": "",
+			"cost": "PC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

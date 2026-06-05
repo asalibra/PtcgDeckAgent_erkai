@@ -1,0 +1,53 @@
+{
+	"name": "振翼发",
+	"name_en": "Flutter Mane",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[CC] Perplexing Transfer \nMove all damage counters from 1 of your Benched Ancient Pokémon to your opponent's Active Pokémon.\n[PP] Moonblast 70\nDuring your opponent's next turn, attacks used by the Defending Pokémon do 30 less damage (before applying Weakness and Resistance).",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "96",
+	"set_code_en": "SSP",
+	"card_index_en": "96",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/96_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/96.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Perplexing Transfer",
+			"text": "Move all damage counters from 1 of your Benched Ancient Pokémon to your opponent's Active Pokémon.",
+			"cost": "CC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Moonblast",
+			"text": "During your opponent's next turn, attacks used by the Defending Pokémon do 30 less damage (before applying Weakness and Resistance).",
+			"cost": "PP",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

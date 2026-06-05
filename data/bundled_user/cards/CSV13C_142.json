@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Steven's Skarmory",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Razor Wing 30\n[MMC] Sonic Double \nThis attack does 50 damage to 2 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "142",
+	"set_code_en": "DRI",
+	"card_index_en": "142",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/142_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/142.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Razor Wing",
+			"text": "",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Sonic Double",
+			"text": "This attack does 50 damage to 2 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "MMC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Alcremie ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[PCC] Whipped Shot 160",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "75",
+	"set_code_en": "JTG",
+	"card_index_en": "75",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/75_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/75.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 250,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Milcery",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Whipped Shot",
+			"text": "",
+			"cost": "PCC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Confectionary Gift",
+			"text": "Once during your turn, you may heal 30 damage from 1 of your Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

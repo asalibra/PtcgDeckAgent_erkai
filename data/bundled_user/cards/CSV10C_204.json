@@ -1,0 +1,51 @@
+{
+	"name": "由克希",
+	"name_en": "Mesprit",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Full Heart \nAttach up to 2 Basic Psychic Energy cards from your hand to your Pokémon in any way you like.\n[PP] Guardian Burst 160\nIf you don't have Uxie and Azelf on your Bench, this attack does nothing.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "204",
+	"set_code_en": "SSP",
+	"card_index_en": "204",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/204_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/204.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Full Heart",
+			"text": "Attach up to 2 Basic Psychic Energy cards from your hand to your Pokémon in any way you like.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Guardian Burst",
+			"text": "If you don't have Uxie and Azelf on your Bench, this attack does nothing.",
+			"cost": "PP",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

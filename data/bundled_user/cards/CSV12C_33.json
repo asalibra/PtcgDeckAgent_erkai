@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Remoraid",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Flail 10×\nThis attack does 10 damage for each damage counter on this Pokémon.\n[CC] Rain Splash 20",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "33",
+	"set_code_en": "JTG",
+	"card_index_en": "33",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/33_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/33.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Flail",
+			"text": "This attack does 10 damage for each damage counter on this Pokémon.",
+			"cost": "W",
+			"damage": "10×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Rain Splash",
+			"text": "",
+			"cost": "CC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

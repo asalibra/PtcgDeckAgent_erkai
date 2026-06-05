@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Arbok",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[DDD] Spinning Tail \nThis attack does 30 damage to each of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "113",
+	"set_code_en": "DRI",
+	"card_index_en": "113",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/113_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/113.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Ekans",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spinning Tail",
+			"text": "This attack does 30 damage to each of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "DDD",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Potent Glare",
+			"text": "As long as this Pokémon is in the Active Spot, your opponent can't play any Pokémon that has an Ability from their hand, except for Team Rocket's Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

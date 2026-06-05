@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Scovillain ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[RR] Spicy Rage 10+\nThis attack does 70 more damage for each damage counter on this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "37",
+	"set_code_en": "SSP",
+	"card_index_en": "37",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/37_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/37.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 260,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Capsakid",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spicy Rage",
+			"text": "This attack does 70 more damage for each damage counter on this Pokémon.",
+			"cost": "RR",
+			"damage": "10+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Double Type",
+			"text": "As long as this Pokémon is in play, it is Grass and Fire type."
+		}
+	],
+	"energy_provides": ""
+}

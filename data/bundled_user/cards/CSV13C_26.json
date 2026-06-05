@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Teal Mask Ogerpon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Grass Kagura \nSearch your deck for a Basic Grass Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.\n[GGC] Ogre's Hammer 120\nDuring your next turn, this Pokémon can't use Ogre's Hammer.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "26",
+	"set_code_en": "DRI",
+	"card_index_en": "26",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/26_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/26.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Grass Kagura",
+			"text": "Search your deck for a Basic Grass Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Ogre's Hammer",
+			"text": "During your next turn, this Pokémon can't use Ogre's Hammer.",
+			"cost": "GGC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

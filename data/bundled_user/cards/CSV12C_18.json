@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Meowscarada",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Rising Bloom 90+\nIf your opponent's Active Pokémon is a Pokémon ex, this attack does 90 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "18",
+	"set_code_en": "JTG",
+	"card_index_en": "18",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/18_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/18.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 2",
+	"hp": 160,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Floragato",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rising Bloom",
+			"text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 90 more damage.",
+			"cost": "CC",
+			"damage": "90+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Showtime",
+			"text": "Once during your turn, if this Pokémon is on your Bench, you may switch it with your Active Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

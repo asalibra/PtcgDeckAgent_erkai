@@ -7,6 +7,7 @@ const CARD_IMAGES_DIR := "user://cards/images/"
 ## 卡组存储目录
 const DECKS_DIR := "user://decks/"
 const AI_DECKS_DIR := "user://ai_decks/"
+const DECK_CLOUD_STATE_PATH := "user://deck_cloud_state.json"
 const BUNDLED_USER_DIR := "res://data/bundled_user/"
 const BUNDLED_CARDS_DIR := BUNDLED_USER_DIR + "cards/"
 const BUNDLED_DECKS_DIR := BUNDLED_USER_DIR + "decks/"
@@ -19,6 +20,7 @@ var _card_cache: Dictionary = {}
 ## 内存中的卡组缓存 {deck_id -> DeckData}
 var _deck_cache: Dictionary = {}
 var _ai_deck_cache: Dictionary = {}
+var _deck_cloud_state_cache: Dictionary = {}
 
 ## 卡组列表变更信号
 signal decks_changed()
@@ -401,6 +403,7 @@ func delete_deck(deck_id: int) -> void:
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
 	_deck_cache.erase(deck_id)
+	clear_deck_published_state(deck_id)
 	decks_changed.emit()
 
 
@@ -522,6 +525,98 @@ func _load_deck_from_file(path: String) -> DeckData:
 	if json.data is not Dictionary:
 		return null
 	return DeckData.from_dict(json.data)
+
+
+func mark_deck_published(deck: DeckData, published_at: String = "") -> void:
+	if deck == null:
+		return
+	mark_deck_published_dict(deck.to_dict(), published_at)
+
+
+func mark_deck_published_dict(deck_dict: Dictionary, published_at: String = "") -> void:
+	var deck_id := int(deck_dict.get("id", 0))
+	if deck_id <= 0:
+		return
+	_ensure_deck_cloud_state_cache_ready()
+	var stamp := published_at.strip_edges()
+	if stamp == "":
+		stamp = Time.get_datetime_string_from_system()
+	_deck_cloud_state_cache[str(deck_id)] = {
+		"published_at": stamp,
+		"signature": _deck_publish_signature_from_dict(deck_dict),
+	}
+	_save_deck_cloud_state_cache()
+
+
+func clear_deck_published_state(deck_id: int) -> void:
+	if deck_id <= 0:
+		return
+	_ensure_deck_cloud_state_cache_ready()
+	if not _deck_cloud_state_cache.erase(str(deck_id)):
+		return
+	_save_deck_cloud_state_cache()
+
+
+func get_deck_publish_state(deck: DeckData) -> Dictionary:
+	var result := {
+		"is_published": false,
+		"has_local_changes": false,
+		"published_at": "",
+	}
+	if deck == null or deck.id <= 0:
+		return result
+	_ensure_deck_cloud_state_cache_ready()
+	var entry: Dictionary = _deck_cloud_state_cache.get(str(deck.id), {}) if _deck_cloud_state_cache.get(str(deck.id), {}) is Dictionary else {}
+	if entry.is_empty():
+		return result
+	result["is_published"] = true
+	result["published_at"] = str(entry.get("published_at", ""))
+	var published_signature := str(entry.get("signature", ""))
+	var current_signature := _deck_publish_signature(deck)
+	result["has_local_changes"] = published_signature != "" and published_signature != current_signature
+	return result
+
+
+func _ensure_deck_cloud_state_cache_ready() -> void:
+	if not _deck_cloud_state_cache.is_empty() or FileAccess.file_exists(DECK_CLOUD_STATE_PATH):
+		_load_deck_cloud_state_cache()
+		return
+	_deck_cloud_state_cache = {}
+
+
+func _load_deck_cloud_state_cache() -> void:
+	_deck_cloud_state_cache = {}
+	if not FileAccess.file_exists(DECK_CLOUD_STATE_PATH):
+		return
+	var file := FileAccess.open(DECK_CLOUD_STATE_PATH, FileAccess.READ)
+	if file == null:
+		return
+	var json := JSON.new()
+	if json.parse(file.get_as_text()) != OK:
+		file.close()
+		return
+	file.close()
+	if json.data is Dictionary:
+		_deck_cloud_state_cache = (json.data as Dictionary).duplicate(true)
+
+
+func _save_deck_cloud_state_cache() -> void:
+	var file := FileAccess.open(DECK_CLOUD_STATE_PATH, FileAccess.WRITE)
+	if file == null:
+		push_error("CardDatabase: 无法写入卡组云端状态文件 %s" % DECK_CLOUD_STATE_PATH)
+		return
+	file.store_string(JSON.stringify(_deck_cloud_state_cache, "\t"))
+	file.close()
+
+
+func _deck_publish_signature(deck: DeckData) -> String:
+	if deck == null:
+		return ""
+	return _deck_publish_signature_from_dict(deck.to_dict())
+
+
+func _deck_publish_signature_from_dict(deck_dict: Dictionary) -> String:
+	return JSON.stringify(deck_dict)
 
 
 ## 为指定卡组构建完整的 CardInstance 列表（用于开始对战）

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Oricorio",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Energy Assist \nAttach up to 2 Basic Energy cards from your discard pile to 1 of your Benched Pokémon.\n[R] Fireworks 30\nDiscard an Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "26",
+	"set_code_en": "SSP",
+	"card_index_en": "26",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/26_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/26.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Energy Assist",
+			"text": "Attach up to 2 Basic Energy cards from your discard pile to 1 of your Benched Pokémon.",
+			"cost": "R",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Fireworks",
+			"text": "Discard an Energy from this Pokémon.",
+			"cost": "R",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

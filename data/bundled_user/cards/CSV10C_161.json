@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Terapagos",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Prism Charge \nSearch your deck for up to 3 Basic Energy cards of different types and attach them to your Tera Pokémon in any way you like. Then, shuffle your deck.\n[CCC] Hard Tackle 100",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "161",
+	"set_code_en": "SSP",
+	"card_index_en": "161",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/161_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/161.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Prism Charge",
+			"text": "Search your deck for up to 3 Basic Energy cards of different types and attach them to your Tera Pokémon in any way you like. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hard Tackle",
+			"text": "",
+			"cost": "CCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -10,31 +10,31 @@
 
 ## 2. 目录结构
 - `/root/ptcg-server` — 项目主目录（git clone）
-- `/root/ptcg-server/exports/web` — Godot 导出产物（deploy_server.sh 自动生成）
-- `/var/www/ptcgdeckagent` — Nginx 静态资源目录（实际公网服务目录）
+- `/root/ptcg-server/exports/web` — Web 导出产物，仅在显式启用浏览器客户端时使用
+- `/var/www/ptcgdeckagent` — Nginx 静态资源目录，仅在显式启用浏览器客户端时对外提供网页
 
 ## 3. Nginx 配置模板
 ```
 server {
     listen 80;
     listen [::]:80;
-    server_name ptcg4npg.us.cc www.ptcg4npg.us.cc;
+    server_name your-domain.com www.your-domain.com;
     location /.well-known/acme-challenge/ {
         root /var/www/certbot;
     }
     location / {
-        return 301 https://ptcg4npg.us.cc$request_uri;
+        return 301 https://your-domain.com$request_uri;
     }
 }
 
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name ptcg4npg.us.cc www.ptcg4npg.us.cc;
+    server_name your-domain.com www.your-domain.com;
     root /var/www/ptcgdeckagent;
     index index.html;
-    ssl_certificate /etc/letsencrypt/live/ptcg4npg.us.cc/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/ptcg4npg.us.cc/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
     gzip on;
@@ -77,21 +77,25 @@ server {
 
 ## 4. systemd 服务模板
 - `/etc/systemd/system/ptcg-server.service` — Godot 后端
-- `/etc/systemd/system/ptcg-web.service` — 8080 端口静态 HTTP（可选）
+- `/etc/systemd/system/ptcg-web.service` — 8080 端口静态 HTTP（仅兼容旧 Web 入口时可选）
 
 ## 5. 自动部署与同步
-- `deploy_server.sh` 只会导出到 `/root/ptcg-server/exports/web`，**不会自动同步到 `/var/www/ptcgdeckagent`**。
-- 需要加一步：
-  ```bash
-  rsync -av --delete /root/ptcg-server/exports/web/ /var/www/ptcgdeckagent/
-  ```
-- 建议把这步写进部署脚本或 CI/CD。
+- `deploy_server.sh` 现在默认关闭浏览器客户端，只部署联机服务端。
+- 默认模式下，脚本会停掉旧的 `ptcg-web.service`，并把 `/var/www/ptcgdeckagent` 替换成停用提示页，避免旧 Web 客户端继续对外可用。
+- 只有在显式传入 `--enable-web-client` 时，脚本才会：
+    - 导出 `/root/ptcg-server/exports/web`
+    - 创建并启动 `ptcg-web.service`
+    - 同步导出产物到 `/var/www/ptcgdeckagent`
+- 如需临时恢复浏览器客户端，可执行：
+    ```bash
+    ./deploy_server.sh --enable-web-client
+    ```
 
 ## 6. Cloudflare 自动 purge
 - `deploy_server.sh` 已支持自动调用 `purge_cloudflare_cache.py`，需设置：
   - `CLOUDFLARE_ZONE_ID`
   - `CLOUDFLARE_API_TOKEN`
-  - `CLOUDFLARE_BASE_URL`（如 https://ptcg4npg.us.cc）
+  - `CLOUDFLARE_BASE_URL`（如 https://your-domain.com）
 - 推荐用环境变量或 `.env` 文件，不要把 token 写进仓库。
 
 ## 7. 迁移服务器 Checklist

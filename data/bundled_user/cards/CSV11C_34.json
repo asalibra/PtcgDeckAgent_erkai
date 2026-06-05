@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Espeon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[PCC] Psych Out 160\nDiscard a random card from your opponent's hand.\n[GPD] Amazez \nDevolve each of your opponent's evolved Pokémon by shuffling the highest Stage Evolution card on it into your opponent's deck.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "34",
+	"set_code_en": "PRE",
+	"card_index_en": "34",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/34_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/34.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Psych Out",
+			"text": "Discard a random card from your opponent's hand.",
+			"cost": "PCC",
+			"damage": "160",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Amazez",
+			"text": "Devolve each of your opponent's evolved Pokémon by shuffling the highest Stage Evolution card on it into your opponent's deck.",
+			"cost": "GPD",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

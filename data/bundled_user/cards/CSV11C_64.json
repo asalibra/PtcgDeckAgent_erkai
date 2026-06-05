@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Tyranitar ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Grind 50×\nThis attack does 50 damage for each Energy attached to this Pokémon.\n[DCC] Tyrannical Crush 150\nDiscard a random card from your opponent's hand.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "64",
+	"set_code_en": "PRE",
+	"card_index_en": "64",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/64_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/64.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 2",
+	"hp": 340,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Pupitar",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Grind",
+			"text": "This attack does 50 damage for each Energy attached to this Pokémon.",
+			"cost": "C",
+			"damage": "50×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tyrannical Crush",
+			"text": "Discard a random card from your opponent's hand.",
+			"cost": "DCC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

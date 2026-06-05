@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Jolteon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[L] Linear Attack \nThis attack does 30 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[LCC] Fighting Lightning 90+\nIf your opponent's Active Pokémon is a Pokémon ex or Pokémon V, this attack does 90 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "29",
+	"set_code_en": "PRE",
+	"card_index_en": "29",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/29_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/29.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "Eevee",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Linear Attack",
+			"text": "This attack does 30 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "L",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Fighting Lightning",
+			"text": "If your opponent's Active Pokémon is a Pokémon ex or Pokémon V, this attack does 90 more damage.",
+			"cost": "LCC",
+			"damage": "90+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

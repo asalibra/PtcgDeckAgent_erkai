@@ -185,7 +185,8 @@ func is_evolution_pokemon() -> bool:
 
 ## 是否为特殊规则宝可梦（昏厥给对手额外奖赏卡）
 func is_rule_box_pokemon() -> bool:
-	return mechanic in ["ex", "V", "VSTAR", "VMAX"]
+	# Radiant cards are rule-box Pokemon even though they only give 1 Prize.
+	return mechanic in ["ex", "V", "VSTAR", "VMAX", "Radiant"]
 
 
 ## 昏厥时对手获取的奖赏卡数量

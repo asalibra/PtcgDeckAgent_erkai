@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Wellspring Mask Ogerpon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Water Kagura \nSearch your deck for a Basic Water Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.\n[WWC] Bubble Drain 100\nHeal 30 damage from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "67",
+	"set_code_en": "DRI",
+	"card_index_en": "67",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/67_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/67.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Water Kagura",
+			"text": "Search your deck for a Basic Water Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Bubble Drain",
+			"text": "Heal 30 damage from this Pokémon.",
+			"cost": "WWC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

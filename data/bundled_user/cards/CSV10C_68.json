@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Kilowattrel ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[L] Return Charge \nSwitch this Pokémon with 1 of your Benched Pokémon. If you do, attach up to 2 Basic Lightning Energy cards from your hand to this Pokémon.\n[CC] Thunder Lance 40+\nThis attack does 40 more damage for each Lightning Energy attached to this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "68",
+	"set_code_en": "SSP",
+	"card_index_en": "68",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/68_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/68.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 260,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 0,
+	"evolves_from": "Wattrel",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Return Charge",
+			"text": "Switch this Pokémon with 1 of your Benched Pokémon. If you do, attach up to 2 Basic Lightning Energy cards from your hand to this Pokémon.",
+			"cost": "L",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Thunder Lance",
+			"text": "This attack does 40 more damage for each Lightning Energy attached to this Pokémon.",
+			"cost": "CC",
+			"damage": "40+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

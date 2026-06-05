@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Duraludon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[M] Hammer In 30\n[MMC] Raging Hammer 80+\nThis attack does 10 more damage for each damage counter on this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "69",
+	"set_code_en": "PRE",
+	"card_index_en": "69",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/69_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/69.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hammer In",
+			"text": "",
+			"cost": "M",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Raging Hammer",
+			"text": "This attack does 10 more damage for each damage counter on this Pokémon.",
+			"cost": "MMC",
+			"damage": "80+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

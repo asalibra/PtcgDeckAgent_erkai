@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Meowth",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Paw-cket Pilfer \nChoose a random card from your opponent's hand. Your opponent reveals that card and shuffles it into their deck.\n[CC] Fury Swipes 20×\nFlip 3 coins. This attack does 20 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "203",
+	"set_code_en": "DRI",
+	"card_index_en": "203",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/203_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/203.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Paw-cket Pilfer",
+			"text": "Choose a random card from your opponent's hand. Your opponent reveals that card and shuffles it into their deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Fury Swipes",
+			"text": "Flip 3 coins. This attack does 20 damage for each heads.",
+			"cost": "CC",
+			"damage": "20×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

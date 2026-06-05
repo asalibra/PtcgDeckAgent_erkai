@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Pancham",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Corkscrew Punch 10\n[CCC] Focus Fist 50\nFlip a coin. If tails, this attack does nothing.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "83",
+	"set_code_en": "JTG",
+	"card_index_en": "83",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/83_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/83.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Corkscrew Punch",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Focus Fist",
+			"text": "Flip a coin. If tails, this attack does nothing.",
+			"cost": "CCC",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

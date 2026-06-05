@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Espathra",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Mystical Eyes \nDevolve 1 of your opponent's evolved Pokémon by putting the highest Stage Evolution card on it into your opponent's hand.\n[PC] Spiral Drain 60\nHeal 30 damage from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "95",
+	"set_code_en": "SSP",
+	"card_index_en": "95",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/95_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/95.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Flittle",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mystical Eyes",
+			"text": "Devolve 1 of your opponent's evolved Pokémon by putting the highest Stage Evolution card on it into your opponent's hand.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Spiral Drain",
+			"text": "Heal 30 damage from this Pokémon.",
+			"cost": "PC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

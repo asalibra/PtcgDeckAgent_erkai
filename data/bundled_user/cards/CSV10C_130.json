@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Archaludon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[MMM] Metal Defender 220\nDuring your opponent's next turn, this Pokémon has no Weakness.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "130",
+	"set_code_en": "SSP",
+	"card_index_en": "130",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/130_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/130.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 300,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Duraludon",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Metal Defender",
+			"text": "During your opponent's next turn, this Pokémon has no Weakness.",
+			"cost": "MMM",
+			"damage": "220",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Assemble Alloy",
+			"text": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may attach up to 2 Basic Metal Energy cards from your discard pile to your Metal Pokémon in any way you like."
+		}
+	],
+	"energy_provides": ""
+}

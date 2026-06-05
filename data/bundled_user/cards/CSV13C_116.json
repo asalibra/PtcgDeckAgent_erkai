@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的尼多后",
+	"name_en": "Team Rocket's Nidoqueen",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[D] Love Impact 60+\nIf a Pokémon that has \"Nidoking\" in its name is on your Bench, this attack does 120 more damage.\n[DD] Mega Kick 130",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "116",
+	"set_code_en": "DRI",
+	"card_index_en": "116",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/116_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/116.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Team Rocket's Nidorina",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Love Impact",
+			"text": "If a Pokémon that has \"Nidoking\" in its name is on your Bench, this attack does 120 more damage.",
+			"cost": "D",
+			"damage": "60+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mega Kick",
+			"text": "",
+			"cost": "DD",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Sneasel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[D] Scratch 20\n[DD] Strike the Sleeper \nThis attack does 20 damage to 1 of your opponent's Benched Pokémon for each damage counter on that Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "128",
+	"set_code_en": "DRI",
+	"card_index_en": "128",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/128_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/128.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Scratch",
+			"text": "",
+			"cost": "D",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Strike the Sleeper",
+			"text": "This attack does 20 damage to 1 of your opponent's Benched Pokémon for each damage counter on that Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "DD",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

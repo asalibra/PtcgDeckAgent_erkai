@@ -1,0 +1,51 @@
+{
+	"name": "暴雪王",
+	"name_en": "Abomasnow",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Lunge Out 90\n[WWWC] Frozen Wood 120+\nIf this Pokémon has 2 or more Grass Energy attached, this attack does 120 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "60",
+	"set_code_en": "DRI",
+	"card_index_en": "60",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/60_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/60.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 150,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Snover",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Lunge Out",
+			"text": "",
+			"cost": "CCC",
+			"damage": "90",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Frozen Wood",
+			"text": "If this Pokémon has 2 or more Grass Energy attached, this attack does 120 more damage.",
+			"cost": "WWWC",
+			"damage": "120+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

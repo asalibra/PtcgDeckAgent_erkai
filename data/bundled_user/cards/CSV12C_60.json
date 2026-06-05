@@ -1,0 +1,51 @@
+{
+	"name": "诅咒娃娃",
+	"name_en": "Banette",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Cursed Words \nYour opponent chooses 3 cards from their hand and shuffles those cards into their deck.\n[PC] Spooky Shot 70",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "60",
+	"set_code_en": "JTG",
+	"card_index_en": "60",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/60_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/60.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 90,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Shuppet",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Cursed Words",
+			"text": "Your opponent chooses 3 cards from their hand and shuffles those cards into their deck.",
+			"cost": "P",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Spooky Shot",
+			"text": "",
+			"cost": "PC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

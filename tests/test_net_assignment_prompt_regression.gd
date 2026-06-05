@@ -107,6 +107,29 @@ func test_game_room_resolves_assignment_indices_against_source_items() -> String
 	])
 
 
+func test_game_room_resolves_granted_attack_payload_by_name_with_id() -> String:
+	var fixture := _make_tm_turbo_fixture()
+	var room := GameRoomScript.new()
+	room._gsm = fixture.gsm
+	var tool_data := CardData.new()
+	tool_data.name = "TM 能量涡轮"
+	tool_data.card_type = "Tool"
+	tool_data.effect_id = "tm_turbo_payload_test"
+	fixture.player.active_pokemon.attached_tool = CardInstance.create(tool_data, 0)
+	fixture.gsm.effect_processor.register_effect("tm_turbo_payload_test", EffectTMTurboEnergizeScript.new())
+
+	var resolved: Dictionary = room._resolve_granted_attack_payload(
+		fixture.player.active_pokemon,
+		"",
+		"能量涡轮"
+	)
+
+	return run_checks([
+		assert_eq(str(resolved.get("id", "")), "tm_turbo_energize", "服务端按招式名回填赋予招式时应保留真实 id"),
+		assert_eq(str(resolved.get("name", "")), "能量涡轮", "服务端按招式名回填赋予招式时应命中正确招式"),
+	])
+
+
 func test_net_battle_scene_restores_full_library_assignment_prompt() -> String:
 	var fixture := _make_tm_turbo_fixture()
 	var room := GameRoomScript.new()

@@ -1,0 +1,51 @@
+{
+	"name": "风速狗",
+	"name_en": "Arcanine",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Flare 50\n[RCC] Punishing Fang 100+\nIf your opponent's Active Pokémon is a Darkness Pokémon, this attack does 100 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "28",
+	"set_code_en": "DRI",
+	"card_index_en": "28",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/28_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/28.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Growlithe",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Flare",
+			"text": "",
+			"cost": "CC",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Punishing Fang",
+			"text": "If your opponent's Active Pokémon is a Darkness Pokémon, this attack does 100 more damage.",
+			"cost": "RCC",
+			"damage": "100+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

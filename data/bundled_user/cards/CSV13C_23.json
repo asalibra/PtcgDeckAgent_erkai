@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Arboliva ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[G] Oil Salvo \nChoose 1 of your opponent's Pokémon 6 times. (You can choose the same Pokémon more than once.) For each time you chose a Pokémon, do 20 damage to it. This damage isn't affected by Weakness or Resistance.\n[CCC] Aroma Shot 160\nThis Pokémon recovers from all Special Conditions.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "23",
+	"set_code_en": "DRI",
+	"card_index_en": "23",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/23_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/23.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 2",
+	"hp": 310,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Dolliv",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Oil Salvo",
+			"text": "Choose 1 of your opponent's Pokémon 6 times. (You can choose the same Pokémon more than once.) For each time you chose a Pokémon, do 20 damage to it. This damage isn't affected by Weakness or Resistance.",
+			"cost": "G",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Aroma Shot",
+			"text": "This Pokémon recovers from all Special Conditions.",
+			"cost": "CCC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Turtonator",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Fully Singe \nDiscard an Energy from your opponent's Active Pokémon ex.\n[FCC] Steaming Stomp 100",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "137",
+	"set_code_en": "SSP",
+	"card_index_en": "137",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/137_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/137.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Fully Singe",
+			"text": "Discard an Energy from your opponent's Active Pokémon ex.",
+			"cost": "R",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Steaming Stomp",
+			"text": "",
+			"cost": "FCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

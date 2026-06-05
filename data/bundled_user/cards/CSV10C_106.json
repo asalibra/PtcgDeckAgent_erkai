@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Flygon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[F] Reversing Storm 130\nYou may switch this Pokémon with 1 of your Benched Pokémon.\n[WFM] Sonic Peridot \nThis attack does 100 damage to each of your opponent's Pokémon ex and Pokémon V. This attack's damage isn't affected by Weakness or Resistance.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "106",
+	"set_code_en": "SSP",
+	"card_index_en": "106",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/106_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/106.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 2",
+	"hp": 310,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Vibrava",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Reversing Storm",
+			"text": "You may switch this Pokémon with 1 of your Benched Pokémon.",
+			"cost": "F",
+			"damage": "130",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Sonic Peridot",
+			"text": "This attack does 100 damage to each of your opponent's Pokémon ex and Pokémon V. This attack's damage isn't affected by Weakness or Resistance.",
+			"cost": "WFM",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Grafaiai",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Mischievous Painting \nAttach up to 3 Energy cards from your opponent's discard pile to their Pokémon in any way you like.\n[DD] Energized Graffiti 40×\nThis attack does 40 damage for each Energy attached to all of your opponent's Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "121",
+	"set_code_en": "SSP",
+	"card_index_en": "121",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/121_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/121.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Shroodle",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mischievous Painting",
+			"text": "Attach up to 3 Energy cards from your opponent's discard pile to their Pokémon in any way you like.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Energized Graffiti",
+			"text": "This attack does 40 damage for each Energy attached to all of your opponent's Pokémon.",
+			"cost": "DD",
+			"damage": "40×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

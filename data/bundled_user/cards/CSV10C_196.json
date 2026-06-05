@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Larvesta",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Ram 10\n[RC] Steady Firebreathing 20",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "196",
+	"set_code_en": "SSP",
+	"card_index_en": "196",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/196_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/196.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Ram",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Steady Firebreathing",
+			"text": "",
+			"cost": "RC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

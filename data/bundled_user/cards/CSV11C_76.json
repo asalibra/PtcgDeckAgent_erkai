@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Snorlax ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[CCC] Strength 80\n[CCCC] Toss-and-Turn Press 120×\nFlip 3 coins. This attack does 120 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "76",
+	"set_code_en": "PRE",
+	"card_index_en": "76",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/76_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/76.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 260,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Strength",
+			"text": "",
+			"cost": "CCC",
+			"damage": "80",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Toss-and-Turn Press",
+			"text": "Flip 3 coins. This attack does 120 damage for each heads.",
+			"cost": "CCCC",
+			"damage": "120×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

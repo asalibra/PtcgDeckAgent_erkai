@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Spewpa",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Wander About \nSwitch this Pokémon with 1 of your Benched Pokémon.\n[G] Tackle 30",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "6",
+	"set_code_en": "SSP",
+	"card_index_en": "6",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/6_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/6.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 80,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Scatterbug",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Wander About",
+			"text": "Switch this Pokémon with 1 of your Benched Pokémon.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tackle",
+			"text": "",
+			"cost": "G",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

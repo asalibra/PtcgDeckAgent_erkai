@@ -2,6 +2,8 @@
 class_name RoomManager
 extends RefCounted
 
+const WAITING_RECONNECT_GRACE_SECONDS := 2.5
+
 var _rooms: Dictionary = {}  # room_id -> GameRoom
 var _server_decks: Dictionary = {}  # deck_id -> deck_dict（服务器端牌组存储）
 var _server_decks_dir := "user://server_decks/"
@@ -69,40 +71,81 @@ func handle_disconnect(peer_id: int) -> void:
 	# 通知房间内对手
 	if not session.room_id.is_empty() and _rooms.has(session.room_id):
 		var room: GameRoom = _rooms[session.room_id]
-		var opp_info := room.get_opponent_info(session.player_index)
-		if opp_info.has("peer_id"):
-			_send_to(opp_info["peer_id"], NetProtocol.make_message(
-				NetProtocol.MSG_OPPONENT_DISCONNECTED,
-				{"grace_seconds": PlayerSession.GRACE_PERIOD_SECONDS}
-			))
+		room.set_player_connected(session.player_index, false)
+		# waiting 阶段的客方短暂断连（如切场景重连）给一个短宽限，避免误报“对手已断线”。
+		var should_notify_immediately := room._state == NetProtocol.ROOM_STATE_PLAYING
+		if room._state == NetProtocol.ROOM_STATE_WAITING and session.player_index == room.host_player_index:
+			should_notify_immediately = true
+		if should_notify_immediately:
+			var opp_info := room.get_opponent_info(session.player_index)
+			if opp_info.has("peer_id"):
+				_send_to(opp_info["peer_id"], NetProtocol.make_message(
+					NetProtocol.MSG_OPPONENT_DISCONNECTED,
+					{"grace_seconds": PlayerSession.GRACE_PERIOD_SECONDS}
+				))
 
 
 func handle_tick(delta: float) -> void:
+	var now_sec := Time.get_ticks_msec() / 1000.0
 	# 检查断线超时的会话
 	var expired_sessions: Array = []
+	var waiting_room_updates: Array = []
 	for peer_id_variant: Variant in _player_sessions.keys():
 		var peer_id := int(peer_id_variant)
 		var session: PlayerSession = _player_sessions[peer_id]
-		if session.is_expired() and not session.room_id.is_empty() and _rooms.has(session.room_id):
-			var room: GameRoom = _rooms[session.room_id]
+		if session.connected:
+			continue
+		if session.room_id.is_empty() or not _rooms.has(session.room_id):
+			if session.is_expired():
+				expired_sessions.append(peer_id)
+			continue
+		var room: GameRoom = _rooms[session.room_id]
+		if room._state == NetProtocol.ROOM_STATE_WAITING:
+			var disconnected_for := now_sec - session.disconnect_time
+			if disconnected_for >= WAITING_RECONNECT_GRACE_SECONDS:
+				var removed_player_index := session.player_index
+				if room._players.has(removed_player_index):
+					room.remove_player(removed_player_index)
+				var opp_info := room.get_opponent_info(removed_player_index)
+				if opp_info.has("peer_id"):
+					waiting_room_updates.append({
+						"peer_id": int(opp_info["peer_id"]),
+						"message": NetProtocol.make_room_update("", false),
+					})
+				expired_sessions.append(peer_id)
+			continue
+		if session.is_expired():
 			if room._state == NetProtocol.ROOM_STATE_PLAYING:
 				var winner: int = 1 - session.player_index
 				room._on_gsm_game_over(winner, "对手断线超时")
+			room.remove_player(session.player_index)
 			expired_sessions.append(peer_id)
 	for peer_id: int in expired_sessions:
+		if not _player_sessions.has(peer_id):
+			continue
 		var session: PlayerSession = _player_sessions[peer_id]
 		session.room_id = ""
+		session.player_index = -1
+		_session_tokens.erase(session.session_token)
+		_player_sessions.erase(peer_id)
 		_peer_to_room.erase(peer_id)
+
+	for update_variant: Variant in waiting_room_updates:
+		if not (update_variant is Dictionary):
+			continue
+		var update: Dictionary = update_variant
+		var update_message: Dictionary = update.get("message", {}) if update.get("message") is Dictionary else {}
+		_send_to(int(update.get("peer_id", -1)), update_message)
 
 	# 清理过期房间
 	var expired_rooms: Array = []
 	for room_id in _rooms.keys():
 		var room: GameRoom = _rooms[room_id]
 		room.tick(delta)
-		if room.get_room_info()["state"] == NetProtocol.ROOM_STATE_FINISHED:
-			# 检查是否两个玩家都已离开
-			if room.get_player_count() == 0:
-				expired_rooms.append(room_id)
+		if room.get_player_count() == 0:
+			expired_rooms.append(room_id)
+		elif room.get_room_info()["state"] == NetProtocol.ROOM_STATE_FINISHED and room.get_player_count() == 0:
+			expired_rooms.append(room_id)
 	for room_id in expired_rooms:
 		_rooms.erase(room_id)
 
@@ -111,8 +154,7 @@ func get_room_list() -> Array:
 	var result: Array = []
 	for room_id in _rooms.keys():
 		var room: GameRoom = _rooms[room_id]
-		var info := room.get_room_info()
-		if info["state"] == NetProtocol.ROOM_STATE_WAITING:
+		if room.is_joinable():
 			result.append({
 				"room_id": room_id,
 				"room_name": room.room_name,
@@ -205,6 +247,9 @@ func _handle_join_room(peer_id: int, payload: Dictionary, meta: Dictionary = {})
 		return
 
 	var room: GameRoom = _rooms[room_id]
+	if not room.is_joinable():
+		_send_error(peer_id, "room_not_joinable", "房间当前不可加入", meta)
+		return
 	if room.get_player_count() >= 2:
 		_send_error(peer_id, "room_full", "房间已满", meta)
 		return
@@ -248,18 +293,25 @@ func _handle_select_deck(peer_id: int, payload: Dictionary, meta: Dictionary = {
 		return
 	var room: GameRoom = _rooms[session.room_id]
 	var deck_id: int = int(payload.get("deck_id", -1))
+	var deck_source: String = str(payload.get("deck_source", ""))
+	var payload_deck_data: Dictionary = payload.get("deck_data", {}) if payload.get("deck_data") is Dictionary else {}
 	if deck_id < 0:
 		_send_error(peer_id, "invalid_deck", "无效的牌组ID", meta)
 		return
-	# 优先从服务器缓存获取牌组
-	var deck: DeckData = _card_db.get_deck(deck_id)
-	# CardDatabase 没有，检查服务器端牌组存储
-	if deck == null and _server_decks.has(deck_id):
-		deck = DeckData.from_dict(_server_decks[deck_id])
-	# 还没有则使用客户端发来的数据
-	if deck == null and payload.has("deck_data") and payload["deck_data"] is Dictionary and not payload["deck_data"].is_empty():
-		deck = DeckData.from_dict(payload["deck_data"])
-		room._extra_deck_data[session.player_index] = payload["deck_data"]
+	var deck: DeckData = null
+	if deck_source == NetProtocol.DECK_SOURCE_LOCAL_DRAFT and not payload_deck_data.is_empty():
+		deck = DeckData.from_dict(payload_deck_data)
+		room._extra_deck_data[session.player_index] = payload_deck_data.duplicate(true)
+	else:
+		# 优先从服务器缓存获取牌组
+		deck = _card_db.get_deck(deck_id)
+		# CardDatabase 没有，检查服务器端牌组存储
+		if deck == null and _server_decks.has(deck_id):
+			deck = DeckData.from_dict(_server_decks[deck_id])
+		# 还没有则使用客户端发来的数据
+		if deck == null and not payload_deck_data.is_empty():
+			deck = DeckData.from_dict(payload_deck_data)
+			room._extra_deck_data[session.player_index] = payload_deck_data.duplicate(true)
 	if deck == null:
 		_send_error(peer_id, "deck_not_found", "牌组未找到", meta)
 		return
@@ -364,6 +416,7 @@ func _handle_reconnect(peer_id: int, payload: Dictionary, meta: Dictionary = {})
 		var room: GameRoom = _rooms[session.room_id]
 		if room._players.has(session.player_index):
 			room._players[session.player_index]["peer_id"] = peer_id
+			room.set_player_connected(session.player_index, true)
 
 	# 通知对手（携带重连者的名字和准备状态）
 	var opp_name := ""
@@ -420,6 +473,8 @@ func _leave_current_room(peer_id: int) -> void:
 		var opp_info := room.get_opponent_info(session.player_index)
 		if opp_info.has("peer_id"):
 			_send_to(opp_info["peer_id"], NetProtocol.make_error("opponent_left", "对手已离开"))
+		if room.get_player_count() == 0:
+			_rooms.erase(session.room_id)
 
 	session.room_id = ""
 	session.player_index = -1

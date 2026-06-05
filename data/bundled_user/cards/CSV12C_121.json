@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Dudunsparce ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Tenacious Tail 60×\nThis attack does 60 damage for each of your opponent's Pokémon ex in play.\n[CCC] Destructive Drill 150\nThis attack's damage isn't affected by any effects on your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "121",
+	"set_code_en": "JTG",
+	"card_index_en": "121",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/121_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/121.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Dunsparce",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Tenacious Tail",
+			"text": "This attack does 60 damage for each of your opponent's Pokémon ex in play.",
+			"cost": "C",
+			"damage": "60×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Destructive Drill",
+			"text": "This attack's damage isn't affected by any effects on your opponent's Active Pokémon.",
+			"cost": "CCC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

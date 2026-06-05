@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Quaquaval",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WC] Hydro Splash 120",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "52",
+	"set_code_en": "SSP",
+	"card_index_en": "52",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/52_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/52.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Quaxwell",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hydro Splash",
+			"text": "",
+			"cost": "WC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Up-Tempo",
+			"text": "You must put a card from your hand on the bottom of your deck in order to use this Ability. Once during your turn, you may draw cards until you have 5 cards in your hand."
+		}
+	],
+	"energy_provides": ""
+}

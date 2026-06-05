@@ -1,0 +1,53 @@
+{
+	"name": "破空焰",
+	"name_en": "Gouging Fire",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[R] Lunge Out 30\n[RRC] Blazing Charge 100+\nIf your opponent has 4 or fewer Prize cards remaining, this attack does 70 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "38",
+	"set_code_en": "SSP",
+	"card_index_en": "38",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/38_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/38.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Lunge Out",
+			"text": "",
+			"cost": "R",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Blazing Charge",
+			"text": "If your opponent has 4 or fewer Prize cards remaining, this attack does 70 more damage.",
+			"cost": "RRC",
+			"damage": "100+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

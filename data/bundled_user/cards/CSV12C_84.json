@@ -1,0 +1,51 @@
+{
+	"name": "岩狗狗",
+	"name_en": "Rockruff",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Dig It Up \nLook at the top card of your deck. You may discard that card.\n[CC] Stampede 20",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "84",
+	"set_code_en": "JTG",
+	"card_index_en": "84",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/84_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/84.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dig It Up",
+			"text": "Look at the top card of your deck. You may discard that card.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Stampede",
+			"text": "",
+			"cost": "CC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

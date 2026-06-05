@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Slaking ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[CC] Great Swing 280\nDiscard an Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "147",
+	"set_code_en": "SSP",
+	"card_index_en": "147",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/147_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/147.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 2",
+	"hp": 340,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Vigoroth",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Great Swing",
+			"text": "Discard an Energy from this Pokémon.",
+			"cost": "CC",
+			"damage": "280",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Born to Slack",
+			"text": "If your opponent has no Pokémon ex or Pokémon V in play, this Pokémon can't attack."
+		}
+	],
+	"energy_provides": ""
+}

@@ -2,15 +2,20 @@
 class_name NetworkClient
 extends Node
 
+const NetClientLogScript := preload("res://scripts/network/NetClientLog.gd")
+
 signal connected()
 signal disconnected(reason: String)
 signal message_received(message: Dictionary)
 signal connection_error(error: String)
 
 const CONNECT_TIMEOUT_SEC := 10.0
+const WEBSOCKET_INBOUND_BUFFER_SIZE := 8 * 1024 * 1024
+const WEBSOCKET_OUTBOUND_BUFFER_SIZE := 2 * 1024 * 1024
+const WEBSOCKET_MAX_QUEUED_PACKETS := 4096
 
-var server_url: String = "ws://154.83.12.152:9000"
-var _ws: WebSocketPeer
+var server_url: String = "ws://localhost:9000"
+var _ws = null
 var _connected: bool = false
 var _session_token: String = ""
 var _player_index: int = -1
@@ -24,14 +29,29 @@ var _last_received_state_seq: int = NetProtocol.INVALID_STATE_SEQ
 func connect_to_server(url: String = "") -> void:
 	if not url.is_empty():
 		server_url = url
+	NetClientLogScript.begin_session("network_client", {
+		"server_url": server_url,
+	})
 	_disconnect_internal()
 	_ws = WebSocketPeer.new()
-	var err := _ws.connect_to_url(server_url)
+	if _ws.has_method("set_inbound_buffer_size"):
+		_ws.set_inbound_buffer_size(WEBSOCKET_INBOUND_BUFFER_SIZE)
+	if _ws.has_method("set_outbound_buffer_size"):
+		_ws.set_outbound_buffer_size(WEBSOCKET_OUTBOUND_BUFFER_SIZE)
+	if _ws.has_method("set_max_queued_packets"):
+		_ws.set_max_queued_packets(WEBSOCKET_MAX_QUEUED_PACKETS)
+	var err: int = _ws.connect_to_url(server_url)
 	if err != OK:
+		NetClientLogScript.log_error("connect_error", error_string(err), {
+			"server_url": server_url,
+		})
 		connection_error.emit("连接失败: %s" % error_string(err))
 		return
 	_connecting = true
 	_connect_start_msec = Time.get_ticks_msec()
+	NetClientLogScript.log_event("connect_start", {
+		"server_url": server_url,
+	})
 	print("[NetworkClient] 正在连接 %s..." % server_url)
 
 
@@ -41,11 +61,22 @@ func disconnect_from_server() -> void:
 
 func send_message(message: Dictionary) -> void:
 	if _ws == null or not _connected:
+		NetClientLogScript.log_error("send_blocked", "socket_not_connected", {
+			"type": str(message.get("type", "")),
+		})
 		push_warning("[NetworkClient] 未连接，无法发送消息")
 		return
 	var outbound := _decorate_outbound_message(message)
 	var json_str := NetProtocol.dict_to_json_string(outbound)
-	_ws.send_text(json_str)
+	var send_err: int = _ws.send_text(json_str)
+	NetClientLogScript.log_event("send", {
+		"type": str(outbound.get("type", "")),
+		"request_id": NetProtocol.get_request_id(outbound),
+		"state_seq": NetProtocol.get_state_seq(outbound),
+		"send_error": int(send_err),
+	})
+	if send_err != OK:
+		connection_error.emit("发送失败: %s" % error_string(send_err))
 
 
 func is_connected_to_server() -> bool:
@@ -94,11 +125,14 @@ func list_rooms() -> void:
 	send_message(NetProtocol.make_message(NetProtocol.MSG_LIST_ROOMS))
 
 
-func select_deck(deck_id: int, deck_data: Dictionary = {}) -> void:
-	send_message(NetProtocol.make_message(NetProtocol.MSG_SELECT_DECK, {
+func select_deck(deck_id: int, deck_data: Dictionary = {}, deck_source: String = "") -> void:
+	var payload := {
 		"deck_id": deck_id,
 		"deck_data": deck_data,
-	}))
+	}
+	if not deck_source.is_empty():
+		payload["deck_source"] = deck_source
+	send_message(NetProtocol.make_message(NetProtocol.MSG_SELECT_DECK, payload))
 
 
 func set_ready(ready: bool) -> void:
@@ -163,13 +197,17 @@ func _process(_delta: float) -> void:
 	if _ws == null:
 		return
 	_ws.poll()
-	var state := _ws.get_ready_state()
+	var state: int = _ws.get_ready_state()
 
 	# 连接超时检测
 	if _connecting and state != WebSocketPeer.STATE_OPEN:
 		var elapsed_sec := (Time.get_ticks_msec() - _connect_start_msec) / 1000.0
 		if elapsed_sec >= CONNECT_TIMEOUT_SEC:
 			_connecting = false
+			NetClientLogScript.log_error("connect_timeout", "connect_timeout", {
+				"server_url": server_url,
+				"elapsed_sec": elapsed_sec,
+			})
 			_disconnect_internal()
 			connection_error.emit("连接超时（%.0f秒）" % CONNECT_TIMEOUT_SEC)
 			return
@@ -178,15 +216,20 @@ func _process(_delta: float) -> void:
 		if not _connected:
 			_connected = true
 			_connecting = false
+			NetClientLogScript.log_event("connected", {
+				"server_url": server_url,
+			})
 			print("[NetworkClient] 已连接")
 			connected.emit()
-		while _ws.get_available_packet_count() > 0:
-			var packet := _ws.get_packet()
-			var json_str := packet.get_string_from_utf8()
+		while _ws != null and _ws.get_available_packet_count() > 0:
+			var packet: PackedByteArray = _ws.get_packet()
+			var json_str: String = packet.get_string_from_utf8()
 			var message := NetProtocol.json_string_to_dict(json_str)
 			if message.is_empty():
 				continue
 			_handle_message(message)
+			if _ws == null:
+				return
 
 	elif state == WebSocketPeer.STATE_CLOSING:
 		pass
@@ -194,13 +237,26 @@ func _process(_delta: float) -> void:
 	elif state == WebSocketPeer.STATE_CLOSED:
 		if _connected:
 			_connected = false
-			var reason := _ws.get_close_reason()
+			var reason: String = _ws.get_close_reason()
+			NetClientLogScript.log_event("disconnected", {
+				"reason": reason,
+				"code": _ws.get_close_code(),
+			})
 			print("[NetworkClient] 连接断开: %s" % reason)
 			disconnected.emit(reason)
 
 
 func _handle_message(message: Dictionary) -> void:
+	NetClientLogScript.log_event("recv", {
+		"type": str(message.get("type", "")),
+		"request_id": NetProtocol.get_request_id(message),
+		"state_seq": NetProtocol.get_state_seq(message),
+		"resync_required": NetProtocol.is_resync_required(message),
+	})
 	if not NetProtocol.is_version_compatible(message):
+		NetClientLogScript.log_error("version_mismatch", "version_mismatch", {
+			"type": str(message.get("type", "")),
+		})
 		message_received.emit(_make_resync_error(
 			"version_mismatch",
 			"协议版本不匹配，需重新同步",
@@ -211,6 +267,10 @@ func _handle_message(message: Dictionary) -> void:
 	var incoming_state_seq := NetProtocol.get_state_seq(message)
 	if incoming_state_seq != NetProtocol.INVALID_STATE_SEQ:
 		if _last_received_state_seq != NetProtocol.INVALID_STATE_SEQ and incoming_state_seq < _last_received_state_seq:
+			NetClientLogScript.log_error("stale_state", "stale_state", {
+				"incoming_state_seq": incoming_state_seq,
+				"last_received_state_seq": _last_received_state_seq,
+			})
 			message_received.emit(_make_resync_error(
 				"stale_state",
 				"收到过期状态，需重新同步",
@@ -265,6 +325,9 @@ func _log_message_trace(direction: String, message_type: String, payload: Dictio
 
 func _disconnect_internal() -> void:
 	if _ws != null:
+		NetClientLogScript.log_event("socket_close", {
+			"server_url": server_url,
+		})
 		_ws.close()
 		_ws = null
 	_connected = false

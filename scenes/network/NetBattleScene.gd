@@ -1,11 +1,16 @@
 ## 网络对战场景 - 包装 BattleScene，注入网络逻辑
 extends Control
 
+const NetClientLogScript := preload("res://scripts/network/NetClientLog.gd")
+const RECOVERY_TIMEOUT_SEC := 10.0
+
 var _battle_scene: Control
 var _net_client: NetworkClient
 var _net_my_player_index: int = -1
 var _net_state_restorer: RefCounted
 var _net_connected: bool = false
+var _recovery_in_progress: bool = false
+var _recovery_start_msec: int = 0
 
 const BattleSceneScript := preload("res://scenes/battle/BattleScene.gd")
 const NetBattleSceneScript := preload("res://scenes/network/NetBattleScenePatch.gd")
@@ -13,6 +18,10 @@ const BattleReplayStateRestorerScript := preload("res://scripts/engine/BattleRep
 
 
 func _ready() -> void:
+	NetClientLogScript.begin_session("net_battle_scene", {
+		"room_id": GameManager.net_room_id,
+		"server_url": GameManager.net_server_url,
+	})
 	_net_my_player_index = GameManager.net_player_index
 	_net_state_restorer = BattleReplayStateRestorerScript.new()
 
@@ -25,6 +34,10 @@ func _ready() -> void:
 	add_child(_battle_scene)
 
 	_setup_network_client()
+
+
+func _process(_delta: float) -> void:
+	_tick_recovery(Time.get_ticks_msec())
 
 
 func _setup_network_client() -> void:
@@ -40,11 +53,13 @@ func _setup_network_client() -> void:
 func _on_net_connected() -> void:
 	_net_connected = true
 	if not GameManager.net_session_token.is_empty():
+		_start_recovery("battle_connect_resume")
 		_net_client.reconnect(GameManager.net_session_token)
 
 
 func _on_net_disconnected(reason: String) -> void:
 	_net_connected = false
+	_clear_recovery_state()
 	_battle_scene.call("_log", "[网络] 连接断开: %s" % reason)
 
 
@@ -57,6 +72,7 @@ func _on_net_message(message: Dictionary) -> void:
 
 	match type:
 		NetProtocol.MSG_STATE_UPDATE:
+			_clear_recovery_state()
 			_apply_server_state(payload)
 
 		NetProtocol.MSG_CHOICE_PROMPT:
@@ -106,6 +122,7 @@ func _on_net_message(message: Dictionary) -> void:
 			_battle_scene.call("_log", "[网络] 对手已重连")
 
 		NetProtocol.MSG_ERROR:
+			_clear_recovery_state()
 			_battle_scene.call("_log", "[网络] 错误: %s" % str(payload.get("message", "未知")))
 
 
@@ -113,9 +130,43 @@ func _handle_resync_required(payload: Dictionary) -> void:
 	var message := str(payload.get("message", "客户端状态已过期，正在重新同步..."))
 	_battle_scene.call("_log", "[网络] %s" % message)
 	if not GameManager.net_session_token.is_empty() and _net_client != null and _net_client.is_connected_to_server():
+		_start_recovery("battle_resync_required")
 		_net_client.reconnect(GameManager.net_session_token)
 		return
 	_battle_scene.call("_log", "[网络] 无法自动恢复，请重新进入房间")
+
+
+func _start_recovery(reason: String) -> void:
+	_recovery_in_progress = true
+	_recovery_start_msec = Time.get_ticks_msec()
+	NetClientLogScript.log_event("battle_recovery_start", {
+		"reason": reason,
+		"room_id": GameManager.net_room_id,
+	})
+
+
+func _clear_recovery_state() -> void:
+	_recovery_in_progress = false
+	_recovery_start_msec = 0
+
+
+func _tick_recovery(now_msec: int) -> void:
+	if not _recovery_in_progress:
+		return
+	var elapsed_sec := (now_msec - _recovery_start_msec) / 1000.0
+	if elapsed_sec < RECOVERY_TIMEOUT_SEC:
+		return
+	_clear_recovery_state()
+	NetClientLogScript.log_error("battle_recovery_timeout", "reconnect_timeout", {
+		"room_id": GameManager.net_room_id,
+		"elapsed_sec": elapsed_sec,
+	})
+	if _battle_scene != null:
+		_battle_scene.call("_log", "[网络] 恢复对局超时，请重新进入房间")
+	if _net_client != null:
+		_net_client.disconnect_from_server()
+	GameManager.clear_saved_net_session()
+	GameManager.goto_net_lobby()
 
 
 func _log_client_choice_prompt(choice_type: String, choice_data: Dictionary, event_name: String) -> void:

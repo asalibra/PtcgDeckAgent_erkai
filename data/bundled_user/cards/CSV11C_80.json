@@ -1,0 +1,49 @@
+{
+	"name": "土龙节节",
+	"name_en": "Dudunsparce",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Land Crush 90",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "80",
+	"set_code_en": "PRE",
+	"card_index_en": "80",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/80_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/80.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Dunsparce",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Land Crush",
+			"text": "",
+			"cost": "CCC",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Run Away Draw",
+			"text": "Once during your turn, you may draw 3 cards. If you drew any cards in this way, shuffle this Pokémon and all attached cards into your deck."
+		}
+	],
+	"energy_provides": ""
+}

@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Rapidash",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[RC] Fire Mane 60",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "189",
+	"set_code_en": "DRI",
+	"card_index_en": "189",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/189_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/189.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Ponyta",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Fire Mane",
+			"text": "",
+			"cost": "RC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Hurried Gait",
+			"text": "Once during your turn, you may draw a card."
+		}
+	],
+	"energy_provides": ""
+}

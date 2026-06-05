@@ -1,0 +1,51 @@
+{
+	"name": "振翼发",
+	"name_en": "Flutter Mane",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[CCC] Hex Hurl 90\nPut 2 damage counters on your opponent's Benched Pokémon in any way you like.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "43",
+	"set_code_en": "PRE",
+	"card_index_en": "43",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/43_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/43.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hex Hurl",
+			"text": "Put 2 damage counters on your opponent's Benched Pokémon in any way you like.",
+			"cost": "CCC",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Midnight Fluttering",
+			"text": "As long as this Pokémon is in the Active Spot, your opponent's Active Pokémon has no Abilities, except for Midnight Fluttering."
+		}
+	],
+	"energy_provides": ""
+}

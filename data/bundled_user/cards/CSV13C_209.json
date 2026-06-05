@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Ethan's Ho-Oh ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[RRRR] Shining Feathers 160\nHeal 50 damage from each of your Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "209",
+	"set_code_en": "DRI",
+	"card_index_en": "209",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/209_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/209.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 230,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Shining Feathers",
+			"text": "Heal 50 damage from each of your Pokémon.",
+			"cost": "RRRR",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Golden Flame",
+			"text": "Once during your turn, you may attach up to 2 Basic Fire Energy cards from your hand to 1 of your Benched Ethan's Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

@@ -1,0 +1,54 @@
+{
+	"name": "猛雷鼓ex",
+	"name_en": "Raging Bolt ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Ancient",
+	"description": "[C] Burst Roar \nDiscard your hand and draw 6 cards.\n[LF] Bellowing Thunder 70×\nYou may discard any amount of Basic Energy from your Pokémon. This attack does 70 damage for each card you discarded in this way.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "166",
+	"set_code_en": "PRE",
+	"card_index_en": "166",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/166_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/166.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex",
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 240,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Burst Roar",
+			"text": "Discard your hand and draw 6 cards.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Bellowing Thunder",
+			"text": "You may discard any amount of Basic Energy from your Pokémon. This attack does 70 damage for each card you discarded in this way.",
+			"cost": "LF",
+			"damage": "70×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

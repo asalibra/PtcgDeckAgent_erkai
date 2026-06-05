@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Houndoom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Cruel Coal \nYour opponent's Active Pokémon is now Burned and Confused.\n[RC] Scorching Fire 120\nDiscard an Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "191",
+	"set_code_en": "DRI",
+	"card_index_en": "191",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/191_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/191.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Houndour",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Cruel Coal",
+			"text": "Your opponent's Active Pokémon is now Burned and Confused.",
+			"cost": "R",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Scorching Fire",
+			"text": "Discard an Energy from this Pokémon.",
+			"cost": "RC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

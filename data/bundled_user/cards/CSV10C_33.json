@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Charcadet",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Light Punch 10\n[RRC] Flamethrower 70\nDiscard an Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "33",
+	"set_code_en": "SSP",
+	"card_index_en": "33",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/33_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/33.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Light Punch",
+			"text": "",
+			"cost": "R",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Flamethrower",
+			"text": "Discard an Energy from this Pokémon.",
+			"cost": "RRC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

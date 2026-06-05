@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Copperajah",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[MMC] Ram 100\n[MMCC] Mega Impact 160",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "110",
+	"set_code_en": "JTG",
+	"card_index_en": "110",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/110_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/110.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 190,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 4,
+	"evolves_from": "Cufant",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Ram",
+			"text": "",
+			"cost": "MMC",
+			"damage": "100",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mega Impact",
+			"text": "",
+			"cost": "MMCC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Lilligant",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[GCC] Spinning Attack 60",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "7",
+	"set_code_en": "JTG",
+	"card_index_en": "7",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/7_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/7.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Petilil",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spinning Attack",
+			"text": "",
+			"cost": "GCC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Sunny Day",
+			"text": "Attacks used by your Grass Pokémon and Fire Pokémon do 20 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

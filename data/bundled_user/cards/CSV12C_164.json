@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Lillie's Ribombee",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Magical Shot 50",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "164",
+	"set_code_en": "JTG",
+	"card_index_en": "164",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/164_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/164.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 70,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "Lillie's Cutiefly",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Magical Shot",
+			"text": "",
+			"cost": "P",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Inviting Wink",
+			"text": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may have your opponent reveal their hand and you put any number of Basic Pokémon you find there onto their Bench."
+		}
+	],
+	"energy_provides": ""
+}

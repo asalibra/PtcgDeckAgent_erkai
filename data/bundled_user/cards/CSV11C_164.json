@@ -1,0 +1,51 @@
+{
+	"name": "赛富豪ex",
+	"name_en": "Gholdengo ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[M] Make It Rain 50×\nDiscard any number of Basic Energy cards from your hand. This attack does 50 damage for each card you discarded in this way.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "164",
+	"set_code_en": "PRE",
+	"card_index_en": "164",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/164_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/164.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 260,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Gimmighoul",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Make It Rain",
+			"text": "Discard any number of Basic Energy cards from your hand. This attack does 50 damage for each card you discarded in this way.",
+			"cost": "M",
+			"damage": "50×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Coin Bonus",
+			"text": "Once during your turn, you may draw a card. If this Pokémon is in the Active Spot, draw 1 more card."
+		}
+	],
+	"energy_provides": ""
+}

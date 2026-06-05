@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Pelipper",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Spit Up 30\n[WC] Speed Dive 70",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "39",
+	"set_code_en": "JTG",
+	"card_index_en": "39",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/39_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/39.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Wingull",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spit Up",
+			"text": "",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Speed Dive",
+			"text": "",
+			"cost": "WC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

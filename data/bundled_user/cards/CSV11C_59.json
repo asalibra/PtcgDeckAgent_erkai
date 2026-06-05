@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Umbreon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[D] Feint Attack \nThis attack does 50 damage to 1 of your opponent's Pokémon. This attack's damage isn't affected by Weakness or Resistance, or by any effects on that Pokémon.\n[DCC] Pitch-Black Blade 140\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "59",
+	"set_code_en": "PRE",
+	"card_index_en": "59",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/59_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/59.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Eevee",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Feint Attack",
+			"text": "This attack does 50 damage to 1 of your opponent's Pokémon. This attack's damage isn't affected by Weakness or Resistance, or by any effects on that Pokémon.",
+			"cost": "D",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Pitch-Black Blade",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "DCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

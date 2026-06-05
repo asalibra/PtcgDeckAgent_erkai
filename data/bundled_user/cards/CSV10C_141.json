@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Eternatus",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[D] Dyna-Blast 10+\nIf your opponent's Active Pokémon is a Pokémon ex, this attack does 80 more damage.\n[RDD] World Ender 230\nDiscard a Stadium in play. If you can't, this attack does nothing.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "141",
+	"set_code_en": "SSP",
+	"card_index_en": "141",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/141_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/141.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 150,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dyna-Blast",
+			"text": "If your opponent's Active Pokémon is a Pokémon ex, this attack does 80 more damage.",
+			"cost": "D",
+			"damage": "10+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "World Ender",
+			"text": "Discard a Stadium in play. If you can't, this attack does nothing.",
+			"cost": "RDD",
+			"damage": "230",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

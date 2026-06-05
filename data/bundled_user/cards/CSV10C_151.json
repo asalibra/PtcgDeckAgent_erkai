@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Bouffalant",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Ready to Ram 40\nDuring your opponent's next turn, if this Pokémon is damaged by an attack (even if this Pokémon is Knocked Out), put 6 damage counters on the Attacking Pokémon.\n[CCCC] Smashing Headbutt 150\nDiscard 2 Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "151",
+	"set_code_en": "SSP",
+	"card_index_en": "151",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/151_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/151.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Ready to Ram",
+			"text": "During your opponent's next turn, if this Pokémon is damaged by an attack (even if this Pokémon is Knocked Out), put 6 damage counters on the Attacking Pokémon.",
+			"cost": "CC",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Smashing Headbutt",
+			"text": "Discard 2 Energy from this Pokémon.",
+			"cost": "CCCC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

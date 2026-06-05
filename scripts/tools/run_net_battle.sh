@@ -1,6 +1,6 @@
 #!/bin/bash
 # PTCG Deck Agent - Network Battle Server Quick Start
-# Usage: ./run_net_battle.sh [--port 9000] [--web-port 8080]
+# Usage: ./run_net_battle.sh [--port 9000] [--web-port 8080] [--enable-web-client]
 
 set -e
 
@@ -9,12 +9,15 @@ PROJECT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 SERVER_PORT=${SERVER_PORT:-9000}
 WEB_PORT=${WEB_PORT:-8080}
+ENABLE_WEB_CLIENT=${ENABLE_WEB_CLIENT:-0}
 EXPORT_DIR="$PROJECT_DIR/exports/web"
 
 while [[ $# -gt 0 ]]; do
     case $1 in
         --port) SERVER_PORT="$2"; shift 2 ;;
         --web-port) WEB_PORT="$2"; shift 2 ;;
+        --enable-web-client) ENABLE_WEB_CLIENT=1; shift ;;
+        --disable-web-client) ENABLE_WEB_CLIENT=0; shift ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
@@ -37,7 +40,11 @@ echo "  PTCG Deck Agent - Network Battle Server"
 echo "============================================"
 echo ""
 echo "  Game server:   ws://0.0.0.0:$SERVER_PORT"
-echo "  Web client:    http://0.0.0.0:$WEB_PORT"
+if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+    echo "  Web client:    http://0.0.0.0:$WEB_PORT"
+else
+    echo "  Web client:    disabled"
+fi
 echo ""
 echo "  Press Ctrl+C to stop"
 echo "============================================"
@@ -48,7 +55,7 @@ echo ""
 SERVER_PID=$!
 
 # Start web server if export exists
-if [ -d "$EXPORT_DIR" ] && command -v python3 &>/dev/null; then
+if [ "$ENABLE_WEB_CLIENT" = "1" ] && [ -d "$EXPORT_DIR" ] && command -v python3 &>/dev/null; then
     python3 "$PROJECT_DIR/scripts/tools/serve_web_export.py" $WEB_PORT "$EXPORT_DIR" &
     WEB_PID=$!
 fi

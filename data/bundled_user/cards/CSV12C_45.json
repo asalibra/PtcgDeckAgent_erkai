@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Alolan Graveler",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Rolling Tackle 30\n[LC] Electric Punch 50",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "45",
+	"set_code_en": "JTG",
+	"card_index_en": "45",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/45_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/45.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Alolan Geodude",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rolling Tackle",
+			"text": "",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Electric Punch",
+			"text": "",
+			"cost": "LC",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

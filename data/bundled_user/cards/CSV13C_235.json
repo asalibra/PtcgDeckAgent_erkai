@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Arven's Mabosstiff ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Vigorous Tackle 30+\nIf this Pokémon has no damage counters on it, this attack does 120 more damage.\n[CCC] Boss Headbutt 210\nDuring your next turn, this Pokémon can't use Boss Headbutt.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "235",
+	"set_code_en": "DRI",
+	"card_index_en": "235",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/235_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/235.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Arven's Maschiff",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Vigorous Tackle",
+			"text": "If this Pokémon has no damage counters on it, this attack does 120 more damage.",
+			"cost": "C",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Boss Headbutt",
+			"text": "During your next turn, this Pokémon can't use Boss Headbutt.",
+			"cost": "CCC",
+			"damage": "210",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

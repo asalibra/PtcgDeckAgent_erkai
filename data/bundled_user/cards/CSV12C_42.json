@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Regice",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WC] Icicle 30\n[WCC] Blizzard 90\nThis attack also does 10 damage to each of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "42",
+	"set_code_en": "JTG",
+	"card_index_en": "42",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/42_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/42.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Icicle",
+			"text": "",
+			"cost": "WC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Blizzard",
+			"text": "This attack also does 10 damage to each of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "WCC",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

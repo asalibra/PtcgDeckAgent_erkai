@@ -1,0 +1,53 @@
+{
+	"name": "路卡利欧ex",
+	"name_en": "Lucario ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[F] Aura Uppercut 50\n[FC] Tornado Rush 100\nDuring your next turn, this Pokémon's Tornado Rush attack does 100 more damage (before applying Weakness and Resistance).",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "51",
+	"set_code_en": "PRE",
+	"card_index_en": "51",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/51_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/51.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 260,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Riolu",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Aura Uppercut",
+			"text": "",
+			"cost": "F",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tornado Rush",
+			"text": "During your next turn, this Pokémon's Tornado Rush attack does 100 more damage (before applying Weakness and Resistance).",
+			"cost": "FC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

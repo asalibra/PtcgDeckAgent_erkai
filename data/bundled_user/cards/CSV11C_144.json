@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Leafeon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[GC] Verdant Storm 60×\nThis attack does 60 damage for each Energy attached to all of your opponent's Pokémon.\n[GRW] Moss Agate 230\nHeal 100 damage from each of your Benched Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "144",
+	"set_code_en": "PRE",
+	"card_index_en": "144",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/144_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/144.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Verdant Storm",
+			"text": "This attack does 60 damage for each Energy attached to all of your opponent's Pokémon.",
+			"cost": "GC",
+			"damage": "60×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Moss Agate",
+			"text": "Heal 100 damage from each of your Benched Pokémon.",
+			"cost": "GRW",
+			"damage": "230",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

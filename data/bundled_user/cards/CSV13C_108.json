@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Mudsdale",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FFC] Heavy Impact 130",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "108",
+	"set_code_en": "DRI",
+	"card_index_en": "108",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/108_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/108.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 150,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Mudbray",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Heavy Impact",
+			"text": "",
+			"cost": "FFC",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Mud Coat",
+			"text": "This Pokémon takes 30 less damage from attacks (after applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

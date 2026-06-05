@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Pikachu ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[C] Tail Whap 30\n[LLC] Thunder 220\nThis Pokémon also does 30 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "28",
+	"set_code_en": "PRE",
+	"card_index_en": "28",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/28_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/28.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 190,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Tail Whap",
+			"text": "",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Thunder",
+			"text": "This Pokémon also does 30 damage to itself.",
+			"cost": "LLC",
+			"damage": "220",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

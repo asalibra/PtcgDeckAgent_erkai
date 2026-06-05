@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Meowstic",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PCC] Psyshot 80",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "85",
+	"set_code_en": "SSP",
+	"card_index_en": "85",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/85_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/85.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 90,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Espurr",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Psyshot",
+			"text": "",
+			"cost": "PCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Beckoning Tail",
+			"text": "You must discard a Chill Teaser Toy card from your hand in order to use this Ability. Once during your turn, you may switch in 1 of your opponent's Benched Pokémon to the Active Spot."
+		}
+	],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "赛富豪",
+	"name_en": "Gholdengo",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[M] Strike It Rich 30+\nIf this Pokémon evolved from Gimmighoul during this turn, this attack does 90 more damage.\n[CCC] Surf Back 100\nYou may shuffle this Pokémon and all attached cards into your deck.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "131",
+	"set_code_en": "SSP",
+	"card_index_en": "131",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/131_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/131.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Gimmighoul",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Strike It Rich",
+			"text": "If this Pokémon evolved from Gimmighoul during this turn, this attack does 90 more damage.",
+			"cost": "M",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Surf Back",
+			"text": "You may shuffle this Pokémon and all attached cards into your deck.",
+			"cost": "CCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

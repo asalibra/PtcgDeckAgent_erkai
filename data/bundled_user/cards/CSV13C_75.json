@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Electrike",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Rear Kick 10\n[LC] Tiny Bolt 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "75",
+	"set_code_en": "DRI",
+	"card_index_en": "75",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/75_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/75.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rear Kick",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tiny Bolt",
+			"text": "",
+			"cost": "LC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

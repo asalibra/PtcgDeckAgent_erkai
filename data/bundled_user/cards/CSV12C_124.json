@@ -1,0 +1,51 @@
+{
+	"name": "差不多娃娃",
+	"name_en": "Audino",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Beckon \nPut a Supporter card from your discard pile into your hand.\n[CCC] Zen Headbutt 70",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "124",
+	"set_code_en": "JTG",
+	"card_index_en": "124",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/124_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/124.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Beckon",
+			"text": "Put a Supporter card from your discard pile into your hand.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Zen Headbutt",
+			"text": "",
+			"cost": "CCC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

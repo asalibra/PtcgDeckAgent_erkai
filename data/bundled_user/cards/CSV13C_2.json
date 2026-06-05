@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Yanma",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Whirlwind \nSwitch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)\n[GC] Razor Wing 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "2",
+	"set_code_en": "DRI",
+	"card_index_en": "2",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/2_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/2.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Whirlwind",
+			"text": "Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Razor Wing",
+			"text": "",
+			"cost": "GC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Zebstrika",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[L] Kick 30\n[LLC] Mach Bolt 120",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "63",
+	"set_code_en": "SSP",
+	"card_index_en": "63",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/63_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/63.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Blitzle",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Kick",
+			"text": "",
+			"cost": "L",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mach Bolt",
+			"text": "",
+			"cost": "LLC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

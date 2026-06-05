@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Victini",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[RC] Flare 30",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "21",
+	"set_code_en": "SSP",
+	"card_index_en": "21",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/21_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/21.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Flare",
+			"text": "",
+			"cost": "RC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Victory Cheer",
+			"text": "Attacks used by your Evolution Fire Pokémon do 10 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

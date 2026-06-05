@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Deino",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[D] Stomp Off \nDiscard the top card of your opponent's deck.\n[DC] Bite 20",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "117",
+	"set_code_en": "SSP",
+	"card_index_en": "117",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/117_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/117.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Stomp Off",
+			"text": "Discard the top card of your opponent's deck.",
+			"cost": "D",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Bite",
+			"text": "",
+			"cost": "DC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

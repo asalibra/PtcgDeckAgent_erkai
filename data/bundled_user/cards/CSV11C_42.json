@@ -1,0 +1,53 @@
+{
+	"name": "吼叫尾",
+	"name_en": "Scream Tail",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[P] Slap 30\n[PC] Roaring Scream \nThis attack does 20 damage to 1 of your opponent's Pokémon for each damage counter on this Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "42",
+	"set_code_en": "PRE",
+	"card_index_en": "42",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/42_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/42.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Slap",
+			"text": "",
+			"cost": "P",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Roaring Scream",
+			"text": "This attack does 20 damage to 1 of your opponent's Pokémon for each damage counter on this Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "PC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

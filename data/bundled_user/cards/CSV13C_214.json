@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Regirock ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Regi Charge \nAttach up to 2 Basic Fighting Energy cards from your discard pile to this Pokémon.\n[FCCC] Giant Rock 140+\nIf your opponent's Active Pokémon is a Stage 2 Pokémon, this attack does 140 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "214",
+	"set_code_en": "DRI",
+	"card_index_en": "214",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/214_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/214.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 230,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Regi Charge",
+			"text": "Attach up to 2 Basic Fighting Energy cards from your discard pile to this Pokémon.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Giant Rock",
+			"text": "If your opponent's Active Pokémon is a Stage 2 Pokémon, this attack does 140 more damage.",
+			"cost": "FCCC",
+			"damage": "140+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

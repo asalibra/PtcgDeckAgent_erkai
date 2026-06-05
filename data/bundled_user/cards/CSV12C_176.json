@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Hop's Zacian ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Insta-Strike 30\nThis attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[MMMC] Brave Slash 240\nDuring your next turn, this Pokémon can't use Brave Slash.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "176",
+	"set_code_en": "JTG",
+	"card_index_en": "176",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/176_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/176.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 230,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Insta-Strike",
+			"text": "This attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Brave Slash",
+			"text": "During your next turn, this Pokémon can't use Brave Slash.",
+			"cost": "MMMC",
+			"damage": "240",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

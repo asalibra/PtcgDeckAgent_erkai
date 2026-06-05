@@ -1,0 +1,52 @@
+{
+	"name": "厄诡椪 碧草面具ex",
+	"name_en": "Teal Mask Ogerpon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[GGG] Myriad Leaf Shower 30+\nThis attack does 30 more damage for each Energy attached to both Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "177",
+	"set_code_en": "PRE",
+	"card_index_en": "177",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/177_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/177.png",
+	"artist": "",
+	"rarity": "HR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 210,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Myriad Leaf Shower",
+			"text": "This attack does 30 more damage for each Energy attached to both Active Pokémon.",
+			"cost": "GGG",
+			"damage": "30+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Teal Dance",
+			"text": "Once during your turn, you may attach a Basic Grass Energy card from your hand to this Pokémon. If you attached Energy to a Pokémon in this way, draw a card."
+		}
+	],
+	"energy_provides": ""
+}

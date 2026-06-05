@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Shaymin",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Smash Kick 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "10",
+	"set_code_en": "DRI",
+	"card_index_en": "10",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/10_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/10.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Smash Kick",
+			"text": "",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Flower Curtain",
+			"text": "Prevent all damage done to your Benched Pokémon that don't have a Rule Box by attacks from your opponent's Pokémon. (Pokémon ex, Pokémon V, etc. have Rule Boxes.)"
+		}
+	],
+	"energy_provides": ""
+}

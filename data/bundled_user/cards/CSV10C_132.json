@@ -1,0 +1,53 @@
+{
+	"name": "铁头壳",
+	"name_en": "Iron Crown",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Future",
+	"description": "[MC] Deleting Slash 40+\nIf your opponent has 3 or more Benched Pokémon, this attack does 80 more damage.\n[MCC] Slicing Blade 100",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "132",
+	"set_code_en": "SSP",
+	"card_index_en": "132",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/132_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/132.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Future"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Deleting Slash",
+			"text": "If your opponent has 3 or more Benched Pokémon, this attack does 80 more damage.",
+			"cost": "MC",
+			"damage": "40+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Slicing Blade",
+			"text": "",
+			"cost": "MCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

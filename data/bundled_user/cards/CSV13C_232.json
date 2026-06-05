@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Cynthia's Garchomp ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[F] Corkscrew Dive 100\nYou may draw cards until you have 6 cards in your hand.\n[FF] Draconic Buster 260\nDiscard all Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "232",
+	"set_code_en": "DRI",
+	"card_index_en": "232",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/232_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/232.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 2",
+	"hp": 330,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "Cynthia's Gabite",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Corkscrew Dive",
+			"text": "You may draw cards until you have 6 cards in your hand.",
+			"cost": "F",
+			"damage": "100",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Draconic Buster",
+			"text": "Discard all Energy from this Pokémon.",
+			"cost": "FF",
+			"damage": "260",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

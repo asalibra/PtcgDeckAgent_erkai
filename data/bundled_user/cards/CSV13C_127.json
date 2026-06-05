@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Murkrow",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Deceit \nSearch your deck for a Supporter card, reveal it, and put it into your hand. Then, shuffle your deck.\n[DC] Torment 30\nChoose 1 of your opponent's Active Pokémon's attacks. During your opponent's next turn, that Pokémon can't use that attack.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "127",
+	"set_code_en": "DRI",
+	"card_index_en": "127",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/127_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/127.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Deceit",
+			"text": "Search your deck for a Supporter card, reveal it, and put it into your hand. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Torment",
+			"text": "Choose 1 of your opponent's Active Pokémon's attacks. During your opponent's next turn, that Pokémon can't use that attack.",
+			"cost": "DC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

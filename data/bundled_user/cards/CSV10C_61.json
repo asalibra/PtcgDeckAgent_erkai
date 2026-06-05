@@ -1,0 +1,51 @@
+{
+	"name": "洛托姆",
+	"name_en": "Rotom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[L] Crushing Pulse \nYour opponent reveals their hand. Discard all Item cards and Pokémon Tool cards you find there.\n[L] Energy Short 20×\nThis attack does 20 damage for each Energy attached to your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "61",
+	"set_code_en": "SSP",
+	"card_index_en": "61",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/61_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/61.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Crushing Pulse",
+			"text": "Your opponent reveals their hand. Discard all Item cards and Pokémon Tool cards you find there.",
+			"cost": "L",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Energy Short",
+			"text": "This attack does 20 damage for each Energy attached to your opponent's Active Pokémon.",
+			"cost": "L",
+			"damage": "20×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

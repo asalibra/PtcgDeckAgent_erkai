@@ -1,0 +1,51 @@
+{
+	"name": "桃歹郎ex",
+	"name_en": "Pecharunt ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[DD] Irritated Outburst 60×\nThis attack does 60 damage for each Prize card your opponent has taken.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "163",
+	"set_code_en": "PRE",
+	"card_index_en": "163",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/163_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/163.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 190,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Irritated Outburst",
+			"text": "This attack does 60 damage for each Prize card your opponent has taken.",
+			"cost": "DD",
+			"damage": "60×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Subjugating Chains",
+			"text": "Once during your turn, you may switch 1 of your Benched Darkness Pokémon, except any Pecharunt ex, with your Active Pokémon. If you do, the new Active Pokémon is now Poisoned. You can't use more than 1 Subjugating Chains Ability each turn."
+		}
+	],
+	"energy_provides": ""
+}

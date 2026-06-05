@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Volcarona",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Leech Life 30\nHeal from this Pokémon the same amount of damage you did to your opponent's Active Pokémon.\n[RCC] Turbulent Wings 150\nThis Pokémon also does 50 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "25",
+	"set_code_en": "SSP",
+	"card_index_en": "25",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/25_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/25.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Larvesta",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Leech Life",
+			"text": "Heal from this Pokémon the same amount of damage you did to your opponent's Active Pokémon.",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Turbulent Wings",
+			"text": "This Pokémon also does 50 damage to itself.",
+			"cost": "RCC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

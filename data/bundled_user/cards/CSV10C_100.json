@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Annihilape",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[F] Tantrum 130\nThis Pokémon is now Confused.\n[FC] Destined Fight \nBoth Active Pokémon are Knocked Out.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "100",
+	"set_code_en": "SSP",
+	"card_index_en": "100",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/100_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/100.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 2",
+	"hp": 140,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Primeape",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Tantrum",
+			"text": "This Pokémon is now Confused.",
+			"cost": "F",
+			"damage": "130",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Destined Fight",
+			"text": "Both Active Pokémon are Knocked Out.",
+			"cost": "FC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

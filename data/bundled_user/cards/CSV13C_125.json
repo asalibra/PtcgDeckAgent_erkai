@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Koffing",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[DC] Leaking Gas 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "125",
+	"set_code_en": "DRI",
+	"card_index_en": "125",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/125_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/125.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Leaking Gas",
+			"text": "",
+			"cost": "DC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Smog Signals",
+			"text": "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon (even if this Pokémon is Knocked Out), search your deck for up to 2 Pokémon that have \"Koffing\" in their name and put them onto your Bench. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

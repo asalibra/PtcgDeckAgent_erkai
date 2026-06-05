@@ -1,0 +1,49 @@
+{
+	"name": "风扇洛托姆",
+	"name_en": "Fan Rotom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Assault Landing 70\nIf there is no Stadium in play, this attack does nothing.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "85",
+	"set_code_en": "PRE",
+	"card_index_en": "85",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/85_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/85.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Assault Landing",
+			"text": "If there is no Stadium in play, this attack does nothing.",
+			"cost": "C",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Fan Call",
+			"text": "Once during your first turn, you may search your deck for up to 3 Colorless Pokémon with 100 HP or less, reveal them, and put them into your hand. Then, shuffle your deck. You can't use more than 1 Fan Call Ability during your turn."
+		}
+	],
+	"energy_provides": ""
+}

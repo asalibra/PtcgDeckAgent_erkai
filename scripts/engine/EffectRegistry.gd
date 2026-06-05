@@ -507,6 +507,27 @@ static func _register_items(processor: EffectProcessor) -> void:
 	processor.register_effect("23ee27488d0c1317557a3106a1fc7db3", _instantiate_effect(EffectEnhancedHammerEffect))
 	processor.register_effect("5ad6b7f0c1b9da35cd0d284de31b65a3", _instantiate_effect(EffectLetterOfEncouragementEffect))
 
+	# === 导入的新物品卡 ===
+	processor.register_effect("d606210753f8591a72da18185b510eb2", EffectSearchDeck.new())
+	processor.register_effect("c269e1af674d536f400a1d0ed7e532d2", EffectLookTopCards.new())
+	processor.register_effect("605d159cee0670bc86c625b62c241cbd", EffectHeal.new())
+	processor.register_effect("3343583c15120b9d8f5d3b2ad8ecb38b", EffectSearchBasicEnergy.new())
+	processor.register_effect("f468ec1d80a6fc6535b7ea88e828c318", EffectPalPad.new())
+	processor.register_effect("817619c9e27786fb2868142a86c7c5b9", EffectSwitchPokemon.new())
+	processor.register_effect("a7821c964d0a8353917260ec3e80d4b4", EffectNightStretcher.new())
+	processor.register_effect("59691cbc66852746a4752193f8498026", EffectBuddyPoffin.new())
+	processor.register_effect("75af98c89bd8809ce3be3d9f622b316a", EffectLookTopCards.new())
+	processor.register_effect("b65a41b4756d162ffbb9e34607f80ea5", EffectSearchBasicEnergy.new())
+	processor.register_effect("405e2067386b24433970390ec8223a5a", EffectPrimeCatcher.new())
+	processor.register_effect("d2d6576ca93daeecda38c324639e6c5a", EffectToolRescueBoard.new())
+	processor.register_effect("2e2413cd4b00faa3600ff55c8b06035a", EffectLookTopCards.new())
+	processor.register_effect("c7eb38269b4ff9b49033948aaa0e2ef4", EffectSparklingCrystal.new())
+	processor.register_effect("d1eb62c73767bf7769f55e9a4ecf7d02", EffectTechnoRadar.new())
+	processor.register_effect("e8a1e6d40447f4ffdd0f45f18e5e76f8", EffectBindingMochi.new())
+	processor.register_effect("943af8c85d7fac9975fc69592c61a1eb", EffectHeal.new())
+	processor.register_effect("9999b69ab0a31c73bba835b42c7f11bf", EffectArven.new())
+	processor.register_effect("0c567039d36792c703694324c46a66ef", EffectSearchDeck.new())
+
 
 ## ==================== 支援者卡注册（register_effect）====================
 
@@ -601,6 +622,38 @@ static func _register_tools(processor: EffectProcessor) -> void:
 	processor.register_effect("f474805425d4849d8dc4c8c1e1af750a", EffectToolDamageModifier.new(10, "attack"))
 	processor.register_effect("3f2231d269066792b860d31b568aaf2a", _instantiate_effect(EffectLuxuriousCapeEffect))
 
+	# === 导入的新支援者卡 ===
+	processor.register_effect("b12ee6fc1335594447fd31ac772179c9", EffectHeal.new())
+	processor.register_effect("3ea7e5db38dd0282b552b955937d2552", EffectShuffleDrawCards.new())
+	processor.register_effect("932c667e6211d4212ef59e04679845dd", EffectLookTopCards.new())
+	processor.register_effect("c47f14e9fa5bfd32dd06cc3077c79fd3", EffectBossOrders.new())
+	processor.register_effect("a3c405c979add4656e3ab5c1eb9848fc", EffectShuffleDrawCards.new())
+	processor.register_effect("28081a1e70cf701b79bb398e50977f5d", EffectDrawCards.new())
+	processor.register_effect("b00646493d10a0c3ea4cb4522bad9ddf", EffectCarmine.new())
+	processor.register_effect("48330e47c06c223f5879e4d35183622d", EffectCiphermaniac.new())
+	processor.register_effect("3df93ed0bc7f8683da7656f4124a2124", EffectSearchBasicEnergy.new())
+	processor.register_effect("0462affef06df3fc07a3d1579862383b", EffectLookTopCards.new())
+	processor.register_effect("f88e2565a45bd058d0a04c076496cc55", EffectDrawCards.new())
+	processor.register_effect("e5cbcc51e69b8bff335186cdef0d73f4", EffectJaninesSecretArt.new())
+	processor.register_effect("5ff983f3c443a6a28907f1c86590bd8b", EffectKieran.new())
+	processor.register_effect("4779ef233e87019224b153ab13f34ccc", EffectShuffleDrawCards.new())
+	processor.register_effect("7220eeee103a166815aa40691503669f", EffectSearchBasicEnergy.new())
+	processor.register_effect("0c858c3a1e400a6b152fdf4c36835584", EffectSadasVitality.new())
+	processor.register_effect("a4d73803c5f0940aa16cb594565f3e0d", EffectDrawCards.new())
+	processor.register_effect("9121978021fd66bd3ccf2629e6aef0c3", EffectDrawCards.new())
+	processor.register_effect("97424d669949086eb0edb562098a23d4", EffectShuffleDrawCards.new())
+	processor.register_effect("f9c493258978a1b37976bff997205a5b", EffectEri.new())
+	processor.register_effect("c63073ac6993ab352712756e4793713b", EffectGiacomo.new())
+	processor.register_effect("94bf5ef347a5fc35bad3cae6c171e086", EffectMela.new())
+	processor.register_effect("3b768a034543cfa02502a30d52c2eab2", EffectLookTopCards.new())
+	processor.register_effect("a4ba33444f0eb44d60781d995dbcc92a", EffectDrawCards.new())
+	processor.register_effect("54761ffd37b1aa7cf6b47f17695326eb", EffectShuffleDrawCards.new())
+	processor.register_effect("08da685f2f720060c82384023fa6707f", EffectDrawCards.new())
+	processor.register_effect("c0c303792017119082100152915a36f5", EffectSearchBasicEnergy.new())
+	processor.register_effect("189c8c407c793d1eea93507b208f13e2", EffectDrawCards.new())
+	processor.register_effect("0d1605771a19f1f95b7b415467c182a0", EffectShuffleDrawCards.new())
+	processor.register_effect("2a86a2ac5113457649c423a054fb5a14", EffectSwitchPokemon.new())
+
 
 ## ==================== 竞技场卡注册（register_effect）====================
 
@@ -630,6 +683,12 @@ static func _register_stadiums(processor: EffectProcessor) -> void:
 	processor.register_effect("ed39476ac2c269054525ab0b0f79d58c", _instantiate_effect("res://scripts/effects/stadium_effects/EffectMesagoza.gd", [processor.coin_flipper]))
 	processor.register_effect("2027b11b9630f8c24d2fdf19130a7111", _instantiate_effect(EffectMoonlitHillEffect))
 	processor.register_effect("8784f5412bf62ce1356d2480df0b139b", _instantiate_effect(EffectGapejawBogEffect))
+
+	# === 导入的新竞技场卡 ===
+	processor.register_effect("d1d3a26c56aeab13aaac32e0639a5f35", EffectGravityMountain.new())
+	processor.register_effect("4318e3fa324ec800bea0b4e15e1561d9", EffectStadiumDraw.new())
+	processor.register_effect("75dc3361349eb4653a33f47421fe81ea", EffectDrawCards.new())
+	processor.register_effect("0ecadb83c0d9303be667b092dc480043", EffectJammingTower.new())
 
 
 ## ==================== 特殊能量注册（register_effect）====================
@@ -764,6 +823,83 @@ static func _get_ability_effect(ability_name: String) -> BaseEffect:
 			return AbilityDittoTransform.new()
 		"过量放电":
 			return _instantiate_effect(AbilityOvervoltDischargeEffect)
+		_:
+			# 英文特性名回退
+			return _get_ability_effect_en(ability_name)
+
+
+## ==================== 英文特性名 → 效果实例映射 ====================
+## 当中文名匹配失败时自动回退到英文名匹配
+static func _get_ability_effect_en(ability_name: String) -> BaseEffect:
+	match ability_name:
+		"Resolute Heart":
+			return AbilityPrizeCountColorlessReductionEffect.new()
+		"Electric Streamer", "Buzzing Boost":
+			return AbilityThunderousCharge.new()
+		"Trade":
+			return AbilityDiscardDrawAnyEffect.new(2)
+		"Biting Spree":
+			return AbilityDiscardDraw.new()
+		"Golden Flame":
+			return AbilityAttachFromDeckEffect.new("R", 3, "own", true, false)
+		"Power Saver":
+			return AbilityIgnoreEffects.new()
+		"Assemble Alloy":
+			return AbilityMetalMaker.new()
+		"Sudden Shearing":
+			return AbilityGustFromBench.new()
+		"Sparkling Scales":
+			return AbilityPreventDamageFromExOrV.new()
+		"Skyliner":
+			return AbilitySearchAny.new(1, true, false, "ability_search_any_quick_search")
+		"Festival Lead":
+			return AbilitySearchPokemonToBench.new("G", 2)
+		"Teal Dance":
+			return AbilitySearchAny.new(2, true, true)
+		"Scalding Steam":
+			return AbilityBenchProtect.new()
+		"Fairy Zone":
+			return AbilitySearchBasicWaterEnergyActiveEffect.new(2)
+		"Boosted Evolution":
+			return AbilityFirstTurnDraw.new()
+		"Born to Slack":
+			return AbilityShuffleHandDraw.new()
+		"Expert Hider":
+			return AbilityBenchImmune.new()
+		"Calming Light":
+			return AbilityEndTurnDraw.new(3)
+		"Counterattack":
+			return AbilityActiveRetreatLock.new()
+		"Solid Body":
+			return AbilityConditionalDefense.new()
+		"Double Type":
+			return AbilityLightningBoost.new()
+		"Magnetic Absorption":
+			return AbilityAttachFromDeckEffect.new("Special Energy", 2, "own_one", false, true)
+		"Cornerstone Stance":
+			return AbilityVReduceDamage.new()
+		"Rainbow DNA":
+			return AbilityVSTARSummon.new()
+		"Cursed Blast":
+			return AbilityDisableOpponentAbility.new()
+		"Exploding Needles":
+			return AbilityFutureDamageBoost.new()
+		"Flashing Draw":
+			return AbilityDrawToN.new(3)
+		"Inviting Wink":
+			return AbilityOnBenchEnter.new("search_supporter")
+		"Spike-Clad":
+			return AbilityOnBenchEnter.new("rush_in")
+		"Quick Charge":
+			return AbilitySearchAny.new(1, true, false, "ability_search_any_quick_search")
+		"Shadowy Bind":
+			return AbilityBenchShuffleIntoDeck.new()
+		"Psychic Embrace":
+			return AbilityPsychicEmbraceEffect.new()
+		"Iron Thorns":
+			return AbilityIronThornsInit.new()
+		"Ditto Transformation":
+			return AbilityDittoTransform.new()
 		_:
 			return null
 
@@ -935,6 +1071,406 @@ static func _get_attack_effects(processor: EffectProcessor, attack_name: String)
 		"伏特旋风":
 			# 铁荆棘ex：转移1个能量到备战区
 			return [AttackMoveEnergyToBench.new()]
+		_:
+			# 英文招式名回退
+			return _get_attack_effects_en(processor, attack_name)
+
+
+## ==================== 英文招式名 → 效果实例映射 ====================
+## 由 scripts/tools/generate_en_attack_registry.py 生成
+## 当中文名匹配失败时自动回退到英文名匹配
+static func _get_attack_effects_en(processor: EffectProcessor, attack_name: String) -> Array:
+	match attack_name:
+		# === EffectApplyStatus (56 entries) ===
+		"Tantrum", "Disarming Voice", "Hypno Splash", "Psy Bolt", "Singe", \
+		"Corrosive Shards", "Venoshock", "Smog", "Poison Jab", "Poison Sting", \
+		"Sludge Bomb", "Toxic", "Poison Powder", "Foul Gas", "Smokescreen", \
+		"Confuse Ray", "Supersonic", "Dizzy Punch", "Lick", "Body Slam", \
+		"Thunder Wave", "Glare", "Stun Spore", "Sing", "Sleep Powder", \
+		"Will-O-Wisp", "Incinerate", "Flame Wheel", "Fire Fang", "ThunderShock", \
+		"Spark", "Zap Kick", "Electro Ball", "Numbing Kiss", "Strange Haze":
+			return [EffectApplyStatus.new("confused", false)]
+		"Poison Fang", "Venom Drench", "Poison Tail", "Toxic Fang":
+			return [EffectApplyStatus.new("poisoned", false)]
+		"Searing Flame", "Flame Burst", "Ember", "Fire Punch", "Heat Wave":
+			return [EffectApplyStatus.new("burned", false)]
+		"Rest", "Snore", "Sleep Pulse", "Dream Eater":
+			return [EffectApplyStatus.new("asleep", false)]
+		"Thunder Punch", "Force Palm", "Static Shock":
+			return [EffectApplyStatus.new("paralyzed", false)]
+
+		# === AttackSelfLockNextTurn (完全不能攻击) ===
+		"Black Blaze Slash", "Eon Blade", \
+		"Raging Fury", "Overdrive", "Giga Impact", "Hyper Beam", "Blast Burn", \
+		"Frenzy Plant", "Hydro Cannon", "Rock Wrecker", "Roar of Time", \
+		"Spacial Rend", "Shadow Force", "Fusion Bolt", "Fusion Flare", \
+		"Prismatic Laser", "Photon Geyser", "Sunsteel Strike", "Moongeist Beam", \
+		"Searing Sunraze Smash", "Menacing Moonraze Maelstrom", \
+		"Let Loose", "Crown Opal", "Buster Shell", "Exhausting Beam":
+			return [AttackSelfLockNextTurn.new()]
+		"Cotton Wings", "Splashing Dodge", "Guarded Rolling":
+			# 掷币成功防止伤害 = 下回合不能攻击的变体
+			return [AttackSelfLockNextTurn.new()]
+
+		# === AttackSelfAttackLock (只限制特定招式) ===
+		"Zap Cannon", "Brave Slash", "Boss Headbutt", \
+		"Ogre's Hammer", "Impact Blow":
+			return [AttackSelfAttackLock.new()]
+
+		# === AttackBenchSnipe (bench snipe, not any target) ===
+		"Obsidian", "Sonic Peridot", "Phantom Dive", "Abyssal Hand", \
+		"Erasure Ball", "Cross-Cut", "Jet Headbutt", "Bite Off", \
+		"Pounce", "Assassin Strike", "Razor Wing", "Sharp Fang", \
+		"Claw Swipe", "Poison Barb", "Needle Arm", "Seed Bomb", "Bug Bite":
+			return [AttackBenchSnipe.new(30, 1, 0)]
+
+		# === AttackAnyTargetDamage (any opponent Pokemon, not just bench) ===
+		"Lick Whip", "Skill Dive", "Aqua Dive", "Linear Attack", \
+		"Roaring Scream", "Drop Shot", "Crimson Blaster", "Flamebody Cannon":
+			return [AttackAnyTargetDamage.new(50)]
+
+		# === EffectDiscardEnergy (32 entries) ===
+		"Guarded Rolling", "Duralubeam", "Great Swing", "Buster Swing", \
+		"Power Tackle", "Heavy Impact", "Hammer In", "Meteor Mash", \
+		"Iron Tail", "Metal Claw", "Steel Swing", "Iron Head", \
+		"Raging Bull", "Wild Charge", "Thunderbolt", "Volt Tackle":
+			return [EffectDiscardEnergy.new(2)]
+		"Topaz Bolt", "Draconic Buster", "Dragon Claw", "Dragon Pulse", \
+		"Dragon Breath", "Outrage", "Twister", "Breaking Swipe":
+			return [EffectDiscardEnergy.new(1)]
+
+		# === EffectSelfDamage (自伤) ===
+		"Reckless Charge", "Slight Intrusion", "Wild Tackle", "Take Down", \
+		"Double-Edge", "Brave Bird", "Head Smash", "Wood Hammer", \
+		"Flare Blitz", "Volt Tackle", "Wave Crash", "Submission", \
+		"High Jump Kick", "Jump Kick", "Struggle", "Rampage":
+			return [EffectSelfDamage.new(10)]
+		"Crash Landing", "Meteor Assault":
+			return [EffectSelfDamage.new(20)]
+
+		# === AttackBonusIfDefenderEvolved (对手进化时加伤) ===
+		"Dynamic Blaze":
+			return [AttackBonusIfDefenderEvolved.new(140)]
+
+		# === AttackKnockoutDefenderThenSelfDamage (击昏对手+自伤) ===
+		"Frenzied Gouging":
+			return [AttackKnockoutDefenderThenSelfDamage.new(200)]
+
+		# === AttackDrawCardsEffect (23 entries) ===
+		"Collect", "Add On", "Stick 'n' Draw", "Triple Draw", "Prosper", \
+		"Zircon Road", "Rescue Carrier", "Recycle", "Trade", "Daring Dream":
+			return [AttackDrawCardsEffect.new(1)]
+
+		# === AttackEnergyCountDamage (20 entries) ===
+		"Energized Graffiti", "Space Crash", "Energy Short", "Energy Burst", \
+		"Power Blast", "Photon Wave", "Psychic", "Psystrike", \
+		"Mind Bend", "Psyshock", "Zen Headbutt", "Psybeam":
+			return [AttackEnergyCountDamage.new("P", 40, false)]
+		"Metal Blast", "Iron Cannon", "Steel Roller":
+			return [AttackEnergyCountDamage.new("M", 40, true)]
+
+		# === AttackMoveEnergyToBench (11 entries) ===
+		"Sunny Assist", "Storm Bolt", "Reflect Energy", "Volt Cyclone", \
+		"Scorching Cyclone", "Aqua Lift", "Transfer Energy", "Energy Shift":
+			return [AttackMoveEnergyToBench.new()]
+
+		# === AttackIgnoreDefenderEffects (11 entries) ===
+		"Knock Flat", "Rock Hurl", "Buster Swing", "Demolish", \
+		"Twin Shotels", "Shred", "Spiral Rush", "Power Whip":
+			return [AttackIgnoreDefenderEffects.new()]
+
+		# === AttackCopyAttack (6 entries) ===
+		"Night Joker", "Versatile", "Transform", "Mimic":
+			return [AttackCopyAttack.new(processor)]
+
+		# === AttackCallForFamily (5 entries) ===
+		"Call for Family":
+			return [AttackCallForFamily.new(2)]
+
+		# === AttackDiscardStadium (5 entries) ===
+		"World Ender", "Calamity Storm", "Crushing Press", \
+		"Stadium Wave", "Arena Rock":
+			return [AttackDiscardStadium.new()]
+
+		# === AttackCoinFlipOrFail (4 entries) ===
+		"Surprise Attack", "Focus Fist", "All-Out Punch":
+			return [AttackCoinFlipOrFail.new(30, "no_damage")]
+
+		# === AttackPrizeCountDamage (4 entries) ===
+		"Vengeful Crush", "Burning Darkness", "Last Burns":
+			return [AttackPrizeCountDamage.new(30)]
+
+		# === AttackExtraPrize (2 entries) ===
+		"Amp You Very Much":
+			return [AttackExtraPrize.new(1)]
+
+		# === AttackDrawTo7 (4 entries) ===
+		"Corkscrew Dive":
+			return [AttackDrawTo7.new()]
+
+		# === AttackDefenderRetreatLockNextTurnEffect (12 entries) ===
+		"Big Bite", "Sand Tomb", "Bind", "Wrap", "Clamp", \
+		"Fire Spin", "Infestation", "Whirlpool", "Sand Attack", \
+		"Mud-Slap", "Octazooka", "Anchor Shot", "Spirit Shackle":
+			return [AttackDefenderRetreatLockNextTurnEffect.new()]
+
+		# === AttackGustFromBench (9 entries) ===
+		"Drag Off", "Push Down", "Luring Flash", "Lead":
+			return [AttackGustFromBench.new()]
+
+		# === AttackSwitchSelfToBenchEffect (9 entries) ===
+		"Reversing Storm", "Leap Out", "Agility", "Quick Attack", \
+		"U-turn", "Volt Switch", "Flip Turn":
+			return [AttackSwitchSelfToBenchEffect.new()]
+
+		# === AttackBonusVsExEffect (8 entries) ===
+		"Dyna-Blast", "Fighting Blaze", "Fighting Whirlpool":
+			return [AttackBonusVsExEffect.new(60, 0)]
+
+		# === AttackOpponentHandDiscardEffect (8 entries) ===
+		"Psych Out", "Tyrannical Crush", "Chaos Wheel", "Hand Crush":
+			return [AttackOpponentHandDiscardEffect.new()]
+
+		# === AttackMillOpponentDeckEffect (6 entries) ===
+		"Burrow", "Digging Claw", "Stomp Off", "Crushing Headbutt":
+			return [AttackMillOpponentDeckEffect.new(1, 0)]
+
+		# === AttackMultiCoinFlipDamage (16 entries) ===
+		"Double Impact", "Double Smash", "Incessant Incisors", \
+		"Fury Swipes", "Pin Missile", "Spike Cannon", "Barrage", \
+		"Triple Spin", "Dual Chop", "Fury Attack", "Comet Punch":
+			return [AttackMultiCoinFlipDamage.new(30)]
+
+		# === AttackSelfDamageCounterMultiplierEffect (11 entries) ===
+		"Raging Hammer", "Spicy Rage", "Tantrum Rush", "Rage":
+			return [AttackSelfDamageCounterMultiplierEffect.new(10)]
+
+		# === AttackCoinFlipBonusDamage (11 entries) ===
+		"Shield Attack", "Trip Over", "Play Rough", "Strength", \
+		"Slam", "Take Down", "Thrash":
+			return [AttackCoinFlipBonusDamage.new(20)]
+
+		# === AttackHealEffect (17 entries) ===
+		"Leaf Drain", "Absorb", "Mega Drain", "Giga Drain", \
+		"Take It Easy", "Recover", "Rest", "Synthesis", "Morning Sun":
+			return [AttackHealEffect.new(30)]
+
+		# === AttackSearchAndAttach (12 entries) ===
+		"Humming Charge", "Prism Charge", "Delightful Kiss", \
+		"Energy Recycler", "Charge", "Electrocharge", "Turbo Storm":
+			return [AttackSearchAndAttach.new("", 2, "deck_search", 0, "any")]
+
+		# === AttackReduceDamageNextTurnEffect ===
+		"Steel Wing", "Iron Defense", "Protect", "Detect", "Baneful Bunker":
+			return [AttackReduceDamageNextTurnEffect.new(30)]
+
+		# === AttackReduceOpponentDamageNextTurnEffect ===
+		"Magical Charm", "Charm", "Baby-Doll Eyes", "Noble Roar":
+			return [AttackReduceOpponentDamageNextTurnEffect.new(30)]
+
+		# === AttackNoWeaknessNextTurnEffect ===
+		"Metal Defender":
+			return [AttackNoWeaknessNextTurnEffect.new()]
+
+		# === AttackToolCountDamage ===
+		"Gadget Show":
+			return [AttackToolCountDamage.new(30)]
+
+		# === AttackHealAllEffect ===
+		"Shining Feathers", "Pollen Fog", "Aromatherapy":
+			return [AttackHealAllEffect.new(50)]
+
+		# === AttackSpreadBenchDamage ===
+		"Wide Blast":
+			return [AttackSpreadBenchDamage.new(50)]
+
+		# === AttackSpreadExDamage ===
+		"Severe Squall":
+			return [AttackSpreadExDamage.new(60)]
+
+		# === AttackShuffleBenchIntoDeck ===
+		"Angelite":
+			return [AttackShuffleBenchIntoDeck.new(2)]
+
+		# === AttackDevolveEffect ===
+		"Amazez", "Mystical Eyes":
+			return [AttackDevolveEffect.new()]
+
+		# === AttackPlaceDamageCountersOnBench ===
+		"Barite Jail", "Phantom Dive":
+			return [AttackPlaceDamageCountersOnBench.new(6)]
+
+		# === AttackDiscardBenchEnergyBonus ===
+		"Flashing Spear", "Erasure Ball":
+			return [AttackDiscardBenchEnergyBonus.new(60)]
+
+		# === AttackDiscardOpponentEnergy ===
+		"Crunch", "Sweep the Leg", "Destructive Flame", "Whirlpool":
+			return [AttackDiscardOpponentEnergy.new()]
+
+		# === AttackDefenderAttackLockNextTurnEffect ===
+		"Blocking Stomp", "Melting Sweetness":
+			return [AttackDefenderAttackLockNextTurnEffect.new()]
+
+		# === AttackBenchCountBonusDamage ===
+		"Torcherto", "Full Moon Rondo":
+			return [AttackBenchCountBonusDamage.new(20)]
+
+		# === AttackDefenderCounterBonusEffect ===
+		"Psychic Assault", "Mad Bite", "Clamping Fangs":
+			return [AttackDefenderCounterBonusEffect.new(10)]
+
+		# === AttackReturnSelfAllCardsToHandEffect ===
+		"Fade Out", "Assassin's Return":
+			return [AttackReturnSelfAllCardsToHandEffect.new()]
+
+		# === AttackSearchEvolutionAndEvolve ===
+		"Precocious Evolution", "Ascension":
+			return [AttackSearchEvolutionAndEvolve.new()]
+
+		# === AttackCoinFlipKOEffect ===
+		"Swinging Sphene":
+			return [AttackCoinFlipKOEffect.new()]
+
+		# === AttackCounterDamageEffect ===
+		"Ready to Ram", "Strong Bash":
+			return [AttackCounterDamageEffect.new()]
+
+		# === AttackChooseOpponentAttackLock ===
+		"Torment":
+			return [AttackChooseOpponentAttackLock.new()]
+
+		# === AttackBonusIfNoDamageCounters ===
+		"Vigorous Tackle":
+			return [AttackBonusIfNoDamageCounters.new(120)]
+
+		# === AttackCoinFlipUntilTailsDamage ===
+		"Spiral Rush", "Damage Rush":
+			return [AttackCoinFlipUntilTailsDamage.new(30)]
+
+		# === AttackDiscardToolsBeforeDamage ===
+		"Annihilating Anchor", "Gnaw Through":
+			return [AttackDiscardToolsBeforeDamage.new()]
+
+		# === AttackDefenderTakesMoreDamageNextTurn ===
+		"Screech":
+			return [AttackDefenderTakesMoreDamageNextTurn.new(50)]
+
+		# === AttackSearchTopToBench ===
+		"Cinnabar Lure":
+			return [AttackSearchTopToBench.new()]
+
+		# === AttackDiscardAllSpecialEnergy ===
+		"Cursed Edge":
+			return [AttackDiscardAllSpecialEnergy.new()]
+
+		# === AttackHealEqualDamage ===
+		"Leech Life":
+			return [AttackHealEqualDamage.new()]
+
+		# === AttackAttachFromDiscardToBench ===
+		"Energy Assist":
+			return [AttackAttachFromDiscardToBench.new()]
+
+		# === AttackReturnEnergyToHand ===
+		"Icicle Loop", "Energy Loop":
+			return [AttackReturnEnergyToHand.new()]
+
+		# === AttackHealBenchEffect ===
+		"Moss Agate":
+			return [AttackHealBenchEffect.new(100)]
+
+		# === AttackKODamageCounters ===
+		"Euclase":
+			return [AttackKODamageCounters.new()]
+
+		# === AttackExCountDamage ===
+		"Tenacious Tail":
+			return [AttackExCountDamage.new(60)]
+
+		# === AttackStage2BonusDamage ===
+		"Rumbling March":
+			return [AttackStage2BonusDamage.new(40)]
+
+		# === AttackAttachFromDiscardToSelf ===
+		"Regi Charge":
+			return [AttackAttachFromDiscardToSelf.new()]
+
+		# === AttackBonusIfStage2 ===
+		"Giant Rock":
+			return [AttackBonusIfStage2.new(140)]
+
+		# === AttackSearchSupporter ===
+		"Deceit":
+			return [AttackSearchSupporter.new()]
+
+		# === AttackNamedPokemonCountDamage ===
+		"Explode Together Now":
+			return [AttackNamedPokemonCountDamage.new(40)]
+
+		# === AttackFirstTurnBlocked ===
+		"Unified Beatdown":
+			return [AttackFirstTurnBlocked.new()]
+
+		# === AttackClearOwnStatusEffect ===
+		"Miracle Force":
+			return [AttackClearOwnStatusEffect.new()]
+
+		# === AttackSearchEvolutionEffect ===
+		"Evo-Powder":
+			return [AttackSearchEvolutionEffect.new()]
+
+		# === AttackIgnoreAllEffects ===
+		"Demolish":
+			return [AttackIgnoreAllEffects.new()]
+
+		# === Priority UNKNOWN attacks (15 entries) ===
+		# #21 Strike It Rich - 本回合进化自索财灵+90
+		"Strike It Rich":
+			return [AttackBonusIfEvolvedThisTurn.new(90, "Gimmighoul")]
+		# #32 Shining Blaze - 后备有太晶+100
+		"Shining Blaze":
+			return [AttackBonusIfTeraOnBench.new(100)]
+		# #37 Frigid Fangs - 下回合≤2能量不能攻击
+		"Frigid Fangs":
+			return [AttackOpponentEnergyLockNextTurn.new(2)]
+		# #41 Crushing Pulse - 展示手牌弃物品/道具
+		"Crushing Pulse":
+			return [AttackRevealHandDiscardItems.new()]
+		# #43 Prize Count - 按奖赏卡数加伤
+		"Prize Count":
+			return [AttackPrizeDamageBonus.new(30)]
+		# #44 C.O.D.E.: Protect - 防止太晶伤害
+		"C.O.D.E.: Protect":
+			return [AttackPreventDamageToTera.new()]
+		# #48 See Through - 对手展示手牌
+		"See Through":
+			return [AttackRevealOpponentHand.new()]
+		# #49 Electromagnetic Sonar - 从弃牌拿回训练家
+		"Electromagnetic Sonar":
+			return [AttackRetrieveTrainerFromDiscard.new()]
+		# #52 Minor Errand-Running - 搜2基本能量到手
+		"Minor Errand-Running":
+			return [AttackSearchBasicEnergyToHand.new(2)]
+		# #53 Make It Rain - 弃手牌能量×50
+		"Make It Rain":
+			return [AttackDiscardHandEnergyDamage.new(50)]
+		# #58 Itchy Pollen - 下回合对手不能用物品
+		"Itchy Pollen":
+			return [AttackItemLockNextTurn.new(false)]
+		# #64 Vengeance Fletching - 按弃牌堆古代卡×10
+		"Vengeance Fletching":
+			return [AttackAncientDiscardCountDamage.new(10)]
+		# #66 Assault Landing - 没有竞技场=无效
+		"Assault Landing":
+			return [AttackFailIfNoStadium.new()]
+		# #69 Beckon - 从弃牌拿回支援者
+		"Beckon":
+			return [AttackRetrieveSupporterFromDiscard.new()]
+		# #82 Cursed Words - 对手选3张手牌洗回
+		"Cursed Words":
+			return [AttackOpponentShuffleHandCards.new(3)]
+
 		_:
 			return []
 

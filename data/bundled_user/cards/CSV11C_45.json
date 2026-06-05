@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Fezandipiti",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Energy Feather 30×\nThis attack does 30 damage for each Energy attached to this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "45",
+	"set_code_en": "PRE",
+	"card_index_en": "45",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/45_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/45.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Energy Feather",
+			"text": "This attack does 30 damage for each Energy attached to this Pokémon.",
+			"cost": "P",
+			"damage": "30×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Adrena-Pheromone",
+			"text": "If this Pokémon has any Darkness Energy attached and is damaged by an attack, flip a coin. If heads, prevent that damage."
+		}
+	],
+	"energy_provides": ""
+}

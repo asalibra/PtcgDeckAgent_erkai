@@ -1,0 +1,52 @@
+{
+	"name": "",
+	"name_en": "Sandy Shocks ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Ancient",
+	"description": "[FFC] Earthen Spike 200\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "56",
+	"set_code_en": "PRE",
+	"card_index_en": "56",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/56_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/56.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [
+		"ex",
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 220,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Earthen Spike",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "FFC",
+			"damage": "200",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Magnetic Absorption",
+			"text": "Once during your turn, if your opponent has 4 or fewer Prize cards remaining, you may attach a Basic Fighting Energy card from your discard pile to this Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Ceruledge ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[R] Abyssal Flames 30+\nThis attack does 20 more damage for each Energy card in your discard pile.\n[RPM] Raging Amethyst 280\nDiscard all Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "147",
+	"set_code_en": "PRE",
+	"card_index_en": "147",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/147_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/147.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Charcadet",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Abyssal Flames",
+			"text": "This attack does 20 more damage for each Energy card in your discard pile.",
+			"cost": "R",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Raging Amethyst",
+			"text": "Discard all Energy from this Pokémon.",
+			"cost": "RPM",
+			"damage": "280",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

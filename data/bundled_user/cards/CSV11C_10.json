@@ -1,0 +1,49 @@
+{
+	"name": "裹蜜虫",
+	"name_en": "Dipplin",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[G] Do the Wave 20×\nThis attack does 20 damage for each of your Benched Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "10",
+	"set_code_en": "PRE",
+	"card_index_en": "10",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/10_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/10.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 80,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Applin",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Do the Wave",
+			"text": "This attack does 20 damage for each of your Benched Pokémon.",
+			"cost": "G",
+			"damage": "20×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Festival Lead",
+			"text": "If Festival Grounds is in play, this Pokémon may use an attack it has twice. If the first attack Knocks Out your opponent's Active Pokémon, you may attack again after your opponent chooses a new Active Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

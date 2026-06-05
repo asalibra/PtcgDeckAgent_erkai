@@ -1,0 +1,53 @@
+{
+	"name": "谜拟丘ex",
+	"name_en": "Mimikyu ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[PC] Mischievous Hands \nChoose 2 of your opponent's Pokémon and put 3 damage counters on each of them.\n[PPC] Ghostly Trip 120\nYour opponent's Active Pokémon is now Confused.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "69",
+	"set_code_en": "JTG",
+	"card_index_en": "69",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/69_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/69.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 190,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mischievous Hands",
+			"text": "Choose 2 of your opponent's Pokémon and put 3 damage counters on each of them.",
+			"cost": "PC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Ghostly Trip",
+			"text": "Your opponent's Active Pokémon is now Confused.",
+			"cost": "PPC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

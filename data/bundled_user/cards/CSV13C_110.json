@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Arven's Toedscruel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Pull \nSwitch in 1 of your opponent's Benched Pokémon to the Active Spot.\n[CCC] Reckless Charge 120\nThis Pokémon also does 30 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "110",
+	"set_code_en": "DRI",
+	"card_index_en": "110",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/110_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/110.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Arven's Toedscool",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Pull",
+			"text": "Switch in 1 of your opponent's Benched Pokémon to the Active Spot.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Reckless Charge",
+			"text": "This Pokémon also does 30 damage to itself.",
+			"cost": "CCC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

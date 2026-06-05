@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Regirock",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FFF] Breaching Lariat 120\nThis attack's damage isn't affected by Resistance.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "82",
+	"set_code_en": "JTG",
+	"card_index_en": "82",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/82_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/82.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Breaching Lariat",
+			"text": "This attack's damage isn't affected by Resistance.",
+			"cost": "FFF",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Rock Armor",
+			"text": "If this Pokémon has any Energy attached, it takes 30 less damage from attacks (after applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

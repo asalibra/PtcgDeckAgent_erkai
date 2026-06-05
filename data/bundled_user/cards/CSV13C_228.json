@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Yanmega ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[GGGC] Jet Cyclone 210\nMove 3 Energy from this Pokémon to 1 of your Benched Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "228",
+	"set_code_en": "DRI",
+	"card_index_en": "228",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/228_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/228.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 280,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Yanma",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Jet Cyclone",
+			"text": "Move 3 Energy from this Pokémon to 1 of your Benched Pokémon.",
+			"cost": "GGGC",
+			"damage": "210",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Buzzing Boost",
+			"text": "Once during your turn, when this Pokémon moves from your Bench to the Active Spot, you may search your deck for up to 3 Basic Grass Energy cards and attach them to this Pokémon. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

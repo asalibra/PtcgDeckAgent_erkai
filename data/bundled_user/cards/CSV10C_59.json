@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Magneton",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[LC] Electric Ball 40",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "59",
+	"set_code_en": "SSP",
+	"card_index_en": "59",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/59_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/59.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Magnemite",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Electric Ball",
+			"text": "",
+			"cost": "LC",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Overvolt Discharge",
+			"text": "Once during your turn, you may attach up to 3 Basic Energy cards from your discard pile to your Lightning Pokémon in any way you like. If you use this Ability, this Pokémon is Knocked Out."
+		}
+	],
+	"energy_provides": ""
+}

@@ -77,6 +77,23 @@ const _SERIALIZED_INTERACTION_STEP_KEYS := {
 const _IGNORED_UNSERIALIZED_INTERACTION_STEP_KEYS := {
 	"wait_for_coin_animation": true,
 }
+const _PENDING_CHOICE_LARGE_KEYS := {
+	"steps": true,
+	"items": true,
+	"labels": true,
+	"source_items": true,
+	"source_labels": true,
+	"source_groups": true,
+	"source_card_items": true,
+	"source_card_indices": true,
+	"source_choice_labels": true,
+	"card_items": true,
+	"card_indices": true,
+	"choice_labels": true,
+	"card_groups": true,
+	"target_items": true,
+	"target_labels": true,
+}
 
 var _recorder: ServerBattleRecorder
 
@@ -93,6 +110,7 @@ func add_player(peer_id: int, player_index: int, player_name: String, session_to
 		"name": player_name,
 		"deck_id": -1,
 		"ready": false,
+		"connected": true,
 		"session_token": session_token,
 	}
 	return true
@@ -135,6 +153,25 @@ func set_player_ready(player_index: int, ready: bool) -> void:
 		_players[player_index]["ready"] = ready
 
 
+func set_player_connected(player_index: int, connected: bool) -> void:
+	if _players.has(player_index):
+		_players[player_index]["connected"] = connected
+
+
+func is_player_connected(player_index: int) -> bool:
+	if not _players.has(player_index):
+		return false
+	return bool(_players[player_index].get("connected", false))
+
+
+func is_joinable() -> bool:
+	if _state != NetProtocol.ROOM_STATE_WAITING:
+		return false
+	if get_player_count() >= 2:
+		return false
+	return is_player_connected(host_player_index)
+
+
 func get_player_count() -> int:
 	return _players.size()
 
@@ -154,7 +191,7 @@ func get_room_info() -> Dictionary:
 			"player_index": pi,
 			"name": p["name"],
 			"ready": p["ready"],
-			"connected": true,
+			"connected": bool(p.get("connected", false)),
 		})
 	return {
 		"room_id": room_id,
@@ -378,9 +415,15 @@ func handle_action(player_index: int, action_type: String, params: Dictionary) -
 
 		NetProtocol.ACTION_USE_GRANTED_ATTACK:
 			var attacker_slot = _resolve_slot(params.get("attacker_slot", {}))
+			var attack_id: String = str(params.get("attack_id", ""))
 			var attack_name: String = str(params.get("attack_name", ""))
-			if attacker_slot and not attack_name.is_empty():
-				var granted_attack: Dictionary = {"name": attack_name}
+			if attacker_slot and (not attack_id.is_empty() or not attack_name.is_empty()):
+				var granted_attack: Dictionary = _resolve_granted_attack_payload(attacker_slot, attack_id, attack_name)
+				if granted_attack.is_empty():
+					if not attack_id.is_empty():
+						granted_attack["id"] = attack_id
+					if not attack_name.is_empty():
+						granted_attack["name"] = attack_name
 				_handle_use_granted_attack(pi, attacker_slot, granted_attack)
 			else:
 				_send_error_to(pi, "invalid_action", "使用招式参数无效")
@@ -598,6 +641,19 @@ func _resolve_slot_array(refs: Array) -> Array:
 	return result
 
 
+func _resolve_granted_attack_payload(attacker_slot: PokemonSlot, attack_id: String, attack_name: String) -> Dictionary:
+	if _gsm == null or _gsm.effect_processor == null or _gsm.game_state == null or attacker_slot == null:
+		return {}
+	var granted_attacks: Array[Dictionary] = _gsm.effect_processor.get_granted_attacks(attacker_slot, _gsm.game_state)
+	for granted_attack: Dictionary in granted_attacks:
+		if not attack_id.is_empty() and str(granted_attack.get("id", "")) == attack_id:
+			return granted_attack
+	for granted_attack: Dictionary in granted_attacks:
+		if not attack_name.is_empty() and str(granted_attack.get("name", "")) == attack_name:
+			return granted_attack
+	return {}
+
+
 func _find_bench_index(player_index: int, slot) -> int:
 	if _gsm == null or _gsm.game_state == null:
 		return -1
@@ -664,7 +720,7 @@ func _build_pending_choice_view(choice: Dictionary) -> Dictionary:
 			"type": choice_type,
 			"data": data.duplicate(true),
 		}
-	var enriched_data: Dictionary = data.duplicate(true)
+	var enriched_data: Dictionary = _build_compact_pending_choice_data(data)
 	var target_player := _resolve_choice_target(choice_type, data)
 	if target_player >= 0:
 		enriched_data["target_player"] = target_player
@@ -672,6 +728,17 @@ func _build_pending_choice_view(choice: Dictionary) -> Dictionary:
 		"type": choice_type,
 		"data": enriched_data,
 	}
+
+
+func _build_compact_pending_choice_data(data: Dictionary) -> Dictionary:
+	if data.is_empty():
+		return {}
+	var compact := data.duplicate(true)
+	for key_variant: Variant in _PENDING_CHOICE_LARGE_KEYS.keys():
+		var key := str(key_variant)
+		if compact.has(key):
+			compact.erase(key)
+	return compact
 
 
 func _handle_play_trainer(pi: int, card: CardInstance) -> void:

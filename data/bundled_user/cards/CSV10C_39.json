@@ -1,0 +1,51 @@
+{
+	"name": "帕底亚肯泰罗",
+	"name_en": "Paldean Tauros",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Upthrusting Horns 30\nYou may put 2 Energy attached to your opponent's Active Stage 2 Pokémon into their hand.\n[WWC] Jet Headbutt 100",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "39",
+	"set_code_en": "SSP",
+	"card_index_en": "39",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/39_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/39.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Upthrusting Horns",
+			"text": "You may put 2 Energy attached to your opponent's Active Stage 2 Pokémon into their hand.",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Jet Headbutt",
+			"text": "",
+			"cost": "WWC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

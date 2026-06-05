@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的尼多力诺",
+	"name_en": "Team Rocket's Nidorino",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[DC] Hammer In 30\n[DDC] Horn Rend 60+\nIf your opponent's Active Pokémon already has any damage counters on it, this attack does 60 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "118",
+	"set_code_en": "DRI",
+	"card_index_en": "118",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/118_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/118.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Nidoran♂",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hammer In",
+			"text": "",
+			"cost": "DC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Horn Rend",
+			"text": "If your opponent's Active Pokémon already has any damage counters on it, this attack does 60 more damage.",
+			"cost": "DDC",
+			"damage": "60+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

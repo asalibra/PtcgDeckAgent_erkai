@@ -17,7 +17,8 @@ var _pending_connections: Array = []  # 等待 WebSocket 握手的 TCP 连接
 
 const HANDSHAKE_TIMEOUT := 10.0
 const PING_INTERVAL := 15.0
-const MAX_SENDS_PER_POLL := 1
+const MAX_SENDS_PER_POLL := 4
+const WEBSOCKET_INBOUND_BUFFER_SIZE := 8 * 1024 * 1024
 const WEBSOCKET_OUTBOUND_BUFFER_SIZE := 8 * 1024 * 1024
 const WEBSOCKET_MAX_QUEUED_PACKETS := 8192
 
@@ -84,6 +85,7 @@ func _accept_new_connections() -> void:
 		if err != OK:
 			push_error("[ServerNetwork] WebSocket 握手失败: %s" % error_string(err))
 			continue
+		ws.set_inbound_buffer_size(WEBSOCKET_INBOUND_BUFFER_SIZE)
 		ws.set_outbound_buffer_size(WEBSOCKET_OUTBOUND_BUFFER_SIZE)
 		ws.set_max_queued_packets(WEBSOCKET_MAX_QUEUED_PACKETS)
 		var peer_id := _next_peer_id
@@ -117,6 +119,9 @@ func _poll_existing_connections() -> void:
 				if message.is_empty():
 					continue
 				client_message_received.emit(peer_id, message)
+			# 本轮收到入站消息后，可能已产生应答消息（state_update / choice_prompt），
+			# 立即再冲刷一次队列，避免必须等到下一轮 poll 才发出。
+			_flush_outbound_queue(peer_id, ws)
 
 	for peer_id in to_remove:
 		_clients.erase(peer_id)

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Armarouge",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Combustion 50\n[RRC] Crimson Blaster \nDiscard all Fire Energy from this Pokémon, and this attack does 180 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "34",
+	"set_code_en": "SSP",
+	"card_index_en": "34",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/34_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/34.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Charcadet",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Combustion",
+			"text": "",
+			"cost": "CC",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Crimson Blaster",
+			"text": "Discard all Fire Energy from this Pokémon, and this attack does 180 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "RRC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

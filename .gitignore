@@ -57,3 +57,16 @@ assets/ui/Codex_files/
 
 # Local Python cache
 scripts/training/__pycache__/
+
+# Project info (contains server details, analysis reports)
+project_info/
+
+# Import tools (local analysis scripts)
+scripts/tools/analyze_card_effects.py
+scripts/tools/assign_trainer_effect_ids.py
+scripts/tools/classify_attack_effects.py
+scripts/tools/generate_en_attack_registry.py
+
+# Analysis files
+*.xlsx
+tmp_test_run.txt

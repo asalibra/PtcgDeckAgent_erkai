@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Iono's Bellibolt ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[LLLC] Thunderous Bolt 230\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "172",
+	"set_code_en": "JTG",
+	"card_index_en": "172",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/172_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/172.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 280,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Iono's Tadbulb",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Thunderous Bolt",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "LLLC",
+			"damage": "230",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Electric Streamer",
+			"text": "As often as you like during your turn, you may attach a Basic Lightning Energy card from your hand to 1 of your Iono's Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

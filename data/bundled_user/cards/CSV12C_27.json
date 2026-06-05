@@ -1,0 +1,51 @@
+{
+	"name": "N的达摩狒狒",
+	"name_en": "N's Darmanitan",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Back Draft 30×\nThis attack does 30 damage for each Basic Energy card in your opponent's discard pile.\n[RRC] Flamebody Cannon 90\nDiscard all Energy from this Pokémon, and this attack also does 90 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "27",
+	"set_code_en": "JTG",
+	"card_index_en": "27",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/27_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/27.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "N's Darumaka",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Back Draft",
+			"text": "This attack does 30 damage for each Basic Energy card in your opponent's discard pile.",
+			"cost": "CC",
+			"damage": "30×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Flamebody Cannon",
+			"text": "Discard all Energy from this Pokémon, and this attack also does 90 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "RRC",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

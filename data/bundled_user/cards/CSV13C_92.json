@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Annihilape",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FF] Impact Blow 160\nDuring your next turn, this Pokémon can't use Impact Blow.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "92",
+	"set_code_en": "DRI",
+	"card_index_en": "92",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/92_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/92.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 2",
+	"hp": 150,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Primeape",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Impact Blow",
+			"text": "During your next turn, this Pokémon can't use Impact Blow.",
+			"cost": "FF",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Lose Cool",
+			"text": "If this Pokémon has 2 or more damage counters on it, attacks used by this Pokémon do 120 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

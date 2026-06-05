@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Heat Rotom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Singe \nYour opponent's Active Pokémon is now Burned.\n[CC] Gadget Show 30×\nThis attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "43",
+	"set_code_en": "DRI",
+	"card_index_en": "43",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/43_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/43.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Singe",
+			"text": "Your opponent's Active Pokémon is now Burned.",
+			"cost": "R",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Gadget Show",
+			"text": "This attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+			"cost": "CC",
+			"damage": "30×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

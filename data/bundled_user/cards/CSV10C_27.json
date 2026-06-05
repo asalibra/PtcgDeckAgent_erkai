@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Sizzlipede",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Live Coal 10\n[CCC] Hook 30",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "27",
+	"set_code_en": "SSP",
+	"card_index_en": "27",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/27_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/27.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 80,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Live Coal",
+			"text": "",
+			"cost": "R",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hook",
+			"text": "",
+			"cost": "CCC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

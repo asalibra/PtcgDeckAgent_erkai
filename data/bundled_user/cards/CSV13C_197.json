@@ -1,0 +1,51 @@
+{
+	"name": "洛托姆",
+	"name_en": "Rotom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[L] Astonish 20\nChoose a random card from your opponent's hand. Your opponent reveals that card and shuffles it into their deck.\n[CC] Gadget Show 30×\nThis attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "197",
+	"set_code_en": "DRI",
+	"card_index_en": "197",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/197_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/197.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Astonish",
+			"text": "Choose a random card from your opponent's hand. Your opponent reveals that card and shuffles it into their deck.",
+			"cost": "L",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Gadget Show",
+			"text": "This attack does 30 damage for each Pokémon Tool attached to all of your Pokémon.",
+			"cost": "CC",
+			"damage": "30×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

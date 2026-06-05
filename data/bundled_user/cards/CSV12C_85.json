@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Lycanroc",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Clamping Fangs 40+\nThis attack does 40 more damage for each damage counter on your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "85",
+	"set_code_en": "JTG",
+	"card_index_en": "85",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/85_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/85.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Rockruff",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Clamping Fangs",
+			"text": "This attack does 40 more damage for each damage counter on your opponent's Active Pokémon.",
+			"cost": "CCC",
+			"damage": "40+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Spike-Clad",
+			"text": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may attach up to 2 Spiky Energy cards from your discard pile to this Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

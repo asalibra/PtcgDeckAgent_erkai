@@ -1,0 +1,51 @@
+{
+	"name": "凤王",
+	"name_en": "Ho-Oh",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[RC] Flap 50\n[RRC] Shining Blaze 100+\nIf you have any Tera Pokémon on your Bench, this attack does 100 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "19",
+	"set_code_en": "SSP",
+	"card_index_en": "19",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/19_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/19.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Flap",
+			"text": "",
+			"cost": "RC",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Shining Blaze",
+			"text": "If you have any Tera Pokémon on your Bench, this attack does 100 more damage.",
+			"cost": "RRC",
+			"damage": "100+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,54 @@
+{
+	"name": "铁臂膀ex",
+	"name_en": "Iron Hands ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Future",
+	"description": "[LLC] Arm Press 160\n[LCCC] Amp You Very Much 120\nIf your opponent's Pokémon is Knocked Out by damage from this attack, take 1 more Prize card.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "154",
+	"set_code_en": "PRE",
+	"card_index_en": "154",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/154_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/154.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [
+		"ex",
+		"Future"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 230,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Arm Press",
+			"text": "",
+			"cost": "LLC",
+			"damage": "160",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Amp You Very Much",
+			"text": "If your opponent's Pokémon is Knocked Out by damage from this attack, take 1 more Prize card.",
+			"cost": "LCCC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

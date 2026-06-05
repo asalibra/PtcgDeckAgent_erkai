@@ -1,0 +1,51 @@
+{
+	"name": "兰螳花",
+	"name_en": "Lurantis",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Razor Leaf 30\n[G] Petal Blade Dance 130\nDiscard 2 Basic Grass Energy cards from your hand. If you can't discard 2 cards in this way, this attack does nothing.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "14",
+	"set_code_en": "DRI",
+	"card_index_en": "14",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/14_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/14.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Fomantis",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Razor Leaf",
+			"text": "",
+			"cost": "C",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Petal Blade Dance",
+			"text": "Discard 2 Basic Grass Energy cards from your hand. If you can't discard 2 cards in this way, this attack does nothing.",
+			"cost": "G",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

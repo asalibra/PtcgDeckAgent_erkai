@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Palossand ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[CCC] Sand Tomb 160\nDuring your opponent's next turn, the Defending Pokémon can't retreat.\n[WPF] Barite Jail \nPut damage counters on each of your opponent's Benched Pokémon until its remaining HP is 100.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "221",
+	"set_code_en": "SSP",
+	"card_index_en": "221",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/221_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/221.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 280,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 4,
+	"evolves_from": "Sandygast",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Sand Tomb",
+			"text": "During your opponent's next turn, the Defending Pokémon can't retreat.",
+			"cost": "CCC",
+			"damage": "160",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Barite Jail",
+			"text": "Put damage counters on each of your opponent's Benched Pokémon until its remaining HP is 100.",
+			"cost": "WPF",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

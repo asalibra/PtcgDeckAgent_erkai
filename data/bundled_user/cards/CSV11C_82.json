@@ -1,0 +1,46 @@
+{
+	"name": "",
+	"name_en": "Lugia ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[CCC] Hyper Whirlpool 140\nFlip a coin until you get tails. For each heads, discard an Energy from your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "82",
+	"set_code_en": "PRE",
+	"card_index_en": "82",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/82_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/82.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 220,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hyper Whirlpool",
+			"text": "Flip a coin until you get tails. For each heads, discard an Energy from your opponent's Active Pokémon.",
+			"cost": "CCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

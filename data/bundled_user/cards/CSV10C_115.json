@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Glimmora",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Corrosive Shards 20\nYour opponent's Active Pokémon is now Poisoned. During your opponent's next turn, Energy cards can't be attached from your opponent's hand to that Pokémon.\n[FC] Rock Throw 60",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "115",
+	"set_code_en": "SSP",
+	"card_index_en": "115",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/115_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/115.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Glimmet",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Corrosive Shards",
+			"text": "Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, Energy cards can't be attached from your opponent's hand to that Pokémon.",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Rock Throw",
+			"text": "",
+			"cost": "FC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Primeape",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[F] Sweep the Leg 30\nFlip a coin. If heads, discard an Energy from your opponent's Active Pokémon.\n[FC] Mega Punch 70",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "99",
+	"set_code_en": "SSP",
+	"card_index_en": "99",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/99_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/99.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Mankey",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Sweep the Leg",
+			"text": "Flip a coin. If heads, discard an Energy from your opponent's Active Pokémon.",
+			"cost": "F",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mega Punch",
+			"text": "",
+			"cost": "FC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

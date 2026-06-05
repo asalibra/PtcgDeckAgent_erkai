@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Crobat ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[DD] Assassin's Return 120\nYou may put this Pokémon into your hand. (Discard all cards attached to this Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "242",
+	"set_code_en": "DRI",
+	"card_index_en": "242",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/242_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/242.png",
+	"artist": "",
+	"rarity": "HR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 2",
+	"hp": 310,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Team Rocket's Golbat",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Assassin's Return",
+			"text": "You may put this Pokémon into your hand. (Discard all cards attached to this Pokémon.)",
+			"cost": "DD",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Biting Spree",
+			"text": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may choose 2 of your opponent's Pokémon and put 2 damage counters on each of them."
+		}
+	],
+	"energy_provides": ""
+}

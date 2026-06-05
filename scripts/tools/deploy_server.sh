@@ -1,12 +1,13 @@
 #!/bin/bash
 # PTCG Deck Agent - Cloud Server One-Click Deploy
-# Usage: curl -sSL <raw-url> | bash -s -- [--port 9000] [--web-port 8080]
-# Or: ./deploy_server.sh [--port 9000] [--web-port 8080]
+# Usage: curl -sSL <raw-url> | bash -s -- [--port 9000] [--web-port 8080] [--enable-web-client]
+# Or: ./deploy_server.sh [--port 9000] [--web-port 8080] [--enable-web-client]
 
 set -e
 
 SERVER_PORT=${SERVER_PORT:-9000}
 WEB_PORT=${WEB_PORT:-8080}
+ENABLE_WEB_CLIENT=${ENABLE_WEB_CLIENT:-0}
 GODOT_VERSION="4.6.2"
 DEPLOY_DIR="${DEPLOY_DIR:-$HOME/ptcg-server}"
 PROJECT_REPO=""  # Set if using git clone
@@ -20,11 +21,37 @@ while [[ $# -gt 0 ]]; do
     case $1 in
         --port) SERVER_PORT="$2"; shift 2 ;;
         --web-port) WEB_PORT="$2"; shift 2 ;;
+        --enable-web-client) ENABLE_WEB_CLIENT=1; shift ;;
+        --disable-web-client) ENABLE_WEB_CLIENT=0; shift ;;
         --deploy-dir) DEPLOY_DIR="$2"; shift 2 ;;
         --repo) PROJECT_REPO="$2"; shift 2 ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
+
+
+disable_existing_web_service() {
+    if command -v systemctl &>/dev/null && systemctl list-unit-files 2>/dev/null | grep -q '^ptcg-web.service'; then
+        sudo systemctl stop ptcg-web 2>/dev/null || true
+        sudo systemctl disable ptcg-web 2>/dev/null || true
+        sudo rm -f /etc/systemd/system/ptcg-web.service
+        sudo systemctl daemon-reload
+        echo "  Existing ptcg-web.service disabled and removed"
+    fi
+}
+
+
+stop_background_web_process() {
+    local web_pid=""
+    if [ -f "$DEPLOY_DIR/web.pid" ]; then
+        web_pid=$(cat "$DEPLOY_DIR/web.pid" 2>/dev/null || true)
+        if [ -n "$web_pid" ] && kill -0 "$web_pid" 2>/dev/null; then
+            kill "$web_pid" 2>/dev/null || true
+            echo "  Stopped background web process PID $web_pid"
+        fi
+        rm -f "$DEPLOY_DIR/web.pid"
+    fi
+}
 
 echo "============================================"
 echo "  PTCG Deck Agent - Cloud Server Deploy"
@@ -32,7 +59,11 @@ echo "============================================"
 echo ""
 echo "  Deploy dir:    $DEPLOY_DIR"
 echo "  Server port:   $SERVER_PORT"
-echo "  Web port:      $WEB_PORT"
+if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+    echo "  Web client:    enabled (port $WEB_PORT)"
+else
+    echo "  Web client:    disabled"
+fi
 if [ -n "$CLOUDFLARE_BASE_URL" ]; then
     echo "  Purge target:  $CLOUDFLARE_BASE_URL"
 fi
@@ -184,63 +215,66 @@ if [ ! -f "$DEPLOY_DIR/scripts/server/server_config.json" ] && [ -f "$DEPLOY_DIR
     echo "  Created server_config.json from example template"
 fi
 
+EXPORT_DIR="$DEPLOY_DIR/exports/web"
 # ---------- 3. Export web client ----------
 echo ""
-echo "[3/5] Exporting web client..."
+if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+    echo "[3/7] Exporting web client..."
+    EXPORT_LOG="$DEPLOY_DIR/export_web.log"
+    WEB_EXPORT_PATH="$EXPORT_DIR/$WEB_EXPORT_NAME"
+    INDEX_EXPORT_PATH="$EXPORT_DIR/index.html"
+    mkdir -p "$EXPORT_DIR"
 
-EXPORT_DIR="$DEPLOY_DIR/exports/web"
-EXPORT_LOG="$DEPLOY_DIR/export_web.log"
-WEB_EXPORT_PATH="$EXPORT_DIR/$WEB_EXPORT_NAME"
-INDEX_EXPORT_PATH="$EXPORT_DIR/index.html"
-mkdir -p "$EXPORT_DIR"
-
-# Check if export preset exists
-if [ ! -f "export_presets.cfg" ]; then
-    echo "[!] No export_presets.cfg found, skipping export"
-    echo "    Please export manually or copy web export files to $EXPORT_DIR"
-else
-    # Export using Godot CLI
-    if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-release "Web" "$WEB_EXPORT_PATH" > "$EXPORT_LOG" 2>&1; then
-        echo "[!] Export failed, trying debug export..."
-        if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-debug "Web" "$WEB_EXPORT_PATH" >> "$EXPORT_LOG" 2>&1; then
-            echo "[!] Web export failed. Last lines:"
-            tail -20 "$EXPORT_LOG"
-        fi
-    fi
-fi
-
-# Ensure a discoverable HTML entry exists
-if [ ! -f "$WEB_EXPORT_PATH" ] && [ -f "$INDEX_EXPORT_PATH" ]; then
-    cp "$INDEX_EXPORT_PATH" "$WEB_EXPORT_PATH"
-    echo "  Created $WEB_EXPORT_NAME from index.html"
-fi
-
-if [ ! -f "$INDEX_EXPORT_PATH" ] && [ -f "$WEB_EXPORT_PATH" ]; then
-    cp "$WEB_EXPORT_PATH" "$INDEX_EXPORT_PATH"
-    echo "  Created index.html from $WEB_EXPORT_NAME"
-fi
-
-if [ ! -f "$INDEX_EXPORT_PATH" ] && [ ! -f "$WEB_EXPORT_PATH" ]; then
-    HTML_FILE=$(find "$EXPORT_DIR" -name "*.html" -print -quit 2>/dev/null)
-    if [ -n "$HTML_FILE" ]; then
-        cp "$HTML_FILE" "$INDEX_EXPORT_PATH"
-        cp "$HTML_FILE" "$WEB_EXPORT_PATH"
-        echo "  Created index.html and $WEB_EXPORT_NAME from $(basename "$HTML_FILE")"
+    # Check if export preset exists
+    if [ ! -f "export_presets.cfg" ]; then
+        echo "[!] No export_presets.cfg found, skipping export"
+        echo "    Please export manually or copy web export files to $EXPORT_DIR"
     else
-        echo "[!] No HTML files found in $EXPORT_DIR"
-        if [ -f "$EXPORT_LOG" ]; then
-            echo "  Export log (last 20 lines):"
-            tail -20 "$EXPORT_LOG"
+        # Export using Godot CLI
+        if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-release "Web" "$WEB_EXPORT_PATH" > "$EXPORT_LOG" 2>&1; then
+            echo "[!] Export failed, trying debug export..."
+            if ! "$GODOT_BIN" --headless --path "$DEPLOY_DIR" --export-debug "Web" "$WEB_EXPORT_PATH" >> "$EXPORT_LOG" 2>&1; then
+                echo "[!] Web export failed. Last lines:"
+                tail -20 "$EXPORT_LOG"
+            fi
         fi
-        echo "    Aborting deploy because web export is missing"
-        exit 1
     fi
+
+    # Ensure a discoverable HTML entry exists
+    if [ ! -f "$WEB_EXPORT_PATH" ] && [ -f "$INDEX_EXPORT_PATH" ]; then
+        cp "$INDEX_EXPORT_PATH" "$WEB_EXPORT_PATH"
+        echo "  Created $WEB_EXPORT_NAME from index.html"
+    fi
+
+    if [ ! -f "$INDEX_EXPORT_PATH" ] && [ -f "$WEB_EXPORT_PATH" ]; then
+        cp "$WEB_EXPORT_PATH" "$INDEX_EXPORT_PATH"
+        echo "  Created index.html from $WEB_EXPORT_NAME"
+    fi
+
+    if [ ! -f "$INDEX_EXPORT_PATH" ] && [ ! -f "$WEB_EXPORT_PATH" ]; then
+        HTML_FILE=$(find "$EXPORT_DIR" -name "*.html" -print -quit 2>/dev/null)
+        if [ -n "$HTML_FILE" ]; then
+            cp "$HTML_FILE" "$INDEX_EXPORT_PATH"
+            cp "$HTML_FILE" "$WEB_EXPORT_PATH"
+            echo "  Created index.html and $WEB_EXPORT_NAME from $(basename "$HTML_FILE")"
+        else
+            echo "[!] No HTML files found in $EXPORT_DIR"
+            if [ -f "$EXPORT_LOG" ]; then
+                echo "  Export log (last 20 lines):"
+                tail -20 "$EXPORT_LOG"
+            fi
+            echo "    Aborting deploy because web export is missing"
+            exit 1
+        fi
+    fi
+    echo "  Web export: $EXPORT_DIR"
+else
+    echo "[3/7] Web client disabled; skipping web export."
 fi
-echo "  Web export: $EXPORT_DIR"
 
 # ---------- 4. Create systemd service (optional) ----------
 echo ""
-echo "[4/5] Setting up service..."
+echo "[4/7] Setting up service..."
 
 SERVICE_FILE="/etc/systemd/system/ptcg-server.service"
 CREATE_SERVICE=""
@@ -268,8 +302,8 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 
-    # Web service
-    sudo tee "/etc/systemd/system/ptcg-web.service" > /dev/null <<EOF
+    if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+        sudo tee "/etc/systemd/system/ptcg-web.service" > /dev/null <<EOF
 [Unit]
 Description=PTCG Deck Agent Web Server
 After=network.target
@@ -286,48 +320,97 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 
-    sudo systemctl daemon-reload
-    sudo systemctl enable ptcg-server ptcg-web
-    echo "  Services created. Use 'sudo systemctl start ptcg-server ptcg-web' to start"
+        sudo systemctl daemon-reload
+        sudo systemctl enable ptcg-server ptcg-web
+        echo "  Services created. Use 'sudo systemctl start ptcg-server ptcg-web' to start"
+    else
+        disable_existing_web_service
+        sudo systemctl enable ptcg-server
+        echo "  Server service created. Web client remains disabled by default"
+    fi
 else
+    if [ "$ENABLE_WEB_CLIENT" != "1" ]; then
+        disable_existing_web_service
+    fi
     echo "  Skipped. Use run_net_battle.sh to start manually"
 fi
 
 # ---------- 5. Start services ----------
 echo ""
-echo "[5/6] Starting services..."
+echo "[5/7] Starting services..."
 
 if [[ "$CREATE_SERVICE" =~ ^[Yy]$ ]]; then
-    sudo systemctl start ptcg-server ptcg-web
-    echo "  Services started via systemd"
-    echo "  Check status: systemctl status ptcg-server ptcg-web"
+    if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+        sudo systemctl start ptcg-server ptcg-web
+        echo "  Services started via systemd"
+        echo "  Check status: systemctl status ptcg-server ptcg-web"
+    else
+        sudo systemctl start ptcg-server
+        echo "  Server started via systemd"
+        echo "  Check status: systemctl status ptcg-server"
+    fi
 else
     # Start directly in background
     nohup $GODOT_BIN --headless --path "$DEPLOY_DIR" -s res://scripts/server/ServerMain.gd -- --port=$SERVER_PORT > "$DEPLOY_DIR/server.log" 2>&1 &
     echo $! > "$DEPLOY_DIR/server.pid"
 
-    nohup python3 "$DEPLOY_DIR/scripts/tools/serve_web_export.py" $WEB_PORT "$EXPORT_DIR" > "$DEPLOY_DIR/web.log" 2>&1 &
-    echo $! > "$DEPLOY_DIR/web.pid"
-
     echo "  Server PID: $(cat $DEPLOY_DIR/server.pid)"
-    echo "  Web PID:    $(cat $DEPLOY_DIR/web.pid)"
+    if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+        nohup python3 "$DEPLOY_DIR/scripts/tools/serve_web_export.py" $WEB_PORT "$EXPORT_DIR" > "$DEPLOY_DIR/web.log" 2>&1 &
+        echo $! > "$DEPLOY_DIR/web.pid"
+        echo "  Web PID:    $(cat $DEPLOY_DIR/web.pid)"
+    else
+        stop_background_web_process
+        echo "  Web client disabled; no web process started"
+    fi
     echo ""
-    echo "  Logs: $DEPLOY_DIR/server.log, $DEPLOY_DIR/web.log"
-    echo "  Stop: kill \$(cat $DEPLOY_DIR/server.pid) \$(cat $DEPLOY_DIR/web.pid)"
+    if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+        echo "  Logs: $DEPLOY_DIR/server.log, $DEPLOY_DIR/web.log"
+        echo "  Stop: kill \$(cat $DEPLOY_DIR/server.pid) \$(cat $DEPLOY_DIR/web.pid)"
+    else
+        echo "  Logs: $DEPLOY_DIR/server.log"
+        echo "  Stop: kill \$(cat $DEPLOY_DIR/server.pid)"
+    fi
 fi
 
 
 # ---------- 6. Sync to Nginx public directory ----------
 echo ""
-echo "[6/6] Syncing web export to Nginx public directory..."
+echo "[6/7] Updating Nginx public directory..."
 NGINX_WEB_ROOT="/var/www/ptcgdeckagent"
-if [ -d "$NGINX_WEB_ROOT" ]; then
-    echo "  Syncing $EXPORT_DIR/ -> $NGINX_WEB_ROOT ..."
-    sudo rsync -av --delete "$EXPORT_DIR/" "$NGINX_WEB_ROOT/"
-    echo "  Nginx public directory updated."
+if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+    if [ -d "$NGINX_WEB_ROOT" ]; then
+        echo "  Syncing $EXPORT_DIR/ -> $NGINX_WEB_ROOT ..."
+        sudo rsync -av --delete "$EXPORT_DIR/" "$NGINX_WEB_ROOT/"
+        echo "  Nginx public directory updated."
+    else
+        echo "  [!] Nginx web root $NGINX_WEB_ROOT does not exist. Skipping sync."
+        echo "      If this is a new server, create it with: sudo mkdir -p $NGINX_WEB_ROOT && sudo chown $(whoami) $NGINX_WEB_ROOT"
+    fi
 else
-    echo "  [!] Nginx web root $NGINX_WEB_ROOT does not exist. Skipping sync."
-    echo "      If this is a new server, create it with: sudo mkdir -p $NGINX_WEB_ROOT && sudo chown $(whoami) $NGINX_WEB_ROOT"
+    if [ -d "$NGINX_WEB_ROOT" ]; then
+        echo "  Web client disabled. Replacing $NGINX_WEB_ROOT with a disabled notice..."
+        sudo find "$NGINX_WEB_ROOT" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+        sudo tee "$NGINX_WEB_ROOT/index.html" > /dev/null <<'EOF'
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PTCG Deck Agent</title>
+</head>
+<body>
+    <main>
+        <h1>浏览器客户端已停用</h1>
+        <p>当前版本只保留联机服务端与原生客户端发布，不再提供 Web 客户端入口。</p>
+    </main>
+</body>
+</html>
+EOF
+        echo "  Public web client disabled page written."
+    else
+        echo "  Nginx web root $NGINX_WEB_ROOT does not exist. No public web client content to disable."
+    fi
 fi
 
 # ---------- 7. Purge Cloudflare cache (optional) ----------
@@ -339,8 +422,13 @@ if [ -n "$CLOUDFLARE_ZONE_ID" ] && [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOU
         --zone-id "$CLOUDFLARE_ZONE_ID"
         --api-token "$CLOUDFLARE_API_TOKEN"
         --base-url "$CLOUDFLARE_BASE_URL"
-        --export-dir "$EXPORT_DIR"
     )
+
+    if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+        PURGE_ARGS+=(--export-dir "$EXPORT_DIR")
+    else
+        PURGE_ARGS+=(--purge-everything)
+    fi
 
     if [ -n "${CLOUDFLARE_PURGE_EVERYTHING:-}" ]; then
         PURGE_ARGS+=(--purge-everything)
@@ -360,7 +448,11 @@ echo "============================================"
 echo "  Deploy complete!"
 echo ""
 echo "  Game server:   ws://$(hostname -I | awk '{print $1}'):$SERVER_PORT"
-echo "  Web client:    http://$(hostname -I | awk '{print $1}'):$WEB_PORT"
+if [ "$ENABLE_WEB_CLIENT" = "1" ]; then
+    echo "  Web client:    http://$(hostname -I | awk '{print $1}'):$WEB_PORT"
+else
+    echo "  Web client:    disabled"
+fi
 echo ""
 echo "  Config file:   $DEPLOY_DIR/scripts/server/server_config.json"
 echo "  (create this file to override default ports)"

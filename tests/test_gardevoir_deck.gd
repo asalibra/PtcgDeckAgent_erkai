@@ -798,6 +798,27 @@ func test_flutter_mane_dark_wing_only_disables_opponent_active() -> String:
 	])
 
 
+func test_iron_thorns_init_disables_radiant_rule_box_ability() -> String:
+	var state := _make_state()
+	var processor := EffectProcessor.new()
+
+	var iron_thorns_cd := _make_basic_pokemon_data("铁荆棘ex", "L", 230, "Basic", "ex")
+	iron_thorns_cd.is_tags = PackedStringArray(["Future"])
+	iron_thorns_cd.abilities = [{"name": "初始化"}]
+	var iron_thorns := _make_slot(iron_thorns_cd, 0)
+	state.players[0].active_pokemon = iron_thorns
+
+	var radiant_greninja_cd := _make_basic_pokemon_data("光辉甲贺忍蛙", "W", 130, "Basic", "Radiant")
+	radiant_greninja_cd.abilities = [{"name": "隐匿牌"}]
+	var radiant_greninja := _make_slot(radiant_greninja_cd, 1)
+	state.players[1].bench.clear()
+	state.players[1].bench.append(radiant_greninja)
+
+	return run_checks([
+		assert_true(processor.is_ability_disabled(radiant_greninja, state), "初始化：应封锁光辉宝可梦（规则宝可梦）的特性"),
+	])
+
+
 ## ==================== 钥圈儿 狙落 ====================
 
 func test_klefki_snipe_discard_tool() -> String:

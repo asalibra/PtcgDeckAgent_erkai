@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Rabsca ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Upside-Down Draw \nDraw 3 cards from the bottom of your deck.\n[GCC] Psychic 20+\nThis attack does 90 more damage for each Energy attached to your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "25",
+	"set_code_en": "DRI",
+	"card_index_en": "25",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/25_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/25.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 250,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Rellor",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Upside-Down Draw",
+			"text": "Draw 3 cards from the bottom of your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Psychic",
+			"text": "This attack does 90 more damage for each Energy attached to your opponent's Active Pokémon.",
+			"cost": "GCC",
+			"damage": "20+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

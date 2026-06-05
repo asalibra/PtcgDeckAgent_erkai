@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Cetitan",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WCCC] Dangerous Mouth 150",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "54",
+	"set_code_en": "SSP",
+	"card_index_en": "54",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/54_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/54.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 180,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Cetoddle",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dangerous Mouth",
+			"text": "",
+			"cost": "WCCC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Solid Body",
+			"text": "This Pokémon takes 30 less damage from attacks (after applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

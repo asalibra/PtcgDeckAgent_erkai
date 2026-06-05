@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Flamigo ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[CC] Precise Beak 30+\nIf this Pokémon and your opponent's Active Pokémon have the same amount of Energy attached, this attack does 100 more damage.\n[CCCC] Brave Bird 200\nThis Pokémon also does 30 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "160",
+	"set_code_en": "SSP",
+	"card_index_en": "160",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/160_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/160.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 200,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Precise Beak",
+			"text": "If this Pokémon and your opponent's Active Pokémon have the same amount of Energy attached, this attack does 100 more damage.",
+			"cost": "CC",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Brave Bird",
+			"text": "This Pokémon also does 30 damage to itself.",
+			"cost": "CCCC",
+			"damage": "200",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

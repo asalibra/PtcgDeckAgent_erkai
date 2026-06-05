@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Furret",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Scratch 40\n[CC] Jet Headbutt 70",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "168",
+	"set_code_en": "JTG",
+	"card_index_en": "168",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/168_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/168.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Sentret",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Scratch",
+			"text": "",
+			"cost": "C",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Jet Headbutt",
+			"text": "",
+			"cost": "CC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

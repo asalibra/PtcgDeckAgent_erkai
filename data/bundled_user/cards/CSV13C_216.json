@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Nidoking ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[DDC] Tainted Horn 100\nYour opponent's Active Pokémon is now Poisoned. During Pokémon Checkup, put 8 damage counters on that Pokémon instead of 1.\n[DDDC] Kingly Impact 240",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "216",
+	"set_code_en": "DRI",
+	"card_index_en": "216",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/216_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/216.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 2",
+	"hp": 330,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Team Rocket's Nidorino",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Tainted Horn",
+			"text": "Your opponent's Active Pokémon is now Poisoned. During Pokémon Checkup, put 8 damage counters on that Pokémon instead of 1.",
+			"cost": "DDC",
+			"damage": "100",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Kingly Impact",
+			"text": "",
+			"cost": "DDDC",
+			"damage": "240",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

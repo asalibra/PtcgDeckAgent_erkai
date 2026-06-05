@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Squawkabilly",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Add On \nDraw 2 cards.\n[CC] Hyper Voice 40",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "141",
+	"set_code_en": "JTG",
+	"card_index_en": "141",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/141_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/141.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Add On",
+			"text": "Draw 2 cards.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hyper Voice",
+			"text": "",
+			"cost": "CC",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

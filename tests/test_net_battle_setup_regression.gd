@@ -258,3 +258,34 @@ func test_game_room_enriches_state_pending_choice_with_target_player() -> String
 		assert_eq(str(pending_choice.get("type", "")), NetProtocol.CHOICE_MULLIGAN_EXTRA_DRAW, "补偿抽牌 pending choice 类型应保持不变"),
 		assert_eq(int(pending_data.get("target_player", -1)), 1, "state_update 中的 mulligan pending choice 应带上 target_player"),
 	])
+
+
+func test_game_room_compacts_state_pending_choice_payload_for_trainer_interaction() -> String:
+	var room := GameRoomScript.new()
+	var gsm := GameStateMachine.new()
+	gsm.game_state = GameState.new()
+	gsm.game_state.current_player_index = 0
+	room._gsm = gsm
+
+	var pending_choice := room._build_pending_choice_view({
+		"type": NetProtocol.CHOICE_TRAINER_INTERACTION,
+		"data": {
+			"target_player": 0,
+			"steps": [{
+				"id": "big_step",
+				"card_items": ["A", "B", "C"],
+				"items": ["X", "Y"],
+			}],
+			"card_items": ["A", "B", "C"],
+			"target_items": ["T1", "T2"],
+		},
+	})
+	var pending_data: Dictionary = pending_choice.get("data", {}) if pending_choice.get("data") is Dictionary else {}
+
+	return run_checks([
+		assert_eq(str(pending_choice.get("type", "")), NetProtocol.CHOICE_TRAINER_INTERACTION, "trainer pending_choice 类型应保持不变"),
+		assert_false(pending_data.has("steps"), "state_update 中的 trainer pending_choice 不应携带完整 steps"),
+		assert_false(pending_data.has("card_items"), "state_update 中的 trainer pending_choice 不应携带完整 card_items"),
+		assert_false(pending_data.has("target_items"), "state_update 中的 trainer pending_choice 不应携带完整 target_items"),
+		assert_eq(int(pending_data.get("target_player", -1)), 0, "压缩后仍应保留 target_player 用于客户端过滤"),
+	])

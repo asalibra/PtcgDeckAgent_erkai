@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Noctowl",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Speed Wing 60",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "78",
+	"set_code_en": "PRE",
+	"card_index_en": "78",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/78_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/78.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Hoothoot",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Speed Wing",
+			"text": "",
+			"cost": "CC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Jewel Seeker",
+			"text": "Once during your turn, when you play this Pokémon from your hand to evolve 1 of your Pokémon, if you have any Tera Pokémon in play, you may search your deck for up to 2 Trainer cards, reveal them, and put them into your hand. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

@@ -1,0 +1,53 @@
+{
+	"name": "轻身鳕ex",
+	"name_en": "Veluza ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[W] Razor Fin 30\n[WWC] Purging Strike 120+\nYou may discard your hand. If you discarded any cards in this way, this attack does 120 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "43",
+	"set_code_en": "JTG",
+	"card_index_en": "43",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/43_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/43.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 210,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Razor Fin",
+			"text": "",
+			"cost": "W",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Purging Strike",
+			"text": "You may discard your hand. If you discarded any cards in this way, this attack does 120 more damage.",
+			"cost": "WWC",
+			"damage": "120+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

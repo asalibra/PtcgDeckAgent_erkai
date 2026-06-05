@@ -1,0 +1,51 @@
+{
+	"name": "佛烈托斯",
+	"name_en": "Forretress",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Iron Shake-Up 20\nYou may move any amount of Metal Energy from your Pokémon to your other Pokémon in any way you like.\n[MCCC] Hurricane of Needles 80×\nFlip 4 coins. This attack does 80 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "140",
+	"set_code_en": "DRI",
+	"card_index_en": "140",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/140_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/140.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Pineco",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Iron Shake-Up",
+			"text": "You may move any amount of Metal Energy from your Pokémon to your other Pokémon in any way you like.",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hurricane of Needles",
+			"text": "Flip 4 coins. This attack does 80 damage for each heads.",
+			"cost": "MCCC",
+			"damage": "80×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

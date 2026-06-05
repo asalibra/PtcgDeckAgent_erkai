@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Braviary",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Drag Off \nSwitch in 1 of your opponent's Benched Pokémon to the Active Spot. This attack does 40 damage to the new Active Pokémon.\n[CCC] Blasting Wind 120",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "153",
+	"set_code_en": "SSP",
+	"card_index_en": "153",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/153_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/153.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Rufflet",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Drag Off",
+			"text": "Switch in 1 of your opponent's Benched Pokémon to the Active Spot. This attack does 40 damage to the new Active Pokémon.",
+			"cost": "CC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Blasting Wind",
+			"text": "",
+			"cost": "CCC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

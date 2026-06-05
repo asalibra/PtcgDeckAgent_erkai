@@ -1,0 +1,49 @@
+{
+	"name": "陆地水母",
+	"name_en": "Toedscruel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FCC] Mud Shot 80",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "89",
+	"set_code_en": "JTG",
+	"card_index_en": "89",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/89_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/89.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Toedscool",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mud Shot",
+			"text": "",
+			"cost": "FCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Secret Forest Path",
+			"text": "As long as this Pokémon is on your Bench, your Active Pokémon's Retreat Cost is ColorlessColorless less."
+		}
+	],
+	"energy_provides": ""
+}

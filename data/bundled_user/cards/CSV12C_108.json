@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Hop's Corviknight",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Shoot Through 50\nThis attack also does 50 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[MMC] Steel Wing 150\nDuring your opponent's next turn, this Pokémon takes 60 less damage from attacks (after applying Weakness and Resistance).",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "108",
+	"set_code_en": "JTG",
+	"card_index_en": "108",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/108_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/108.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Hop's Corvisquire",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Shoot Through",
+			"text": "This attack also does 50 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "C",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Steel Wing",
+			"text": "During your opponent's next turn, this Pokémon takes 60 less damage from attacks (after applying Weakness and Resistance).",
+			"cost": "MMC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

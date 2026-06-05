@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Donphan",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[F] Knock Flat 40\nThis attack's damage isn't affected by any effects on your opponent's Active Pokémon.\n[FCC] Guarded Rolling 120\nDiscard 2 Energy from this Pokémon. During your opponent's next turn, this Pokémon takes 100 less damage from attacks (after applying Weakness and Resistance).",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "103",
+	"set_code_en": "SSP",
+	"card_index_en": "103",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/103_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/103.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 150,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Phanpy",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Knock Flat",
+			"text": "This attack's damage isn't affected by any effects on your opponent's Active Pokémon.",
+			"cost": "F",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Guarded Rolling",
+			"text": "Discard 2 Energy from this Pokémon. During your opponent's next turn, this Pokémon takes 100 less damage from attacks (after applying Weakness and Resistance).",
+			"cost": "FCC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Seaking",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Rapid Draw 60\nDraw 2 cards.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "21",
+	"set_code_en": "PRE",
+	"card_index_en": "21",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/21_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/21.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Goldeen",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rapid Draw",
+			"text": "Draw 2 cards.",
+			"cost": "C",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Festival Lead",
+			"text": "If Festival Grounds is in play, this Pokémon may use an attack it has twice. If the first attack Knocks Out your opponent's Active Pokémon, you may attack again after your opponent chooses a new Active Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

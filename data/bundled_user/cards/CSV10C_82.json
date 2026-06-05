@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Yamask",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Mumble 10\n[PC] Petty Grudge 20",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "82",
+	"set_code_en": "SSP",
+	"card_index_en": "82",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/82_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/82.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mumble",
+			"text": "",
+			"cost": "P",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Petty Grudge",
+			"text": "",
+			"cost": "PC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

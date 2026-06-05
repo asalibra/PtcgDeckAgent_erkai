@@ -1,0 +1,51 @@
+{
+	"name": "长毛巨魔",
+	"name_en": "Grimmsnarl",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Shadowy Knot 50×\nThis attack does 50 damage for each Colorless in your opponent's Active Pokémon's Retreat Cost.\n[PC] Mega Punch 120",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "73",
+	"set_code_en": "JTG",
+	"card_index_en": "73",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/73_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/73.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Morgrem",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Shadowy Knot",
+			"text": "This attack does 50 damage for each Colorless in your opponent's Active Pokémon's Retreat Cost.",
+			"cost": "P",
+			"damage": "50×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mega Punch",
+			"text": "",
+			"cost": "PC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

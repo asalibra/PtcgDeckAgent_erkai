@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Houndoom",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[D] Call to Muster \nSearch your deck for up to 2 Basic Energy cards and attach them to your Pokémon in any way you like. Then, shuffle your deck.\n[DCC] Pitch-Black Fangs 100",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "63",
+	"set_code_en": "PRE",
+	"card_index_en": "63",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/63_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/63.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Houndour",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Call to Muster",
+			"text": "Search your deck for up to 2 Basic Energy cards and attach them to your Pokémon in any way you like. Then, shuffle your deck.",
+			"cost": "D",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Pitch-Black Fangs",
+			"text": "",
+			"cost": "DCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

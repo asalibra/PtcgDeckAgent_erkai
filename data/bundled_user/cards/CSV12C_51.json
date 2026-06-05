@@ -1,0 +1,46 @@
+{
+	"name": "卡璞鸣鸣ex",
+	"name_en": "Tapu Koko ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[LC] Linked Lightning 60+\nThis attack does 20 more damage for each of your Benched Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "51",
+	"set_code_en": "JTG",
+	"card_index_en": "51",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/51_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/51.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 200,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Linked Lightning",
+			"text": "This attack does 20 more damage for each of your Benched Pokémon.",
+			"cost": "LC",
+			"damage": "60+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

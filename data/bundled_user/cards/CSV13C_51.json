@@ -1,0 +1,49 @@
+{
+	"name": "火箭队的急冻鸟",
+	"name_en": "Team Rocket's Articuno",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WCC] Dark Frost 60+\nIf this Pokémon has any Team Rocket's Energy attached, this attack does 60 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "51",
+	"set_code_en": "DRI",
+	"card_index_en": "51",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/51_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/51.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dark Frost",
+			"text": "If this Pokémon has any Team Rocket's Energy attached, this attack does 60 more damage.",
+			"cost": "WCC",
+			"damage": "60+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Repelling Veil",
+			"text": "Prevent all effects of attacks used by your opponent's Pokémon done to your Basic Team Rocket's Pokémon. (Existing effects are not removed. Damage is not an effect.)"
+		}
+	],
+	"energy_provides": ""
+}

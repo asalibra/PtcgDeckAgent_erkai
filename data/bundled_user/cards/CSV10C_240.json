@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Hydreigon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[DC] Crashing Headbutt 200\nDiscard the top 3 cards of your opponent's deck.\n[PDMC] Obsidian 130\nThis attack also does 130 damage to 2 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "240",
+	"set_code_en": "SSP",
+	"card_index_en": "240",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/240_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/240.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 2",
+	"hp": 330,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Zweilous",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Crashing Headbutt",
+			"text": "Discard the top 3 cards of your opponent's deck.",
+			"cost": "DC",
+			"damage": "200",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Obsidian",
+			"text": "This attack also does 130 damage to 2 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "PDMC",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "阿罗拉隆隆岩",
+	"name_en": "Alolan Golem",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[L] Electromagnetic Catapult 70×\nFlip a coin until you get tails. This attack does 70 damage for each heads.\n[LC] Megaton Fall 160\nThis Pokémon also does 40 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "46",
+	"set_code_en": "JTG",
+	"card_index_en": "46",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/46_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/46.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 2",
+	"hp": 180,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Alolan Graveler",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Electromagnetic Catapult",
+			"text": "Flip a coin until you get tails. This attack does 70 damage for each heads.",
+			"cost": "L",
+			"damage": "70×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Megaton Fall",
+			"text": "This Pokémon also does 40 damage to itself.",
+			"cost": "LC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,49 @@
+{
+	"name": "小炽的熔岩蜗牛",
+	"name_en": "Ethan's Magcargo",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[RRR] Lava Burst 70×\nDiscard up to 5 Fire Energy from this Pokémon. This attack does 70 damage for each card you discarded in this way.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "36",
+	"set_code_en": "DRI",
+	"card_index_en": "36",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/36_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/36.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Ethan's Slugma",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Lava Burst",
+			"text": "Discard up to 5 Fire Energy from this Pokémon. This attack does 70 damage for each card you discarded in this way.",
+			"cost": "RRR",
+			"damage": "70×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Melt Away",
+			"text": "If this Pokémon has no Energy attached, it has no Retreat Cost."
+		}
+	],
+	"energy_provides": ""
+}

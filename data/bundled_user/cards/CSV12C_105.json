@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "N's Klinklang",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Magnetic Blast 50\n[MMC] Triple Smash 120×\nFlip 3 coins. This attack does 120 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "105",
+	"set_code_en": "JTG",
+	"card_index_en": "105",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/105_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/105.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 2",
+	"hp": 160,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "N's Klang",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Magnetic Blast",
+			"text": "",
+			"cost": "C",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Triple Smash",
+			"text": "Flip 3 coins. This attack does 120 damage for each heads.",
+			"cost": "MMC",
+			"damage": "120×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

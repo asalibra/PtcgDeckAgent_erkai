@@ -1,0 +1,51 @@
+{
+	"name": "毛崖蟹",
+	"name_en": "Klawf",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Snipping Pincers \nFlip 2 coins. For each heads, discard an Energy from your opponent's Active Pokémon.\n[FCC] Hammer In 100",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "90",
+	"set_code_en": "JTG",
+	"card_index_en": "90",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/90_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/90.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Snipping Pincers",
+			"text": "Flip 2 coins. For each heads, discard an Energy from your opponent's Active Pokémon.",
+			"cost": "CC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hammer In",
+			"text": "",
+			"cost": "FCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

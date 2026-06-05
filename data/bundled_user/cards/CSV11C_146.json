@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Flareon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[RC] Burning Charge 130\nSearch your deck for up to 2 Basic Energy cards and attach them to 1 of your Pokémon. Then, shuffle your deck.\n[RWL] Carnelian 280\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "146",
+	"set_code_en": "PRE",
+	"card_index_en": "146",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/146_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/146.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Burning Charge",
+			"text": "Search your deck for up to 2 Basic Energy cards and attach them to 1 of your Pokémon. Then, shuffle your deck.",
+			"cost": "RC",
+			"damage": "130",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Carnelian",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "RWL",
+			"damage": "280",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

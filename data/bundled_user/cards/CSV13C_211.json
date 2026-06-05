@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Dondozo ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[WC] Avenging Billow 30+\nThis attack does 10 more damage for each damage counter on this Pokémon.\n[WWCC] Dynamic Dive 120+\nYou may do 120 more damage. If you do, this Pokémon also does 50 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "211",
+	"set_code_en": "DRI",
+	"card_index_en": "211",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/211_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/211.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 260,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Avenging Billow",
+			"text": "This attack does 10 more damage for each damage counter on this Pokémon.",
+			"cost": "WC",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dynamic Dive",
+			"text": "You may do 120 more damage. If you do, this Pokémon also does 50 damage to itself.",
+			"cost": "WWCC",
+			"damage": "120+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

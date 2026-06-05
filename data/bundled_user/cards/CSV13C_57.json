@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Buizel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Tail Whap 10\n[WCC] Wave Splash 30",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "57",
+	"set_code_en": "DRI",
+	"card_index_en": "57",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/57_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/57.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Tail Whap",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Wave Splash",
+			"text": "",
+			"cost": "WCC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

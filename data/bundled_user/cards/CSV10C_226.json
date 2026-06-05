@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Tatsugiri ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[RW] Surprise Pump 100\nThis attack's damage isn't affected by any effects on your opponent's Active Pokémon.\n[RWD] Cinnabar Lure \nLook at the top 10 cards of your deck. You may put any number of Pokémon you find there onto your Bench. Shuffle the other cards back into your deck.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "226",
+	"set_code_en": "SSP",
+	"card_index_en": "226",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/226_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/226.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 160,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Surprise Pump",
+			"text": "This attack's damage isn't affected by any effects on your opponent's Active Pokémon.",
+			"cost": "RW",
+			"damage": "100",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Cinnabar Lure",
+			"text": "Look at the top 10 cards of your deck. You may put any number of Pokémon you find there onto your Bench. Shuffle the other cards back into your deck.",
+			"cost": "RWD",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

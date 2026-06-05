@@ -1,0 +1,51 @@
+{
+	"name": "几何雪花",
+	"name_en": "Cryogonal",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Call Sign \nSearch your deck for a Pokémon, reveal it, and put it into your hand. Then, shuffle your deck.\n[W] Ice Beam 30\nFlip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "47",
+	"set_code_en": "SSP",
+	"card_index_en": "47",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/47_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/47.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Call Sign",
+			"text": "Search your deck for a Pokémon, reveal it, and put it into your hand. Then, shuffle your deck.",
+			"cost": "W",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Ice Beam",
+			"text": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+			"cost": "W",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

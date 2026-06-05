@@ -712,6 +712,44 @@ func test_import_completed_does_not_reprompt_rename_for_same_saved_deck_id() -> 
 	])
 
 
+func test_create_deck_item_shows_cloud_publish_status_badge() -> String:
+	_cleanup_decks([910021, 910022])
+	CardDatabase.clear_deck_published_state(910021)
+	CardDatabase.clear_deck_published_state(910022)
+	var published_deck := _make_deck(910021, "Published Deck")
+	CardDatabase.mark_deck_published(published_deck, "2026-05-30T20:30:00")
+	var dirty_deck := _make_deck(910022, "Dirty Deck")
+	CardDatabase.mark_deck_published(dirty_deck, "2026-05-30T20:31:00")
+	dirty_deck.deck_name = "Dirty Deck Updated"
+
+	var scene: Control = DeckManagerScene.instantiate()
+	var published_item: PanelContainer = scene._create_deck_item(published_deck)
+	var dirty_item: PanelContainer = scene._create_deck_item(dirty_deck)
+	var local_only_item: PanelContainer = scene._create_deck_item(_make_deck(910023, "Local Only Deck"))
+	var published_text := _collect_label_text(published_item)
+	var dirty_text := _collect_label_text(dirty_item)
+	var local_only_text := _collect_label_text(local_only_item)
+	var published_status := published_item.find_child("PublishStatusLabel", true, false) as Label
+	var dirty_status := dirty_item.find_child("PublishStatusLabel", true, false) as Label
+	var local_status := local_only_item.find_child("PublishStatusLabel", true, false) as Label
+
+	published_item.queue_free()
+	dirty_item.queue_free()
+	local_only_item.queue_free()
+	scene.queue_free()
+	CardDatabase.clear_deck_published_state(910021)
+	CardDatabase.clear_deck_published_state(910022)
+
+	return run_checks([
+		assert_str_contains(published_text, "云端已发布", "已发布牌组应显示云端已发布标识"),
+		assert_str_contains(dirty_text, "本地有未发布修改", "本地修改后的牌组应显示未发布修改标识"),
+		assert_str_contains(local_only_text, "仅本地", "未发布牌组应显示仅本地标识"),
+		assert_true(published_status != null and published_status.modulate != Color.TRANSPARENT, "已发布牌组应渲染状态标签"),
+		assert_true(dirty_status != null and dirty_status.text == "本地有未发布修改", "已修改牌组应渲染脏状态标签"),
+		assert_true(local_status != null and local_status.text == "仅本地", "仅本地牌组应渲染默认状态标签"),
+	])
+
+
 func _configure_recommendation_test_state(scene: Control, cache_path: String = "") -> void:
 	scene._recommendation_store = DeckRecommendationStoreScript.new()
 	if cache_path != "":

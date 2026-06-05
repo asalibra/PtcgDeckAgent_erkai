@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Latias ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[PPC] Eon Blade 200\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "239",
+	"set_code_en": "SSP",
+	"card_index_en": "239",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/239_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/239.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 210,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Eon Blade",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "PPC",
+			"damage": "200",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Skyliner",
+			"text": "Your Basic Pokémon in play have no Retreat Cost."
+		}
+	],
+	"energy_provides": ""
+}

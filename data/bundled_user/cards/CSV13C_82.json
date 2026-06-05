@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的果然翁",
+	"name_en": "Team Rocket's Wobbuffet",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PC] Rocket Mirror \nMove all damage counters from 1 of your Benched Team Rocket's Pokémon to your opponent's Active Pokémon.\n[PCC] Headbutt Bounce 70",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "82",
+	"set_code_en": "DRI",
+	"card_index_en": "82",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/82_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/82.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rocket Mirror",
+			"text": "Move all damage counters from 1 of your Benched Team Rocket's Pokémon to your opponent's Active Pokémon.",
+			"cost": "PC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Headbutt Bounce",
+			"text": "",
+			"cost": "PCC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

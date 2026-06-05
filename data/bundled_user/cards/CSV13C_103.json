@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Cynthia's Gabite",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[F] Dragonslice 40",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "103",
+	"set_code_en": "DRI",
+	"card_index_en": "103",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/103_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/103.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Cynthia's Gible",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dragonslice",
+			"text": "",
+			"cost": "F",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Champion's Call",
+			"text": "Once during your turn, you may search your deck for a Cynthia's Pokémon, reveal it, and put it into your hand. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

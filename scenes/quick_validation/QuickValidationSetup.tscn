@@ -1,0 +1,157 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/quick_validation/QuickValidationSetup.gd" id="1_script"]
+
+[node name="QuickValidationSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.045, 0.06, 0.08, 1)
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="MainVBox" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="RootMargin/MainVBox"]
+layout_mode = 2
+text = "快速验证 Demo"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="RootMargin/MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 3
+
+[node name="Scroll" type="ScrollContainer" parent="RootMargin/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FormVBox" type="VBoxContainer" parent="RootMargin/MainVBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MyActiveLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "我方上场宝可梦（必填）"
+
+[node name="MyActiveEdit" type="LineEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "例如：铁荆棘ex"
+
+[node name="OppActiveLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "敌方上场宝可梦（必填）"
+
+[node name="OppActiveEdit" type="LineEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "例如：光辉甲贺忍蛙"
+
+[node name="MyHandLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "我方手牌"
+
+[node name="MyHandEdit" type="TextEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 78)
+placeholder_text = "例如：能量涡轮, 基础雷能量*2"
+
+[node name="MyDeckLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "我方牌库"
+
+[node name="MyDeckEdit" type="TextEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 78)
+placeholder_text = "例如：基础雷能量*6, 博士的研究*2"
+
+[node name="MyPrizeLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "我方奖赏卡"
+
+[node name="MyPrizeEdit" type="TextEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 66)
+placeholder_text = "例如：铁荆棘ex, 博士的研究"
+
+[node name="OppHandLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "敌方手牌"
+
+[node name="OppHandEdit" type="TextEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 78)
+placeholder_text = "例如：水手里剑, 基础水能量"
+
+[node name="OppDeckLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "敌方牌库"
+
+[node name="OppDeckEdit" type="TextEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 78)
+placeholder_text = "例如：基础水能量*6"
+
+[node name="OppPrizeLabel" type="Label" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+layout_mode = 2
+text = "敌方奖赏卡"
+
+[node name="OppPrizeEdit" type="TextEdit" parent="RootMargin/MainVBox/Scroll/FormVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 66)
+placeholder_text = "例如：光辉甲贺忍蛙"
+
+[node name="StatusLabel" type="Label" parent="RootMargin/MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="ButtonRow" type="HBoxContainer" parent="RootMargin/MainVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BackBtn" type="Button" parent="RootMargin/MainVBox/ButtonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(180, 44)
+text = "返回主菜单"
+
+[node name="StartBtn" type="Button" parent="RootMargin/MainVBox/ButtonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(240, 44)
+text = "开始验证局"

@@ -1,0 +1,52 @@
+{
+	"name": "铁荆棘ex",
+	"name_en": "Iron Thorns ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Future",
+	"description": "[LCC] Volt Cyclone 140\nMove an Energy from this Pokémon to 1 of your Benched Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "32",
+	"set_code_en": "PRE",
+	"card_index_en": "32",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/32_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/32.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex",
+		"Future"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 230,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Volt Cyclone",
+			"text": "Move an Energy from this Pokémon to 1 of your Benched Pokémon.",
+			"cost": "LCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Initialization",
+			"text": "As long as this Pokémon is in the Active Spot, Pokémon with a Rule Box in play (both yours and your opponent's) have no Abilities, except for Future Pokémon. (Pokémon ex, Pokémon V, etc. have Rule Boxes.)"
+		}
+	],
+	"energy_provides": ""
+}

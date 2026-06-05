@@ -1,0 +1,51 @@
+{
+	"name": "赫普的沙螺蟒",
+	"name_en": "Hop's Sandaconda",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FC] Rumble 30\nDuring your opponent's next turn, the Defending Pokémon can't retreat.\n[FCC] Break Ground 140\nThis attack also does 20 damage to each of your Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "87",
+	"set_code_en": "JTG",
+	"card_index_en": "87",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/87_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/87.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Hop's Silicobra",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rumble",
+			"text": "During your opponent's next turn, the Defending Pokémon can't retreat.",
+			"cost": "FC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Break Ground",
+			"text": "This attack also does 20 damage to each of your Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "FCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

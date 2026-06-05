@@ -1,0 +1,51 @@
+{
+	"name": "卡璞鸣鸣",
+	"name_en": "Tapu Koko",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Summon Lightning \nSearch your deck for up to 2 Lightning Pokémon, reveal them, and put them into your hand. Then, shuffle your deck.\n[LLC] Prize Count 90+\nIf you have more Prize cards remaining than your opponent, this attack does 90 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "65",
+	"set_code_en": "SSP",
+	"card_index_en": "65",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/65_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/65.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Summon Lightning",
+			"text": "Search your deck for up to 2 Lightning Pokémon, reveal them, and put them into your hand. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Prize Count",
+			"text": "If you have more Prize cards remaining than your opponent, this attack does 90 more damage.",
+			"cost": "LLC",
+			"damage": "90+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

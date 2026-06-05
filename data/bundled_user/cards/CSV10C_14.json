@@ -1,0 +1,51 @@
+{
+	"name": "虫甲圣",
+	"name_en": "Rabsca",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Triple Draw \nDraw 3 cards.\n[G] Counterturn 40+\nIf there are 3 or fewer cards in your deck, this attack does 200 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "14",
+	"set_code_en": "SSP",
+	"card_index_en": "14",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/14_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/14.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 70,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Rellor",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Triple Draw",
+			"text": "Draw 3 cards.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Counterturn",
+			"text": "If there are 3 or fewer cards in your deck, this attack does 200 more damage.",
+			"cost": "G",
+			"damage": "40+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

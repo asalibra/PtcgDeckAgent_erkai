@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Altaria",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Humming Charge \nSearch your deck for up to 2 Basic Energy cards and attach them to your Pokémon in any way you like. Then, shuffle your deck.\n[WM] Cotton Wings 100\nFlip a coin. If heads, during your opponent's next turn, prevent all damage done to this Pokémon by attacks.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "134",
+	"set_code_en": "SSP",
+	"card_index_en": "134",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/134_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/134.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Swablu",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Humming Charge",
+			"text": "Search your deck for up to 2 Basic Energy cards and attach them to your Pokémon in any way you like. Then, shuffle your deck.",
+			"cost": "W",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Cotton Wings",
+			"text": "Flip a coin. If heads, during your opponent's next turn, prevent all damage done to this Pokémon by attacks.",
+			"cost": "WM",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的催眠貘",
+	"name_en": "Team Rocket's Hypno",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Psyshot 40\n[PPP] Bench Manipulation 80×\nYour opponent flips a coin for each of their Benched Pokémon. This attack does 80 damage to your opponent's Active Pokémon for each tails. This attack's damage isn't affected by Weakness or Resistance.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "80",
+	"set_code_en": "DRI",
+	"card_index_en": "80",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/80_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/80.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Drowzee",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Psyshot",
+			"text": "",
+			"cost": "P",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Bench Manipulation",
+			"text": "Your opponent flips a coin for each of their Benched Pokémon. This attack does 80 damage to your opponent's Active Pokémon for each tails. This attack's damage isn't affected by Weakness or Resistance.",
+			"cost": "PPP",
+			"damage": "80×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

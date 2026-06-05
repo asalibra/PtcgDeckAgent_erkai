@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Paldean Clodsire ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[DC] Poison Ring 60\nYour opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat.\n[DDC] Giga Impact 220\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "94",
+	"set_code_en": "JTG",
+	"card_index_en": "94",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/94_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/94.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 280,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Paldean Wooper",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Poison Ring",
+			"text": "Your opponent's Active Pokémon is now Poisoned. During your opponent's next turn, that Pokémon can't retreat.",
+			"cost": "DC",
+			"damage": "60",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Giga Impact",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "DDC",
+			"damage": "220",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

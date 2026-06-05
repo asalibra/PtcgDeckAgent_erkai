@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Maractus",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Corner 20\nDuring your opponent's next turn, the Defending Pokémon can't retreat.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "160",
+	"set_code_en": "JTG",
+	"card_index_en": "160",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/160_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/160.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Corner",
+			"text": "During your opponent's next turn, the Defending Pokémon can't retreat.",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Exploding Needles",
+			"text": "If this Pokémon is in the Active Spot and is Knocked Out by damage from an attack from your opponent's Pokémon, put 6 damage counters on the Attacking Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

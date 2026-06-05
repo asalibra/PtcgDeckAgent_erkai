@@ -1,0 +1,51 @@
+{
+	"name": "智挥猩",
+	"name_en": "Oranguru",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Now You're in My Power \nUntil the end of your next turn, the Defending Pokémon's Weakness is now Colorless. (The amount of Weakness doesn't change.)\n[CCC] Smack 80",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "156",
+	"set_code_en": "SSP",
+	"card_index_en": "156",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/156_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/156.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Now You're in My Power",
+			"text": "Until the end of your next turn, the Defending Pokémon's Weakness is now Colorless. (The amount of Weakness doesn't change.)",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Smack",
+			"text": "",
+			"cost": "CCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

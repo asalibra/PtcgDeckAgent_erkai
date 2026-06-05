@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Espeon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Psychic Assault 30+\nThis attack does 10 more damage for each damage counter on your opponent's Active Pokémon.\n[PC] Psy Bolt 60\nFlip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "33",
+	"set_code_en": "PRE",
+	"card_index_en": "33",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/33_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/33.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Eevee",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Psychic Assault",
+			"text": "This attack does 10 more damage for each damage counter on your opponent's Active Pokémon.",
+			"cost": "P",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Psy Bolt",
+			"text": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+			"cost": "PC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Helioptile",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Tiny Bolt 10\n[CCC] Reckless Charge 40\nThis Pokémon also does 10 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "154",
+	"set_code_en": "SSP",
+	"card_index_en": "154",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/154_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/154.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Tiny Bolt",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Reckless Charge",
+			"text": "This Pokémon also does 10 damage to itself.",
+			"cost": "CCC",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

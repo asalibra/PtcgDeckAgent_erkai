@@ -1,0 +1,49 @@
+{
+	"name": "火箭队的操陷蛛",
+	"name_en": "Team Rocket's Spidops",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[GC] Rocket Rush 30×\nThis attack does 30 damage for each of your Team Rocket's Pokémon in play.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "187",
+	"set_code_en": "DRI",
+	"card_index_en": "187",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/187_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/187.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Tarountula",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rocket Rush",
+			"text": "This attack does 30 damage for each of your Team Rocket's Pokémon in play.",
+			"cost": "GC",
+			"damage": "30×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Charging Up",
+			"text": "Once during your turn, you may attach a Basic Energy card from your discard pile to this Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

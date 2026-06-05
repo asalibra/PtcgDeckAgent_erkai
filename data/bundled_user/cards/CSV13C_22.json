@@ -1,0 +1,51 @@
+{
+	"name": "奥利纽",
+	"name_en": "Dolliv",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[G] Nutrients \nHeal 40 damage from 1 of your Pokémon.\n[CC] Tackle 40",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "22",
+	"set_code_en": "DRI",
+	"card_index_en": "22",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/22_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/22.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 90,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Smoliv",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Nutrients",
+			"text": "Heal 40 damage from 1 of your Pokémon.",
+			"cost": "G",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tackle",
+			"text": "",
+			"cost": "CC",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

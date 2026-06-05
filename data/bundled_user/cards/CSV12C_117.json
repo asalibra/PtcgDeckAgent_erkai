@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Hop's Snorlax",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Dynamic Press 140\nThis Pokémon also does 80 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "117",
+	"set_code_en": "JTG",
+	"card_index_en": "117",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/117_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/117.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 150,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dynamic Press",
+			"text": "This Pokémon also does 80 damage to itself.",
+			"cost": "CCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Extra Helpings",
+			"text": "Attacks used by your Hop's Pokémon do 30 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance). The effect of Extra Helpings doesn't stack."
+		}
+	],
+	"energy_provides": ""
+}

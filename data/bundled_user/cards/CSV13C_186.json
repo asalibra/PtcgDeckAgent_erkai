@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Crustle",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[GCC] Superb Scissors 120\nThis attack's damage isn't affected by any effects on your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "186",
+	"set_code_en": "DRI",
+	"card_index_en": "186",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/186_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/186.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 150,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Dwebble",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Superb Scissors",
+			"text": "This attack's damage isn't affected by any effects on your opponent's Active Pokémon.",
+			"cost": "GCC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Mysterious Rock Inn",
+			"text": "Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex."
+		}
+	],
+	"energy_provides": ""
+}

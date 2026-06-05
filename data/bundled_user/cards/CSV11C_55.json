@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Great Tusk",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[CC] Land Collapse \nDiscard the top card of your opponent's deck. If you played an Ancient Supporter card from your hand during this turn, discard 3 more cards in this way.\n[FFCC] Giant Tusk 160",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "55",
+	"set_code_en": "PRE",
+	"card_index_en": "55",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/55_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/55.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 140,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Land Collapse",
+			"text": "Discard the top card of your opponent's deck. If you played an Ancient Supporter card from your hand during this turn, discard 3 more cards in this way.",
+			"cost": "CC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Giant Tusk",
+			"text": "",
+			"cost": "FFCC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

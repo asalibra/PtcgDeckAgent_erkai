@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Orbeetle",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PCC] Psychic 40+\nThis attack does 40 more damage for each Energy attached to your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "198",
+	"set_code_en": "DRI",
+	"card_index_en": "198",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/198_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/198.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 2",
+	"hp": 130,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Team Rocket's Dottler",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Psychic",
+			"text": "This attack does 40 more damage for each Energy attached to your opponent's Active Pokémon.",
+			"cost": "PCC",
+			"damage": "40+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Rocket Brain",
+			"text": "As often as you like during your turn, you may move 1 damage counter from 1 of your Team Rocket's Pokémon to another of your Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

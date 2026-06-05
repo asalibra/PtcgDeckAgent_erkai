@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Furfrou",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Bite 80",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "88",
+	"set_code_en": "PRE",
+	"card_index_en": "88",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/88_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/88.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 100,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Bite",
+			"text": "",
+			"cost": "CCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Fur Coat",
+			"text": "This Pokémon takes 20 less damage from attacks (after applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

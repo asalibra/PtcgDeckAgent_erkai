@@ -1,0 +1,53 @@
+{
+	"name": "音波龙ex",
+	"name_en": "Noivern ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[C] Strafe 50\nYou may switch this Pokémon with 1 of your Benched Pokémon.\n[CCC] Sonic Blast 220\nThis Pokémon also does 30 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "91",
+	"set_code_en": "PRE",
+	"card_index_en": "91",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/91_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/91.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Noibat",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Strafe",
+			"text": "You may switch this Pokémon with 1 of your Benched Pokémon.",
+			"cost": "C",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Sonic Blast",
+			"text": "This Pokémon also does 30 damage to itself.",
+			"cost": "CCC",
+			"damage": "220",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,46 @@
+{
+	"name": "铁磐岩",
+	"name_en": "Iron Boulder",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Future",
+	"description": "[PC] Adjusted Horn 170\nIf you don't have the same number of cards in your hand as your opponent, this attack does nothing.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "46",
+	"set_code_en": "PRE",
+	"card_index_en": "46",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/46_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/46.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Future"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 140,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Adjusted Horn",
+			"text": "If you don't have the same number of cards in your hand as your opponent, this attack does nothing.",
+			"cost": "PC",
+			"damage": "170",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

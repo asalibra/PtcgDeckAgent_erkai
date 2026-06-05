@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Galarian Stunfisk",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Mud-Slap 40\n[CCC] Bounding Bite 100\nThis Pokémon also does 30 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "106",
+	"set_code_en": "JTG",
+	"card_index_en": "106",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/106_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/106.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 100,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mud-Slap",
+			"text": "",
+			"cost": "CC",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Bounding Bite",
+			"text": "This Pokémon also does 30 damage to itself.",
+			"cost": "CCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

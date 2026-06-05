@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Floatzel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Whirlpool 30\nDiscard an Energy from your opponent's Active Pokémon.\n[WCC] Aqua Slash 140\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "58",
+	"set_code_en": "DRI",
+	"card_index_en": "58",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/58_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/58.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Buizel",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Whirlpool",
+			"text": "Discard an Energy from your opponent's Active Pokémon.",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Aqua Slash",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "WCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

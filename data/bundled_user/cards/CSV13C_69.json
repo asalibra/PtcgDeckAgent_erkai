@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Electivire ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[LC] Dual Bolt \nThis attack does 50 damage to 2 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[LLC] High-Voltage Press 180+\nIf this Pokémon has at least 2 extra Energy attached (in addition to this attack's cost), this attack does 100 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "69",
+	"set_code_en": "DRI",
+	"card_index_en": "69",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/69_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/69.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 280,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Electabuzz",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Dual Bolt",
+			"text": "This attack does 50 damage to 2 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "LC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "High-Voltage Press",
+			"text": "If this Pokémon has at least 2 extra Energy attached (in addition to this attack's cost), this attack does 100 more damage.",
+			"cost": "LLC",
+			"damage": "180+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Escavalier",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Pierce 20\n[MC] Iron Buster 120\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "102",
+	"set_code_en": "JTG",
+	"card_index_en": "102",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/102_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/102.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Karrablast",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Pierce",
+			"text": "",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Iron Buster",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "MC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

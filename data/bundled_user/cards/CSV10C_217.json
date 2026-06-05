@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Milotic ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[WCC] Hypno Splash 160\nYour opponent's Active Pokémon is now Asleep.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "217",
+	"set_code_en": "SSP",
+	"card_index_en": "217",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/217_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/217.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Feebas",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hypno Splash",
+			"text": "Your opponent's Active Pokémon is now Asleep.",
+			"cost": "WCC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Sparkling Scales",
+			"text": "Prevent all damage from and effects of attacks from your opponent's Tera Pokémon done to this Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

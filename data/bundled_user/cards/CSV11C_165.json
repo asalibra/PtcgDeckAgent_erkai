@@ -1,0 +1,54 @@
+{
+	"name": "多龙巴鲁托ex",
+	"name_en": "Dragapult ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[C] Jet Headbutt 70\n[RP] Phantom Dive 200\nPut 6 damage counters on your opponent's Benched Pokémon in any way you like.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "165",
+	"set_code_en": "PRE",
+	"card_index_en": "165",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/165_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/165.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Stage 2",
+	"hp": 320,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Drakloak",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Jet Headbutt",
+			"text": "",
+			"cost": "C",
+			"damage": "70",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Phantom Dive",
+			"text": "Put 6 damage counters on your opponent's Benched Pokémon in any way you like.",
+			"cost": "RP",
+			"damage": "200",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

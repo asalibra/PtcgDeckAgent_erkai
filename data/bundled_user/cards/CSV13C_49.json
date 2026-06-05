@@ -1,0 +1,51 @@
+{
+	"name": "小霞的暴鲤龙",
+	"name_en": "Misty's Gyarados",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Splashing Panic 70×\nDiscard the top 7 cards of your deck, and this attack does 70 damage for each Misty's Pokémon that you discarded in this way.\n[WWC] Waterfall 120",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "49",
+	"set_code_en": "DRI",
+	"card_index_en": "49",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/49_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/49.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 180,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Misty's Magikarp",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Splashing Panic",
+			"text": "Discard the top 7 cards of your deck, and this attack does 70 damage for each Misty's Pokémon that you discarded in this way.",
+			"cost": "W",
+			"damage": "70×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Waterfall",
+			"text": "",
+			"cost": "WWC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

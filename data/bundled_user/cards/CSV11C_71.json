@@ -1,0 +1,51 @@
+{
+	"name": "多龙梅西亚",
+	"name_en": "Dreepy",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Petty Grudge 10\n[RP] Bite 40",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "71",
+	"set_code_en": "PRE",
+	"card_index_en": "71",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/71_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/71.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Petty Grudge",
+			"text": "",
+			"cost": "P",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Bite",
+			"text": "",
+			"cost": "RP",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,1450 @@
+{
+  "Reckless Charge": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Topaz Bolt": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Gadget Show": {
+    "effect": "AttackToolCountDamage",
+    "cn": ""
+  },
+  "Call for Family": {
+    "effect": "AttackCallForFamily",
+    "cn": "呼朋引伴"
+  },
+  "Collect": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Tropical Frenzy": {
+    "effect": "AttackAttachBasicEnergyFromHandEffect",
+    "cn": ""
+  },
+  "Swinging Sphene": {
+    "effect": "AttackCoinFlipKOEffect",
+    "cn": ""
+  },
+  "Thunderous Bolt": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Night Joker": {
+    "effect": "AttackCopyAttack",
+    "cn": "基因侵入"
+  },
+  "Corkscrew Dive": {
+    "effect": "AttackDrawTo7",
+    "cn": "握握抽取"
+  },
+  "Draconic Buster": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Assassin's Return": {
+    "effect": "AttackReturnSelfAllCardsToHandEffect",
+    "cn": ""
+  },
+  "Shining Feathers": {
+    "effect": "AttackHealAllEffect",
+    "cn": ""
+  },
+  "Erasure Ball": {
+    "effect": "AttackDiscardBenchEnergyBonus",
+    "cn": ""
+  },
+  "Slight Intrusion": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Crashing Headbutt": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Obsidian": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Steel Wing": {
+    "effect": "AttackReduceDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Metal Defender": {
+    "effect": "AttackNoWeaknessNextTurnEffect",
+    "cn": ""
+  },
+  "Wild Tackle": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Drag Off": {
+    "effect": "AttackGustFromBench",
+    "cn": "强力吹风机"
+  },
+  "Take Down": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Singe": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Vengeful Crush": {
+    "effect": "AttackPrizeCountDamage",
+    "cn": "燃烧黑暗"
+  },
+  "Hypno Splash": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Eon Blade": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Add On": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Psy Bolt": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Magical Charm": {
+    "effect": "AttackReduceOpponentDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Angelite": {
+    "effect": "AttackShuffleBenchIntoDeck",
+    "cn": "消失之翼"
+  },
+  "Giga Impact": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Myriad Leaf Shower": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Unified Beatdown": {
+    "effect": "AttackFirstTurnBlocked",
+    "cn": ""
+  },
+  "Crown Opal": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Rapid Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Insta-Strike": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Brave Slash": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Wide Blast": {
+    "effect": "AttackSpreadBenchDamage",
+    "cn": ""
+  },
+  "Dragon Impact": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Crunch": {
+    "effect": "AttackDiscardOpponentEnergy",
+    "cn": ""
+  },
+  "Scorching Cyclone": {
+    "effect": "AttackMoveEnergyToBench",
+    "cn": "伏特旋风"
+  },
+  "Full Moon Rondo": {
+    "effect": "AttackBenchCountBonusDamage",
+    "cn": ""
+  },
+  "Searing Flame": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Scorching Fire": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Push Down": {
+    "effect": "AttackGustFromBench",
+    "cn": "强力吹风机"
+  },
+  "Torment": {
+    "effect": "AttackChooseOpponentAttackLock",
+    "cn": ""
+  },
+  "Tainted Horn": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Vigorous Tackle": {
+    "effect": "AttackBonusIfNoDamageCounters",
+    "cn": ""
+  },
+  "Boss Headbutt": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Psychic": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Jet Cyclone": {
+    "effect": "AttackMoveEnergyToBench",
+    "cn": "伏特旋风"
+  },
+  "Flame Screen": {
+    "effect": "AttackReduceDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Precocious Evolution": {
+    "effect": "AttackSearchEvolutionAndEvolve",
+    "cn": ""
+  },
+  "Screech": {
+    "effect": "AttackDefenderTakesMoreDamageNextTurn",
+    "cn": ""
+  },
+  "Reversing Storm": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Sonic Peridot": {
+    "effect": "AttackSpreadExDamage",
+    "cn": ""
+  },
+  "Leaf Drain": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Rock Hurl": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Stomp Off": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Surprise Attack": {
+    "effect": "AttackCoinFlipOrFail",
+    "cn": "跳一下"
+  },
+  "Trio-Cheehoo": {
+    "effect": "AttackHandCountCondition",
+    "cn": ""
+  },
+  "Raging Hammer": {
+    "effect": "AttackSelfDamageCounterMultiplierEffect",
+    "cn": "气球炸弹"
+  },
+  "Trip Over": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Surprise Pump": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Cinnabar Lure": {
+    "effect": "AttackSearchTopToBench",
+    "cn": ""
+  },
+  "Spike Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Take It Easy": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Great Swing": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Lick Whip": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Break Through": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Zircon Road": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Evo-Powder": {
+    "effect": "AttackSearchEvolutionEffect",
+    "cn": ""
+  },
+  "Spiral Rush": {
+    "effect": "AttackCoinFlipUntilTailsDamage",
+    "cn": ""
+  },
+  "Sunny Assist": {
+    "effect": "AttackMoveEnergyToBench",
+    "cn": "伏特旋风"
+  },
+  "Cursed Edge": {
+    "effect": "AttackDiscardAllSpecialEnergy",
+    "cn": ""
+  },
+  "Black Blaze Slash": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Leap Out": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Powder Snow": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Big Bite": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Paralyzing Crackle": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Skill Dive": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Spicy Rage": {
+    "effect": "AttackSelfDamageCounterMultiplierEffect",
+    "cn": "气球炸弹"
+  },
+  "Ice Age": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Black Frost": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Sand Tomb": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Barite Jail": {
+    "effect": "AttackPlaceDamageCountersOnBench",
+    "cn": ""
+  },
+  "Leech Life": {
+    "effect": "AttackHealEqualDamage",
+    "cn": ""
+  },
+  "Energy Assist": {
+    "effect": "AttackAttachFromDiscardToBench",
+    "cn": "鼓足干劲"
+  },
+  "Abyssal Flames": {
+    "effect": "AttackDiscardEnergyCountDamage",
+    "cn": ""
+  },
+  "Raging Amethyst": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Megaton Fall": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Aerial Ace": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Spiral Drain": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Burning Charge": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Carnelian": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Verdant Storm": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Moss Agate": {
+    "effect": "AttackHealBenchEffect",
+    "cn": ""
+  },
+  "Wrathful Hearth": {
+    "effect": "AttackSelfDamageCounterMultiplierEffect",
+    "cn": "气球炸弹"
+  },
+  "Dynamic Blaze": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Severe Squall": {
+    "effect": "AttackSpreadExDamage",
+    "cn": ""
+  },
+  "Aquamarine": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Frost Bullet": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Euclase": {
+    "effect": "AttackKODamageCounters",
+    "cn": ""
+  },
+  "Sob": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Torrential Pump": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Flashing Spear": {
+    "effect": "AttackDiscardBenchEnergyBonus",
+    "cn": ""
+  },
+  "Dravite": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Amp You Very Much": {
+    "effect": "AttackExtraPrize",
+    "cn": "多谢款待"
+  },
+  "Psych Out": {
+    "effect": "AttackOpponentHandDiscardEffect",
+    "cn": ""
+  },
+  "Amazez": {
+    "effect": "AttackDevolveEffect",
+    "cn": ""
+  },
+  "Earthen Spike": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Demolish": {
+    "effect": "AttackIgnoreAllEffects",
+    "cn": "撕裂"
+  },
+  "Moon Mirage": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Onyx": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Phantom Dive": {
+    "effect": "AttackPlaceDamageCountersOnBench",
+    "cn": ""
+  },
+  "Mega Drain": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Whirlpool": {
+    "effect": "AttackDiscardOpponentEnergy",
+    "cn": ""
+  },
+  "Quick Attack": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Iron Buster": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Spore Ball": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Powerful Rage": {
+    "effect": "AttackSelfDamageCounterMultiplierEffect",
+    "cn": "气球炸弹"
+  },
+  "Tenacious Tail": {
+    "effect": "AttackExCountDamage",
+    "cn": ""
+  },
+  "Destructive Drill": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Corner": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Frigid Fluttering": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Hydro Pump": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Clamping Fangs": {
+    "effect": "AttackDefenderCounterBonusEffect",
+    "cn": ""
+  },
+  "Rumbling March": {
+    "effect": "AttackStage2BonusDamage",
+    "cn": ""
+  },
+  "Aqua Slash": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Regi Charge": {
+    "effect": "AttackAttachFromDiscardToSelf",
+    "cn": ""
+  },
+  "Giant Rock": {
+    "effect": "AttackBonusIfStage2",
+    "cn": ""
+  },
+  "Superb Scissors": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Explode Together Now": {
+    "effect": "AttackNamedPokemonCountDamage",
+    "cn": ""
+  },
+  "Deceit": {
+    "effect": "AttackSearchSupporter",
+    "cn": ""
+  },
+  "Strong Bash": {
+    "effect": "AttackCounterDamageEffect",
+    "cn": ""
+  },
+  "Reckless Abandon": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Paw-cket Pilfer": {
+    "effect": "AttackOpponentHandDiscardEffect",
+    "cn": ""
+  },
+  "Fury Swipes": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Haughty Order": {
+    "effect": "AttackRevealAndCopy",
+    "cn": "基因侵入"
+  },
+  "Cruel Slash": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Dizzy Punch": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "R Command": {
+    "effect": "AttackNamedPokemonCountDamage",
+    "cn": ""
+  },
+  "Whirlwind": {
+    "effect": "AttackGustFromBench",
+    "cn": "强力吹风机"
+  },
+  "Cruel Coal": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Inferno Kick Flurry": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Shell Press": {
+    "effect": "AttackReduceDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Astonish": {
+    "effect": "AttackOpponentHandDiscardEffect",
+    "cn": ""
+  },
+  "Oil Salvo": {
+    "effect": "AttackMultiTargetChooseEffect",
+    "cn": ""
+  },
+  "Aroma Shot": {
+    "effect": "AttackClearOwnStatusEffect",
+    "cn": "奇迹之力"
+  },
+  "Crushing Press": {
+    "effect": "AttackDiscardStadium",
+    "cn": "烧光"
+  },
+  "Avenging Billow": {
+    "effect": "AttackSelfDamageCounterMultiplierEffect",
+    "cn": "气球炸弹"
+  },
+  "Dynamic Dive": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Dual Bolt": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "High-Voltage Press": {
+    "effect": "AttackExtraEnergyBonusEffect",
+    "cn": ""
+  },
+  "Annihilating Anchor": {
+    "effect": "AttackDiscardToolsBeforeDamage",
+    "cn": "狙落"
+  },
+  "Tantrum": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Destined Fight": {
+    "effect": "AttackBothActiveKOEffect",
+    "cn": ""
+  },
+  "Blocking Stomp": {
+    "effect": "AttackDefenderAttackLockNextTurnEffect",
+    "cn": ""
+  },
+  "Knock Flat": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Guarded Rolling": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Burrow": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Digging Claw": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Buster Swing": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Corrosive Shards": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Mischievous Painting": {
+    "effect": "AttackAttachFromOpponentDiscardEffect",
+    "cn": ""
+  },
+  "Energized Graffiti": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Shield Attack": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Double Impact": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Stick 'n' Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Duralubeam": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Humming Charge": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Cotton Wings": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Space Crash": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Fully Singe": {
+    "effect": "AttackDiscardOpponentEnergy",
+    "cn": ""
+  },
+  "Triple Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Dyna-Blast": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "World Ender": {
+    "effect": "AttackDiscardStadium",
+    "cn": "烧光"
+  },
+  "Disarming Voice": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Hazardous Greed": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Ready to Ram": {
+    "effect": "AttackCounterDamageEffect",
+    "cn": ""
+  },
+  "Smashing Headbutt": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Play Rough": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Incessant Incisors": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Precise Beak": {
+    "effect": "AttackBonusIfSameEnergy",
+    "cn": ""
+  },
+  "Brave Bird": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Prism Charge": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Fire Soul": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Absorb": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Double Smash": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Turbulent Wings": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Fireworks": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Heat Burn": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Heat Breath": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Torcherto": {
+    "effect": "AttackBenchCountBonusDamage",
+    "cn": ""
+  },
+  "Flamethrower": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Crimson Blaster": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Aqua Dive": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Ice Beam": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Draining Fin": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Icicle Loop": {
+    "effect": "AttackReturnEnergyToHand",
+    "cn": ""
+  },
+  "Wander About": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Mighty Magnetism": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Zap Cannon": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Energy Short": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Storm Bolt": {
+    "effect": "AttackMoveEnergyToBench",
+    "cn": "伏特旋风"
+  },
+  "Return Charge": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Thunder Lance": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Draining Kiss": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Double-Edge": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Delightful Kiss": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Double Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Aurora Gain": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Dazzle Dance": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Perplex": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Splashing Dodge": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Mystical Eyes": {
+    "effect": "AttackDevolveEffect",
+    "cn": ""
+  },
+  "Moonblast": {
+    "effect": "AttackReduceOpponentDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Dual Chop": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Sweep the Leg": {
+    "effect": "AttackDiscardOpponentEnergyEffect",
+    "cn": ""
+  },
+  "Syrup Storm": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Destructive Flame": {
+    "effect": "AttackDiscardOpponentEnergyEffect",
+    "cn": ""
+  },
+  "Fighting Blaze": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Laser Blade": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Twin Shotels": {
+    "effect": "AttackIgnoreAllEffects",
+    "cn": "撕裂"
+  },
+  "Flame Tackle": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Frenzied Gouging": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Calamity Storm": {
+    "effect": "AttackDiscardStadium",
+    "cn": "烧光"
+  },
+  "Irritated Outburst": {
+    "effect": "AttackPrizeCountDamage",
+    "cn": "燃烧黑暗"
+  },
+  "Burst Roar": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Blood Moon": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Prism Edge": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Fighting Whirlpool": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Overrun": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Thunder": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Linear Attack": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Fighting Lightning": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Volt Cyclone": {
+    "effect": "AttackMoveEnergyToBench",
+    "cn": "伏特旋风"
+  },
+  "Psychic Assault": {
+    "effect": "AttackDefenderCounterBonusEffect",
+    "cn": ""
+  },
+  "Shadow Bind": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Perfume Press": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Roaring Scream": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Hex Hurl": {
+    "effect": "AttackPlaceDamageCountersOnBench",
+    "cn": ""
+  },
+  "Mind Bend": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Energy Feather": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Mad Bite": {
+    "effect": "AttackDefenderCounterBonusEffect",
+    "cn": ""
+  },
+  "Land Collapse": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Feint Attack": {
+    "effect": "AttackIgnoreAllEffects",
+    "cn": "撕裂"
+  },
+  "Pitch-Black Blade": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Call to Muster": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Grind": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Tyrannical Crush": {
+    "effect": "AttackOpponentHandDiscardEffect",
+    "cn": ""
+  },
+  "Triple Spin": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Iron Blaster": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Toss-and-Turn Press": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Dig": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Hyper Whirlpool": {
+    "effect": "AttackDiscardOpponentEnergyEffect",
+    "cn": ""
+  },
+  "Reflect Energy": {
+    "effect": "AttackMoveEnergyToBench",
+    "cn": "伏特旋风"
+  },
+  "Rising Tackle": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Strafe": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Sonic Blast": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Drop Shot": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Double Spin": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Spinning Gears": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Triple Smash": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Bounding Bite": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Shoot Through": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Champignon's Swing": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  },
+  "Guard Press": {
+    "effect": "AttackReduceDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Dynamic Press": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Shell Smack": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Trading Places": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Stealth Attack": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Fruit Bearing": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Frightening Howl": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Poisonous Ploy": {
+    "effect": "AttackSwitchSelfToBenchEffect",
+    "cn": "瞬移破坏"
+  },
+  "Gluttonous Tail": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Intimidating Stare": {
+    "effect": "AttackReduceOpponentDamageNextTurnEffect",
+    "cn": ""
+  },
+  "Tons of Treading": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Magical Leaf": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Rising Bloom": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Harden": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Smolder-sault": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Flamebody Cannon": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Scale Hurricane": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Flail": {
+    "effect": "AttackSelfDamageCounterMultiplierEffect",
+    "cn": "气球炸弹"
+  },
+  "Blizzard": {
+    "effect": "AttackSpreadBenchDamage",
+    "cn": ""
+  },
+  "Voltaic Chain": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Thump-Thump Boom": {
+    "effect": "EffectSelfDamage",
+    "cn": ""
+  },
+  "Zapping Short": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Spore": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Toge Spark": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Hold Still": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Fade Out": {
+    "effect": "AttackReturnSelfAllCardsToHandEffect",
+    "cn": ""
+  },
+  "Ghostly Trip": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Bind Down": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Breaching Lariat": {
+    "effect": "AttackIgnoreDefenderEffects",
+    "cn": "撕裂"
+  },
+  "Focus Fist": {
+    "effect": "AttackCoinFlipOrFail",
+    "cn": "跳一下"
+  },
+  "Rumble": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Snipping Pincers": {
+    "effect": "AttackDiscardOpponentEnergy",
+    "cn": ""
+  },
+  "Pervasive Gas": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Poison Ring": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Cracking Stomp": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Power Tackle": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Harmonious Spirit Palm": {
+    "effect": "AttackBonusIfSameEnergy",
+    "cn": ""
+  },
+  "Ascension": {
+    "effect": "AttackSearchEvolutionAndEvolve",
+    "cn": ""
+  },
+  "Pull": {
+    "effect": "AttackGustFromBench",
+    "cn": "强力吹风机"
+  },
+  "Rock Kagura": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Mountain Ramming": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Drag Down": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Spinning Tail": {
+    "effect": "AttackSpreadBenchDamage",
+    "cn": ""
+  },
+  "Dark Awakening": {
+    "effect": "AttackSearchEvolutionEffect",
+    "cn": ""
+  },
+  "Poison Spray": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Confuse Ray": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Gooped Up": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Strike the Sleeper": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Pointy Nails": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Pointy Claws": {
+    "effect": "AttackBonusVsExEffect",
+    "cn": ""
+  },
+  "Filch": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Shadow Bullet": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Spiky Wheel": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Hurricane of Needles": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Roost": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Sonic Double": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Metal Slash": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Dangerous Incisors": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Gnaw Through": {
+    "effect": "AttackDiscardToolsBeforeDamage",
+    "cn": "狙落"
+  },
+  "Mini Drain": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Energy Loop": {
+    "effect": "AttackReturnEnergyToHand",
+    "cn": ""
+  },
+  "Upside-Down Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Grass Kagura": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Ogre's Hammer": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Double Headbutt": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Ember": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Double Kick": {
+    "effect": "AttackMultiCoinFlipDamage",
+    "cn": ""
+  },
+  "Fire Kagura": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Bubble Beam": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Undulate": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Aqua Split": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Crescendo Wave": {
+    "effect": "AttackEnergyCountDamage",
+    "cn": ""
+  },
+  "Damage Rush": {
+    "effect": "AttackCoinFlipUntilTailsDamage",
+    "cn": ""
+  },
+  "Manual Wash": {
+    "effect": "AttackHealAllEffect",
+    "cn": ""
+  },
+  "Dive": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Water Kagura": {
+    "effect": "AttackSearchAndAttach",
+    "cn": "三重蓄能"
+  },
+  "Bubble Drain": {
+    "effect": "AttackHealEffect",
+    "cn": ""
+  },
+  "Zapping Draw": {
+    "effect": "AttackDrawCardsEffect",
+    "cn": "招来"
+  },
+  "Thunder Shock": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Thunder Raid": {
+    "effect": "AttackBenchSnipe",
+    "cn": "双刃"
+  },
+  "Hypnotic Ray": {
+    "effect": "EffectApplyStatus",
+    "cn": ""
+  },
+  "Summoning Sign": {
+    "effect": "AttackCallForFamily",
+    "cn": "呼朋引伴"
+  },
+  "Eerie Light": {
+    "effect": "EffectApplyStatus",
+    "cn": "精神幻觉"
+  },
+  "Clay Blast": {
+    "effect": "EffectDiscardEnergy",
+    "cn": ""
+  },
+  "Chiming Commotion": {
+    "effect": "AttackOpponentHandDiscardEffect",
+    "cn": ""
+  },
+  "Gemstone Mimicry": {
+    "effect": "AttackCopyAttack",
+    "cn": "基因侵入"
+  },
+  "Trimming Mower": {
+    "effect": "AttackDiscardStadium",
+    "cn": "烧光"
+  },
+  "Wild Kick": {
+    "effect": "AttackCoinFlipOrFail",
+    "cn": "跳一下"
+  },
+  "Impact Blow": {
+    "effect": "AttackSelfLockNextTurn",
+    "cn": "炎爆"
+  },
+  "Impound": {
+    "effect": "AttackDefenderRetreatLockNextTurnEffect",
+    "cn": ""
+  },
+  "Try to Imitate": {
+    "effect": "AttackCopyAttack",
+    "cn": "基因侵入"
+  },
+  "Mountain Munch": {
+    "effect": "AttackMillOpponentDeckEffect",
+    "cn": ""
+  },
+  "Explosive Ascension": {
+    "effect": "AttackSearchEvolutionAndEvolve",
+    "cn": ""
+  },
+  "Demolition Tackle": {
+    "effect": "AttackDiscardOpponentEnergy",
+    "cn": ""
+  },
+  "Steady Punch": {
+    "effect": "AttackCoinFlipBonusDamage",
+    "cn": ""
+  }
+}

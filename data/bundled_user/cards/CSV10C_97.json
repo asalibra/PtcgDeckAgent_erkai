@@ -1,0 +1,51 @@
+{
+	"name": "索财灵",
+	"name_en": "Gimmighoul",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Minor Errand-Running \nSearch your deck for up to 2 Basic Energy cards, reveal them, and put them into your hand. Then, shuffle your deck.\n[CCC] Tackle 50",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "97",
+	"set_code_en": "SSP",
+	"card_index_en": "97",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/97_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/97.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Minor Errand-Running",
+			"text": "Search your deck for up to 2 Basic Energy cards, reveal them, and put them into your hand. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tackle",
+			"text": "",
+			"cost": "CCC",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

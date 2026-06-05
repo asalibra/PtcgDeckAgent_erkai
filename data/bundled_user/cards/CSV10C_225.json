@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Alolan Exeggutor ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[GW] Tropical Frenzy 150\nYou may attach any number of Basic Energy cards from your hand to your Pokémon in any way you like.\n[GWF] Swinging Sphene \nFlip a coin. If heads, Knock Out your opponent's Active Basic Pokémon. If tails, Knock Out 1 of your opponent's Benched Basic Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "225",
+	"set_code_en": "SSP",
+	"card_index_en": "225",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/225_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/225.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Stage 1",
+	"hp": 300,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Exeggcute",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Tropical Frenzy",
+			"text": "You may attach any number of Basic Energy cards from your hand to your Pokémon in any way you like.",
+			"cost": "GW",
+			"damage": "150",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Swinging Sphene",
+			"text": "Flip a coin. If heads, Knock Out your opponent's Active Basic Pokémon. If tails, Knock Out 1 of your opponent's Benched Basic Pokémon.",
+			"cost": "GWF",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

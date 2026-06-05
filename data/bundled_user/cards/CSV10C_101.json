@@ -1,0 +1,51 @@
+{
+	"name": "帕底亚肯泰罗",
+	"name_en": "Paldean Tauros",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[FC] Smash Kick 40\n[FCC] Blocking Stomp 90\nIf the Defending Pokémon is a Basic Pokémon, it can't attack during your opponent's next turn.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "101",
+	"set_code_en": "SSP",
+	"card_index_en": "101",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/101_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/101.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Smash Kick",
+			"text": "",
+			"cost": "FC",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Blocking Stomp",
+			"text": "If the Defending Pokémon is a Basic Pokémon, it can't attack during your opponent's next turn.",
+			"cost": "FCC",
+			"damage": "90",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

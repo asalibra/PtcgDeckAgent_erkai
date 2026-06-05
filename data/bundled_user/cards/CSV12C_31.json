@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Volcanion ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[RRC] Scorching Cyclone 160\nMove an Energy from this Pokémon to 1 of your Benched Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "31",
+	"set_code_en": "JTG",
+	"card_index_en": "31",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/31_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/31.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 220,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Scorching Cyclone",
+			"text": "Move an Energy from this Pokémon to 1 of your Benched Pokémon.",
+			"cost": "RRC",
+			"damage": "160",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Scalding Steam",
+			"text": "Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent's Active Pokémon Burned."
+		}
+	],
+	"energy_provides": ""
+}

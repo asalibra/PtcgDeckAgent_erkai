@@ -1,0 +1,51 @@
+{
+	"name": "N的象征鸟",
+	"name_en": "N's Sigilyph",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Psychic Sphere 20\n[PCC] Victory Symbol \nIf you use this attack when you have exactly 1 Prize card remaining, you win this game.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "64",
+	"set_code_en": "JTG",
+	"card_index_en": "64",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/64_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/64.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Psychic Sphere",
+			"text": "",
+			"cost": "P",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Victory Symbol",
+			"text": "If you use this attack when you have exactly 1 Prize card remaining, you win this game.",
+			"cost": "PCC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

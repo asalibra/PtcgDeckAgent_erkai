@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Heatran",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[MC] Wrack Down 40\n[MMC] Iron Buster 130\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "68",
+	"set_code_en": "PRE",
+	"card_index_en": "68",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/68_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/68.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Wrack Down",
+			"text": "",
+			"cost": "MC",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Iron Buster",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "MMC",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "钥圈儿",
+	"name_en": "Klefki",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Stick 'n' Draw \nDiscard a card from your hand. If you do, draw 2 cards.\n[C] Hook 20",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "128",
+	"set_code_en": "SSP",
+	"card_index_en": "128",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/128_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/128.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Stick 'n' Draw",
+			"text": "Discard a card from your hand. If you do, draw 2 cards.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hook",
+			"text": "",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

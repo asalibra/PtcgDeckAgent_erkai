@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Cyclizar ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[CCC] Break Through 130\nThis attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[GRP] Zircon Road 180\nYou may draw 5 cards.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "159",
+	"set_code_en": "SSP",
+	"card_index_en": "159",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/159_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/159.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 210,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Break Through",
+			"text": "This attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "CCC",
+			"damage": "130",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Zircon Road",
+			"text": "You may draw 5 cards.",
+			"cost": "GRP",
+			"damage": "180",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Steven's Claydol",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Eerie Light 20\nYour opponent's Active Pokémon is now Confused.\n[PPC] Clay Blast 220\nDiscard all Energy from this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "84",
+	"set_code_en": "DRI",
+	"card_index_en": "84",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/84_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/84.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Steven's Baltoy",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Eerie Light",
+			"text": "Your opponent's Active Pokémon is now Confused.",
+			"cost": "P",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Clay Blast",
+			"text": "Discard all Energy from this Pokémon.",
+			"cost": "PPC",
+			"damage": "220",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

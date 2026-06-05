@@ -1,0 +1,49 @@
+{
+	"name": "黑夜魔灵",
+	"name_en": "Dusknoir",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PPC] Shadow Bind 150\nDuring your opponent's next turn, the Defending Pokémon can't retreat.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "37",
+	"set_code_en": "PRE",
+	"card_index_en": "37",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/37_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/37.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 2",
+	"hp": 160,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "Dusclops",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Shadow Bind",
+			"text": "During your opponent's next turn, the Defending Pokémon can't retreat.",
+			"cost": "PPC",
+			"damage": "150",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Cursed Blast",
+			"text": "Once during your turn, you may put 13 damage counters on 1 of your opponent's Pokémon. If you use this Ability, this Pokémon is Knocked Out."
+		}
+	],
+	"energy_provides": ""
+}

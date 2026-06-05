@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Barraskewda",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Sharp Fin 40\n[WW] Dive 60\nFlip a coin. If heads, during your opponent's next turn, prevent all damage from and effects of attacks done to this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "63",
+	"set_code_en": "DRI",
+	"card_index_en": "63",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/63_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/63.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Arrokuda",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Sharp Fin",
+			"text": "",
+			"cost": "W",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dive",
+			"text": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from and effects of attacks done to this Pokémon.",
+			"cost": "WW",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

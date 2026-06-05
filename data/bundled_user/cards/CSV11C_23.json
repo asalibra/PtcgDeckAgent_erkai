@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Vaporeon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[WC] Severe Squall \nThis attack does 60 damage to each of your opponent's Pokémon ex. This attack's damage isn't affected by Weakness or Resistance.\n[RWL] Aquamarine 280\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "23",
+	"set_code_en": "PRE",
+	"card_index_en": "23",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/23_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/23.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 280,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Severe Squall",
+			"text": "This attack does 60 damage to each of your opponent's Pokémon ex. This attack's damage isn't affected by Weakness or Resistance.",
+			"cost": "WC",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Aquamarine",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "RWL",
+			"damage": "280",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

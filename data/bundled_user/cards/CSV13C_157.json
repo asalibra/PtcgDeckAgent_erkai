@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Swellow",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Add On \nDraw 3 cards.\n[CC] Speed Wing 70",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "157",
+	"set_code_en": "DRI",
+	"card_index_en": "157",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/157_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/157.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 0,
+	"evolves_from": "Taillow",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Add On",
+			"text": "Draw 3 cards.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Speed Wing",
+			"text": "",
+			"cost": "CC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

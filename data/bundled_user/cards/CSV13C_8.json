@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Cynthia's Roserade",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[GCC] Leaf Step 80",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "8",
+	"set_code_en": "DRI",
+	"card_index_en": "8",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/8_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/8.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Cynthia's Roselia",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Leaf Step",
+			"text": "",
+			"cost": "GCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Cheer On to Glory",
+			"text": "Attacks used by your Cynthia's Pokémon do 30 more damage to your opponent's Active Pokémon (before applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

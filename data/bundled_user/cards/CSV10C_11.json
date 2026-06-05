@@ -1,0 +1,51 @@
+{
+	"name": "萨戮德",
+	"name_en": "Zarude",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[G] Leaf Drain 20\nHeal 20 damage from this Pokémon.\n[GGC] Jungle Whip 80+\nYou may put all Energy attached to this Pokémon into your hand to have this attack do 80 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "11",
+	"set_code_en": "SSP",
+	"card_index_en": "11",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/11_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/11.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Leaf Drain",
+			"text": "Heal 20 damage from this Pokémon.",
+			"cost": "G",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Jungle Whip",
+			"text": "You may put all Energy attached to this Pokémon into your hand to have this attack do 80 more damage.",
+			"cost": "GGC",
+			"damage": "80+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

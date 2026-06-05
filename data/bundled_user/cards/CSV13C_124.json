@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的臭臭泥",
+	"name_en": "Team Rocket's Muk",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[DC] Gooped Up 40\nYour opponent's Active Pokémon is now Confused. During your opponent's next turn, that Pokémon can't retreat.\n[DDC] Hazardous Venom 100×\nThis attack does 100 damage for each Special Condition affecting your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "124",
+	"set_code_en": "DRI",
+	"card_index_en": "124",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/124_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/124.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Stage 1",
+	"hp": 150,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Team Rocket's Grimer",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Gooped Up",
+			"text": "Your opponent's Active Pokémon is now Confused. During your opponent's next turn, that Pokémon can't retreat.",
+			"cost": "DC",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hazardous Venom",
+			"text": "This attack does 100 damage for each Special Condition affecting your opponent's Active Pokémon.",
+			"cost": "DDC",
+			"damage": "100×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,53 @@
+{
+	"name": "故勒顿",
+	"name_en": "Koraidon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "Ancient",
+	"description": "[CC] Unrelenting Onslaught 30+\nIf 1 of your other Ancient Pokémon used an attack during your last turn, this attack does 150 more damage.\n[FFC] Hammer In 110",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "116",
+	"set_code_en": "SSP",
+	"card_index_en": "116",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/116_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/116.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "P",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Unrelenting Onslaught",
+			"text": "If 1 of your other Ancient Pokémon used an attack during your last turn, this attack does 150 more damage.",
+			"cost": "CC",
+			"damage": "30+",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Hammer In",
+			"text": "",
+			"cost": "FFC",
+			"damage": "110",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "大朝北鼻",
+	"name_en": "Probopass",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[F] Power Gem 40\n[CCC] Mountain Drop 70+\nIf a Stadium is in play, this attack does 70 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "98",
+	"set_code_en": "DRI",
+	"card_index_en": "98",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/98_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/98.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 140,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Nosepass",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Power Gem",
+			"text": "",
+			"cost": "F",
+			"damage": "40",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mountain Drop",
+			"text": "If a Stadium is in play, this attack does 70 more damage.",
+			"cost": "CCC",
+			"damage": "70+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

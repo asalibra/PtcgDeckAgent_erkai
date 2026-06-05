@@ -1,0 +1,51 @@
+{
+	"name": "卡比兽",
+	"name_en": "Snorlax",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Spike Draw 20\nDraw a card.\n[CCC] Mega Punch 100",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "144",
+	"set_code_en": "SSP",
+	"card_index_en": "144",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/144_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/144.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 150,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spike Draw",
+			"text": "Draw a card.",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mega Punch",
+			"text": "",
+			"cost": "CCC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

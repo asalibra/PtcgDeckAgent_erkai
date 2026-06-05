@@ -73,6 +73,7 @@ func _ready() -> void:
 	%BtnDeckManager.pressed.connect(_on_deck_manager)
 	%BtnBattleReplay.pressed.connect(_on_battle_replay)
 	%BtnNetBattle.pressed.connect(_on_net_battle)
+	%BtnQuickValidation.pressed.connect(_on_quick_validation)
 	%BtnSettings.pressed.connect(_on_settings)
 	%BtnQuit.pressed.connect(_on_quit)
 	_apply_menu_feature_gates()
@@ -108,7 +109,7 @@ func _apply_main_menu_hud() -> void:
 		var deck_button := get_node_or_null("%BtnDeckManager") as Button
 		if deck_button != null and deck_button.get_parent() == menu:
 			menu.move_child(deck_button, 1)
-	for button_name: String in ["BtnStartBattle", "BtnTournament", "BtnDeckManager", "BtnBattleReplay", "BtnNetBattle", "BtnSettings", "BtnQuit"]:
+	for button_name: String in ["BtnStartBattle", "BtnTournament", "BtnDeckManager", "BtnBattleReplay", "BtnNetBattle", "BtnQuickValidation", "BtnSettings", "BtnQuit"]:
 		var button := get_node_or_null("%" + button_name) as Button
 		if button == null:
 			continue
@@ -1241,6 +1242,10 @@ func _on_battle_replay() -> void:
 
 func _on_net_battle() -> void:
 	GameManager.goto_net_lobby()
+
+
+func _on_quick_validation() -> void:
+	GameManager.goto_quick_validation()
 
 
 func _on_settings() -> void:

@@ -1,0 +1,51 @@
+{
+	"name": "火箭队的闪电鸟",
+	"name_en": "Team Rocket's Zapdos",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Jamming Wing 30\nYou may move an Energy from your opponent's Active Pokémon to 1 of their Benched Pokémon.\n[LCC] Wicked Thunder 60+\nIf this Pokémon has any Team Rocket's Energy attached, this attack does 60 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "70",
+	"set_code_en": "DRI",
+	"card_index_en": "70",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/70_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/70.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Jamming Wing",
+			"text": "You may move an Energy from your opponent's Active Pokémon to 1 of their Benched Pokémon.",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Wicked Thunder",
+			"text": "If this Pokémon has any Team Rocket's Energy attached, this attack does 60 more damage.",
+			"cost": "LCC",
+			"damage": "60+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

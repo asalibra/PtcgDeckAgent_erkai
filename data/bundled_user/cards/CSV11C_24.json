@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Suicune",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Overrun 30\nThis attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[WWC] Aurora Beam 100",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "24",
+	"set_code_en": "PRE",
+	"card_index_en": "24",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/24_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/24.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Overrun",
+			"text": "This attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Aurora Beam",
+			"text": "",
+			"cost": "WWC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

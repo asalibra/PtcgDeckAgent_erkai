@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Kangaskhan",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Gentle Slap 50\n[CCC] Dizzy Punch 90×\nFlip 2 coins. This attack does 90 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "204",
+	"set_code_en": "DRI",
+	"card_index_en": "204",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/204_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/204.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Gentle Slap",
+			"text": "",
+			"cost": "CC",
+			"damage": "50",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dizzy Punch",
+			"text": "Flip 2 coins. This attack does 90 damage for each heads.",
+			"cost": "CCC",
+			"damage": "90×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

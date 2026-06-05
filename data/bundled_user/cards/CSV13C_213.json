@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Mewtwo ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[PPC] Erasure Ball 160+\nYou may discard up to 2 Energy from your Benched Pokémon. This attack does 60 more damage for each card you discarded in this way.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "213",
+	"set_code_en": "DRI",
+	"card_index_en": "213",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/213_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/213.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 280,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Erasure Ball",
+			"text": "You may discard up to 2 Energy from your Benched Pokémon. This attack does 60 more damage for each card you discarded in this way.",
+			"cost": "PPC",
+			"damage": "160+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Power Saver",
+			"text": "This Pokémon can't attack unless you have 4 or more Team Rocket's Pokémon in play."
+		}
+	],
+	"energy_provides": ""
+}

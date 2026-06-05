@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Vibrava",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Screech \nDuring your next turn, the Defending Pokémon takes 50 more damage from attacks (after applying Weakness and Resistance).\n[FC] Cutting Wind 50",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "105",
+	"set_code_en": "SSP",
+	"card_index_en": "105",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/105_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/105.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 1",
+	"hp": 90,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Trapinch",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Screech",
+			"text": "During your next turn, the Defending Pokémon takes 50 more damage from attacks (after applying Weakness and Resistance).",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Cutting Wind",
+			"text": "",
+			"cost": "FC",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

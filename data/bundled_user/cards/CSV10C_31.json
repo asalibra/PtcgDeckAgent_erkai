@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Skeledirge",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[RC] Torcherto 60+\nThis attack does 20 more damage for each Benched Pokémon (both yours and your opponent's).",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "31",
+	"set_code_en": "SSP",
+	"card_index_en": "31",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/31_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/31.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 2",
+	"hp": 180,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Crocalor",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Torcherto",
+			"text": "This attack does 20 more damage for each Benched Pokémon (both yours and your opponent's).",
+			"cost": "RC",
+			"damage": "60+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Unaware",
+			"text": "Prevent all effects of attacks used by your opponent's Pokémon done to this Pokémon. (Damage is not an effect.)"
+		}
+	],
+	"energy_provides": ""
+}

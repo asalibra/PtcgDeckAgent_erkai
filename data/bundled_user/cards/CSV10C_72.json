@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Togekiss",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CCC] Speed Wing 140",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "72",
+	"set_code_en": "SSP",
+	"card_index_en": "72",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/72_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/72.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 2",
+	"hp": 140,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Togetic",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Speed Wing",
+			"text": "",
+			"cost": "CCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Wonder Kiss",
+			"text": "When your opponent's Active Pokémon is Knocked Out, flip a coin. If heads, take 1 more Prize card. The effect of Wonder Kiss doesn't stack."
+		}
+	],
+	"energy_provides": ""
+}

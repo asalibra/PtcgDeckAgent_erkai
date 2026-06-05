@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Indeedee",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PC] Super Psy Bolt 50",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "93",
+	"set_code_en": "SSP",
+	"card_index_en": "93",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/93_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/93.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 100,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Super Psy Bolt",
+			"text": "",
+			"cost": "PC",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Obliging Heal",
+			"text": "When you play this Pokémon from your hand onto your Bench during your turn, you may heal 30 damage from your Active Pokémon and have it recover from a Special Condition."
+		}
+	],
+	"energy_provides": ""
+}

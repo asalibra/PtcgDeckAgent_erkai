@@ -1,0 +1,49 @@
+{
+	"name": "彷徨夜灵",
+	"name_en": "Dusclops",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PP] Will-O-Wisp 50",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "36",
+	"set_code_en": "PRE",
+	"card_index_en": "36",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/36_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/36.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 90,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "Duskull",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Will-O-Wisp",
+			"text": "",
+			"cost": "PP",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Cursed Blast",
+			"text": "Once during your turn, you may put 5 damage counters on 1 of your opponent's Pokémon. If you use this Ability, this Pokémon is Knocked Out."
+		}
+	],
+	"energy_provides": ""
+}

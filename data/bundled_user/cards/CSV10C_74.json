@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Azumarill",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PPPP] Double-Edge 230\nThis Pokémon also does 50 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "74",
+	"set_code_en": "SSP",
+	"card_index_en": "74",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/74_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/74.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Marill",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Double-Edge",
+			"text": "This Pokémon also does 50 damage to itself.",
+			"cost": "PPPP",
+			"damage": "230",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Glistening Bubbles",
+			"text": "If you have any Tera Pokémon in play, this Pokémon can use the Double-Edge attack for Psychic."
+		}
+	],
+	"energy_provides": ""
+}

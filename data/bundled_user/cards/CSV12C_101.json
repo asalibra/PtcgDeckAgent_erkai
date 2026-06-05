@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Bombirdier",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Glide 20\n[DDC] Drop Shot \nDiscard all Energy from this Pokémon, and this attack does 120 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "101",
+	"set_code_en": "JTG",
+	"card_index_en": "101",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/101_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/101.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Glide",
+			"text": "",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Drop Shot",
+			"text": "Discard all Energy from this Pokémon, and this attack does 120 damage to 1 of your opponent's Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "DDC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

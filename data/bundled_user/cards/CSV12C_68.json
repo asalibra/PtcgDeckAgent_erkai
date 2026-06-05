@@ -1,0 +1,51 @@
+{
+	"name": "莉莉艾的花疗环环",
+	"name_en": "Lillie's Comfey",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Inviting Flowers \nYou may search your deck for any number of Basic Lillie's Pokémon and put them onto your Bench. Then, shuffle your deck.\n[P] Fade Out 30\nPut this Pokémon and all attached cards into your hand.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "68",
+	"set_code_en": "JTG",
+	"card_index_en": "68",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/68_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/68.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Inviting Flowers",
+			"text": "You may search your deck for any number of Basic Lillie's Pokémon and put them onto your Bench. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Fade Out",
+			"text": "Put this Pokémon and all attached cards into your hand.",
+			"cost": "P",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

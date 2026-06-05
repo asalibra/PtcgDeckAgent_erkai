@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Cornerstone Mask Ogerpon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Rock Kagura \nSearch your deck for a Basic Fighting Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.\n[FFC] Mountain Ramming 100\nDiscard the top card of your opponent's deck.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "111",
+	"set_code_en": "DRI",
+	"card_index_en": "111",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/111_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/111.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rock Kagura",
+			"text": "Search your deck for a Basic Fighting Energy card and attach it to 1 of your Pokémon. Then, shuffle your deck.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mountain Ramming",
+			"text": "Discard the top card of your opponent's deck.",
+			"cost": "FFC",
+			"damage": "100",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

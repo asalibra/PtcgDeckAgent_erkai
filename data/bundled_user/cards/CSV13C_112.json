@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Team Rocket's Ekans",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Drag Down \nFlip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.\n[D] Gnaw 10",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "112",
+	"set_code_en": "DRI",
+	"card_index_en": "112",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/112_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/112.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "D",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Drag Down",
+			"text": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Gnaw",
+			"text": "",
+			"cost": "D",
+			"damage": "10",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

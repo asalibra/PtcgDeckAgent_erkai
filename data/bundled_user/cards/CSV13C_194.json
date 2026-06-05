@@ -1,0 +1,51 @@
+{
+	"name": "小霞的拉普拉斯",
+	"name_en": "Misty's Lapras",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Swim Together \nSearch your deck for up to 3 Misty's Pokémon, reveal them, and put them into your hand. Then, shuffle your deck.\n[WC] Surf 60",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "194",
+	"set_code_en": "DRI",
+	"card_index_en": "194",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/194_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/194.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Swim Together",
+			"text": "Search your deck for up to 3 Misty's Pokémon, reveal them, and put them into your hand. Then, shuffle your deck.",
+			"cost": "W",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Surf",
+			"text": "",
+			"cost": "WC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Skarmory",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Roost \nHeal 50 damage from this Pokémon. During your next turn, this Pokémon can't retreat.\n[MC] Metal Claw 60",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "141",
+	"set_code_en": "DRI",
+	"card_index_en": "141",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/141_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/141.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Roost",
+			"text": "Heal 50 damage from this Pokémon. During your next turn, this Pokémon can't retreat.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Metal Claw",
+			"text": "",
+			"cost": "MC",
+			"damage": "60",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

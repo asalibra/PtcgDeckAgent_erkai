@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Vaporeon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Spiral Drain 30\nHeal 30 damage from this Pokémon.\n[WCC] Fighting Whirlpool 90+\nIf your opponent's Active Pokémon is a Pokémon ex or Pokémon V, this attack does 90 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "22",
+	"set_code_en": "PRE",
+	"card_index_en": "22",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/22_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/22.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "G",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Eevee",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spiral Drain",
+			"text": "Heal 30 damage from this Pokémon.",
+			"cost": "W",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Fighting Whirlpool",
+			"text": "If your opponent's Active Pokémon is a Pokémon ex or Pokémon V, this attack does 90 more damage.",
+			"cost": "WCC",
+			"damage": "90+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

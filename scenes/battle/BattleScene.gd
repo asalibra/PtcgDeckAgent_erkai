@@ -14,6 +14,7 @@ const AgentVersionStoreScript := preload("res://scripts/ai/AgentVersionStore.gd"
 const BattleRecorderScript := preload("res://scripts/engine/BattleRecorder.gd")
 const BattleReplaySnapshotLoaderScript := preload("res://scripts/engine/BattleReplaySnapshotLoader.gd")
 const BattleReplayStateRestorerScript := preload("res://scripts/engine/BattleReplayStateRestorer.gd")
+const ScenarioStateRestorerScript := preload("res://scripts/engine/scenario/ScenarioStateRestorer.gd")
 const BattleAdviceServiceScript := preload("res://scripts/engine/BattleAdviceService.gd")
 const BattleLearningPoolStoreScript := preload("res://scripts/engine/BattleLearningPoolStore.gd")
 const MatchEndQuickReviewServiceScript := preload("res://scripts/engine/MatchEndQuickReviewService.gd")
@@ -146,6 +147,7 @@ var _ai_llm_wait_anim_token: int = 0
 var _latest_opponent_action_text: String = ""
 var _latest_opponent_action_turn_number: int = -1
 var _battle_mode: String = "live"
+var _quick_validation_started: bool = false
 var _replay_match_dir: String = ""
 var _replay_turn_numbers: Array[int] = []
 var _replay_current_turn_index: int = -1
@@ -486,6 +488,9 @@ func _ready() -> void:
 	var replay_launch: Dictionary = GameManager.consume_battle_replay_launch()
 	if not replay_launch.is_empty():
 		_apply_replay_launch(replay_launch)
+	var quick_validation_launch: Dictionary = GameManager.consume_quick_validation_launch()
+	if not quick_validation_launch.is_empty():
+		_quick_validation_started = _apply_quick_validation_launch(quick_validation_launch)
 
 	# Discard pile interactions
 	_opp_discard.gui_input.connect(func(e: InputEvent) -> void:
@@ -570,7 +575,7 @@ func _ready() -> void:
 				_on_slot_input(e, "my_bench_%d" % idx)
 			)
 
-	if not _is_review_mode():
+	if not _is_review_mode() and not _quick_validation_started:
 		_start_battle()
 
 
@@ -5843,6 +5848,58 @@ func _apply_replay_launch(launch: Dictionary) -> void:
 	_refresh_replay_controls()
 	if _replay_match_dir.strip_edges() != "" and entry_turn_number > 0:
 		_load_replay_turn(entry_turn_number)
+
+
+func _apply_quick_validation_launch(launch: Dictionary) -> bool:
+	var raw_snapshot_variant: Variant = launch.get("raw_snapshot", {})
+	if not (raw_snapshot_variant is Dictionary):
+		_log("快速验证启动失败：缺少原始状态。")
+		return false
+	var raw_snapshot: Dictionary = raw_snapshot_variant
+	if raw_snapshot.is_empty():
+		_log("快速验证启动失败：状态为空。")
+		return false
+
+	var restore_result: Dictionary = ScenarioStateRestorerScript.restore(raw_snapshot)
+	var restore_errors: Array[String] = []
+	var restore_errors_variant: Variant = restore_result.get("errors", [])
+	if restore_errors_variant is Array:
+		for err_variant: Variant in restore_errors_variant:
+			restore_errors.append(str(err_variant))
+	if not restore_errors.is_empty():
+		_log("快速验证启动失败：%s" % " | ".join(restore_errors))
+		return false
+
+	var restored_gsm_variant: Variant = restore_result.get("gsm", null)
+	if not (restored_gsm_variant is GameStateMachine):
+		_log("快速验证启动失败：无法恢复对局状态机。")
+		return false
+
+	var restored_gsm: GameStateMachine = restored_gsm_variant
+	if restored_gsm.game_state == null:
+		_log("快速验证启动失败：恢复后的游戏状态为空。")
+		return false
+
+	_ensure_game_state_machine()
+	_gsm.game_state = restored_gsm.game_state
+	_register_effects_from_game_state(_gsm.game_state)
+	_setup_done = [true, true]
+	_view_player = clampi(int(launch.get("view_player_index", 0)), 0, 1)
+	if _gsm.game_state.phase in [GameState.GamePhase.SETUP, GameState.GamePhase.MULLIGAN, GameState.GamePhase.SETUP_PLACE]:
+		_gsm.game_state.phase = GameState.GamePhase.MAIN
+	_battle_mode = "live"
+	_pending_choice = ""
+	_set_pending_handover_action(Callable(), "quick_validation_launch")
+	_set_handover_panel_visible(false, "quick_validation_launch")
+	_battle_recording_started = false
+	_battle_recording_context_captured = false
+	_ensure_battle_recording_started()
+	_capture_battle_recording_context_if_ready()
+	_refresh_ui()
+	_check_two_player_handover()
+	_maybe_run_ai()
+	_runtime_log("quick_validation_launch", "phase=%s view=%d" % [str(_gsm.game_state.phase), _view_player])
+	return true
 
 
 func _load_replay_turn(turn_number: int) -> void:

@@ -1,0 +1,51 @@
+{
+	"name": "吸盘魔偶",
+	"name_en": "Mr. Mime",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Mimic \nShuffle your hand into your deck. Then, draw a card for each card in your opponent's hand.\n[PC] Psy Bolt 40\nFlip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "58",
+	"set_code_en": "JTG",
+	"card_index_en": "58",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/58_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/58.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mimic",
+			"text": "Shuffle your hand into your deck. Then, draw a card for each card in your opponent's hand.",
+			"cost": "P",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Psy Bolt",
+			"text": "Flip a coin. If heads, your opponent's Active Pokémon is now Paralyzed.",
+			"cost": "PC",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

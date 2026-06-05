@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Bronzong",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[MC] Heavy Impact 50",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "67",
+	"set_code_en": "PRE",
+	"card_index_en": "67",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/67_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/67.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Stage 1",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 3,
+	"evolves_from": "Bronzor",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Heavy Impact",
+			"text": "",
+			"cost": "MC",
+			"damage": "50",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Protective Bell",
+			"text": "All of your Pokémon take 10 less damage from attacks from your opponent's Pokémon (after applying Weakness and Resistance)."
+		}
+	],
+	"energy_provides": ""
+}

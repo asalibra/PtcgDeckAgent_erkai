@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Ludicolo",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WWC] Hydro Splash 130",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "37",
+	"set_code_en": "JTG",
+	"card_index_en": "37",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/37_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/37.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 2",
+	"hp": 140,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Lombre",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hydro Splash",
+			"text": "",
+			"cost": "WWC",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Vibrant Dance",
+			"text": "All of your Pokémon in play get +40 HP. The effect of Vibrant Dance doesn't stack."
+		}
+	],
+	"energy_provides": ""
+}

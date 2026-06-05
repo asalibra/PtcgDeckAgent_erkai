@@ -460,6 +460,7 @@ func _try_use_granted_attack_with_interaction(player_index: int, slot: PokemonSl
 			return
 		_net_handler.send_action(NetProtocol.ACTION_USE_GRANTED_ATTACK, {
 			"attacker_slot": _slot_to_ref(slot),
+			"attack_id": str(granted_attack.get("id", "")),
 			"attack_name": str(granted_attack.get("name", "")),
 		})
 		return

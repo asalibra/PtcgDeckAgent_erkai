@@ -150,6 +150,32 @@ func test_miraidon_165_is_bundled_as_default_install_deck() -> String:
 	return run_checks(checks)
 
 
+func test_deck_publish_state_marks_cloud_publish_and_detects_local_changes() -> String:
+	var db := CardDatabaseScript.new()
+	var deck := DeckData.new()
+	deck.id = 981001
+	deck.deck_name = "Cloud State Deck"
+	deck.import_date = "2026-05-30 20:00:00"
+	deck.total_cards = 60
+	deck.cards = []
+	db.clear_deck_published_state(deck.id)
+	var before_publish: Dictionary = db.get_deck_publish_state(deck)
+	db.mark_deck_published(deck, "2026-05-30T20:00:00")
+	var after_publish: Dictionary = db.get_deck_publish_state(deck)
+	deck.deck_name = "Cloud State Deck Updated"
+	var after_local_change: Dictionary = db.get_deck_publish_state(deck)
+	db.clear_deck_published_state(deck.id)
+	var after_clear: Dictionary = db.get_deck_publish_state(deck)
+	return run_checks([
+		assert_false(bool(before_publish.get("is_published", false)), "未发布牌组初始状态应为仅本地"),
+		assert_true(bool(after_publish.get("is_published", false)), "标记发布后应识别为云端已发布"),
+		assert_false(bool(after_publish.get("has_local_changes", false)), "刚发布后不应立刻标记为有本地修改"),
+		assert_eq(str(after_publish.get("published_at", "")), "2026-05-30T20:00:00", "应保留最近发布的时间戳"),
+		assert_true(bool(after_local_change.get("has_local_changes", false)), "本地修改后应识别为有未发布改动"),
+		assert_false(bool(after_clear.get("is_published", false)), "清理发布状态后应回到仅本地"),
+	])
+
+
 func _write_text(path: String, content: String) -> void:
 	var parent_dir := path.get_base_dir()
 	if not _dir_exists(parent_dir):

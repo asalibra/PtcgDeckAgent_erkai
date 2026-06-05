@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Ethan's Sudowoodo",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[F] Impound 20\nDuring your opponent's next turn, the Defending Pokémon can't retreat.\n[CC] Try to Imitate \nFlip a coin. If heads, choose 1 of your opponent's Active Pokémon's attacks and use it as this attack.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "93",
+	"set_code_en": "DRI",
+	"card_index_en": "93",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/93_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/93.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Basic",
+	"hp": 110,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Impound",
+			"text": "During your opponent's next turn, the Defending Pokémon can't retreat.",
+			"cost": "F",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Try to Imitate",
+			"text": "Flip a coin. If heads, choose 1 of your opponent's Active Pokémon's attacks and use it as this attack.",
+			"cost": "CC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

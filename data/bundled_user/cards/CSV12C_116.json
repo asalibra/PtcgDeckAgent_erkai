@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "N's Reshiram",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[RL] Powerful Rage 20×\nThis attack does 20 damage for each damage counter on this Pokémon.\n[RRLC] Virtuous Flame 170",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "116",
+	"set_code_en": "JTG",
+	"card_index_en": "116",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/116_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/116.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Powerful Rage",
+			"text": "This attack does 20 damage for each damage counter on this Pokémon.",
+			"cost": "RL",
+			"damage": "20×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Virtuous Flame",
+			"text": "",
+			"cost": "RRLC",
+			"damage": "170",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

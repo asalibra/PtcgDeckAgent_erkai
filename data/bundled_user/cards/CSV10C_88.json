@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Xerneas",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[PC] Aurora Gain 30\nHeal 30 damage from this Pokémon.\n[PPC] Giga Impact 130\nDuring your next turn, this Pokémon can't attack.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "88",
+	"set_code_en": "SSP",
+	"card_index_en": "88",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/88_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/88.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Aurora Gain",
+			"text": "Heal 30 damage from this Pokémon.",
+			"cost": "PC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Giga Impact",
+			"text": "During your next turn, this Pokémon can't attack.",
+			"cost": "PPC",
+			"damage": "130",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

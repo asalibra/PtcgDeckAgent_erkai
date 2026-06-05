@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Start network battle server and web hosting service
+    Start network battle server, optionally with web hosting service
 .DESCRIPTION
     1. Start Godot headless server (WebSocket listener)
-    2. Start Python HTTP server (web export hosting)
+    2. Optionally start Python HTTP server (web export hosting)
     3. Press Ctrl+C to stop all services
 .PARAMETER ServerPort
     WebSocket server port, default 9000
@@ -13,12 +13,13 @@
     Web export directory, default exports/web
 .EXAMPLE
     .\run_net_battle.ps1
-    .\run_net_battle.ps1 -ServerPort 9001 -WebPort 8081
+    .\run_net_battle.ps1 -ServerPort 9001 -WebPort 8081 -EnableWebClient
 #>
 
 param(
     [int]$ServerPort = 9000,
     [int]$WebPort = 8080,
+    [switch]$EnableWebClient,
     [string]$ExportDir = "",
     [string]$GodotPath = ""
 )
@@ -49,29 +50,35 @@ Write-Host "============================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "  Project dir:     $ProjectRoot" -ForegroundColor Gray
 Write-Host "  WebSocket port:  $ServerPort" -ForegroundColor Gray
-Write-Host "  Web HTTP port:   $WebPort" -ForegroundColor Gray
-Write-Host "  Web export dir:  $ExportDir" -ForegroundColor Gray
+if ($EnableWebClient) {
+    Write-Host "  Web HTTP port:   $WebPort" -ForegroundColor Gray
+    Write-Host "  Web export dir:  $ExportDir" -ForegroundColor Gray
+} else {
+    Write-Host "  Web client:      disabled" -ForegroundColor Gray
+}
 Write-Host ""
 
 # Check if web export exists
-$HasHtml = (Test-Path $ExportDir) -and ((Test-Path (Join-Path $ExportDir "index.html")) -or (Get-ChildItem -Path $ExportDir -Filter "*.html" -ErrorAction SilentlyContinue).Count -gt 0)
-if (-not $HasHtml) {
-    Write-Host "[!] Web export directory missing or no HTML files found" -ForegroundColor Yellow
-    Write-Host "    Please export Web version from Godot editor first:" -ForegroundColor Yellow
-    Write-Host "    Project -> Export -> Select Web preset -> Export Project" -ForegroundColor Yellow
-    Write-Host "    Export to: $ExportDir" -ForegroundColor Yellow
-    Write-Host ""
-    $continue = Read-Host "Continue starting server? (y/N)"
-    if ($continue -ne "y" -and $continue -ne "Y") {
-        exit 0
+if ($EnableWebClient) {
+    $HasHtml = (Test-Path $ExportDir) -and ((Test-Path (Join-Path $ExportDir "index.html")) -or (Get-ChildItem -Path $ExportDir -Filter "*.html" -ErrorAction SilentlyContinue).Count -gt 0)
+    if (-not $HasHtml) {
+        Write-Host "[!] Web export directory missing or no HTML files found" -ForegroundColor Yellow
+        Write-Host "    Please export Web version from Godot editor first:" -ForegroundColor Yellow
+        Write-Host "    Project -> Export -> Select Web preset -> Export Project" -ForegroundColor Yellow
+        Write-Host "    Export to: $ExportDir" -ForegroundColor Yellow
+        Write-Host ""
+        $continue = Read-Host "Continue starting server? (y/N)"
+        if ($continue -ne "y" -and $continue -ne "Y") {
+            exit 0
+        }
     }
-}
-# Auto-create index.html if missing but other html exists
-if ((Test-Path $ExportDir) -and -not (Test-Path (Join-Path $ExportDir "index.html"))) {
-    $existingHtml = Get-ChildItem -Path $ExportDir -Filter "*.html" | Select-Object -First 1
-    if ($existingHtml) {
-        Copy-Item $existingHtml.FullName (Join-Path $ExportDir "index.html")
-        Write-Host "  Auto-created index.html from $($existingHtml.Name)" -ForegroundColor Gray
+    # Auto-create index.html if missing but other html exists
+    if ((Test-Path $ExportDir) -and -not (Test-Path (Join-Path $ExportDir "index.html"))) {
+        $existingHtml = Get-ChildItem -Path $ExportDir -Filter "*.html" | Select-Object -First 1
+        if ($existingHtml) {
+            Copy-Item $existingHtml.FullName (Join-Path $ExportDir "index.html")
+            Write-Host "  Auto-created index.html from $($existingHtml.Name)" -ForegroundColor Gray
+        }
     }
 }
 
@@ -104,20 +111,24 @@ try {
         exit 1
     }
 
-    Write-Host "[2/2] Starting web hosting service (port $WebPort)..." -ForegroundColor Green
-    $WebJob = Start-Process -FilePath "python" `
-        -ArgumentList (Join-Path $ProjectRoot "scripts\tools\serve_web_export.py"), $WebPort.ToString(), $ExportDir `
-        -NoNewWindow `
-        -PassThru
+    if ($EnableWebClient) {
+        Write-Host "[2/2] Starting web hosting service (port $WebPort)..." -ForegroundColor Green
+        $WebJob = Start-Process -FilePath "python" `
+            -ArgumentList (Join-Path $ProjectRoot "scripts\tools\serve_web_export.py"), $WebPort.ToString(), $ExportDir `
+            -NoNewWindow `
+            -PassThru
 
-    Start-Sleep -Seconds 1
+        Start-Sleep -Seconds 1
+    }
 
     Write-Host ""
     Write-Host "============================================" -ForegroundColor Cyan
     Write-Host "  All services started!" -ForegroundColor Green
     Write-Host ""
-    Write-Host "  Open browser:  http://localhost:$WebPort" -ForegroundColor White
     Write-Host "  Server addr:   ws://localhost:$ServerPort" -ForegroundColor White
+    if ($EnableWebClient) {
+        Write-Host "  Open browser:  http://localhost:$WebPort" -ForegroundColor White
+    }
     Write-Host ""
     Write-Host "  Press Ctrl+C to stop all services" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Cyan

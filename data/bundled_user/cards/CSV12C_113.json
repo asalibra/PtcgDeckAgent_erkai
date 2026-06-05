@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Shelgon",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Guard Press 30\nDuring your opponent's next turn, this Pokémon takes 30 less damage from attacks (after applying Weakness and Resistance).\n[RWC] Heavy Impact 80",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "113",
+	"set_code_en": "JTG",
+	"card_index_en": "113",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/113_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/113.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Bagon",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Guard Press",
+			"text": "During your opponent's next turn, this Pokémon takes 30 less damage from attacks (after applying Weakness and Resistance).",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Heavy Impact",
+			"text": "",
+			"cost": "RWC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

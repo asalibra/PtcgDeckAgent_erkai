@@ -1,0 +1,53 @@
+{
+	"name": "火箭队的火焰鸟ex",
+	"name_en": "Team Rocket's Moltres ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[RCC] Flame Screen 110\nDuring your opponent's next turn, this Pokémon takes 50 less damage from attacks (after applying Weakness and Resistance).\n[RCCC] Evil Incineration \nDiscard a Team Rocket's Energy from this Pokémon. If you do, discard your opponent's Active Pokémon and all attached cards.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "208",
+	"set_code_en": "DRI",
+	"card_index_en": "208",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/208_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/208.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Basic",
+	"hp": 220,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Flame Screen",
+			"text": "During your opponent's next turn, this Pokémon takes 50 less damage from attacks (after applying Weakness and Resistance).",
+			"cost": "RCC",
+			"damage": "110",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Evil Incineration",
+			"text": "Discard a Team Rocket's Energy from this Pokémon. If you do, discard your opponent's Active Pokémon and all attached cards.",
+			"cost": "RCCC",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

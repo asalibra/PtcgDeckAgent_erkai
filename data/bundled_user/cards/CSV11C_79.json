@@ -1,0 +1,51 @@
+{
+	"name": "土龙弟弟",
+	"name_en": "Dunsparce",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Gnaw 10\n[CC] Dig 30\nFlip a coin. If heads, during your opponent's next turn, prevent all damage from and effects of attacks done to this Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "79",
+	"set_code_en": "PRE",
+	"card_index_en": "79",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/79_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/79.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "C",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 0,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Gnaw",
+			"text": "",
+			"cost": "C",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dig",
+			"text": "Flip a coin. If heads, during your opponent's next turn, prevent all damage from and effects of attacks done to this Pokémon.",
+			"cost": "CC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

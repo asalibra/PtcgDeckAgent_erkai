@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Combusken",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Combustion 20\n[RC] Double Kick 40×\nFlip 2 coins. This attack does 40 damage for each heads.",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "41",
+	"set_code_en": "DRI",
+	"card_index_en": "41",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/41_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/41.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Torchic",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Combustion",
+			"text": "",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Double Kick",
+			"text": "Flip 2 coins. This attack does 40 damage for each heads.",
+			"cost": "RC",
+			"damage": "40×",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

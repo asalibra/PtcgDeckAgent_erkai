@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Blaziken",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[CC] Heat Blast 70\n[RRC] Inferno Kick Flurry 120\nDiscard 2 Energy from this Pokémon. This attack also does 120 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "192",
+	"set_code_en": "DRI",
+	"card_index_en": "192",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/192_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/192.png",
+	"artist": "",
+	"rarity": "SAR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Combusken",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Heat Blast",
+			"text": "",
+			"cost": "CC",
+			"damage": "70",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Inferno Kick Flurry",
+			"text": "Discard 2 Energy from this Pokémon. This attack also does 120 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "RRC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Ethan's Quilava",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[R] Combustion 40",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "33",
+	"set_code_en": "DRI",
+	"card_index_en": "33",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/33_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/33.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "R",
+	"stage": "Stage 1",
+	"hp": 100,
+	"weakness_energy": "W",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Ethan's Cyndaquil",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Combustion",
+			"text": "",
+			"cost": "R",
+			"damage": "40",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Bonded by the Journey",
+			"text": "Once during your turn, you may search your deck for an Ethan's Adventure card, reveal it, and put it into your hand. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

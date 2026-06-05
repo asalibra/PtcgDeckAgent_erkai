@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Chien-Pao",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WWC] Icicle Loop 120\nPut an Energy attached to this Pokémon into your hand.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "56",
+	"set_code_en": "SSP",
+	"card_index_en": "56",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/56_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/56.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 120,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Icicle Loop",
+			"text": "Put an Energy attached to this Pokémon into your hand.",
+			"cost": "WWC",
+			"damage": "120",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Snow Sink",
+			"text": "When you play this Pokémon from your hand onto your Bench during your turn, you may discard a Stadium in play."
+		}
+	],
+	"energy_provides": ""
+}

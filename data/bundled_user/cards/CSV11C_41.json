@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Sylveon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[PCC] Magical Charm 160\nDuring your opponent's next turn, attacks used by the Defending Pokémon do 100 less damage (before applying Weakness and Resistance).\n[WLP] Angelite \nChoose 2 of your opponent's Benched Pokémon. Shuffle those Pokémon and all attached cards into your opponent's deck. If 1 of your Pokémon used Angelite during your last turn, this attack can't be used.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "41",
+	"set_code_en": "PRE",
+	"card_index_en": "41",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/41_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/41.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Magical Charm",
+			"text": "During your opponent's next turn, attacks used by the Defending Pokémon do 100 less damage (before applying Weakness and Resistance).",
+			"cost": "PCC",
+			"damage": "160",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Angelite",
+			"text": "Choose 2 of your opponent's Benched Pokémon. Shuffle those Pokémon and all attached cards into your opponent's deck. If 1 of your Pokémon used Angelite during your last turn, this attack can't be used.",
+			"cost": "WLP",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

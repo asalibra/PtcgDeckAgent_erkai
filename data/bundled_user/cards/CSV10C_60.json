@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Magnezone",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[LCC] Mighty Magnetism 80\nYour opponent's Active Pokémon is now Confused. During your opponent's next turn, that Pokémon can't retreat.\n[LCCC] Zap Cannon 180\nDuring your next turn, this Pokémon can't use Zap Cannon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "60",
+	"set_code_en": "SSP",
+	"card_index_en": "60",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/60_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/60.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "F",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Magneton",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mighty Magnetism",
+			"text": "Your opponent's Active Pokémon is now Confused. During your opponent's next turn, that Pokémon can't retreat.",
+			"cost": "LCC",
+			"damage": "80",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Zap Cannon",
+			"text": "During your next turn, this Pokémon can't use Zap Cannon.",
+			"cost": "LCCC",
+			"damage": "180",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

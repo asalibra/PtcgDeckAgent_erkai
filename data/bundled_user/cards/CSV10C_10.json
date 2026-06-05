@@ -1,0 +1,51 @@
+{
+	"name": "破舵舵",
+	"name_en": "Dhelmise",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Rescue Kedge \nPut up to 2 Pokémon from your discard pile into your hand.\n[GCC] Annihilating Anchor 80\nBefore doing damage, discard all Pokémon Tools from your opponent's Active Pokémon.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "10",
+	"set_code_en": "SSP",
+	"card_index_en": "10",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/10_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/10.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Basic",
+	"hp": 130,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rescue Kedge",
+			"text": "Put up to 2 Pokémon from your discard pile into your hand.",
+			"cost": "C",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Annihilating Anchor",
+			"text": "Before doing damage, discard all Pokémon Tools from your opponent's Active Pokémon.",
+			"cost": "GCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Mamoswine ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[FF] Rumbling March 180+\nThis attack does 40 more damage for each Stage 2 Pokémon on your Bench.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "79",
+	"set_code_en": "JTG",
+	"card_index_en": "79",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/79_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/79.png",
+	"artist": "",
+	"rarity": "RR",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "F",
+	"stage": "Stage 2",
+	"hp": 340,
+	"weakness_energy": "G",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 4,
+	"evolves_from": "Piloswine",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Rumbling March",
+			"text": "This attack does 40 more damage for each Stage 2 Pokémon on your Bench.",
+			"cost": "FF",
+			"damage": "180+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Mammoth Hauler",
+			"text": "Once during your turn, you may search your deck for a Pokémon, reveal it, and put it into your hand. Then, shuffle your deck."
+		}
+	],
+	"energy_provides": ""
+}

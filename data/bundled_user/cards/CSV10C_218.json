@@ -1,0 +1,53 @@
+{
+	"name": "",
+	"name_en": "Black Kyurem ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "",
+	"description": "[CCC] Ice Age 90\nIf your opponent's Active Pokémon is a Dragon Pokémon, it is now Paralyzed.\n[WWCC] Black Frost 250\nThis Pokémon also does 30 damage to itself.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "218",
+	"set_code_en": "SSP",
+	"card_index_en": "218",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/218_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/218.png",
+	"artist": "",
+	"rarity": "UR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 230,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Ice Age",
+			"text": "If your opponent's Active Pokémon is a Dragon Pokémon, it is now Paralyzed.",
+			"cost": "CCC",
+			"damage": "90",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Black Frost",
+			"text": "This Pokémon also does 30 damage to itself.",
+			"cost": "WWCC",
+			"damage": "250",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

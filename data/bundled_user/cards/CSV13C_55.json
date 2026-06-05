@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Huntail",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[WCC] Wave Splash 80",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "55",
+	"set_code_en": "DRI",
+	"card_index_en": "55",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/55_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/55.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 110,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Clamperl",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Wave Splash",
+			"text": "",
+			"cost": "WCC",
+			"damage": "80",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Diver's Catch",
+			"text": "When 1 of your Water Pokémon is Knocked Out by damage from an attack from your opponent's Pokémon, you may put all Basic Water Energy attached to that Pokémon into your hand instead of the discard pile."
+		}
+	],
+	"energy_provides": ""
+}

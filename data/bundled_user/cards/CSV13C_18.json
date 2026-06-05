@@ -1,0 +1,51 @@
+{
+	"name": "蜜集大蛇",
+	"name_en": "Hydrapple",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[G] Hydra Breath \nDiscard 6 Basic Grass Energy cards from your hand, and Knock Out your opponent's Active Pokémon. If you can't discard 6 cards in this way, this attack does nothing.\n[GCC] Whip Smash 140",
+	"yoren_code": "",
+	"set_code": "CSV13C",
+	"card_index": "18",
+	"set_code_en": "DRI",
+	"card_index_en": "18",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv10/18_hires.png",
+	"image_local_path": "user://cards/images/CSV13C/18.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "G",
+	"stage": "Stage 2",
+	"hp": 170,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 3,
+	"evolves_from": "Dipplin",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Hydra Breath",
+			"text": "Discard 6 Basic Grass Energy cards from your hand, and Knock Out your opponent's Active Pokémon. If you can't discard 6 cards in this way, this attack does nothing.",
+			"cost": "G",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Whip Smash",
+			"text": "",
+			"cost": "GCC",
+			"damage": "140",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

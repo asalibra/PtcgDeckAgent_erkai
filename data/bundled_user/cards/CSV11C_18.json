@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Slowpoke",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[W] Water Gun 10\n[WC] Tail Whap 30",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "18",
+	"set_code_en": "PRE",
+	"card_index_en": "18",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/18_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/18.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 70,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 2,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Water Gun",
+			"text": "",
+			"cost": "W",
+			"damage": "10",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Tail Whap",
+			"text": "",
+			"cost": "WC",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

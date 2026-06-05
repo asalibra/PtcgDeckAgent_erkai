@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Magearna",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Spike Draw 20\nDraw 2 cards.",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "107",
+	"set_code_en": "JTG",
+	"card_index_en": "107",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/107_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/107.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "M",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "R",
+	"weakness_value": "x2",
+	"resistance_energy": "G",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Spike Draw",
+			"text": "Draw 2 cards.",
+			"cost": "C",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Auto Heal",
+			"text": "As long as this Pokémon is in the Active Spot, whenever you attach an Energy card from your hand to 1 of your Pokémon, heal 90 damage from that Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

@@ -33,7 +33,7 @@ class FakeWebSocketPeer extends RefCounted:
 		return OK
 
 
-func test_send_message_queues_and_flushes_one_payload_per_poll() -> String:
+func test_send_message_queues_and_flushes_payloads_within_per_poll_budget() -> String:
 	var network := ServerNetworkScript.new()
 	var ws := FakeWebSocketPeer.new()
 	network._clients[1] = ws
@@ -46,11 +46,13 @@ func test_send_message_queues_and_flushes_one_payload_per_poll() -> String:
 	var queue_after_first_flush: Array = (network._outbound_queues.get(1, []) as Array).duplicate()
 	network._flush_outbound_queue(1, ws)
 	var queue_after_second_flush: Array = (network._outbound_queues.get(1, []) as Array).duplicate()
+	var per_poll_budget: int = int(ServerNetworkScript.MAX_SENDS_PER_POLL)
+	var expected_remaining_after_first := maxi(0, queue_before.size() - mini(queue_before.size(), per_poll_budget))
 
 	return run_checks([
 		assert_eq(queue_before.size(), 2, "send_message 应先把消息放入出站队列"),
 		assert_eq(ws.sent_payloads.size(), 2, "连续两次 flush 应分别发送两条排队消息"),
-		assert_eq(queue_after_first_flush.size(), 1, "单次 poll 只应发送一条消息，避免瞬时塞满 websocket 缓冲"),
+		assert_eq(queue_after_first_flush.size(), expected_remaining_after_first, "单次 poll 应遵循 MAX_SENDS_PER_POLL 的发送上限"),
 		assert_eq(queue_after_second_flush.size(), 0, "第二次 flush 后应清空剩余消息"),
 	])
 

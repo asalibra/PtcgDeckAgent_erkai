@@ -1,0 +1,51 @@
+{
+	"name": "",
+	"name_en": "Oricorio",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Energy Assist \nAttach up to 2 Basic Energy cards from your discard pile to 1 of your Benched Pokémon.\n[PC] Dazzle Dance 20\nYour opponent's Active Pokémon is now Confused.",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "89",
+	"set_code_en": "SSP",
+	"card_index_en": "89",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/89_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/89.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 90,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Energy Assist",
+			"text": "Attach up to 2 Basic Energy cards from your discard pile to 1 of your Benched Pokémon.",
+			"cost": "P",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Dazzle Dance",
+			"text": "Your opponent's Active Pokémon is now Confused.",
+			"cost": "PC",
+			"damage": "20",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

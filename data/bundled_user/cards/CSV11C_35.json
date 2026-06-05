@@ -1,0 +1,51 @@
+{
+	"name": "夜巡灵",
+	"name_en": "Duskull",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[P] Come and Get You \nPut up to 3 Duskull from your discard pile onto your Bench.\n[PP] Mumble 30",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "35",
+	"set_code_en": "PRE",
+	"card_index_en": "35",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/35_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/35.png",
+	"artist": "",
+	"rarity": "C",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "P",
+	"stage": "Basic",
+	"hp": 60,
+	"weakness_energy": "D",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Come and Get You",
+			"text": "Put up to 3 Duskull from your discard pile onto your Bench.",
+			"cost": "P",
+			"damage": "",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Mumble",
+			"text": "",
+			"cost": "PP",
+			"damage": "30",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

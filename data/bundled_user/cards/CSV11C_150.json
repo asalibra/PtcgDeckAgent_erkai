@@ -1,0 +1,54 @@
+{
+	"name": "",
+	"name_en": "Glaceon ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Tera",
+	"description": "[WC] Frost Bullet 110\nThis attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)\n[GWD] Euclase \nKnock Out 1 of your opponent's Pokémon that has exactly 6 damage counters on it.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "150",
+	"set_code_en": "PRE",
+	"card_index_en": "150",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/150_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/150.png",
+	"artist": "",
+	"rarity": "Special Illustration Rare",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"Tera",
+		"ex"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Stage 1",
+	"hp": 270,
+	"weakness_energy": "M",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Eevee",
+	"ancient_trait": "Tera",
+	"attacks": [
+		{
+			"name": "Frost Bullet",
+			"text": "This attack also does 30 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+			"cost": "WC",
+			"damage": "110",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Euclase",
+			"text": "Knock Out 1 of your opponent's Pokémon that has exactly 6 damage counters on it.",
+			"cost": "GWD",
+			"damage": "",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}

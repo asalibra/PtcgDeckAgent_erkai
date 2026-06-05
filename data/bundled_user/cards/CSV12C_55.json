@@ -1,0 +1,49 @@
+{
+	"name": "",
+	"name_en": "Iono's Kilowattrel",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[LCC] Mach Bolt 70",
+	"yoren_code": "",
+	"set_code": "CSV12C",
+	"card_index": "55",
+	"set_code_en": "JTG",
+	"card_index_en": "55",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv9/55_hires.png",
+	"image_local_path": "user://cards/images/CSV12C/55.png",
+	"artist": "",
+	"rarity": "R",
+	"release_date": "",
+	"regulation_mark": "I",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "L",
+	"stage": "Stage 1",
+	"hp": 120,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "F",
+	"resistance_value": "-30",
+	"retreat_cost": 1,
+	"evolves_from": "Iono's Wattrel",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Mach Bolt",
+			"text": "",
+			"cost": "LCC",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Flashing Draw",
+			"text": "You must discard a Basic Lightning Energy from this Pokémon in order to use this Ability. Once during your turn, you may draw cards until you have 6 cards in your hand."
+		}
+	],
+	"energy_provides": ""
+}

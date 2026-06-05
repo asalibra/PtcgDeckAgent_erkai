@@ -76,6 +76,11 @@ const CHOICE_HEAVY_BATON_TARGET := "heavy_baton_target"
 const CHOICE_EXP_SHARE_TARGET := "exp_share_target"
 const CHOICE_TRAINER_INTERACTION := "trainer_interaction"
 
+# ===================== 牌组来源 =====================
+
+const DECK_SOURCE_LOCAL_DRAFT := "local_draft"
+const DECK_SOURCE_PUBLISHED := "published"
+
 # ===================== 房间状态 =====================
 
 const ROOM_STATE_WAITING := "waiting"

@@ -1,0 +1,52 @@
+{
+	"name": "波荡水ex",
+	"name_en": "Walking Wake ex",
+	"card_type": "Pokemon",
+	"mechanic": "ex",
+	"label": "Ancient",
+	"description": "[WCC] Catharsis Roar 120+\nIf your opponent's Active Pokémon is affected by a Special Condition, this attack does 120 more damage.",
+	"yoren_code": "",
+	"set_code": "CSV11C",
+	"card_index": "178",
+	"set_code_en": "PRE",
+	"card_index_en": "178",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8pt5/178_hires.png",
+	"image_local_path": "user://cards/images/CSV11C/178.png",
+	"artist": "",
+	"rarity": "HR",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [
+		"ex",
+		"Ancient"
+	],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "W",
+	"stage": "Basic",
+	"hp": 220,
+	"weakness_energy": "L",
+	"weakness_value": "x2",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Catharsis Roar",
+			"text": "If your opponent's Active Pokémon is affected by a Special Condition, this attack does 120 more damage.",
+			"cost": "WCC",
+			"damage": "120+",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [
+		{
+			"name": "Azure Seas",
+			"text": "Damage from attacks used by this Pokémon isn't affected by any effects on your opponent's Active Pokémon."
+		}
+	],
+	"energy_provides": ""
+}

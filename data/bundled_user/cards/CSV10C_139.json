@@ -1,0 +1,51 @@
+{
+	"name": "苹裹龙",
+	"name_en": "Flapple",
+	"card_type": "Pokemon",
+	"mechanic": "",
+	"label": "",
+	"description": "[C] Acidic Spit 20×\nThis attack does 20 damage for each damage counter on your opponent's Active Pokémon.\n[GR] Speed Dive 70",
+	"yoren_code": "",
+	"set_code": "CSV10C",
+	"card_index": "139",
+	"set_code_en": "SSP",
+	"card_index_en": "139",
+	"effect_id": "",
+	"image_url": "https://images.pokemontcg.io/sv8/139_hires.png",
+	"image_local_path": "user://cards/images/CSV10C/139.png",
+	"artist": "",
+	"rarity": "U",
+	"release_date": "",
+	"regulation_mark": "H",
+	"is_tags": [],
+	"regulation_standard": true,
+	"regulation_expanded": true,
+	"energy_type": "N",
+	"stage": "Stage 1",
+	"hp": 80,
+	"weakness_energy": "",
+	"weakness_value": "",
+	"resistance_energy": "",
+	"resistance_value": "",
+	"retreat_cost": 1,
+	"evolves_from": "Applin",
+	"ancient_trait": "",
+	"attacks": [
+		{
+			"name": "Acidic Spit",
+			"text": "This attack does 20 damage for each damage counter on your opponent's Active Pokémon.",
+			"cost": "C",
+			"damage": "20×",
+			"is_vstar_power": false
+		},
+		{
+			"name": "Speed Dive",
+			"text": "",
+			"cost": "GR",
+			"damage": "70",
+			"is_vstar_power": false
+		}
+	],
+	"abilities": [],
+	"energy_provides": ""
+}
