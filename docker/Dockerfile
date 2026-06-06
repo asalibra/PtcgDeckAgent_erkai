@@ -10,14 +10,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     nginx \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Godot
-ARG GODOT_VERSION=4.6.2
-RUN wget -q --show-progress -O /tmp/godot.zip \
-    "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" \
-    && unzip -q -o /tmp/godot.zip -d /tmp \
-    && mv /tmp/Godot_v${GODOT_VERSION}-stable_linux.x86_64 /usr/local/bin/godot \
+# Install Godot from local file (pre-downloaded from gfast.top mirror)
+COPY docker/godot_linux.zip /tmp/godot.zip
+RUN unzip -q -o /tmp/godot.zip -d /tmp \
+    && mv /tmp/Godot_v4.6.2-stable_linux.x86_64 /usr/local/bin/godot \
     && chmod +x /usr/local/bin/godot \
-    && rm -rf /tmp/godot.zip
+    && rm -f /tmp/godot.zip
 
 # Copy project files
 WORKDIR /app

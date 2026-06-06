@@ -70,3 +70,8 @@ scripts/tools/generate_en_attack_registry.py
 # Analysis files
 *.xlsx
 tmp_test_run.txt
+
+# Docker build assets (large binaries)
+docker/godot_linux.zip
+docker/godot_linux.zip
+docker/ptcg-server.tar
