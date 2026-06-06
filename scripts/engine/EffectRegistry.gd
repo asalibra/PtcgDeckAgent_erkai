@@ -824,8 +824,9 @@ static func _get_ability_effect(ability_name: String) -> BaseEffect:
 		"过量放电":
 			return _instantiate_effect(AbilityOvervoltDischargeEffect)
 		_:
-			# 英文特性名回退
-			return _get_ability_effect_en(ability_name)
+			# 英文特性名回退（暂时禁用，等效果脚本补全）
+			return null
+			# return _get_ability_effect_en(ability_name)
 
 
 ## ==================== 英文特性名 → 效果实例映射 ====================
@@ -1072,8 +1073,9 @@ static func _get_attack_effects(processor: EffectProcessor, attack_name: String)
 			# 铁荆棘ex：转移1个能量到备战区
 			return [AttackMoveEnergyToBench.new()]
 		_:
-			# 英文招式名回退
-			return _get_attack_effects_en(processor, attack_name)
+			# 英文招式名回退（暂时禁用，等效果脚本补全）
+			return []
+			# return _get_attack_effects_en(processor, attack_name)
 
 
 ## ==================== 英文招式名 → 效果实例映射 ====================
